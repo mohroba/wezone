@@ -1,0 +1,116 @@
+name: Build & Deploy Laravel (FTPS)
+
+on:
+  push:
+    branches: [ main, master ]
+
+# Prevent overlapping deploys
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+env:
+  LARAVEL_DIR: .
+  REMOTE_BASE: wezone_laravel/      # Laravel root on server
+  REMOTE_PUBLIC: public_html/api/   # Public docroot for api.domain.com
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      # PHP + Composer
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: mbstring, intl, gd, zip, pdo_mysql
+          tools: composer:v2
+          coverage: none
+      - name: Validate composer.json
+        run: composer validate --no-check-all --strict
+      - name: Install Composer deps (no-dev, optimized)
+        run: composer install --no-dev --prefer-dist --optimize-autoloader --no-interaction --no-progress
+
+      # Front-end (Vite)
+      - name: Setup Node (LTS) & cache npm
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'     # use your project’s LTS; or point to .nvmrc with node-version-file
+          cache: 'npm'
+          cache-dependency-path: package-lock.json
+      - name: Build assets
+        run: |
+          if [ -f package.json ]; then
+            npm ci
+            npm run build
+          else
+            echo "No package.json, skipping npm build."
+          fi
+
+      # ------- Deploy core Laravel (outside public_html)
+      - name: Deploy Laravel root (FTPS)
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.6
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          port: ${{ secrets.FTP_PORT }}          # e.g. 21 or 990 (explicit vs implicit FTPS)
+          local-dir: ${{ env.LARAVEL_DIR }}/
+          server-dir: ${{ env.REMOTE_BASE }}/
+          state-name: .ftp-deploy-sync-laravel.json
+          dangerous-clean-slate: false
+          exclude: |
+            **/.git*
+            **/.github/**
+            node_modules/**
+            public/**
+            public_html/**
+            storage/framework/cache/data/**
+            storage/framework/sessions/**
+            storage/framework/views/**
+            storage/logs/**
+            .env
+            *.log
+            *.md
+            webpack.*.js
+            vite.config.*.js
+            tsconfig*.json
+            .editorconfig
+            .eslint*
+            .prettier*
+            .stylelint*
+
+      # ------- Deploy public/ (builds, assets) to the web root
+      - name: Deploy public dir (FTPS)
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.6
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          port: ${{ secrets.FTP_PORT }}
+          local-dir: public/
+          server-dir: ${{ env.REMOTE_PUBLIC }}/
+          state-name: .ftp-deploy-sync-public.json
+          dangerous-clean-slate: false
+          exclude: |
+            .htaccess     # keep your server-side customizations
+            index.php     # points to ../../wezone_laravel; don’t overwrite it
+
+      # (Optional) Trigger post-deploy tasks on the server
+      - name: Post-deploy hook (optimize/migrate/etc.)
+        if: ${{ secrets.DEPLOY_HOOK_URL != '' && secrets.DEPLOY_HOOK_TOKEN != '' }}
+        run: |
+          curl -fsSL -H "X-Deploy-Token: ${{ secrets.DEPLOY_HOOK_TOKEN }}" \
+            "${{ secrets.DEPLOY_HOOK_URL }}"
