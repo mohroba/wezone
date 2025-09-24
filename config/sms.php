@@ -14,13 +14,13 @@ return [
 
     'drivers' => [
         'ippanel' => [
-            'key'        => '',
-            'originator' => '+9890000',
-            //            'patterns' => [
-            //                'verify' => [
-            //                    'pattern_code' => '',
-            //                ],
-            //            ],
+            'key'        => 'OWY1NzYxZWUtMmY1Zi00MjZjLTg5YWEtMGU0ZTE3MjJiOWVkZDgwNzZhNzk3MmU4YTRkNGI4ODY0MTQyMmExMDVhYmM=',
+            'originator' => '+983000505',
+            'patterns' => [
+                'verify' => [
+                    'pattern_code' => 'ekaww92rifgghpa',
+                ],
+            ],
             'SEND_MESSAGE_API' => 'http://rest.ippanel.com/v1/messages',
             'SEND_PATTERN_API' => 'http://rest.ippanel.com/v1/messages/patterns/send',
         ],
