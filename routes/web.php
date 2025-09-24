@@ -1,7 +1,12 @@
 <?php
 
+use App\Support\ApiResponse;
 use Illuminate\Support\Facades\Route;
 use Metti\LaravelSms\Facade\SendSMS;
+
+Route::get('/', function () {
+    return ApiResponse::success('API is running.');
+});
 
 Route::get('/debug-vite', function () {
     \Artisan::call('optimize:clear');
