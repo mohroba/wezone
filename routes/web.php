@@ -8,27 +8,26 @@ Route::get('/', function () {
     return ApiResponse::success('API is running.');
 });
 
-Route::get('/debug-vite', function () {
+// routes/web.php (protect this!)
+Route::post('/deploy/run', function () {
+    abort_unless(request()->header('X-Deploy-Token') === config('app.deploy_token'), 403);
+
     \Artisan::call('optimize:clear');
+    \Artisan::call('config:cache');
+    \Artisan::call('route:cache');
+    \Artisan::call('view:cache');
     \Artisan::call('queue:restart');
-    \Artisan::call('storage:link');
-    \Artisan::call('module:migrate');
-    \Artisan::call('migrate');
-    \Artisan::call('db:seed');
-    $path = public_path('build/manifest.json');
-    return response()->json([
-        'public_path' => $path,
-        'public_path' => public_path(),
-        'srorage_path' => storage_path(),
-        'exists' => file_exists($path),
-        'size' => file_exists($path) ? filesize($path) : 0,
-    ]);
+    \Artisan::call('migrate', ['--force' => true]);
+    \Artisan::call('scribe:generate', ['--force' => true]);
+
+    return response()->json(['ok' => true]);
 });
+
 
 Route::get('/test-sms', function () {
     SendSMS::via('ippanel')
-        ->patternMessage('verify',['code' => '1234'])
-        ->recipients(['09196373450'])
+        ->patternMessage('verify',['code' => '12345'])
+        ->recipients(['09212663231'])
         ->send();
 });
 
