@@ -27,6 +27,7 @@ class MobileAuthController extends Controller
 
     /**
      * @group Auth
+     * @unauthenticated
      *
      * Send mobile OTP
      *
@@ -90,6 +91,7 @@ class MobileAuthController extends Controller
 
     /**
      * @group Auth
+     * @unauthenticated
      *
      * Verify OTP and issue tokens
      *
