@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', "https://api.wezone.app/"),
+    'url' => env('APP_URL', "https://api.wezone.app"),
 
     /*
     |--------------------------------------------------------------------------
