@@ -1,10 +1,9 @@
-name: Build & Deploy Laravel (FTPS)
+name: Build & Deploy Laravel (FTPS, single-zip + docs)
 
 on:
   push:
     branches: [ main, master ]
 
-# Prevent overlapping deploys
 concurrency:
   group: deploy-${{ github.ref }}
   cancel-in-progress: true
@@ -14,26 +13,22 @@ permissions:
 
 env:
   LARAVEL_DIR: .
-  REMOTE_BASE: wezone_laravel/        # Laravel root on server (relative to FTP home)
-  REMOTE_PUBLIC: public_html/api/     # Public docroot for api.wezone.app (relative)
+  REMOTE_BASE: wezone_laravel/      # relative to FTP home (/home/wezapp)
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     timeout-minutes: 30
 
-    # Map optional secrets to env so we can safely use them in `if:`
     env:
-      DEPLOY_HOOK_URL: ${{ secrets.DEPLOY_HOOK_URL }}
+      DEPLOY_HOOK_URL: ${{ secrets.DEPLOY_HOOK_URL }}     # e.g. https://api.wezone.app/deploy/unpack
       DEPLOY_HOOK_TOKEN: ${{ secrets.DEPLOY_HOOK_TOKEN }}
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 1
+        with: { fetch-depth: 1 }
 
-      # ---------------- PHP + Composer ----------------
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
@@ -42,106 +37,53 @@ jobs:
           tools: composer:v2
           coverage: none
 
-      - name: Validate composer.json
-        run: composer validate --no-check-all --strict
+      - name: Composer install (prod)
+        run: |
+          composer install --no-dev --prefer-dist --optimize-autoloader --no-interaction --no-progress
+          composer dump-autoload -o
 
-      - name: Install Composer deps (no-dev, optimized)
-        run: composer install --no-dev --prefer-dist --optimize-autoloader --no-interaction --no-progress
-
-      # ---------------- Front-end (Vite) ----------------
-      - name: Setup Node (LTS) & cache npm
+      - name: Setup Node (LTS) & build Vite
         uses: actions/setup-node@v4
         with:
           node-version: 'lts/*'
           cache: 'npm'
           cache-dependency-path: package-lock.json
-
-      - name: Build assets
-        run: |
+      - run: |
           if [ -f package.json ]; then
             npm ci
             npm run build
           else
-            echo "No package.json, skipping npm build."
+            echo "No package.json, skipping Vite build."
           fi
 
-      # ---------------- Sanity checks ----------------
-      - name: Verify vendor & build outputs
+      - name: Generate Scribe docs (HTML + Postman + OpenAPI)
         run: |
-          test -f vendor/autoload.php || (echo "::error::composer vendor missing"; exit 1)
-          if [ -f package.json ]; then
-            test -f public/build/manifest.json || (echo "::error::Vite manifest missing"; exit 1)
-          fi
+          php artisan scribe:generate --force
 
-      # ------- Deploy core Laravel (outside public_html)
-      - name: Deploy Laravel root (FTPS)
+      - name: Package app (single zip)
+        run: |
+          rm -f app.zip
+          # exclude env, node junk, GH meta, logs, and public_html override
+          zip -rq app.zip . \
+            -x "*.git*" ".github/*" "node_modules/*" "storage/logs/*" ".env" "public_html/*"
+          mkdir -p deploy && mv app.zip deploy/
+
+      - name: Upload app.zip (FTPS)
         uses: SamKirkland/FTP-Deploy-Action@v4.3.6
         with:
           server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftps
-          port: ${{ secrets.FTP_PORT }}          # e.g. 21 (explicit FTPS) or 990 (implicit)
-          local-dir: ${{ env.LARAVEL_DIR }}/
-          server-dir: ${{ env.REMOTE_BASE }}/
-          state-name: .ftp-deploy-sync-laravel.json
-          dangerous-clean-slate: false
-          exclude: |
-            **/.git*
-            **/.github/**
-            node_modules/**
-            public/**
-            public_html/**
-            storage/framework/cache/data/**
-            storage/framework/sessions/**
-            storage/framework/views/**
-            storage/logs/**
-            .env
-            *.log
-            *.md
-            webpack.*.js
-            vite.config.*.js
-            tsconfig*.json
-            .editorconfig
-            .eslint*
-            .prettier*
-            .stylelint*
-
-      # ------- Deploy public/ (general assets) to docroot
-      - name: Deploy public dir (FTPS)
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.6
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
+          username: ${{ secrets.FTP_USERNAME }}     
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftps
           port: ${{ secrets.FTP_PORT }}
-          local-dir: public/
-          server-dir: ${{ env.REMOTE_PUBLIC }}/
-          state-name: .ftp-deploy-sync-public.json
+          local-dir: deploy/
+          server-dir: ${{ env.REMOTE_BASE }}
+          state-name: .ftp-deploy-sync-zip.json
           dangerous-clean-slate: false
-          exclude: |
-            .htaccess     # keep your server-side customizations
-            index.php     # points to ../../wezone_laravel; don’t overwrite it
-            build/**      # handled in the next step (clean-slate)
 
-      # ------- Clean-slate deploy for hashed Vite assets (public/build)
-      - name: Deploy Vite build (FTPS, clean-slate)
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.6
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftps
-          port: ${{ secrets.FTP_PORT }}
-          local-dir: public/build/
-          server-dir: ${{ env.REMOTE_PUBLIC }}build/
-          state-name: .ftp-deploy-sync-build.json
-          dangerous-clean-slate: true
-
-      # ------- Optional: trigger post-deploy tasks on server
-      - name: Post-deploy hook (optimize/migrate/etc.)
+      - name: Unpack & activate on server
         if: ${{ env.DEPLOY_HOOK_URL != '' && env.DEPLOY_HOOK_TOKEN != '' }}
         run: |
-          curl -fsSL -H "X-Deploy-Token: ${{ env.DEPLOY_HOOK_TOKEN }}" \
+          curl -fsSL -X POST \
+            -H "X-Deploy-Token: ${{ env.DEPLOY_HOOK_TOKEN }}" \
             "${{ env.DEPLOY_HOOK_URL }}"
