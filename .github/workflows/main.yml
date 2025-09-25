@@ -57,13 +57,12 @@ jobs:
           fi
 
       - name: Generate Scribe docs (HTML + Postman + OpenAPI)
-        run: |
-          php artisan scribe:generate --force
+        run: php artisan scribe:generate --force
 
       - name: Package app (single zip)
         run: |
           rm -f app.zip
-          # exclude env, node junk, GH meta, logs, and public_html override
+          # exclude env, node junk, GH meta, logs, and any public_html overrides
           zip -rq app.zip . \
             -x "*.git*" ".github/*" "node_modules/*" "storage/logs/*" ".env" "public_html/*"
           mkdir -p deploy && mv app.zip deploy/
@@ -72,7 +71,7 @@ jobs:
         uses: SamKirkland/FTP-Deploy-Action@v4.3.6
         with:
           server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}     
+          username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftps
           port: ${{ secrets.FTP_PORT }}
@@ -80,6 +79,50 @@ jobs:
           server-dir: ${{ env.REMOTE_BASE }}
           state-name: .ftp-deploy-sync-zip.json
           dangerous-clean-slate: false
+
+      # ---- FTP-based cache cleanup on the HOST (empties dirs safely) ----
+      - name: Prepare empty dir for remote cleanup
+        run: mkdir -p empty
+
+      - name: Clean bootstrap/cache on host (FTPS)
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.6
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          port: ${{ secrets.FTP_PORT }}
+          local-dir: empty/
+          server-dir: ${{ env.REMOTE_BASE }}bootstrap/cache/
+          state-name: .ftp-clean-bootstrap-cache.json
+          dangerous-clean-slate: true
+
+      - name: Clean storage/framework/cache on host (FTPS)
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.6
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          port: ${{ secrets.FTP_PORT }}
+          local-dir: empty/
+          server-dir: ${{ env.REMOTE_BASE }}storage/framework/cache/
+          state-name: .ftp-clean-storage-cache.json
+          dangerous-clean-slate: true
+
+      - name: Clean storage/framework/views on host (FTPS)
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.6
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          port: ${{ secrets.FTP_PORT }}
+          local-dir: empty/
+          server-dir: ${{ env.REMOTE_BASE }}storage/framework/views/
+          state-name: .ftp-clean-storage-views.json
+          dangerous-clean-slate: true
+      # -------------------------------------------------------------------
 
       - name: Unpack & activate on server
         if: ${{ env.DEPLOY_HOOK_URL != '' && env.DEPLOY_HOOK_TOKEN != '' }}
