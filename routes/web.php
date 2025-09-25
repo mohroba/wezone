@@ -8,7 +8,7 @@ Route::get('/', function () {
     return ApiResponse::success('API is running.');
 });
 
-Route::any('/deploy/unpack', function () {
+Route::any('/deploy/unpacking', function () {
     \Artisan::call('optimize:clear');
     \Artisan::call('queue:restart');
 
