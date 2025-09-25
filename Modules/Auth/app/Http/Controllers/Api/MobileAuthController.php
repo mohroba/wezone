@@ -25,6 +25,31 @@ class MobileAuthController extends Controller
     private const OTP_EXPIRATION_MINUTES = 2;
     private const RATE_LIMIT_SECONDS = 120;
 
+    /**
+     * @group Auth
+     *
+     * Send mobile OTP
+     *
+     * Start the passwordless login flow by requesting a six-digit code.
+     *
+     * @bodyParam mobile string required The mobile number to send the OTP to. Must contain 10 to 15 digits. Example: "989123456789"
+     * @response status=201 scenario="OTP created" {
+     *   "success": true,
+     *   "message": "OTP has been sent successfully.",
+     *   "data": {
+     *     "expires_in": 120
+     *   },
+     *   "meta": {}
+     * }
+     * @response status=429 scenario="Too many attempts" {
+     *   "success": false,
+     *   "message": "Please wait before requesting another OTP.",
+     *   "errors": {
+     *     "retry_after": 75
+     *   },
+     *   "data": null
+     * }
+     */
     public function send(SendOtpRequest $request): JsonResponse
     {
         $mobile = $request->validated()['mobile'];
@@ -63,6 +88,74 @@ class MobileAuthController extends Controller
         );
     }
 
+    /**
+     * @group Auth
+     *
+     * Verify OTP and issue tokens
+     *
+     * Complete the login flow by exchanging a valid OTP for access credentials.
+     *
+     * @bodyParam mobile string required The mobile number the OTP was sent to. Must contain 10 to 15 digits. Example: "989123456789"
+     * @bodyParam otp string required The six-digit one-time password received by the user. Example: "123456"
+     * @bodyParam username string optional A unique username to assign to the user. Example: "sara94"
+     * @bodyParam email string optional An email address to associate with the user. Example: "sara@example.com"
+     * @bodyParam first_name string optional User's given name. Example: "Sara"
+     * @bodyParam last_name string optional User's family name. Example: "Rahimi"
+     * @bodyParam birth_date date optional Date of birth in Y-m-d format. Example: "1994-03-18"
+     * @bodyParam national_id string optional National identification number. Example: "1234567890"
+     * @bodyParam residence_city_id integer optional Identifier of the city where the user resides. Example: 10
+     * @bodyParam residence_province_id integer optional Identifier of the province where the user resides. Example: 2
+     * @response {
+     *   "success": true,
+     *   "message": "Authenticated successfully.",
+     *   "data": {
+     *     "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9...",
+     *     "refresh_token": "f4b5c29f92f24f3b9e0a2d874e6c8f74b1e9f9e2a6f84715b22d8fca8f4b90de",
+     *     "token_type": "Bearer",
+     *     "expires_in": 31536000,
+     *     "expires_at": "2025-09-25 07:10:00",
+     *     "profile": {
+     *       "id": 12,
+     *       "first_name": "Sara",
+     *       "last_name": "Rahimi",
+     *       "full_name": "Sara Rahimi",
+     *       "birth_date": "1994-03-18",
+     *       "national_id": "1234567890",
+     *       "residence_city_id": 10,
+     *       "residence_province_id": 2,
+     *       "user": {
+     *         "id": 45,
+     *         "mobile": "989123456789",
+     *         "username": "sara94",
+     *         "email": "sara@example.com",
+     *         "roles": [
+     *           "customer"
+     *         ],
+     *         "permissions": []
+     *       },
+     *       "media": {
+     *         "national_id_document": "https://cdn.example.com/media/national-id.pdf",
+     *         "profile_images": [
+     *           {
+     *             "id": "f17c6ae4-5c1a-4c44-a058-9324c4b6f8b9",
+     *             "name": "avatar",
+     *             "url": "https://cdn.example.com/media/avatar.jpg"
+     *           }
+     *         ]
+     *       },
+     *       "created_at": "2025-09-24T12:00:00.000000Z",
+     *       "updated_at": "2025-09-25T07:00:00.000000Z"
+     *     }
+     *   },
+     *   "meta": {}
+     * }
+     * @response status=422 scenario="Invalid OTP" {
+     *   "success": false,
+     *   "message": "Invalid or expired OTP.",
+     *   "errors": {},
+     *   "data": null
+     * }
+     */
     public function verify(VerifyOtpRequest $request): JsonResponse
     {
         $data = $request->validated();
@@ -225,3 +318,4 @@ class MobileAuthController extends Controller
         return $candidate;
     }
 }
+

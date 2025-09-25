@@ -11,6 +11,34 @@ use Modules\Auth\Http\Requests\UserUpdateRequest;
 
 class UserController extends Controller
 {
+    /**
+     * @group Auth
+     * @authenticated
+     *
+     * Get authenticated user
+     *
+     * Return the signed-in user's account record with roles and permissions.
+     *
+     * @response {
+     *   "success": true,
+     *   "message": "User retrieved successfully.",
+     *   "data": {
+     *     "user": {
+     *       "id": 45,
+     *       "mobile": "989123456789",
+     *       "username": "sara94",
+     *       "email": "sara@example.com",
+     *       "roles": [
+     *         "customer"
+     *       ],
+     *       "permissions": [],
+     *       "created_at": "2025-09-24T12:00:00.000000Z",
+     *       "updated_at": "2025-09-25T07:00:00.000000Z"
+     *     }
+     *   },
+     *   "meta": {}
+     * }
+     */
     public function show(Request $request): JsonResponse
     {
         /** @var User $user */
@@ -25,6 +53,46 @@ class UserController extends Controller
         );
     }
 
+    /**
+     * @group Auth
+     * @authenticated
+     *
+     * Update authenticated user
+     *
+     * Change account-level fields for the current user. Leave fields out to keep their existing values.
+     *
+     * @bodyParam username string optional A unique username between 1 and 191 characters. Example: "sara94"
+     * @bodyParam email string optional A unique, valid email address. Example: "sara@example.com"
+     * @response {
+     *   "success": true,
+     *   "message": "User updated successfully.",
+     *   "data": {
+     *     "user": {
+     *       "id": 45,
+     *       "mobile": "989123456789",
+     *       "username": "sara94",
+     *       "email": "sara@example.com",
+     *       "roles": [
+     *         "customer"
+     *       ],
+     *       "permissions": [],
+     *       "created_at": "2025-09-24T12:00:00.000000Z",
+     *       "updated_at": "2025-09-25T07:10:00.000000Z"
+     *     }
+     *   },
+     *   "meta": {}
+     * }
+     * @response status=422 scenario="Validation error" {
+     *   "success": false,
+     *   "message": "The given data was invalid.",
+     *   "errors": {
+     *     "username": [
+     *       "The username has already been taken."
+     *     ]
+     *   },
+     *   "data": null
+     * }
+     */
     public function update(UserUpdateRequest $request): JsonResponse
     {
         /** @var User $user */

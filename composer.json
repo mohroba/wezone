@@ -8,18 +8,19 @@
     "require": {
         "php": "^8.2",
         "hekmatinasser/verta": "^8.5",
+        "knuckleswtf/scribe": "^5.3",
         "laravel/framework": "^12.0",
         "laravel/passport": "^13.2",
         "laravel/reverb": "^1.6",
         "laravel/tinker": "^2.10.1",
         "mahdigraph/laravel-sms": "^1.0",
         "nwidart/laravel-modules": "^12.0",
+        "spatie/laravel-activitylog": "^4.10",
         "spatie/laravel-medialibrary": "^11.15",
         "spatie/laravel-permission": "^6.21"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
-        "knuckleswtf/scribe": "^5.3",
         "laravel/pail": "^1.2.2",
         "laravel/pint": "^1.24",
         "laravel/sail": "^1.41",
