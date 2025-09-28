@@ -4,8 +4,10 @@ namespace Tests\Feature\Auth;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Queue;
+use Illuminate\Support\Facades\Storage;
 use Laravel\Passport\ClientRepository;
 use Laravel\Passport\Passport;
 use Modules\Auth\Jobs\SendSmsMessage;
@@ -196,5 +198,32 @@ class MobileAuthTest extends TestCase
             'username' => 'updated_username',
             'email' => 'updated@example.com',
         ]);
+    }
+
+    public function test_authenticated_user_can_upload_profile_image(): void
+    {
+        Storage::fake('public');
+        config(['media-library.disk_name' => 'public']);
+
+        $user = User::factory()->create();
+        Passport::actingAs($user);
+
+        $response = $this->post('/api/auth/profile', [
+            'profile_image' => UploadedFile::fake()->image('avatar.jpg'),
+        ]);
+
+        $response
+            ->assertOk()
+            ->assertJsonPath('success', true)
+            ->assertJsonPath('data.profile.media.profile_images.0.name', 'avatar');
+
+        $profile = $user->profile()->first();
+        $this->assertNotNull($profile);
+
+        $mediaItems = $profile->getMedia(Profile::COLLECTION_PROFILE_IMAGES);
+        $this->assertCount(1, $mediaItems);
+        $this->assertSame('avatar', $mediaItems->first()->name);
+
+        $this->assertCount(1, Storage::disk('public')->allFiles());
     }
 }

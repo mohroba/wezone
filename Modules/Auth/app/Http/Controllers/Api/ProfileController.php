@@ -8,6 +8,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Modules\Auth\Http\Requests\ProfileUpdateRequest;
 use Modules\Auth\Http\Resources\ProfileResource;
+use Modules\Auth\Models\Profile as ProfileModel;
 
 class ProfileController extends Controller
 {
@@ -88,6 +89,7 @@ class ProfileController extends Controller
      * @bodyParam national_id string optional National identification number. Example: "1234567890"
      * @bodyParam residence_city_id integer optional Identifier of the city where the user resides. Example: 10
      * @bodyParam residence_province_id integer optional Identifier of the province where the user resides. Example: 2
+     * @bodyParam profile_image file optional Profile image file (JPEG, PNG, BMP, GIF, SVG, or WebP). Example: avatar.jpg
      * @response {
      *   "success": true,
      *   "message": "Profile updated successfully.",
@@ -143,8 +145,24 @@ class ProfileController extends Controller
         $user = $request->user();
         $profile = $user->profile()->firstOrCreate([]);
 
-        $profile->fill($request->validated());
+        $profile->fill($request->safe()->except('profile_image'));
         $profile->save();
+
+        if ($request->hasFile('profile_image')) {
+            $uploadedImage = $request->file('profile_image');
+            $mediaName = pathinfo((string) $uploadedImage->getClientOriginalName(), PATHINFO_FILENAME);
+
+            if ($mediaName === '') {
+                $mediaName = $profile->full_name ?? $profile->user?->username ?? 'profile-image';
+            }
+
+            $profile->clearMediaCollection(ProfileModel::COLLECTION_PROFILE_IMAGES);
+
+            $profile
+                ->addMediaFromRequest('profile_image')
+                ->usingName($mediaName)
+                ->toMediaCollection(ProfileModel::COLLECTION_PROFILE_IMAGES);
+        }
 
         $profile->loadMissing('user.roles', 'user.permissions');
 
