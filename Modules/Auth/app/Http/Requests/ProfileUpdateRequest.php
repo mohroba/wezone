@@ -20,6 +20,7 @@ class ProfileUpdateRequest extends FormRequest
             'national_id' => ['nullable', 'string', 'max:191'],
             'residence_city_id' => ['nullable', 'integer', 'min:1'],
             'residence_province_id' => ['nullable', 'integer', 'min:1'],
+            'profile_image' => ['nullable', 'image', 'max:5120'],
         ];
     }
 }
