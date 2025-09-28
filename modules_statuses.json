@@ -1,4 +1,5 @@
 {
     "Auth": true,
-    "Notification": false
+    "Notification": false,
+    "Settings": true
 }
