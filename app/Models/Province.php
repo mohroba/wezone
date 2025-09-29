@@ -17,10 +17,14 @@ class Province extends Model
         'country',
         'name',
         'name_en',
+        'latitude',
+        'longitude',
     ];
 
     protected $casts = [
         'country' => 'int',
+        'latitude' => 'float',
+        'longitude' => 'float',
     ];
 
     public function countryRelation(): BelongsTo
