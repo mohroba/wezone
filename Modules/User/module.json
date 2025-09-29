@@ -1,0 +1,11 @@
+{
+    "name": "User",
+    "alias": "user",
+    "description": "User domain module providing follow management and query endpoints.",
+    "keywords": ["user", "followers", "social"],
+    "priority": 0,
+    "providers": [
+        "Modules\\User\\Providers\\UserServiceProvider"
+    ],
+    "files": []
+}
