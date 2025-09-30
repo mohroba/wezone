@@ -83,13 +83,13 @@ class ProfileController extends Controller
      *
      * Store optional personal information for the authenticated user. Only provided fields will be saved.
      *
-     * @bodyParam first_name string optional User's given name. Example: "Sara"
-     * @bodyParam last_name string optional User's family name. Example: "Rahimi"
-     * @bodyParam birth_date date optional Date of birth in Y-m-d format. Example: "1994-03-18"
-     * @bodyParam national_id string optional National identification number. Example: "1234567890"
+     * @bodyParam first_name string optional User's given name. Example: ""
+     * @bodyParam last_name string optional User's family name. Example: ""
+     * @bodyParam birth_date date optional Date of birth in Y-m-d format. Example: ""
+     * @bodyParam national_id string optional National identification number. Example: ""
      * @bodyParam residence_city_id integer optional Identifier of the city where the user resides. Example: 10
      * @bodyParam residence_province_id integer optional Identifier of the province where the user resides. Example: 2
-     * @bodyParam profile_image file optional Profile image file (JPEG, PNG, BMP, GIF, SVG, or WebP). Example: avatar.jpg
+     * @bodyParam profile_image file optional Profile image file (JPEG, PNG, BMP, GIF, SVG, or WebP).
      * @response {
      *   "success": true,
      *   "message": "Profile updated successfully.",

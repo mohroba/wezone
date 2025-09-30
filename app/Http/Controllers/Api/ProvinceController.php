@@ -12,6 +12,20 @@ use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class ProvinceController extends Controller
 {
+    /**
+     * List provinces
+     *
+     * Returns a paginated list of provinces.
+     *
+     * @group Geography
+     * @authenticated
+     *
+     * @queryParam id integer optional Filter by province ID. Example: 2
+     * @queryParam name string optional Filter by province name (fa/en, partial match). Example: ""
+     * @queryParam name_en string optional Filter by English name (partial match). Example: ""
+     * @queryParam country_id integer optional Filter by country ID. Example: 1
+     * @queryParam per_page integer optional Results per page (1-100). Defaults to 50. Example: 25
+     */
     public function index(ProvinceIndexRequest $request): AnonymousResourceCollection
     {
         $filters = $request->validated();
@@ -30,6 +44,16 @@ class ProvinceController extends Controller
         return ProvinceResource::collection($provinces);
     }
 
+    /**
+     * Get a province
+     *
+     * Return details for a single province, including its country and cities.
+     *
+     * @group Geography
+     * @authenticated
+     *
+     * @urlParam province integer required The ID of the province. Example: 2
+     */
     public function show(Province $province): ProvinceResource
     {
         $province->load([
@@ -40,6 +64,17 @@ class ProvinceController extends Controller
         return new ProvinceResource($province);
     }
 
+    /**
+     * List a province's cities
+     *
+     * Returns the cities that belong to the given province.
+     *
+     * @group Geography
+     * @authenticated
+     *
+     * @urlParam province integer required The ID of the province. Example: 2
+     * @queryParam per_page integer optional Results per page (1-100). Defaults to 50. Example: 25
+     */
     public function cities(ProvinceCitiesRequest $request, Province $province): AnonymousResourceCollection
     {
         $perPage = $request->validated()['per_page'] ?? 50;

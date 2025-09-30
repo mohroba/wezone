@@ -10,6 +10,20 @@ use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class CountryController extends Controller
 {
+    /**
+     * List countries
+     *
+     * Returns a paginated list of countries.
+     *
+     * @group Geography
+     * @authenticated
+     *
+     * @queryParam id integer optional Filter by country ID. Example: 1
+     * @queryParam name string optional Filter by country name (fa/en, partial match). Example: ""
+     * @queryParam name_en string optional Filter by English name (partial match). Example: ""
+     * @queryParam capital_city integer optional Filter by capital city ID. Example: 10
+     * @queryParam per_page integer optional Results per page (1-100). Defaults to 50. Example: 25
+     */
     public function index(CountryIndexRequest $request): AnonymousResourceCollection
     {
         $filters = $request->validated();
@@ -35,6 +49,16 @@ class CountryController extends Controller
         return CountryResource::collection($countries);
     }
 
+    /**
+     * Get a country
+     *
+     * Return details for a single country, including its capital and provinces.
+     *
+     * @group Geography
+     * @authenticated
+     *
+     * @urlParam country integer required The ID of the country. Example: 1
+     */
     public function show(Country $country): CountryResource
     {
         $country->load([

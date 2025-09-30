@@ -99,12 +99,12 @@ class MobileAuthController extends Controller
      *
      * @bodyParam mobile string required The mobile number the OTP was sent to. Must contain 10 to 15 digits. Example: "989123456789"
      * @bodyParam otp string required The six-digit one-time password received by the user. Example: "123456"
-     * @bodyParam username string optional A unique username to assign to the user. Example: "sara94"
-     * @bodyParam email string optional An email address to associate with the user. Example: "sara@example.com"
-     * @bodyParam first_name string optional User's given name. Example: "Sara"
-     * @bodyParam last_name string optional User's family name. Example: "Rahimi"
-     * @bodyParam birth_date date optional Date of birth in Y-m-d format. Example: "1994-03-18"
-     * @bodyParam national_id string optional National identification number. Example: "1234567890"
+     * @bodyParam username string optional A unique username to assign to the user. Example: ""
+     * @bodyParam email string optional An email address to associate with the user. Example: ""
+     * @bodyParam first_name string optional User's given name. Example: ""
+     * @bodyParam last_name string optional User's family name. Example: ""
+     * @bodyParam birth_date date optional Date of birth in Y-m-d format. Example: ""
+     * @bodyParam national_id string optional National identification number. Example: ""
      * @bodyParam residence_city_id integer optional Identifier of the city where the user resides. Example: 10
      * @bodyParam residence_province_id integer optional Identifier of the province where the user resides. Example: 2
      * @response {

@@ -12,8 +12,8 @@ class CityResource extends JsonResource
         return [
             'id' => $this->id,
             'province_id' => $this->province,
-            'name' => $this->name,
-            'name_en' => $this->name_en,
+            'name' => $this->name ?? '',
+            'name_en' => $this->name_en ?? '',
             'latitude' => $this->latitude !== null ? (float) $this->latitude : null,
             'longitude' => $this->longitude !== null ? (float) $this->longitude : null,
             'distance_km' => $this->when(isset($this->distance_km), round((float) $this->distance_km, 3)),

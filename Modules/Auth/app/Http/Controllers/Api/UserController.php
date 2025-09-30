@@ -61,8 +61,8 @@ class UserController extends Controller
      *
      * Change account-level fields for the current user. Leave fields out to keep their existing values.
      *
-     * @bodyParam username string optional A unique username between 1 and 191 characters. Example: "sara94"
-     * @bodyParam email string optional A unique, valid email address. Example: "sara@example.com"
+     * @bodyParam username string optional A unique username between 1 and 191 characters. Example: ""
+     * @bodyParam email string optional A unique, valid email address. Example: ""
      * @response {
      *   "success": true,
      *   "message": "User updated successfully.",
@@ -118,8 +118,8 @@ class UserController extends Controller
         return [
             'id' => $user->id,
             'mobile' => $user->mobile,
-            'username' => $user->username,
-            'email' => $user->email,
+            'username' => $user->username ?? '',
+            'email' => $user->email ?? '',
             'roles' => $user->getRoleNames()->values(),
             'permissions' => $user->getPermissionNames()->values(),
             'created_at' => $user->created_at,
