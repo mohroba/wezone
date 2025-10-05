@@ -1,0 +1,11 @@
+{
+    "name": "Ad",
+    "alias": "ad",
+    "description": "Advertisement domain module managing listings and classifieds.",
+    "keywords": ["ads", "classifieds", "listings"],
+    "priority": 0,
+    "providers": [
+        "Modules\\Ad\\Providers\\AdServiceProvider"
+    ],
+    "files": []
+}
