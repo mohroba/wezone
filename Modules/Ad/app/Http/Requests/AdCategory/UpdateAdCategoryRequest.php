@@ -73,6 +73,43 @@ class UpdateAdCategoryRequest extends FormRequest
         });
     }
 
+    /**
+     * @return array<string, array<string, mixed>>
+     */
+    public function bodyParameters(): array
+    {
+        return [
+            'parent_id' => [
+                'description' => 'Identifier of the parent category.',
+                'example' => 1,
+            ],
+            'slug' => [
+                'description' => 'Unique slug for the category.',
+                'example' => 'vehicles',
+            ],
+            'name' => [
+                'description' => 'Display name of the category.',
+                'example' => 'Vehicles',
+            ],
+            'name_localized' => [
+                'description' => 'Localized translations for the category name.',
+                'example' => ['fa' => 'وسایل نقلیه'],
+            ],
+            'is_active' => [
+                'description' => 'Toggle to activate or deactivate the category.',
+                'example' => true,
+            ],
+            'sort_order' => [
+                'description' => 'Custom ordering index.',
+                'example' => 5,
+            ],
+            'filters_schema' => [
+                'description' => 'JSON schema describing available filters.',
+                'example' => ['color' => ['type' => 'enum', 'options' => ['red', 'blue']]],
+            ],
+        ];
+    }
+
     private function toBoolean(mixed $value): ?bool
     {
         if ($value === null) {

@@ -86,7 +86,7 @@ class AdApiTest extends TestCase
         ]);
         $ad->categories()->attach($category->id, ['is_primary' => true, 'assigned_by' => $user->id]);
 
-        $response = $this->patchJson("/api/ads/{$ad->id}", [
+        $response = $this->postJson("/api/ads/{$ad->id}/update", [
             'slug' => 'samand-2020-updated',
             'status' => 'published',
             'status_note' => 'Approved by moderator',

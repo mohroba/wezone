@@ -12,8 +12,26 @@ use Modules\Ad\Http\Requests\AdAttributeValue\UpdateAdAttributeValueRequest;
 use Modules\Ad\Http\Resources\AdAttributeValueResource;
 use Modules\Ad\Models\AdAttributeValue;
 
+/**
+ * @group Ad Attribute Values
+ *
+ * Manage stored values for dynamic advertisable attributes.
+ */
 class AdAttributeValueController extends Controller
 {
+    /**
+     * List attribute values
+     *
+     * @group Ad Attribute Values
+     *
+     * Retrieve attribute values filtered by definition or advertisable linkage.
+     *
+     * @queryParam definition_id integer Filter by attribute definition. Example: 12
+     * @queryParam advertisable_type string Filter by advertisable class name. Example: Modules\\Ad\\Models\\AdCar
+     * @queryParam advertisable_id integer Filter by advertisable identifier. Example: 34
+     * @queryParam per_page integer Number of results per page, up to 200. Example: 25
+     * @queryParam without_pagination boolean Set to true to return all values without pagination. Example: false
+     */
     public function index(Request $request): AnonymousResourceCollection
     {
         $query = AdAttributeValue::query()
@@ -34,6 +52,13 @@ class AdAttributeValueController extends Controller
         );
     }
 
+    /**
+     * Create an attribute value
+     *
+     * @group Ad Attribute Values
+     *
+     * Persist a new attribute value for an advertisable model.
+     */
     public function store(StoreAdAttributeValueRequest $request): JsonResponse
     {
         $value = AdAttributeValue::create($this->mapPayload($request->validated(), includeMissing: true))->load('definition');
@@ -41,11 +66,25 @@ class AdAttributeValueController extends Controller
         return (new AdAttributeValueResource($value))->response()->setStatusCode(Response::HTTP_CREATED);
     }
 
+    /**
+     * Show an attribute value
+     *
+     * @group Ad Attribute Values
+     *
+     * Retrieve an attribute value with its definition metadata.
+     */
     public function show(AdAttributeValue $adAttributeValue): AdAttributeValueResource
     {
         return new AdAttributeValueResource($adAttributeValue->load('definition'));
     }
 
+    /**
+     * Update an attribute value
+     *
+     * @group Ad Attribute Values
+     *
+     * Apply updates to an existing attribute value.
+     */
     public function update(UpdateAdAttributeValueRequest $request, AdAttributeValue $adAttributeValue): AdAttributeValueResource
     {
         $adAttributeValue->fill($this->mapPayload($request->validated(), includeMissing: false));
@@ -55,6 +94,13 @@ class AdAttributeValueController extends Controller
         return new AdAttributeValueResource($adAttributeValue);
     }
 
+    /**
+     * Delete an attribute value
+     *
+     * @group Ad Attribute Values
+     *
+     * Remove the specified attribute value record.
+     */
     public function destroy(AdAttributeValue $adAttributeValue): Response
     {
         $adAttributeValue->delete();

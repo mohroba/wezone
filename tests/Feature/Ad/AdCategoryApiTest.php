@@ -63,7 +63,7 @@ class AdCategoryApiTest extends TestCase
         app(CategoryHierarchyManager::class)->handleCreated($child);
         $child->refresh();
 
-        $response = $this->patchJson("/api/ad-categories/{$child->id}", [
+        $response = $this->postJson("/api/ad-categories/{$child->id}/update", [
             'parent_id' => $alternativeParent->id,
             'slug' => 'child-updated',
             'name' => 'Child Updated',

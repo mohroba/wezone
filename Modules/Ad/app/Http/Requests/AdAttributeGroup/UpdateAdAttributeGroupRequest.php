@@ -22,4 +22,29 @@ class UpdateAdAttributeGroupRequest extends FormRequest
             'display_order' => ['nullable', 'integer', 'min:0'],
         ];
     }
+
+    /**
+     * @return array<string, array<string, mixed>>
+     */
+    public function bodyParameters(): array
+    {
+        return [
+            'name' => [
+                'description' => 'Display name of the attribute group.',
+                'example' => 'Engine specifications',
+            ],
+            'advertisable_type' => [
+                'description' => 'Advertisable model class this group applies to.',
+                'example' => 'Modules\\Ad\\Models\\AdCar',
+            ],
+            'category_id' => [
+                'description' => 'Optional category scope for the group.',
+                'example' => 7,
+            ],
+            'display_order' => [
+                'description' => 'Numeric sorting weight for UI rendering.',
+                'example' => 1,
+            ],
+        ];
+    }
 }

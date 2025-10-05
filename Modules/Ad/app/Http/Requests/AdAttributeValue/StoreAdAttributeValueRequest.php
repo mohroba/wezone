@@ -60,6 +60,51 @@ class StoreAdAttributeValueRequest extends FormRequest
         });
     }
 
+    /**
+     * @return array<string, array<string, mixed>>
+     */
+    public function bodyParameters(): array
+    {
+        return [
+            'definition_id' => [
+                'description' => 'Identifier of the attribute definition being populated.',
+                'example' => 4,
+            ],
+            'advertisable_type' => [
+                'description' => 'Fully qualified class name of the advertisable subtype.',
+                'example' => 'Modules\\Ad\\Models\\AdCar',
+            ],
+            'advertisable_id' => [
+                'description' => 'Identifier of the advertisable record.',
+                'example' => 15,
+            ],
+            'value_string' => [
+                'description' => 'String value when the definition expects textual data.',
+                'example' => 'Automatic',
+            ],
+            'value_integer' => [
+                'description' => 'Integer value when the definition expects whole numbers.',
+                'example' => 5,
+            ],
+            'value_decimal' => [
+                'description' => 'Decimal value when the definition expects numeric data.',
+                'example' => 1.6,
+            ],
+            'value_boolean' => [
+                'description' => 'Boolean value when the definition expects true or false.',
+                'example' => true,
+            ],
+            'value_json' => [
+                'description' => 'Structured data payload for JSON definitions.',
+                'example' => ['features' => ['sunroof', 'heated seats']],
+            ],
+            'normalized_value' => [
+                'description' => 'Precomputed normalized representation used for search.',
+                'example' => '1.6',
+            ],
+        ];
+    }
+
     private function validateValueMatchesDefinition($validator, AdAttributeDefinition $definition): void
     {
         $valueFields = [

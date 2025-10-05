@@ -13,8 +13,28 @@ use Modules\Ad\Http\Requests\Ad\UpdateAdRequest;
 use Modules\Ad\Http\Resources\AdResource;
 use Modules\Ad\Models\Ad;
 
+/**
+ * @group Ads
+ *
+ * Endpoints for managing advertisement listings.
+ */
 class AdController extends Controller
 {
+    /**
+     * List ads
+     *
+     * @group Ads
+     *
+     * Retrieve a filtered or paginated list of ads.
+     *
+     * @queryParam status string Filter by lifecycle status. Example: published
+     * @queryParam user_id integer Filter by owner user ID. Example: 12
+     * @queryParam category_id integer Limit to ads attached to the provided category. Example: 5
+     * @queryParam search string Search within title and description text. Example: sedan
+     * @queryParam only_published boolean Return only published records when true. Example: true
+     * @queryParam per_page integer Number of results per page, up to 100. Example: 25
+     * @queryParam without_pagination boolean Set to true to return all records without pagination. Example: false
+     */
     public function index(Request $request): AnonymousResourceCollection
     {
         $query = Ad::query()
@@ -50,6 +70,13 @@ class AdController extends Controller
         );
     }
 
+    /**
+     * Create an ad
+     *
+     * @group Ads
+     *
+     * Store a new ad and attach optional category assignments.
+     */
     public function store(StoreAdRequest $request): JsonResponse
     {
         $payload = collect($request->validated());
@@ -66,6 +93,13 @@ class AdController extends Controller
         return (new AdResource($ad))->response()->setStatusCode(Response::HTTP_CREATED);
     }
 
+    /**
+     * Show ad details
+     *
+     * @group Ads
+     *
+     * Retrieve the complete information for a single ad.
+     */
     public function show(Ad $ad): AdResource
     {
         $ad->load(['categories', 'advertisable']);
@@ -73,6 +107,13 @@ class AdController extends Controller
         return new AdResource($ad);
     }
 
+    /**
+     * Update an ad
+     *
+     * @group Ads
+     *
+     * Apply updates to an existing ad, optionally recording status and slug history.
+     */
     public function update(UpdateAdRequest $request, Ad $ad): AdResource
     {
         $payload = collect($request->validated());
@@ -115,6 +156,13 @@ class AdController extends Controller
         return new AdResource($ad);
     }
 
+    /**
+     * Delete an ad
+     *
+     * @group Ads
+     *
+     * Soft delete the specified ad.
+     */
     public function destroy(Ad $ad): Response
     {
         $ad->delete();

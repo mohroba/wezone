@@ -55,6 +55,59 @@ class UpdateAdAttributeDefinitionRequest extends FormRequest
         ]);
     }
 
+    /**
+     * @return array<string, array<string, mixed>>
+     */
+    public function bodyParameters(): array
+    {
+        return [
+            'group_id' => [
+                'description' => 'Identifier of the attribute group this definition belongs to.',
+                'example' => 2,
+            ],
+            'key' => [
+                'description' => 'Unique machine-friendly key for the attribute.',
+                'example' => 'engine_volume',
+            ],
+            'label' => [
+                'description' => 'Human readable label for the attribute.',
+                'example' => 'Engine volume',
+            ],
+            'help_text' => [
+                'description' => 'Helper text to guide form inputs.',
+                'example' => 'Specify the displacement in liters.',
+            ],
+            'data_type' => [
+                'description' => 'Datatype expected for the attribute value.',
+                'example' => 'decimal',
+            ],
+            'unit' => [
+                'description' => 'Unit displayed next to the value.',
+                'example' => 'L',
+            ],
+            'options' => [
+                'description' => 'Available options or constraints for the attribute.',
+                'example' => ['min' => 1.0, 'max' => 5.0],
+            ],
+            'is_required' => [
+                'description' => 'Whether the attribute must be provided when creating ads.',
+                'example' => true,
+            ],
+            'is_filterable' => [
+                'description' => 'Whether the attribute can be used as a filter in listings.',
+                'example' => true,
+            ],
+            'is_searchable' => [
+                'description' => 'Whether the attribute contributes to search indexes.',
+                'example' => false,
+            ],
+            'validation_rules' => [
+                'description' => 'Laravel validation rules applied to the attribute value.',
+                'example' => 'numeric|min:0.5|max:5',
+            ],
+        ];
+    }
+
     private function toBoolean(mixed $value): ?bool
     {
         if ($value === null) {

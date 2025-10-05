@@ -79,6 +79,117 @@ class StoreAdRequest extends FormRequest
         });
     }
 
+    /**
+     * @return array<string, array<string, mixed>>
+     */
+    public function bodyParameters(): array
+    {
+        return [
+            'user_id' => [
+                'description' => 'Identifier of the ad owner.',
+                'example' => 42,
+            ],
+            'advertisable_type' => [
+                'description' => 'Fully qualified class name of the advertisable subtype.',
+                'example' => 'Modules\\Ad\\Models\\AdCar',
+            ],
+            'advertisable_id' => [
+                'description' => 'Identifier of the advertisable record.',
+                'example' => 10,
+            ],
+            'slug' => [
+                'description' => 'Unique slug for the ad.',
+                'example' => 'peugeot-206-2024',
+            ],
+            'title' => [
+                'description' => 'Headline displayed for the ad.',
+                'example' => 'Peugeot 206 2024',
+            ],
+            'subtitle' => [
+                'description' => 'Optional subtitle or tagline.',
+                'example' => 'Full options, low mileage',
+            ],
+            'description' => [
+                'description' => 'Rich description of the listing.',
+                'example' => 'One owner, regularly serviced, ready to drive.',
+            ],
+            'status' => [
+                'description' => 'Lifecycle status for moderation.',
+                'example' => 'draft',
+            ],
+            'published_at' => [
+                'description' => 'Publication datetime in ISO 8601 format.',
+                'example' => '2024-05-01T08:00:00Z',
+            ],
+            'expires_at' => [
+                'description' => 'Optional expiration datetime in ISO 8601 format.',
+                'example' => '2024-06-01T08:00:00Z',
+            ],
+            'price_amount' => [
+                'description' => 'Price stored in the smallest currency unit.',
+                'example' => 450000000,
+            ],
+            'price_currency' => [
+                'description' => 'Three-letter ISO currency code.',
+                'example' => 'IRR',
+            ],
+            'is_negotiable' => [
+                'description' => 'Indicates if the price can be negotiated.',
+                'example' => true,
+            ],
+            'is_exchangeable' => [
+                'description' => 'Indicates if swaps are accepted.',
+                'example' => false,
+            ],
+            'city_id' => [
+                'description' => 'City identifier for the ad location.',
+                'example' => 3,
+            ],
+            'province_id' => [
+                'description' => 'Province identifier for the ad location.',
+                'example' => 1,
+            ],
+            'latitude' => [
+                'description' => 'Latitude coordinate of the listing.',
+                'example' => 35.6892,
+            ],
+            'longitude' => [
+                'description' => 'Longitude coordinate of the listing.',
+                'example' => 51.3890,
+            ],
+            'contact_channel' => [
+                'description' => 'Contact details such as phone or messenger usernames.',
+                'example' => ['phone' => '123456789'],
+            ],
+            'view_count' => [
+                'description' => 'Pre-set view counter value, typically managed internally.',
+                'example' => 0,
+            ],
+            'share_count' => [
+                'description' => 'Pre-set share counter value, typically managed internally.',
+                'example' => 0,
+            ],
+            'favorite_count' => [
+                'description' => 'Pre-set favorite counter value, typically managed internally.',
+                'example' => 0,
+            ],
+            'featured_until' => [
+                'description' => 'Datetime until which the ad remains featured.',
+                'example' => '2024-05-15T08:00:00Z',
+            ],
+            'priority_score' => [
+                'description' => 'Numeric score affecting ordering.',
+                'example' => 12.5,
+            ],
+            'categories' => [
+                'description' => 'Array of category assignments.',
+                'example' => [
+                    ['id' => 7, 'is_primary' => true, 'assigned_by' => 42],
+                ],
+            ],
+        ];
+    }
+
     private function toBoolean(mixed $value): ?bool
     {
         if ($value === null) {

@@ -14,12 +14,30 @@ use Modules\Ad\Http\Resources\AdCategoryResource;
 use Modules\Ad\Models\AdCategory;
 use Modules\Ad\Services\CategoryHierarchyManager;
 
+/**
+ * @group Ad Categories
+ *
+ * Manage the hierarchical taxonomy used to organise ads.
+ */
 class AdCategoryController extends Controller
 {
     public function __construct(private readonly CategoryHierarchyManager $hierarchyManager)
     {
     }
 
+    /**
+     * List ad categories
+     *
+     * @group Ad Categories
+     *
+     * Fetch categories with optional filtering by parent, activation state, or search term.
+     *
+     * @queryParam parent_id integer Filter categories by parent identifier. Example: 1
+     * @queryParam only_active boolean Return only active categories. Example: true
+     * @queryParam search string Search by category name or slug. Example: vehicles
+     * @queryParam per_page integer Number of results per page, up to 200. Example: 50
+     * @queryParam without_pagination boolean Set to true to receive all categories without pagination. Example: false
+     */
     public function index(Request $request): AnonymousResourceCollection
     {
         $query = AdCategory::query()
@@ -47,6 +65,13 @@ class AdCategoryController extends Controller
         );
     }
 
+    /**
+     * Create a category
+     *
+     * @group Ad Categories
+     *
+     * Store a new category and rebuild the hierarchy metadata.
+     */
     public function store(StoreAdCategoryRequest $request): JsonResponse
     {
         $payload = $request->validated();
@@ -62,11 +87,25 @@ class AdCategoryController extends Controller
         return (new AdCategoryResource($category))->response()->setStatusCode(Response::HTTP_CREATED);
     }
 
+    /**
+     * Show a category
+     *
+     * @group Ad Categories
+     *
+     * Retrieve details for the given category record.
+     */
     public function show(AdCategory $adCategory): AdCategoryResource
     {
         return new AdCategoryResource($adCategory);
     }
 
+    /**
+     * Update a category
+     *
+     * @group Ad Categories
+     *
+     * Apply updates and recompute the category hierarchy when relationships change.
+     */
     public function update(UpdateAdCategoryRequest $request, AdCategory $adCategory): AdCategoryResource
     {
         $payload = $request->validated();
@@ -84,6 +123,13 @@ class AdCategoryController extends Controller
         return new AdCategoryResource($category);
     }
 
+    /**
+     * Delete a category
+     *
+     * @group Ad Categories
+     *
+     * Soft delete the specified category.
+     */
     public function destroy(AdCategory $adCategory): Response
     {
         $adCategory->delete();
