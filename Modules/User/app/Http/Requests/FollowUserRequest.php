@@ -28,4 +28,10 @@ class FollowUserRequest extends FormRequest
             }
         });
     }
+
+    public function bodyParameters(): array
+    {
+        // This endpoint has no request body.
+        return [];
+    }
 }

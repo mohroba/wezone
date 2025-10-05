@@ -15,6 +15,11 @@ use Modules\User\Models\UserFollow;
 
 class FollowController extends Controller
 {
+    /**
+     * Follow a user.
+     * @group Users
+     * @urlParam user integer required The ID of the user to follow. Example: 123
+     */
     public function store(FollowUserRequest $request, User $user): JsonResponse
     {
         $follower = $request->user();
@@ -34,6 +39,11 @@ class FollowController extends Controller
             ])->response()->setStatusCode($status);
     }
 
+    /**
+     * Unfollow a user.
+     * @group Users
+     * @urlParam user integer required The ID of the user to unfollow. Example: 123
+     */
     public function destroy(UnfollowUserRequest $request, User $user): JsonResponse
     {
         $follower = $request->user();

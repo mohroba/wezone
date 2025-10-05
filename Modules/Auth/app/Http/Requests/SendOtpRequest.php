@@ -17,4 +17,11 @@ class SendOtpRequest extends FormRequest
             'mobile' => ['required', 'string', 'regex:/^[0-9]{10,15}$/'],
         ];
     }
+    public function bodyParameters(): array
+    {
+        return [
+            'mobile' => ['description' => 'Mobile number to receive the OTP (10–15 digits).', 'example' => '09123456789'],
+        ];
+    }
+
 }

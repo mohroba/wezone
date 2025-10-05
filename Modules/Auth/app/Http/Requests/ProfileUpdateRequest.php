@@ -23,4 +23,18 @@ class ProfileUpdateRequest extends FormRequest
             'profile_image' => ['nullable', 'image', 'max:5120'],
         ];
     }
+
+    public function bodyParameters(): array
+    {
+        return [
+            'first_name'            => ['description' => 'First name.', 'example' => 'Majid'],
+            'last_name'             => ['description' => 'Last name.', 'example' => 'Sabet'],
+            'birth_date'            => ['description' => 'Date of birth (YYYY-MM-DD).', 'example' => '1990-05-12'],
+            'national_id'           => ['description' => 'National ID.', 'example' => '1234567890'],
+            'residence_city_id'     => ['description' => 'City ID of residence.', 'example' => 101],
+            'residence_province_id' => ['description' => 'Province ID of residence.', 'example' => 23],
+            'profile_image'         => ['description' => 'Profile image file (max 5MB).', 'example' => null],
+        ];
+    }
+
 }

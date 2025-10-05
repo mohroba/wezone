@@ -31,4 +31,13 @@ class UserUpdateRequest extends FormRequest
             ],
         ];
     }
+
+    public function bodyParameters(): array
+    {
+        return [
+            'username' => ['description' => 'New username (unique).', 'example' => 'majid.sabet'],
+            'email'    => ['description' => 'New email (unique).', 'example' => 'majid@example.com'],
+        ];
+    }
+
 }

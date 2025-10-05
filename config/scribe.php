@@ -24,7 +24,7 @@ return [
 
     // The base URL displayed in the docs.
     // If you're using `laravel` type, you can set this to a dynamic string, like '{{ config("app.tenant_url") }}' to get a dynamic base URL.
-    'base_url' => config("app.url","https://api.wezone.app"),
+    'base_url' => "https://api.wezone.app",
 
     // Routes to include in the docs
     'routes' => [
@@ -91,7 +91,7 @@ return [
         'enabled' => true,
 
         // The base URL to use in the API tester. Leave as null to be the same as the displayed URL (`scribe.base_url`).
-        'base_url' => null,
+        'base_url' => "https://api.wezone.app",
 
         // [Laravel Sanctum] Fetch a CSRF token before each request, and add it as an X-XSRF-TOKEN header.
         'use_csrf' => false,
@@ -166,7 +166,7 @@ return [
 
     'groups' => [
         // Endpoints which don't have a @group will be placed in this default group.
-        'default' => 'Endpoints',
+        'default' => 'Others',
 
         // By default, Scribe will sort groups alphabetically, and endpoints in the order their routes are defined.
         // You can override this by listing the groups, subgroups and endpoints here in the order you want them.

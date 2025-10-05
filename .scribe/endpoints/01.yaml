@@ -289,7 +289,7 @@ endpoints:
       deprecated: false
       custom: []
     headers:
-      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -369,7 +369,7 @@ endpoints:
       deprecated: false
       custom: []
     headers:
-      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: multipart/form-data
       Accept: application/json
     urlParameters: []
@@ -542,7 +542,7 @@ endpoints:
       deprecated: false
       custom: []
     headers:
-      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -602,7 +602,7 @@ endpoints:
       deprecated: false
       custom: []
     headers:
-      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []

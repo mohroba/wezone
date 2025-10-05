@@ -17,4 +17,12 @@ class ProvinceCitiesRequest extends FormRequest
             'per_page' => ['nullable', 'integer', 'min:1', 'max:100'],
         ];
     }
+
+    public function queryParameters(): array
+    {
+        return [
+            'per_page' => ['description' => 'Items per page (1–100).', 'example' => 20],
+        ];
+    }
+
 }

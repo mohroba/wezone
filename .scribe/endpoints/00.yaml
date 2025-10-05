@@ -16,7 +16,7 @@ endpoints:
       deprecated: false
       custom: []
     headers:
-      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -30,7 +30,7 @@ endpoints:
         type: integer
         enumValues: []
         exampleWasSpecified: true
-        nullable: false
+        nullable: true
         custom: []
       name:
         name: name
@@ -40,7 +40,7 @@ endpoints:
         type: string
         enumValues: []
         exampleWasSpecified: true
-        nullable: false
+        nullable: true
         custom: []
       name_en:
         name: name_en
@@ -50,7 +50,7 @@ endpoints:
         type: string
         enumValues: []
         exampleWasSpecified: true
-        nullable: false
+        nullable: true
         custom: []
       capital_city:
         name: capital_city
@@ -60,7 +60,7 @@ endpoints:
         type: integer
         enumValues: []
         exampleWasSpecified: true
-        nullable: false
+        nullable: true
         custom: []
       per_page:
         name: per_page
@@ -70,7 +70,7 @@ endpoints:
         type: integer
         enumValues: []
         exampleWasSpecified: true
-        nullable: false
+        nullable: true
         custom: []
     cleanQueryParameters:
       id: 1
@@ -78,63 +78,8 @@ endpoints:
       name_en: '""'
       capital_city: 10
       per_page: 25
-    bodyParameters:
-      id:
-        name: id
-        description: 'Must be at least 1.'
-        required: false
-        example: 16
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
-      name:
-        name: name
-        description: ''
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
-      name_en:
-        name: name_en
-        description: ''
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
-      capital_city:
-        name: capital_city
-        description: 'Must be at least 1.'
-        required: false
-        example: 22
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
-      per_page:
-        name: per_page
-        description: 'Must be at least 1. Must not be greater than 100.'
-        required: false
-        example: 7
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
-    cleanBodyParameters:
-      id: 16
-      name: architecto
-      name_en: architecto
-      capital_city: 22
-      per_page: 7
+    bodyParameters: []
+    cleanBodyParameters: []
     fileParameters: []
     responses:
       -
@@ -170,7 +115,7 @@ endpoints:
       deprecated: false
       custom: []
     headers:
-      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
@@ -178,7 +123,7 @@ endpoints:
         name: country_id
         description: 'The ID of the country.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -195,7 +140,7 @@ endpoints:
         nullable: false
         custom: []
     cleanUrlParameters:
-      country_id: 16
+      country_id: 1
       country: 1
     queryParameters: []
     cleanQueryParameters: []
@@ -236,7 +181,7 @@ endpoints:
       deprecated: false
       custom: []
     headers:
-      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -250,7 +195,7 @@ endpoints:
         type: integer
         enumValues: []
         exampleWasSpecified: true
-        nullable: false
+        nullable: true
         custom: []
       name:
         name: name
@@ -260,7 +205,7 @@ endpoints:
         type: string
         enumValues: []
         exampleWasSpecified: true
-        nullable: false
+        nullable: true
         custom: []
       name_en:
         name: name_en
@@ -270,7 +215,7 @@ endpoints:
         type: string
         enumValues: []
         exampleWasSpecified: true
-        nullable: false
+        nullable: true
         custom: []
       country_id:
         name: country_id
@@ -280,7 +225,7 @@ endpoints:
         type: integer
         enumValues: []
         exampleWasSpecified: true
-        nullable: false
+        nullable: true
         custom: []
       per_page:
         name: per_page
@@ -290,7 +235,7 @@ endpoints:
         type: integer
         enumValues: []
         exampleWasSpecified: true
-        nullable: false
+        nullable: true
         custom: []
     cleanQueryParameters:
       id: 2
@@ -298,63 +243,8 @@ endpoints:
       name_en: '""'
       country_id: 1
       per_page: 25
-    bodyParameters:
-      id:
-        name: id
-        description: 'Must be at least 1.'
-        required: false
-        example: 16
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
-      name:
-        name: name
-        description: ''
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
-      name_en:
-        name: name_en
-        description: ''
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
-      country_id:
-        name: country_id
-        description: 'Must be at least 1.'
-        required: false
-        example: 22
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
-      per_page:
-        name: per_page
-        description: 'Must be at least 1. Must not be greater than 100.'
-        required: false
-        example: 7
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
-    cleanBodyParameters:
-      id: 16
-      name: architecto
-      name_en: architecto
-      country_id: 22
-      per_page: 7
+    bodyParameters: []
+    cleanBodyParameters: []
     fileParameters: []
     responses:
       -
@@ -390,7 +280,7 @@ endpoints:
       deprecated: false
       custom: []
     headers:
-      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
@@ -398,7 +288,7 @@ endpoints:
         name: province_id
         description: 'The ID of the province.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -415,7 +305,7 @@ endpoints:
         nullable: false
         custom: []
     cleanUrlParameters:
-      province_id: 16
+      province_id: 1
       province: 2
     queryParameters: []
     cleanQueryParameters: []
@@ -456,7 +346,7 @@ endpoints:
       deprecated: false
       custom: []
     headers:
-      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
@@ -464,7 +354,7 @@ endpoints:
         name: province_id
         description: 'The ID of the province.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -481,7 +371,7 @@ endpoints:
         nullable: false
         custom: []
     cleanUrlParameters:
-      province_id: 16
+      province_id: 1
       province: 2
     queryParameters:
       per_page:
@@ -492,23 +382,12 @@ endpoints:
         type: integer
         enumValues: []
         exampleWasSpecified: true
-        nullable: false
+        nullable: true
         custom: []
     cleanQueryParameters:
       per_page: 25
-    bodyParameters:
-      per_page:
-        name: per_page
-        description: 'Must be at least 1. Must not be greater than 100.'
-        required: false
-        example: 1
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
-    cleanBodyParameters:
-      per_page: 1
+    bodyParameters: []
+    cleanBodyParameters: []
     fileParameters: []
     responses:
       -
@@ -544,7 +423,7 @@ endpoints:
       deprecated: false
       custom: []
     headers:
-      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -558,7 +437,7 @@ endpoints:
         type: integer
         enumValues: []
         exampleWasSpecified: true
-        nullable: false
+        nullable: true
         custom: []
       name:
         name: name
@@ -568,7 +447,7 @@ endpoints:
         type: string
         enumValues: []
         exampleWasSpecified: true
-        nullable: false
+        nullable: true
         custom: []
       name_en:
         name: name_en
@@ -578,7 +457,7 @@ endpoints:
         type: string
         enumValues: []
         exampleWasSpecified: true
-        nullable: false
+        nullable: true
         custom: []
       province_id:
         name: province_id
@@ -588,7 +467,7 @@ endpoints:
         type: integer
         enumValues: []
         exampleWasSpecified: true
-        nullable: false
+        nullable: true
         custom: []
       country_id:
         name: country_id
@@ -598,7 +477,7 @@ endpoints:
         type: integer
         enumValues: []
         exampleWasSpecified: true
-        nullable: false
+        nullable: true
         custom: []
       latitude:
         name: latitude
@@ -608,7 +487,7 @@ endpoints:
         type: number
         enumValues: []
         exampleWasSpecified: true
-        nullable: false
+        nullable: true
         custom: []
       longitude:
         name: longitude
@@ -618,7 +497,7 @@ endpoints:
         type: number
         enumValues: []
         exampleWasSpecified: true
-        nullable: false
+        nullable: true
         custom: []
       per_page:
         name: per_page
@@ -628,7 +507,7 @@ endpoints:
         type: integer
         enumValues: []
         exampleWasSpecified: true
-        nullable: false
+        nullable: true
         custom: []
     cleanQueryParameters:
       id: 10
@@ -639,96 +518,8 @@ endpoints:
       latitude: 35.6892
       longitude: 51.389
       per_page: 25
-    bodyParameters:
-      id:
-        name: id
-        description: 'Must be at least 1.'
-        required: false
-        example: 16
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
-      name:
-        name: name
-        description: ''
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
-      name_en:
-        name: name_en
-        description: ''
-        required: false
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
-      province_id:
-        name: province_id
-        description: 'Must be at least 1.'
-        required: false
-        example: 22
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
-      country_id:
-        name: country_id
-        description: 'Must be at least 1.'
-        required: false
-        example: 67
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
-      latitude:
-        name: latitude
-        description: ''
-        required: false
-        example: 4326.41688
-        type: number
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
-      longitude:
-        name: longitude
-        description: ''
-        required: false
-        example: 4326.41688
-        type: number
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
-      per_page:
-        name: per_page
-        description: 'Must be at least 1. Must not be greater than 100.'
-        required: false
-        example: 17
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
-    cleanBodyParameters:
-      id: 16
-      name: architecto
-      name_en: architecto
-      province_id: 22
-      country_id: 67
-      latitude: 4326.41688
-      longitude: 4326.41688
-      per_page: 17
+    bodyParameters: []
+    cleanBodyParameters: []
     fileParameters: []
     responses:
       -
@@ -764,7 +555,7 @@ endpoints:
       deprecated: false
       custom: []
     headers:
-      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
@@ -772,7 +563,7 @@ endpoints:
         name: city_id
         description: 'The ID of the city.'
         required: true
-        example: 16
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -789,7 +580,7 @@ endpoints:
         nullable: false
         custom: []
     cleanUrlParameters:
-      city_id: 16
+      city_id: 1
       city: 10
     queryParameters: []
     cleanQueryParameters: []
@@ -830,7 +621,7 @@ endpoints:
       deprecated: false
       custom: []
     headers:
-      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -864,7 +655,7 @@ endpoints:
         type: number
         enumValues: []
         exampleWasSpecified: true
-        nullable: false
+        nullable: true
         custom: []
       city_limit:
         name: city_limit
@@ -874,7 +665,7 @@ endpoints:
         type: integer
         enumValues: []
         exampleWasSpecified: true
-        nullable: false
+        nullable: true
         custom: []
       province_limit:
         name: province_limit
@@ -884,7 +675,7 @@ endpoints:
         type: integer
         enumValues: []
         exampleWasSpecified: true
-        nullable: false
+        nullable: true
         custom: []
     cleanQueryParameters:
       latitude: 35.6892
@@ -892,63 +683,8 @@ endpoints:
       radius_km: 75.0
       city_limit: 5
       province_limit: 5
-    bodyParameters:
-      latitude:
-        name: latitude
-        description: 'Must be between -90 and 90.'
-        required: true
-        example: -89
-        type: number
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      longitude:
-        name: longitude
-        description: 'Must be between -180 and 180.'
-        required: true
-        example: -179
-        type: number
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      radius_km:
-        name: radius_km
-        description: 'Must be at least 0. Must not be greater than 1000.'
-        required: false
-        example: 7
-        type: number
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
-      city_limit:
-        name: city_limit
-        description: 'Must be at least 1. Must not be greater than 100.'
-        required: false
-        example: 16
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
-      province_limit:
-        name: province_limit
-        description: 'Must be at least 1. Must not be greater than 100.'
-        required: false
-        example: 17
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
-    cleanBodyParameters:
-      latitude: -89
-      longitude: -179
-      radius_km: 7
-      city_limit: 16
-      province_limit: 17
+    bodyParameters: []
+    cleanBodyParameters: []
     fileParameters: []
     responses:
       -
@@ -984,7 +720,7 @@ endpoints:
       deprecated: false
       custom: []
     headers:
-      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -1018,47 +754,14 @@ endpoints:
         type: number
         enumValues: []
         exampleWasSpecified: true
-        nullable: false
+        nullable: true
         custom: []
     cleanQueryParameters:
       latitude: 35.7
       longitude: 51.4
       max_distance_km: 30.0
-    bodyParameters:
-      latitude:
-        name: latitude
-        description: 'Must be between -90 and 90.'
-        required: true
-        example: -89
-        type: number
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      longitude:
-        name: longitude
-        description: 'Must be between -180 and 180.'
-        required: true
-        example: -179
-        type: number
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      max_distance_km:
-        name: max_distance_km
-        description: 'Must be at least 0. Must not be greater than 1000.'
-        required: false
-        example: 7
-        type: number
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
-    cleanBodyParameters:
-      latitude: -89
-      longitude: -179
-      max_distance_km: 7
+    bodyParameters: []
+    cleanBodyParameters: []
     fileParameters: []
     responses:
       -
@@ -1094,7 +797,7 @@ endpoints:
       deprecated: false
       custom: []
     headers:
-      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -1128,7 +831,7 @@ endpoints:
         type: number
         enumValues: []
         exampleWasSpecified: true
-        nullable: false
+        nullable: true
         custom: []
       limit:
         name: limit
@@ -1138,59 +841,15 @@ endpoints:
         type: integer
         enumValues: []
         exampleWasSpecified: true
-        nullable: false
+        nullable: true
         custom: []
     cleanQueryParameters:
       latitude: 35.6892
       longitude: 51.389
       radius_km: 100.0
       limit: 8
-    bodyParameters:
-      latitude:
-        name: latitude
-        description: 'Must be between -90 and 90.'
-        required: true
-        example: -89
-        type: number
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      longitude:
-        name: longitude
-        description: 'Must be between -180 and 180.'
-        required: true
-        example: -179
-        type: number
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      radius_km:
-        name: radius_km
-        description: 'Must be at least 0. Must not be greater than 1000.'
-        required: false
-        example: 7
-        type: number
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
-      limit:
-        name: limit
-        description: 'Must be at least 1. Must not be greater than 100.'
-        required: false
-        example: 16
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
-    cleanBodyParameters:
-      latitude: -89
-      longitude: -179
-      radius_km: 7
-      limit: 16
+    bodyParameters: []
+    cleanBodyParameters: []
     fileParameters: []
     responses:
       -

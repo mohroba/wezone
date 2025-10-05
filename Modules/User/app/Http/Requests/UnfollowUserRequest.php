@@ -28,4 +28,9 @@ class UnfollowUserRequest extends FormRequest
             }
         });
     }
+
+    public function bodyParameters(): array
+    {
+        return [];
+    }
 }
