@@ -18,7 +18,7 @@ endpoints:
       deprecated: false
       custom: []
     headers:
-      Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
+      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -117,7 +117,7 @@ endpoints:
       deprecated: false
       custom: []
     headers:
-      Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
+      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
@@ -183,7 +183,7 @@ endpoints:
       deprecated: false
       custom: []
     headers:
-      Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
+      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -282,7 +282,7 @@ endpoints:
       deprecated: false
       custom: []
     headers:
-      Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
+      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
@@ -348,7 +348,7 @@ endpoints:
       deprecated: false
       custom: []
     headers:
-      Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
+      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
@@ -425,7 +425,7 @@ endpoints:
       deprecated: false
       custom: []
     headers:
-      Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
+      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -557,7 +557,7 @@ endpoints:
       deprecated: false
       custom: []
     headers:
-      Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
+      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
@@ -623,7 +623,7 @@ endpoints:
       deprecated: false
       custom: []
     headers:
-      Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
+      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -722,7 +722,7 @@ endpoints:
       deprecated: false
       custom: []
     headers:
-      Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
+      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -799,7 +799,7 @@ endpoints:
       deprecated: false
       custom: []
     headers:
-      Authorization: 'Bearer Bearer {YOUR_ACCESS_TOKEN}'
+      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []

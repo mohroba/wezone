@@ -50,7 +50,7 @@ return new class extends Migration
             $table->timestamps();
 
             $table->unique(['definition_id', 'advertisable_type', 'advertisable_id'], 'ad_attribute_values_unique');
-            $table->index(['advertisable_type', 'advertisable_id']);
+            //$table->index(['advertisable_type', 'advertisable_id']);
         });
     }
 

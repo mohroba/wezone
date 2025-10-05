@@ -121,7 +121,7 @@ return [
 
         // Placeholder your users will see for the auth parameter in the example requests.
         // Set this to null if you want Scribe to use a random value as placeholder instead.
-        'placeholder' => 'Bearer {YOUR_ACCESS_TOKEN}',
+        'placeholder' => '{YOUR_ACCESS_TOKEN}',
 
         // Any extra authentication-related info for your users. Markdown and HTML are supported.
         'extra_info' => 'Include an OAuth access token from the OTP flow in the Authorization header, for example Authorization: Bearer {token}.',

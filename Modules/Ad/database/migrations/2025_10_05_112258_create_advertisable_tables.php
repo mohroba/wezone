@@ -34,8 +34,8 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->string('property_type')->nullable();
             $table->string('usage_type')->nullable();
-            $table->unsignedDecimal('area_m2', 10, 2)->nullable();
-            $table->unsignedDecimal('land_area_m2', 10, 2)->nullable();
+            $table->decimal('area_m2', 10, 2)->unsigned()->nullable();
+            $table->decimal('land_area_m2', 10, 2)->unsigned()->nullable();
             $table->unsignedTinyInteger('bedrooms')->nullable();
             $table->unsignedTinyInteger('bathrooms')->nullable();
             $table->unsignedTinyInteger('parking_spaces')->nullable();

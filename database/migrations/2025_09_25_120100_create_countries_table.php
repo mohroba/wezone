@@ -9,7 +9,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('countries', function (Blueprint $table) {
-            $table->smallIncrements('id');
+            $table->id();
             $table->unsignedSmallInteger('capital_city')->nullable();
             $table->string('name', 255);
             $table->string('name_en', 255);

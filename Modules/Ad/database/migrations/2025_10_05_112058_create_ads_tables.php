@@ -39,7 +39,7 @@ return new class extends Migration
             $table->unsignedBigInteger('share_count')->default(0);
             $table->unsignedBigInteger('favorite_count')->default(0);
             $table->timestamp('featured_until')->nullable();
-            $table->unsignedDecimal('priority_score', 8, 4)->default(0);
+            $table->decimal('priority_score', 8, 4)->default(0);
             $table->timestamps();
             $table->softDeletes();
 

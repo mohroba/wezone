@@ -15,47 +15,59 @@ class UpdateAdAttributeDefinitionRequest extends FormRequest
 
     public function rules(): array
     {
-        /** @var AdAttributeDefinition $definition */
-        $definition = $this->route('ad_attribute_definition');
+        // Always safe table name (even during Scribe generation)
+        $table = (new AdAttributeDefinition())->getTable();
+
+        // Handle possible route parameter states: model, ID, or null
+        $routeParam = $this->route('ad_attribute_definition');
+        $definitionId = $routeParam instanceof AdAttributeDefinition
+            ? $routeParam->getKey()
+            : (is_numeric($routeParam) ? (int) $routeParam : null);
+
+        // Define unique rule safely
+        $uniqueRule = Rule::unique($table, 'key')
+            ->where(function ($query) use ($routeParam) {
+                // If there’s a bound model, use its group_id as default
+                $groupId = $this->input('group_id', $routeParam?->group_id ?? null);
+                if ($groupId !== null) {
+                    $query->where('group_id', $groupId);
+                }
+                return $query;
+            });
+
+        if ($definitionId !== null) {
+            $uniqueRule->ignore($definitionId);
+        }
+
         $dataTypes = ['string', 'integer', 'decimal', 'boolean', 'enum', 'json'];
 
         return [
-            'group_id' => ['nullable', 'integer', 'exists:ad_attribute_groups,id'],
-            'key' => [
-                'sometimes',
-                'required',
-                'string',
-                'max:255',
-                Rule::unique($definition->getTable(), 'key')
-                    ->where(function ($query) use ($definition) {
-                        $groupId = $this->input('group_id', $definition->group_id);
-
-                        return $query->where('group_id', $groupId);
-                    })
-                    ->ignore($definition->id),
-            ],
-            'label' => ['sometimes', 'required', 'string', 'max:255'],
-            'help_text' => ['nullable', 'string'],
-            'data_type' => ['sometimes', 'required', 'string', Rule::in($dataTypes)],
-            'unit' => ['nullable', 'string', 'max:255'],
-            'options' => ['nullable', 'array'],
-            'is_required' => ['boolean'],
-            'is_filterable' => ['boolean'],
-            'is_searchable' => ['boolean'],
-            'validation_rules' => ['nullable', 'string'],
+            'group_id'        => ['nullable', 'integer', 'exists:ad_attribute_groups,id'],
+            'key'             => ['sometimes', 'required', 'string', 'max:255', $uniqueRule],
+            'label'           => ['sometimes', 'required', 'string', 'max:255'],
+            'help_text'       => ['nullable', 'string'],
+            'data_type'       => ['sometimes', 'required', 'string', Rule::in($dataTypes)],
+            'unit'            => ['nullable', 'string', 'max:255'],
+            'options'         => ['nullable', 'array'],
+            'is_required'     => ['boolean'],
+            'is_filterable'   => ['boolean'],
+            'is_searchable'   => ['boolean'],
+            'validation_rules'=> ['nullable', 'string'],
         ];
     }
 
     public function prepareForValidation(): void
     {
         $this->merge([
-            'is_required' => $this->toBoolean($this->input('is_required')),
+            'is_required'   => $this->toBoolean($this->input('is_required')),
             'is_filterable' => $this->toBoolean($this->input('is_filterable')),
             'is_searchable' => $this->toBoolean($this->input('is_searchable')),
         ]);
     }
 
     /**
+     * Scribe v5.x – explicit, typed documentation for generated API docs.
+     *
      * @return array<string, array<string, mixed>>
      */
     public function bodyParameters(): array
@@ -63,47 +75,60 @@ class UpdateAdAttributeDefinitionRequest extends FormRequest
         return [
             'group_id' => [
                 'description' => 'Identifier of the attribute group this definition belongs to.',
-                'example' => 2,
+                'type'        => 'integer',
+                'example'     => 2,
             ],
             'key' => [
                 'description' => 'Unique machine-friendly key for the attribute.',
-                'example' => 'engine_volume',
+                'type'        => 'string',
+                'example'     => 'engine_volume',
+                'required'    => false,
             ],
             'label' => [
                 'description' => 'Human readable label for the attribute.',
-                'example' => 'Engine volume',
+                'type'        => 'string',
+                'example'     => 'Engine volume',
+                'required'    => false,
             ],
             'help_text' => [
                 'description' => 'Helper text to guide form inputs.',
-                'example' => 'Specify the displacement in liters.',
+                'type'        => 'string',
+                'example'     => 'Specify the displacement in liters.',
             ],
             'data_type' => [
                 'description' => 'Datatype expected for the attribute value.',
-                'example' => 'decimal',
+                'type'        => 'string',
+                'example'     => 'decimal',
             ],
             'unit' => [
                 'description' => 'Unit displayed next to the value.',
-                'example' => 'L',
+                'type'        => 'string',
+                'example'     => 'L',
             ],
             'options' => [
                 'description' => 'Available options or constraints for the attribute.',
-                'example' => ['min' => 1.0, 'max' => 5.0],
+                'type'        => 'object',
+                'example'     => ['min' => 1.0, 'max' => 5.0],
             ],
             'is_required' => [
                 'description' => 'Whether the attribute must be provided when creating ads.',
-                'example' => true,
+                'type'        => 'boolean',
+                'example'     => true,
             ],
             'is_filterable' => [
                 'description' => 'Whether the attribute can be used as a filter in listings.',
-                'example' => true,
+                'type'        => 'boolean',
+                'example'     => true,
             ],
             'is_searchable' => [
                 'description' => 'Whether the attribute contributes to search indexes.',
-                'example' => false,
+                'type'        => 'boolean',
+                'example'     => false,
             ],
             'validation_rules' => [
                 'description' => 'Laravel validation rules applied to the attribute value.',
-                'example' => 'numeric|min:0.5|max:5',
+                'type'        => 'string',
+                'example'     => 'numeric|min:0.5|max:5',
             ],
         ];
     }
