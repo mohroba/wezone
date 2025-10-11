@@ -77,7 +77,6 @@ class MobileAuthTest extends TestCase
             'mobile' => $mobile,
             'otp' => $otpCode,
             'username' => 'john_doe',
-            'email' => 'john@example.com',
             'first_name' => 'John',
             'last_name' => 'Doe',
             'birth_date' => '1990-01-01',
@@ -93,7 +92,7 @@ class MobileAuthTest extends TestCase
             ->assertJsonPath('data.profile.full_name', 'John Doe')
             ->assertJsonPath('data.profile.birth_date', '1990-01-01')
             ->assertJsonPath('data.profile.user.mobile', $mobile)
-            ->assertJsonPath('data.profile.user.email', 'john@example.com');
+            ->assertJsonPath('data.profile.user.email', '');
 
         $issuedTokens = $response->json('data');
 
@@ -108,7 +107,7 @@ class MobileAuthTest extends TestCase
         $this->assertDatabaseHas('users', [
             'mobile' => $mobile,
             'username' => 'john_doe',
-            'email' => 'john@example.com',
+            'email' => null,
         ]);
 
         $profileRecord = Profile::where('user_id', User::where('mobile', $mobile)->value('id'))->first();
