@@ -3,7 +3,6 @@
 namespace Modules\User\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
-use Modules\Auth\Models\Profile as ProfileModel;
 
 /** @mixin \App\Models\User */
 class UserResource extends JsonResource
@@ -16,27 +15,13 @@ class UserResource extends JsonResource
             'mobile' => $this->mobile,
             'username' => $this->username,
             'profile' => $this->whenLoaded('profile', function () {
-                $profile = $this->profile;
-                $profileImages = $profile->getMedia(ProfileModel::COLLECTION_PROFILE_IMAGES);
-                $primaryImage = $profileImages->first();
-
                 return [
-                    'first_name' => $profile->first_name,
-                    'last_name' => $profile->last_name,
-                    'full_name' => $profile->full_name,
-                    'birth_date' => optional($profile->birth_date)->toDateString(),
-                    'residence_city_id' => $profile->residence_city_id,
-                    'residence_province_id' => $profile->residence_province_id,
-                    'media' => [
-                        'avatar_url' => $primaryImage?->getUrl(),
-                        'profile_images' => $profileImages
-                            ->map(static fn ($media) => [
-                                'id' => $media->uuid ?? $media->id,
-                                'name' => $media->name,
-                                'url' => $media->getUrl(),
-                            ])
-                            ->values(),
-                    ],
+                    'first_name' => $this->profile->first_name,
+                    'last_name' => $this->profile->last_name,
+                    'full_name' => $this->profile->full_name,
+                    'birth_date' => optional($this->profile->birth_date)->toDateString(),
+                    'residence_city_id' => $this->profile->residence_city_id,
+                    'residence_province_id' => $this->profile->residence_province_id,
                 ];
             }),
             'followers_count' => $this->when(isset($this->followers_count), $this->followers_count),

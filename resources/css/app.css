@@ -9,13 +9,3 @@
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
-
-@layer components {
-    .profile-table-dropdown {
-        position: relative;
-    }
-
-    .profile-table-dropdown__menu {
-        z-index: 60;
-    }
-}
