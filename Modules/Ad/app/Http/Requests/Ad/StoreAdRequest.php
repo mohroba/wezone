@@ -3,8 +3,10 @@
 namespace Modules\Ad\Http\Requests\Ad;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules\File;
 use Modules\Ad\Models\Ad;
 use Modules\Ad\Support\AdvertisableType;
 
@@ -48,6 +50,13 @@ class StoreAdRequest extends FormRequest
             'categories.*.id' => ['required', 'integer', 'exists:ad_categories,id'],
             'categories.*.is_primary' => ['nullable', 'boolean'],
             'categories.*.assigned_by' => ['nullable', 'integer', 'exists:users,id'],
+            'images' => ['nullable', 'array'],
+            'images.*' => ['array'],
+            'images.*.id' => ['nullable', 'integer', 'exists:media,id'],
+            'images.*.file' => ['nullable', File::image()->max(5 * 1024)],
+            'images.*.custom_properties' => ['nullable', 'array'],
+            'images.*.custom_properties.alt' => ['nullable', 'string', 'max:255'],
+            'images.*.custom_properties.caption' => ['nullable', 'string', 'max:255'],
         ];
     }
 
@@ -75,6 +84,28 @@ class StoreAdRequest extends FormRequest
 
             if (! $exists) {
                 $validator->errors()->add('advertisable_id', 'The selected advertisable does not exist.');
+            }
+
+            $images = Arr::get($this->all(), 'images');
+
+            if (is_array($images)) {
+                foreach ($images as $index => $image) {
+                    if (! is_array($image)) {
+                        continue;
+                    }
+
+                    $file = $image['file'] ?? null;
+                    if ($file === null && $this->hasFile("images.$index.file")) {
+                        $file = $this->file("images.$index.file");
+                    }
+
+                    $hasFile = $file !== null;
+                    $hasId = array_key_exists('id', $image) && $image['id'] !== null;
+
+                    if (! $hasFile && ! $hasId) {
+                        $validator->errors()->add("images.$index", 'Each image entry must contain a file upload or an existing media id.');
+                    }
+                }
             }
         });
     }
@@ -186,6 +217,33 @@ class StoreAdRequest extends FormRequest
                 'example' => [
                     ['id' => 7, 'is_primary' => true, 'assigned_by' => 42],
                 ],
+            ],
+            'images' => [
+                'description' => 'Ordered array of image uploads or existing media identifiers.',
+                'example' => [
+                    [
+                        'file' => 'binary image upload',
+                        'custom_properties' => ['alt' => 'Front view'],
+                    ],
+                    [
+                        'id' => 15,
+                        'custom_properties' => ['caption' => 'Detailed interior'],
+                    ],
+                ],
+            ],
+            'images[].file' => [
+                'description' => 'Image file to attach to the ad. Either this or id is required per item.',
+                'example' => 'photo.jpg',
+            ],
+            'images[].id' => [
+                'description' => 'Existing media identifier to retain and optionally reorder.',
+                'type' => 'integer',
+                'example' => 42,
+            ],
+            'images[].custom_properties' => [
+                'description' => 'Optional metadata saved alongside the image (e.g. alt text).',
+                'type' => 'object',
+                'example' => ['alt' => 'Side profile'],
             ],
         ];
     }
