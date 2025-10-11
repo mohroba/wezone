@@ -10,6 +10,7 @@ use Illuminate\Support\ServiceProvider;
 use Nwidart\Modules\Traits\PathNamespace;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
+use Modules\Ad\Advertisable\AdvertisableTypeRegistry;
 
 class AdServiceProvider extends ServiceProvider
 {
@@ -30,12 +31,25 @@ class AdServiceProvider extends ServiceProvider
         $this->registerConfig();
         $this->registerViews();
         $this->registerPolicies();
+        $this->registerAdvertisableTypeRegistry();
         $this->loadMigrationsFrom(module_path($this->name, 'database/migrations'));
     }
 
     private function registerPolicies(): void
     {
         Gate::policy(AdReport::class, AdReportPolicy::class);
+    }
+
+    private function registerAdvertisableTypeRegistry(): void
+    {
+        $this->app->singleton(AdvertisableTypeRegistry::class, function ($app) {
+            $definitions = collect(config('ad.advertisable_types.definitions', []))
+                ->filter()
+                ->map(fn (string $class) => $app->make($class))
+                ->all();
+
+            return new AdvertisableTypeRegistry($definitions);
+        });
     }
 
     /**

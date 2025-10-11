@@ -7,6 +7,7 @@ use Modules\Ad\Http\Controllers\AdAttributeValueController;
 use Modules\Ad\Http\Controllers\AdCategoryController;
 use Modules\Ad\Http\Controllers\AdController;
 use Modules\Ad\Http\Controllers\AdReportController;
+use Modules\Ad\Http\Controllers\AdvertisableTypeController;
 
 Route::middleware(['api'])->group(function (): void {
     Route::get('ads', [AdController::class, 'index']);
@@ -40,6 +41,9 @@ Route::middleware(['api'])->group(function (): void {
     Route::post('ad-attribute-values/{ad_attribute_value}/delete', [AdAttributeValueController::class, 'destroy']);
 
     Route::post('ad-reports', [AdReportController::class, 'store'])->middleware('auth:api');
+
+    Route::get('advertisable-types', [AdvertisableTypeController::class, 'index']);
+    Route::get('advertisable-types/{key}', [AdvertisableTypeController::class, 'show']);
 });
 
 Route::middleware(['api', 'auth:api'])->group(function (): void {
