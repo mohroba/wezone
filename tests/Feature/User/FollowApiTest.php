@@ -4,6 +4,8 @@ namespace Tests\Feature\User;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 use Laravel\Passport\Passport;
 use Modules\Auth\Models\Profile;
 use Modules\User\Models\UserFollow;
@@ -140,5 +142,30 @@ class FollowApiTest extends TestCase
             ->assertJsonCount(1, 'data')
             ->assertJsonPath('data.0.id', $followedUser->id)
             ->assertJsonPath('data.0.profile.full_name', 'Sara Connor');
+    }
+
+    public function test_user_index_includes_profile_image_metadata(): void
+    {
+        Storage::fake('public');
+        config(['media-library.disk_name' => 'public']);
+
+        [$authUser, $targetUser] = User::factory()->count(2)->create();
+        Passport::actingAs($authUser);
+
+        $profile = Profile::factory()->for($targetUser)->create();
+        $profile
+            ->addMedia(UploadedFile::fake()->image('avatar.jpg'))
+            ->toMediaCollection(Profile::COLLECTION_PROFILE_IMAGES);
+
+        $response = $this->getJson('/api/users?username=' . $targetUser->username);
+
+        $media = $profile->fresh()->getFirstMedia(Profile::COLLECTION_PROFILE_IMAGES);
+
+        $response
+            ->assertOk()
+            ->assertJsonCount(1, 'data')
+            ->assertJsonPath('data.0.profile.media.profile_images.0.name', 'avatar')
+            ->assertJsonPath('data.0.profile.media.profile_images.0.url', $media->getUrl())
+            ->assertJsonPath('data.0.profile.media.avatar_url', $media->getUrl());
     }
 }
