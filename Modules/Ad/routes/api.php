@@ -6,6 +6,7 @@ use Modules\Ad\Http\Controllers\AdAttributeGroupController;
 use Modules\Ad\Http\Controllers\AdAttributeValueController;
 use Modules\Ad\Http\Controllers\AdCategoryController;
 use Modules\Ad\Http\Controllers\AdController;
+use Modules\Ad\Http\Controllers\AdReportController;
 
 Route::middleware(['api'])->group(function (): void {
     Route::get('ads', [AdController::class, 'index']);
@@ -37,4 +38,12 @@ Route::middleware(['api'])->group(function (): void {
     Route::get('ad-attribute-values/{ad_attribute_value}', [AdAttributeValueController::class, 'show']);
     Route::post('ad-attribute-values/{ad_attribute_value}/update', [AdAttributeValueController::class, 'update']);
     Route::post('ad-attribute-values/{ad_attribute_value}/delete', [AdAttributeValueController::class, 'destroy']);
+
+    Route::post('ad-reports', [AdReportController::class, 'store'])->middleware('auth:api');
+});
+
+Route::middleware(['api', 'auth:api'])->group(function (): void {
+    Route::apiResource('ad-reports', AdReportController::class)->except(['store']);
+    Route::post('ad-reports/{ad_report}/resolve', [AdReportController::class, 'resolve'])->name('ad-reports.resolve');
+    Route::post('ad-reports/{ad_report}/dismiss', [AdReportController::class, 'dismiss'])->name('ad-reports.dismiss');
 });

@@ -5,6 +5,7 @@ namespace Modules\Ad\Models;
 use App\Models\City;
 use App\Models\Province;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -100,5 +101,10 @@ class Ad extends Model
     public function reports(): HasMany
     {
         return $this->hasMany(AdReport::class);
+    }
+
+    protected static function newFactory(): Factory
+    {
+        return \Modules\Ad\Database\Factories\AdFactory::new();
     }
 }
