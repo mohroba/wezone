@@ -8,10 +8,12 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\ValidationException;
 use Modules\Ad\Http\Requests\Ad\StoreAdRequest;
 use Modules\Ad\Http\Requests\Ad\UpdateAdRequest;
 use Modules\Ad\Http\Resources\AdResource;
 use Modules\Ad\Models\Ad;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 /**
  * @group Ads
@@ -81,13 +83,15 @@ class AdController extends Controller
     {
         $payload = collect($request->validated());
         $categories = $payload->pull('categories', []);
+        $images = $payload->pull('images', []);
 
         /** @var Ad $ad */
-        $ad = DB::transaction(function () use ($payload, $categories) {
+        $ad = DB::transaction(function () use ($payload, $categories, $images) {
             $ad = Ad::create($payload->toArray());
             $this->syncCategories($ad, $categories);
+            $this->syncImages($ad, $images);
 
-            return $ad->load(['categories', 'advertisable']);
+            return $ad->load(['categories', 'advertisable', 'media']);
         });
 
         return (new AdResource($ad))->response()->setStatusCode(Response::HTTP_CREATED);
@@ -120,12 +124,13 @@ class AdController extends Controller
         $categories = $payload->pull('categories', null);
         $statusNote = $payload->pull('status_note');
         $statusMetadata = $payload->pull('status_metadata');
+        $images = $payload->pull('images', null);
 
         $previousStatus = $ad->status;
         $previousSlug = $ad->slug;
 
         /** @var Ad $ad */
-        $ad = DB::transaction(function () use ($ad, $payload, $categories, $previousStatus, $previousSlug, $statusNote, $statusMetadata, $request) {
+        $ad = DB::transaction(function () use ($ad, $payload, $categories, $previousStatus, $previousSlug, $statusNote, $statusMetadata, $request, $images) {
             $ad->fill($payload->toArray());
             $ad->save();
 
@@ -150,7 +155,11 @@ class AdController extends Controller
                 ]);
             }
 
-            return $ad->load(['categories', 'advertisable']);
+            if ($images !== null) {
+                $this->syncImages($ad, $images);
+            }
+
+            return $ad->load(['categories', 'advertisable', 'media']);
         });
 
         return new AdResource($ad);
@@ -188,5 +197,70 @@ class AdController extends Controller
         }
 
         $ad->categories()->sync($payload);
+    }
+
+    private function syncImages(Ad $ad, array $images): void
+    {
+        if ($images === []) {
+            $ad->clearMediaCollection(Ad::COLLECTION_IMAGES);
+
+            return;
+        }
+
+        $existingMedia = $ad->getMedia(Ad::COLLECTION_IMAGES)->keyBy('id');
+        $orderedIds = [];
+
+        foreach (array_values($images) as $index => $image) {
+            $customPropertiesProvided = array_key_exists('custom_properties', $image);
+            $customProperties = $customPropertiesProvided && is_array($image['custom_properties'])
+                ? array_filter($image['custom_properties'], static fn ($value) => $value !== null)
+                : [];
+
+            if (isset($image['id'])) {
+                $mediaId = (int) $image['id'];
+                $media = $existingMedia->get($mediaId);
+
+                if (! $media) {
+                    throw ValidationException::withMessages([
+                        "images.$index.id" => 'The selected image does not belong to this ad.',
+                    ]);
+                }
+
+                if (in_array($mediaId, $orderedIds, true)) {
+                    continue;
+                }
+
+                if ($customPropertiesProvided) {
+                    $media->custom_properties = $customProperties;
+                    $media->save();
+                }
+
+                $orderedIds[] = $mediaId;
+
+                continue;
+            }
+
+            if (isset($image['file'])) {
+                $mediaAdder = $ad->addMedia($image['file']);
+
+                if ($customProperties !== []) {
+                    $mediaAdder->withCustomProperties($customProperties);
+                }
+
+                $media = $mediaAdder->toMediaCollection(Ad::COLLECTION_IMAGES);
+                $orderedIds[] = $media->id;
+            }
+        }
+
+        $ad->media()
+            ->where('collection_name', Ad::COLLECTION_IMAGES)
+            ->whereNotIn('id', $orderedIds)
+            ->get()
+            ->each
+            ->delete();
+
+        if ($orderedIds !== []) {
+            Media::setNewOrder($orderedIds);
+        }
     }
 }
