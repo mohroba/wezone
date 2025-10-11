@@ -4,14 +4,17 @@ namespace Modules\Ad\Http\Requests\Ad;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\File;
+use Illuminate\Validation\ValidationException;
 use Modules\Ad\Models\Ad;
+use Modules\Ad\Services\Advertisable\AdvertisablePayloadValidator;
 use Modules\Ad\Support\AdvertisableType;
 
 class StoreAdRequest extends FormRequest
 {
+    private ?array $advertisablePayload = null;
+
     public function authorize(): bool
     {
         return true;
@@ -23,8 +26,9 @@ class StoreAdRequest extends FormRequest
 
         return [
             'user_id' => ['required', 'exists:users,id'],
-            'advertisable_type' => ['required', 'string', Rule::in(AdvertisableType::allowed())],
-            'advertisable_id' => ['required', 'integer'],
+            'advertisable' => ['required', 'array'],
+            'advertisable.type' => ['required', 'string', Rule::in(AdvertisableType::allowed())],
+            'advertisable.attributes' => ['required', 'array'],
             'slug' => ['required', 'string', 'max:255', 'alpha_dash', Rule::unique((new Ad())->getTable(), 'slug')],
             'title' => ['required', 'string', 'max:255'],
             'subtitle' => ['nullable', 'string', 'max:255'],
@@ -60,30 +64,63 @@ class StoreAdRequest extends FormRequest
         ];
     }
 
+    public function advertisablePayload(): array
+    {
+        if ($this->advertisablePayload !== null) {
+            return $this->advertisablePayload;
+        }
+
+        $validated = $this->validated();
+
+        return [
+            'type' => Arr::get($validated, 'advertisable.type'),
+            'attributes' => Arr::get($validated, 'advertisable.attributes', []),
+        ];
+    }
+
     public function prepareForValidation(): void
     {
-        $this->merge([
-            'is_negotiable' => $this->toBoolean($this->input('is_negotiable')),
-            'is_exchangeable' => $this->toBoolean($this->input('is_exchangeable')),
-        ]);
+        $payload = [];
+
+        if ($this->exists('is_negotiable')) {
+            $payload['is_negotiable'] = $this->toBoolean($this->input('is_negotiable'));
+        }
+
+        if ($this->exists('is_exchangeable')) {
+            $payload['is_exchangeable'] = $this->toBoolean($this->input('is_exchangeable'));
+        }
+
+        if ($payload !== []) {
+            $this->merge($payload);
+        }
     }
 
     public function withValidator($validator): void
     {
         $validator->after(function ($validator): void {
-            $type = $this->input('advertisable_type');
-            $advertisableId = $this->input('advertisable_id');
+            $advertisable = $this->input('advertisable');
 
-            if (! AdvertisableType::isAllowed($type)) {
-                return;
-            }
+            if (is_array($advertisable)) {
+                $type = Arr::get($advertisable, 'type');
+                $attributes = Arr::get($advertisable, 'attributes', []);
 
-            $table = AdvertisableType::tableFor($type);
+                if (AdvertisableType::isAllowed($type)) {
+                    try {
+                        $validatedAttributes = app(AdvertisablePayloadValidator::class)
+                            ->validate($type, is_array($attributes) ? $attributes : []);
 
-            $exists = DB::table($table)->where('id', $advertisableId)->exists();
-
-            if (! $exists) {
-                $validator->errors()->add('advertisable_id', 'The selected advertisable does not exist.');
+                        $this->advertisablePayload = [
+                            'type' => $type,
+                            'attributes' => $validatedAttributes,
+                        ];
+                    } catch (ValidationException $exception) {
+                        foreach ($exception->errors() as $field => $messages) {
+                            foreach ($messages as $message) {
+                                $validator->errors()->add("advertisable.attributes.$field", $message);
+                            }
+                        }
+                    }
+                }
             }
 
             $images = Arr::get($this->all(), 'images');
@@ -120,13 +157,16 @@ class StoreAdRequest extends FormRequest
                 'description' => 'Identifier of the ad owner.',
                 'example' => 42,
             ],
-            'advertisable_type' => [
-                'description' => 'Fully qualified class name of the advertisable subtype.',
-                'example' => 'Modules\\Ad\\Models\\AdCar',
-            ],
-            'advertisable_id' => [
-                'description' => 'Identifier of the advertisable record.',
-                'example' => 10,
+            'advertisable' => [
+                'description' => 'Payload describing the advertisable subtype and its attributes.',
+                'example' => [
+                    'type' => 'Modules\\Ad\\Models\\AdCar',
+                    'attributes' => [
+                        'brand_id' => 12,
+                        'model_id' => 30,
+                        'year' => 2023,
+                    ],
+                ],
             ],
             'slug' => [
                 'description' => 'Unique slug for the ad.',

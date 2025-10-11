@@ -27,12 +27,18 @@ class AdMediaTest extends TestCase
     public function test_ad_creation_persists_uploaded_images_and_returns_media_payload(): void
     {
         $user = User::factory()->create();
-        $car = AdCar::create(['slug' => 'car-'.Str::random(8)]);
+        $carAttributes = [
+            'brand_id' => 10,
+            'model_id' => 20,
+            'year' => 2024,
+        ];
 
         $response = $this->post('/api/ads', [
             'user_id' => $user->id,
-            'advertisable_type' => AdCar::class,
-            'advertisable_id' => $car->id,
+            'advertisable' => [
+                'type' => AdCar::class,
+                'attributes' => $carAttributes,
+            ],
             'slug' => 'ad-'.Str::random(8),
             'title' => 'Brand new car',
             'is_negotiable' => false,
@@ -50,6 +56,10 @@ class AdMediaTest extends TestCase
         $ad = Ad::query()->first();
 
         $this->assertNotNull($ad);
+        $this->assertInstanceOf(AdCar::class, $ad->advertisable);
+        $this->assertSame($carAttributes['brand_id'], $ad->advertisable->brand_id);
+        $this->assertSame($carAttributes['model_id'], $ad->advertisable->model_id);
+        $this->assertSame($carAttributes['year'], (int) $ad->advertisable->year);
         $mediaItems = $ad->getMedia(Ad::COLLECTION_IMAGES);
         $this->assertCount(2, $mediaItems);
 
@@ -66,13 +76,19 @@ class AdMediaTest extends TestCase
     public function test_ad_update_reorders_and_deletes_images(): void
     {
         $user = User::factory()->create();
-        $car = AdCar::create(['slug' => 'car-'.Str::random(8)]);
+        $slug = 'ad-'.Str::random(8);
+        $car = AdCar::create([
+            'slug' => $slug,
+            'brand_id' => 10,
+            'model_id' => 11,
+            'year' => 2020,
+        ]);
 
         $ad = Ad::create([
             'user_id' => $user->id,
             'advertisable_type' => AdCar::class,
             'advertisable_id' => $car->id,
-            'slug' => 'ad-'.Str::random(8),
+            'slug' => $slug,
             'title' => 'Used car',
         ]);
 

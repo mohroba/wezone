@@ -4,14 +4,17 @@ namespace Modules\Ad\Http\Requests\Ad;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\File;
+use Illuminate\Validation\ValidationException;
 use Modules\Ad\Models\Ad;
+use Modules\Ad\Services\Advertisable\AdvertisablePayloadValidator;
 use Modules\Ad\Support\AdvertisableType;
 
 class UpdateAdRequest extends FormRequest
 {
+    private ?array $advertisablePayload = null;
+
     public function authorize(): bool
     {
         return true;
@@ -38,8 +41,9 @@ class UpdateAdRequest extends FormRequest
 
         return [
             'user_id'            => ['sometimes', 'required', 'exists:users,id'],
-            'advertisable_type'  => ['sometimes', 'required', 'string', Rule::in(AdvertisableType::allowed())],
-            'advertisable_id'    => ['sometimes', 'required', 'integer'],
+            'advertisable'       => ['sometimes', 'array'],
+            'advertisable.type'  => ['nullable', 'string', Rule::in(AdvertisableType::allowed())],
+            'advertisable.attributes' => ['nullable', 'array'],
             'slug'               => ['sometimes', 'required', 'string', 'max:255', 'alpha_dash', $slugUnique],
             'title'              => ['sometimes', 'required', 'string', 'max:255'],
             'subtitle'           => ['nullable', 'string', 'max:255'],
@@ -79,51 +83,90 @@ class UpdateAdRequest extends FormRequest
 
     public function prepareForValidation(): void
     {
-        $this->merge([
-            'is_negotiable'   => $this->toBoolean($this->input('is_negotiable')),
-            'is_exchangeable' => $this->toBoolean($this->input('is_exchangeable')),
-        ]);
+        $payload = [];
+
+        if ($this->exists('is_negotiable')) {
+            $payload['is_negotiable'] = $this->toBoolean($this->input('is_negotiable'));
+        }
+
+        if ($this->exists('is_exchangeable')) {
+            $payload['is_exchangeable'] = $this->toBoolean($this->input('is_exchangeable'));
+        }
+
+        if ($payload !== []) {
+            $this->merge($payload);
+        }
     }
 
     public function withValidator($validator): void
     {
-        // Use current ad values as defaults only if we actually have a bound model
         $routeParam = $this->route('ad');
         $ad = $routeParam instanceof Ad ? $routeParam : null;
 
-        $type = $this->input('advertisable_type', $ad?->advertisable_type);
-        $advertisableId = $this->input('advertisable_id', $ad?->advertisable_id);
+        $validator->after(function ($validator) use ($ad): void {
+            $advertisable = $this->input('advertisable');
 
-        if ($type && AdvertisableType::isAllowed($type) && $advertisableId) {
-            $table = AdvertisableType::tableFor($type);
-            $exists = DB::table($table)->where('id', $advertisableId)->exists();
+            if (is_array($advertisable)) {
+                $type = Arr::get($advertisable, 'type');
+                $attributes = Arr::get($advertisable, 'attributes');
 
-            if (! $exists) {
-                $validator->errors()->add('advertisable_id', 'The selected advertisable does not exist.');
+                if ($attributes === null) {
+                    $validator->errors()->add('advertisable.attributes', 'The advertisable attributes field is required when advertisable data is provided.');
+                } else {
+                    $resolvedType = $type ?? $ad?->advertisable_type;
+
+                    if (! $resolvedType || ! AdvertisableType::isAllowed($resolvedType)) {
+                        $validator->errors()->add('advertisable.type', 'The selected advertisable type is invalid.');
+                    } else {
+                        try {
+                            $attributesArray = is_array($attributes) ? $attributes : [];
+
+                            if ($ad && $ad->advertisable && $ad->advertisable_type === $resolvedType) {
+                                $existing = Arr::only($ad->advertisable->toArray(), $ad->advertisable->getFillable());
+                                unset($existing['slug']);
+                                $attributesArray = array_merge($existing, $attributesArray);
+                            }
+
+                            $validatedAttributes = app(AdvertisablePayloadValidator::class)
+                                ->validate($resolvedType, $attributesArray);
+
+                            $this->advertisablePayload = [
+                                'type' => $resolvedType,
+                                'attributes' => $validatedAttributes,
+                            ];
+                        } catch (ValidationException $exception) {
+                            foreach ($exception->errors() as $field => $messages) {
+                                foreach ($messages as $message) {
+                                    $validator->errors()->add("advertisable.attributes.$field", $message);
+                                }
+                            }
+                        }
+                    }
+                }
             }
-        }
 
-        $images = Arr::get($this->all(), 'images');
+            $images = Arr::get($this->all(), 'images');
 
-        if (is_array($images)) {
-            foreach ($images as $index => $image) {
-                if (! is_array($image)) {
-                    continue;
-                }
+            if (is_array($images)) {
+                foreach ($images as $index => $image) {
+                    if (! is_array($image)) {
+                        continue;
+                    }
 
-                $file = $image['file'] ?? null;
-                if ($file === null && $this->hasFile("images.$index.file")) {
-                    $file = $this->file("images.$index.file");
-                }
+                    $file = $image['file'] ?? null;
+                    if ($file === null && $this->hasFile("images.$index.file")) {
+                        $file = $this->file("images.$index.file");
+                    }
 
-                $hasFile = $file !== null;
-                $hasId = array_key_exists('id', $image) && $image['id'] !== null;
+                    $hasFile = $file !== null;
+                    $hasId = array_key_exists('id', $image) && $image['id'] !== null;
 
-                if (! $hasFile && ! $hasId) {
-                    $validator->errors()->add("images.$index", 'Each image entry must contain a file upload or an existing media id.');
+                    if (! $hasFile && ! $hasId) {
+                        $validator->errors()->add("images.$index", 'Each image entry must contain a file upload or an existing media id.');
+                    }
                 }
             }
-        }
+        });
     }
 
     /**
@@ -139,16 +182,16 @@ class UpdateAdRequest extends FormRequest
                 'example'     => 42,
                 'required'    => false,
             ],
-            'advertisable_type' => [
-                'description' => 'Fully qualified class name of the advertisable subtype.',
-                'type'        => 'string',
-                'example'     => 'Modules\\Ad\\Models\\AdCar',
-                'required'    => false,
-            ],
-            'advertisable_id' => [
-                'description' => 'Identifier of the advertisable record.',
-                'type'        => 'integer',
-                'example'     => 10,
+            'advertisable' => [
+                'description' => 'Payload describing the advertisable subtype to update.',
+                'type'        => 'object',
+                'example'     => [
+                    'type' => 'Modules\\Ad\\Models\\AdCar',
+                    'attributes' => [
+                        'mileage' => 12500,
+                        'year' => 2021,
+                    ],
+                ],
                 'required'    => false,
             ],
             'slug' => [
@@ -315,6 +358,11 @@ class UpdateAdRequest extends FormRequest
                 'example'     => ['alt' => 'Dashboard'],
             ],
         ];
+    }
+
+    public function advertisablePayload(): ?array
+    {
+        return $this->advertisablePayload;
     }
 
     private function toBoolean(mixed $value): ?bool

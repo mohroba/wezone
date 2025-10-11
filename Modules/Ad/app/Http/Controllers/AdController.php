@@ -3,11 +3,13 @@
 namespace Modules\Ad\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 use Modules\Ad\Http\Requests\Ad\StoreAdRequest;
 use Modules\Ad\Http\Requests\Ad\UpdateAdRequest;
@@ -82,12 +84,24 @@ class AdController extends Controller
     public function store(StoreAdRequest $request): JsonResponse
     {
         $payload = collect($request->validated());
+        $advertisablePayload = $request->advertisablePayload();
         $categories = $payload->pull('categories', []);
         $images = $payload->pull('images', []);
+        $payload->pull('advertisable');
 
         /** @var Ad $ad */
-        $ad = DB::transaction(function () use ($payload, $categories, $images) {
+        $ad = DB::transaction(function () use ($payload, $categories, $images, $advertisablePayload) {
+            $advertisableModel = $this->createAdvertisableModel(
+                $advertisablePayload['type'],
+                $advertisablePayload['attributes'],
+                $payload->get('slug')
+            );
+
+            $payload->put('advertisable_type', $advertisablePayload['type']);
+            $payload->put('advertisable_id', $advertisableModel->getKey());
+
             $ad = Ad::create($payload->toArray());
+
             $this->syncCategories($ad, $categories);
             $this->syncImages($ad, $images);
 
@@ -121,16 +135,28 @@ class AdController extends Controller
     public function update(UpdateAdRequest $request, Ad $ad): AdResource
     {
         $payload = collect($request->validated());
+        $advertisablePayload = $request->advertisablePayload();
         $categories = $payload->pull('categories', null);
         $statusNote = $payload->pull('status_note');
         $statusMetadata = $payload->pull('status_metadata');
         $images = $payload->pull('images', null);
+        $payload->pull('advertisable');
 
         $previousStatus = $ad->status;
         $previousSlug = $ad->slug;
 
         /** @var Ad $ad */
-        $ad = DB::transaction(function () use ($ad, $payload, $categories, $previousStatus, $previousSlug, $statusNote, $statusMetadata, $request, $images) {
+        $ad = DB::transaction(function () use ($ad, $payload, $categories, $previousStatus, $previousSlug, $statusNote, $statusMetadata, $request, $images, $advertisablePayload) {
+            $targetSlug = $payload->get('slug', $ad->slug);
+
+            if ($advertisablePayload !== null) {
+                $advertisableModel = $this->persistUpdatedAdvertisable($ad, $advertisablePayload, $targetSlug);
+                $payload->put('advertisable_type', $advertisablePayload['type']);
+                $payload->put('advertisable_id', $advertisableModel->getKey());
+            } elseif ($payload->has('slug') && $ad->advertisable) {
+                $this->ensureAdvertisableSlug($ad->advertisable, $targetSlug);
+            }
+
             $ad->fill($payload->toArray());
             $ad->save();
 
@@ -177,6 +203,66 @@ class AdController extends Controller
         $ad->delete();
 
         return response()->noContent();
+    }
+
+    private function createAdvertisableModel(string $type, array $attributes, ?string $slug): Model
+    {
+        /** @var Model $model */
+        $model = new $type();
+        $payload = $this->applySlugToAttributes($attributes, $slug, $model);
+
+        $model->fill($payload);
+        $model->save();
+
+        return $model;
+    }
+
+    private function persistUpdatedAdvertisable(Ad $ad, array $advertisablePayload, ?string $slug): Model
+    {
+        $type = $advertisablePayload['type'];
+        $attributes = $advertisablePayload['attributes'];
+
+        if ($ad->advertisable && $ad->advertisable_type === $type) {
+            return $this->updateAdvertisableModel($ad->advertisable, $attributes, $slug);
+        }
+
+        if ($ad->advertisable) {
+            $ad->advertisable->delete();
+        }
+
+        return $this->createAdvertisableModel($type, $attributes, $slug);
+    }
+
+    private function updateAdvertisableModel(Model $model, array $attributes, ?string $slug): Model
+    {
+        $payload = $this->applySlugToAttributes($attributes, $slug, $model);
+
+        $model->fill($payload);
+        $model->save();
+
+        return $model;
+    }
+
+    private function ensureAdvertisableSlug(Model $model, string $slug): void
+    {
+        if ((string) $model->getAttribute('slug') === $slug) {
+            return;
+        }
+
+        $model->fill(['slug' => $slug]);
+        $model->save();
+    }
+
+    /**
+     * @param array<string, mixed> $attributes
+     */
+    private function applySlugToAttributes(array $attributes, ?string $slug, Model $model): array
+    {
+        if (! array_key_exists('slug', $attributes) || empty($attributes['slug'])) {
+            $attributes['slug'] = $slug ?? (string) $model->getAttribute('slug') ?: Str::uuid()->toString();
+        }
+
+        return $attributes;
     }
 
     private function syncCategories(Ad $ad, array $categories): void
