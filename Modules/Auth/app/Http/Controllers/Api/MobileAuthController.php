@@ -100,6 +100,7 @@ class MobileAuthController extends Controller
      * @bodyParam mobile string required The mobile number the OTP was sent to. Must contain 10 to 15 digits. Example: "989123456789"
      * @bodyParam otp string required The six-digit one-time password received by the user. Example: "123456"
      * @bodyParam username string optional A unique username to assign to the user. Example: ""
+     * @bodyParam email string optional An email address to associate with the user. Example: ""
      * @bodyParam first_name string optional User's given name. Example: ""
      * @bodyParam last_name string optional User's family name. Example: ""
      * @bodyParam birth_date date optional Date of birth in Y-m-d format. Example: ""
@@ -128,6 +129,7 @@ class MobileAuthController extends Controller
      *         "id": 45,
      *         "mobile": "989123456789",
      *         "username": "sara94",
+     *         "email": "sara@example.com",
      *         "roles": [
      *           "customer"
      *         ],
@@ -195,7 +197,24 @@ class MobileAuthController extends Controller
             }
         }
 
-        $user = DB::transaction(function () use ($data, $mobile, $otp, $username, $usernameProvided, $existingUser) {
+        $emailProvided = array_key_exists('email', $data);
+        $email = $data['email'] ?? null;
+        if ($emailProvided && $email) {
+            $emailQuery = User::where('email', $email);
+            if ($existingUser) {
+                $emailQuery->where('id', '!=', $existingUser->id);
+            }
+
+            if ($emailQuery->exists()) {
+                return ApiResponse::error(
+                    'The provided email address is already in use.',
+                    Response::HTTP_UNPROCESSABLE_ENTITY,
+                    ['email' => ['The email has already been taken.']]
+                );
+            }
+        }
+
+        $user = DB::transaction(function () use ($data, $mobile, $otp, $username, $usernameProvided, $email, $emailProvided, $existingUser) {
             $otp->markAsUsed();
 
             if ($existingUser && $existingUser->trashed()) {
@@ -213,6 +232,10 @@ class MobileAuthController extends Controller
                 } elseif (! $user->username) {
                     $user->username = $this->generateUsernameFromMobile($mobile);
                 }
+            }
+
+            if ($emailProvided) {
+                $user->email = $email;
             }
 
             $user->save();
