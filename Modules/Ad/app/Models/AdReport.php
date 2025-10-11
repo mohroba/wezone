@@ -3,6 +3,7 @@
 namespace Modules\Ad\Models;
 
 use App\Models\User;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -41,5 +42,10 @@ class AdReport extends Model
     public function handler(): BelongsTo
     {
         return $this->belongsTo(User::class, 'handled_by');
+    }
+
+    protected static function newFactory(): Factory
+    {
+        return \Modules\Ad\Database\Factories\AdReportFactory::new();
     }
 }

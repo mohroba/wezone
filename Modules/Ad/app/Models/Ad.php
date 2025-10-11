@@ -5,6 +5,7 @@ namespace Modules\Ad\Models;
 use App\Models\City;
 use App\Models\Province;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -63,6 +64,7 @@ class Ad extends Model implements HasMedia
         'is_exchangeable' => 'boolean',
     ];
 
+    // 🔹 Relationships
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
@@ -111,6 +113,13 @@ class Ad extends Model implements HasMedia
         return $this->hasMany(AdReport::class);
     }
 
+    // 🔹 Factory
+    protected static function newFactory(): Factory
+    {
+        return \Modules\Ad\Database\Factories\AdFactory::new();
+    }
+
+    // 🔹 Spatie Media Library
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection(self::COLLECTION_IMAGES);

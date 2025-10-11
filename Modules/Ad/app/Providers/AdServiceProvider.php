@@ -3,6 +3,9 @@
 namespace Modules\Ad\Providers;
 
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\Gate;
+use Modules\Ad\Models\AdReport;
+use Modules\Ad\Policies\AdReportPolicy;
 use Illuminate\Support\ServiceProvider;
 use Nwidart\Modules\Traits\PathNamespace;
 use RecursiveDirectoryIterator;
@@ -26,7 +29,13 @@ class AdServiceProvider extends ServiceProvider
         $this->registerTranslations();
         $this->registerConfig();
         $this->registerViews();
+        $this->registerPolicies();
         $this->loadMigrationsFrom(module_path($this->name, 'database/migrations'));
+    }
+
+    private function registerPolicies(): void
+    {
+        Gate::policy(AdReport::class, AdReportPolicy::class);
     }
 
     /**
