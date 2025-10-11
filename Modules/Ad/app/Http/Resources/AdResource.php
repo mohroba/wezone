@@ -3,6 +3,8 @@
 namespace Modules\Ad\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Modules\Ad\Models\Ad;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 /** @mixin \Modules\Ad\Models\Ad */
 class AdResource extends JsonResource
@@ -53,6 +55,24 @@ class AdResource extends JsonResource
             }),
             'advertisable' => $this->whenLoaded('advertisable', function () {
                 return $this->advertisable?->toArray();
+            }),
+            'images' => $this->getMedia(Ad::COLLECTION_IMAGES)->map(function (Media $media) {
+                return [
+                    'id' => $media->id,
+                    'name' => $media->name,
+                    'file_name' => $media->file_name,
+                    'mime_type' => $media->mime_type,
+                    'size' => $media->size,
+                    'order' => $media->order_column,
+                    'custom_properties' => $media->custom_properties,
+                    'original_url' => $media->getUrl(),
+                    'conversions' => [
+                        Ad::CONVERSION_THUMB => $media->getUrl(Ad::CONVERSION_THUMB),
+                        Ad::CONVERSION_MEDIUM => $media->getUrl(Ad::CONVERSION_MEDIUM),
+                    ],
+                    'created_at' => $media->created_at?->toISOString(),
+                    'updated_at' => $media->updated_at?->toISOString(),
+                ];
             }),
             'created_at' => $this->created_at?->toISOString(),
             'updated_at' => $this->updated_at?->toISOString(),

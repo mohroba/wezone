@@ -13,11 +13,20 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\Image\Enums\Fit;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class Ad extends Model
+class Ad extends Model implements HasMedia
 {
     use HasFactory;
     use SoftDeletes;
+    use InteractsWithMedia;
+
+    public const COLLECTION_IMAGES = 'ad_images';
+    public const CONVERSION_THUMB = 'thumb';
+    public const CONVERSION_MEDIUM = 'medium';
 
     protected $fillable = [
         'user_id',
@@ -55,6 +64,7 @@ class Ad extends Model
         'is_exchangeable' => 'boolean',
     ];
 
+    // 🔹 Relationships
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
@@ -77,7 +87,7 @@ class Ad extends Model
 
     public function categories(): BelongsToMany
     {
-        return $this->belongsToMany(AdCategory::class, 'ad_category_ad')
+        return $this->belongsToMany(AdCategory::class, 'ad_category_ad', 'ad_id', 'category_id')
             ->using(AdCategoryAssignment::class)
             ->withPivot(['is_primary', 'assigned_by'])
             ->withTimestamps();
@@ -103,8 +113,31 @@ class Ad extends Model
         return $this->hasMany(AdReport::class);
     }
 
+    // 🔹 Factory
     protected static function newFactory(): Factory
     {
         return \Modules\Ad\Database\Factories\AdFactory::new();
+    }
+
+    // 🔹 Spatie Media Library
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection(self::COLLECTION_IMAGES);
+    }
+
+    public function registerMediaConversions(Media $media = null): void
+    {
+        $this
+            ->addMediaConversion(self::CONVERSION_THUMB)
+            ->fit(Fit::Crop, 320, 320)
+            ->nonQueued()
+            ->performOnCollections(self::COLLECTION_IMAGES);
+
+        $this
+            ->addMediaConversion(self::CONVERSION_MEDIUM)
+            ->fit(Fit::Max, 1280, 960)
+            ->optimize()
+            ->nonQueued()
+            ->performOnCollections(self::COLLECTION_IMAGES);
     }
 }
