@@ -11,6 +11,11 @@ use Illuminate\Support\Arr;
 
 class InstallationController extends Controller
 {
+    /**
+     * Track a new installation event.
+     *
+     * @group Ads Review
+     */
     public function store(StoreInstallationRequest $request): JsonResponse
     {
         $payload = $request->validated();

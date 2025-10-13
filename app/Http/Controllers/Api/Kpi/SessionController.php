@@ -13,6 +13,11 @@ use Illuminate\Support\Arr;
 
 class SessionController extends Controller
 {
+    /**
+     * Record or update a KPI session.
+     *
+     * @group Ads Review
+     */
     public function store(StoreSessionRequest $request): JsonResponse
     {
         $payload = $request->validated();
@@ -52,6 +57,11 @@ class SessionController extends Controller
         ], $session->wasRecentlyCreated ? 201 : 200);
     }
 
+    /**
+     * Update a KPI session.
+     *
+     * @group Ads Review
+     */
     public function update(UpdateSessionRequest $request, KpiSession $session): JsonResponse
     {
         $payload = $request->validated();

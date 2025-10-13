@@ -15,6 +15,11 @@ class PublicSettingController extends Controller
     {
     }
 
+    /**
+     * List public settings.
+     *
+     * @group Settings
+     */
     public function index(): JsonResponse
     {
         $keys = $this->settings->publicKeys();
@@ -28,6 +33,11 @@ class PublicSettingController extends Controller
         );
     }
 
+    /**
+     * Show a public setting.
+     *
+     * @group Settings
+     */
     public function show(string $key): JsonResponse
     {
         if (! in_array($key, $this->settings->publicKeys(), true)) {

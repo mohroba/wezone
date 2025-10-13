@@ -11,6 +11,11 @@ use Modules\User\Http\Resources\UserResource;
 
 class UserIndexController extends Controller
 {
+    /**
+     * Search users.
+     *
+     * @group Users
+     */
     public function index(UserIndexRequest $request): AnonymousResourceCollection
     {
         $validated = $request->validated();

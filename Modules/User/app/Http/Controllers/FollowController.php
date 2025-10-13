@@ -60,6 +60,11 @@ class FollowController extends Controller
         ]);
     }
 
+    /**
+     * List a user's followers.
+     *
+     * @group Users
+     */
     public function index(UserFollowersRequest $request, User $user): AnonymousResourceCollection
     {
         $validated = $request->validated();

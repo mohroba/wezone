@@ -12,6 +12,11 @@ use Illuminate\Support\Arr;
 
 class DeviceMetricsController extends Controller
 {
+    /**
+     * Register or update a KPI device heartbeat profile.
+     *
+     * @group Ads Review
+     */
     public function register(RegisterDeviceRequest $request): JsonResponse
     {
         $payload = $request->validated();
@@ -67,6 +72,11 @@ class DeviceMetricsController extends Controller
         ], $device->wasRecentlyCreated ? 201 : 200);
     }
 
+    /**
+     * Record a KPI device heartbeat.
+     *
+     * @group Ads Review
+     */
     public function heartbeat(DeviceHeartbeatRequest $request): JsonResponse
     {
         $payload = $request->validated();

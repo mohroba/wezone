@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\DB;
 
 class EventController extends Controller
 {
+    /**
+     * Record KPI events for a device session.
+     *
+     * @group Ads Review
+     */
     public function store(StoreEventRequest $request): JsonResponse
     {
         $payload = $request->validated();

@@ -238,52 +238,53 @@
                             </li>
                                                                         </ul>
                             </ul>
-                    <ul id="tocify-header-others" class="tocify-header">
-                <li class="tocify-item level-1" data-unique="others">
-                    <a href="#others">Others</a>
+                    <ul id="tocify-header-ads-review" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="ads-review">
+                    <a href="#ads-review">Ads Review</a>
                 </li>
-                                    <ul id="tocify-subheader-others" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="others-POSTapi-kpi-devices-register">
-                                <a href="#others-POSTapi-kpi-devices-register">POST api/kpi/devices/register</a>
+                                    <ul id="tocify-subheader-ads-review" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="ads-review-POSTapi-kpi-devices-register">
+                                <a href="#ads-review-POSTapi-kpi-devices-register">POST api/kpi/devices/register</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="others-POSTapi-kpi-devices-heartbeat">
-                                <a href="#others-POSTapi-kpi-devices-heartbeat">POST api/kpi/devices/heartbeat</a>
+                                                                                <li class="tocify-item level-2" data-unique="ads-review-POSTapi-kpi-devices-heartbeat">
+                                <a href="#ads-review-POSTapi-kpi-devices-heartbeat">POST api/kpi/devices/heartbeat</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="others-POSTapi-kpi-installations">
-                                <a href="#others-POSTapi-kpi-installations">POST api/kpi/installations</a>
+                                                                                <li class="tocify-item level-2" data-unique="ads-review-POSTapi-kpi-installations">
+                                <a href="#ads-review-POSTapi-kpi-installations">POST api/kpi/installations</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="others-POSTapi-kpi-uninstallations">
-                                <a href="#others-POSTapi-kpi-uninstallations">POST api/kpi/uninstallations</a>
+                                                                                <li class="tocify-item level-2" data-unique="ads-review-POSTapi-kpi-uninstallations">
+                                <a href="#ads-review-POSTapi-kpi-uninstallations">POST api/kpi/uninstallations</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="others-POSTapi-kpi-sessions">
-                                <a href="#others-POSTapi-kpi-sessions">POST api/kpi/sessions</a>
+                                                                                <li class="tocify-item level-2" data-unique="ads-review-POSTapi-kpi-sessions">
+                                <a href="#ads-review-POSTapi-kpi-sessions">POST api/kpi/sessions</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="others-PATCHapi-kpi-sessions--session_session_uuid-">
-                                <a href="#others-PATCHapi-kpi-sessions--session_session_uuid-">PATCH api/kpi/sessions/{session_session_uuid}</a>
+                                                                                <li class="tocify-item level-2" data-unique="ads-review-PATCHapi-kpi-sessions--session_session_uuid-">
+                                <a href="#ads-review-PATCHapi-kpi-sessions--session_session_uuid-">PATCH api/kpi/sessions/{session_session_uuid}</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="others-POSTapi-kpi-events">
-                                <a href="#others-POSTapi-kpi-events">POST api/kpi/events</a>
+                                                                                <li class="tocify-item level-2" data-unique="ads-review-POSTapi-kpi-events">
+                                <a href="#ads-review-POSTapi-kpi-events">POST api/kpi/events</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="others-GETapi-v1-settings">
-                                <a href="#others-GETapi-v1-settings">Display a listing of the resource.</a>
+                                                                        </ul>
+                            </ul>
+                    <ul id="tocify-header-settings" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="settings">
+                    <a href="#settings">Settings</a>
+                </li>
+                                    <ul id="tocify-subheader-settings" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="settings-GETapi-v1-settings">
+                                <a href="#settings-GETapi-v1-settings">Display a listing of the resource.</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="others-POSTapi-v1-settings">
-                                <a href="#others-POSTapi-v1-settings">Store a newly created resource in storage.</a>
+                                                                                <li class="tocify-item level-2" data-unique="settings-POSTapi-v1-settings">
+                                <a href="#settings-POSTapi-v1-settings">Store a newly created resource in storage.</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="others-GETapi-v1-settings--id-">
-                                <a href="#others-GETapi-v1-settings--id-">Show the specified resource.</a>
+                                                                                <li class="tocify-item level-2" data-unique="settings-GETapi-v1-settings--id-">
+                                <a href="#settings-GETapi-v1-settings--id-">Show the specified resource.</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="others-PUTapi-v1-settings--id-">
-                                <a href="#others-PUTapi-v1-settings--id-">Update the specified resource in storage.</a>
+                                                                                <li class="tocify-item level-2" data-unique="settings-PUTapi-v1-settings--id-">
+                                <a href="#settings-PUTapi-v1-settings--id-">Update the specified resource in storage.</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="others-DELETEapi-v1-settings--id-">
-                                <a href="#others-DELETEapi-v1-settings--id-">Remove the specified resource from storage.</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="others-GETapi-users--user_id--followers">
-                                <a href="#others-GETapi-users--user_id--followers">GET api/users/{user_id}/followers</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="others-GETapi-users">
-                                <a href="#others-GETapi-users">GET api/users</a>
+                                                                                <li class="tocify-item level-2" data-unique="settings-DELETEapi-v1-settings--id-">
+                                <a href="#settings-DELETEapi-v1-settings--id-">Remove the specified resource from storage.</a>
                             </li>
                                                                         </ul>
                             </ul>
@@ -292,6 +293,12 @@
                     <a href="#users">Users</a>
                 </li>
                                     <ul id="tocify-subheader-users" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="users-GETapi-users--user_id--followers">
+                                <a href="#users-GETapi-users--user_id--followers">GET api/users/{user_id}/followers</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="users-GETapi-users">
+                                <a href="#users-GETapi-users">GET api/users</a>
+                            </li>
                                                     <li class="tocify-item level-2" data-unique="users-POSTapi-users--user_id--follow">
                                 <a href="#users-POSTapi-users--user_id--follow">Follow a user.</a>
                             </li>
@@ -9341,11 +9348,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                 </form>
 
-                <h1 id="others">Others</h1>
+                <h1 id="ads-review">Ads Review</h1>
 
     
 
-                                <h2 id="others-POSTapi-kpi-devices-register">POST api/kpi/devices/register</h2>
+                                <h2 id="ads-review-POSTapi-kpi-devices-register">POST api/kpi/devices/register</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
@@ -9642,7 +9649,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </div>
         </form>
 
-                    <h2 id="others-POSTapi-kpi-devices-heartbeat">POST api/kpi/devices/heartbeat</h2>
+                    <h2 id="ads-review-POSTapi-kpi-devices-heartbeat">POST api/kpi/devices/heartbeat</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
@@ -9861,7 +9868,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </div>
         </form>
 
-                    <h2 id="others-POSTapi-kpi-installations">POST api/kpi/installations</h2>
+                    <h2 id="ads-review-POSTapi-kpi-installations">POST api/kpi/installations</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
@@ -10205,7 +10212,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </div>
         </form>
 
-                    <h2 id="others-POSTapi-kpi-uninstallations">POST api/kpi/uninstallations</h2>
+                    <h2 id="ads-review-POSTapi-kpi-uninstallations">POST api/kpi/uninstallations</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
@@ -10437,7 +10444,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </div>
         </form>
 
-                    <h2 id="others-POSTapi-kpi-sessions">POST api/kpi/sessions</h2>
+                    <h2 id="ads-review-POSTapi-kpi-sessions">POST api/kpi/sessions</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
@@ -10734,7 +10741,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </div>
         </form>
 
-                    <h2 id="others-PATCHapi-kpi-sessions--session_session_uuid-">PATCH api/kpi/sessions/{session_session_uuid}</h2>
+                    <h2 id="ads-review-PATCHapi-kpi-sessions--session_session_uuid-">PATCH api/kpi/sessions/{session_session_uuid}</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
@@ -11004,7 +11011,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </div>
         </form>
 
-                    <h2 id="others-POSTapi-kpi-events">POST api/kpi/events</h2>
+                    <h2 id="ads-review-POSTapi-kpi-events">POST api/kpi/events</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
@@ -11294,7 +11301,9 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </div>
         </form>
 
-                    <h2 id="others-GETapi-v1-settings">Display a listing of the resource.</h2>
+                <h1 id="settings">Settings</h1>
+
+                    <h2 id="settings-GETapi-v1-settings">Display a listing of the resource.</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
@@ -11432,7 +11441,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                         </form>
 
-                    <h2 id="others-POSTapi-v1-settings">Store a newly created resource in storage.</h2>
+                    <h2 id="settings-POSTapi-v1-settings">Store a newly created resource in storage.</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
@@ -11554,7 +11563,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                         </form>
 
-                    <h2 id="others-GETapi-v1-settings--id-">Show the specified resource.</h2>
+                    <h2 id="settings-GETapi-v1-settings--id-">Show the specified resource.</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
@@ -11704,7 +11713,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                     </form>
 
-                    <h2 id="others-PUTapi-v1-settings--id-">Update the specified resource in storage.</h2>
+                    <h2 id="settings-PUTapi-v1-settings--id-">Update the specified resource in storage.</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
@@ -11842,7 +11851,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                     </form>
 
-                    <h2 id="others-DELETEapi-v1-settings--id-">Remove the specified resource from storage.</h2>
+                    <h2 id="settings-DELETEapi-v1-settings--id-">Remove the specified resource from storage.</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
@@ -11976,7 +11985,9 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                     </form>
 
-                    <h2 id="others-GETapi-users--user_id--followers">GET api/users/{user_id}/followers</h2>
+                <h1 id="users">Users</h1>
+
+                    <h2 id="users-GETapi-users--user_id--followers">GET api/users/{user_id}/followers</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
@@ -12168,7 +12179,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                 </form>
 
-                    <h2 id="others-GETapi-users">GET api/users</h2>
+                    <h2 id="users-GETapi-users">GET api/users</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
