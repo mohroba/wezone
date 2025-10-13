@@ -73,6 +73,35 @@ class AdMediaTest extends TestCase
         }
     }
 
+    public function test_ad_creation_accepts_plain_file_array_images(): void
+    {
+        $user = User::factory()->create();
+        $carAttributes = [
+            'brand_id' => 8,
+            'model_id' => 21,
+            'year' => 2023,
+        ];
+
+        $response = $this->post('/api/ads', [
+            'user_id' => $user->id,
+            'advertisable' => [
+                'type' => AdCar::class,
+                'attributes' => $carAttributes,
+            ],
+            'slug' => 'ad-'.Str::random(8),
+            'title' => 'Compact car',
+            'is_negotiable' => false,
+            'is_exchangeable' => false,
+            'images' => [
+                UploadedFile::fake()->image('side.jpg', 800, 600),
+                UploadedFile::fake()->image('interior.jpg', 800, 600),
+            ],
+        ], ['Accept' => 'application/json']);
+
+        $response->assertCreated();
+        $response->assertJsonCount(2, 'data.images');
+    }
+
     public function test_ad_update_reorders_and_deletes_images(): void
     {
         $user = User::factory()->create();
@@ -135,6 +164,40 @@ class AdMediaTest extends TestCase
         $this->assertDatabaseMissing('media', ['id' => $existingTwo->id]);
     }
 
+    public function test_ad_update_accepts_plain_file_array_images(): void
+    {
+        $user = User::factory()->create();
+        $slug = 'ad-'.Str::random(8);
+        $car = AdCar::create([
+            'slug' => $slug,
+            'brand_id' => 12,
+            'model_id' => 13,
+            'year' => 2021,
+        ]);
+
+        $ad = Ad::create([
+            'user_id' => $user->id,
+            'advertisable_type' => AdCar::class,
+            'advertisable_id' => $car->id,
+            'slug' => $slug,
+            'title' => 'Family car',
+        ]);
+
+        $existing = $ad->addMedia(UploadedFile::fake()->image('existing-front.jpg', 800, 600))
+            ->toMediaCollection(Ad::COLLECTION_IMAGES);
+
+        $response = $this->post("/api/ads/{$ad->id}/update", [
+            'images' => [
+                ['id' => $existing->id],
+                UploadedFile::fake()->image('new-exterior.jpg', 800, 600),
+            ],
+        ], ['Accept' => 'application/json']);
+
+        $response->assertOk();
+        $response->assertJsonCount(2, 'data.images');
+        $response->assertJsonPath('data.images.0.id', $existing->id);
+    }
+
     public function test_can_append_images_using_dedicated_endpoint(): void
     {
         $user = User::factory()->create();
@@ -185,5 +248,35 @@ class AdMediaTest extends TestCase
             Storage::disk('public')->assertExists($media->getPathRelativeToRoot());
             Storage::disk('public')->assertExists($media->getPathRelativeToRoot(Ad::CONVERSION_THUMB));
         }
+    }
+
+    public function test_can_append_images_using_plain_file_array(): void
+    {
+        $user = User::factory()->create();
+        $slug = 'ad-'.Str::random(8);
+        $car = AdCar::create([
+            'slug' => $slug,
+            'brand_id' => 7,
+            'model_id' => 14,
+            'year' => 2020,
+        ]);
+
+        $ad = Ad::create([
+            'user_id' => $user->id,
+            'advertisable_type' => AdCar::class,
+            'advertisable_id' => $car->id,
+            'slug' => $slug,
+            'title' => 'City hatchback',
+        ]);
+
+        $response = $this->post("/api/ads/{$ad->id}/images", [
+            'images' => [
+                UploadedFile::fake()->image('front-extra.jpg', 800, 600),
+                UploadedFile::fake()->image('rear-extra.jpg', 800, 600),
+            ],
+        ], ['Accept' => 'application/json']);
+
+        $response->assertOk();
+        $response->assertJsonCount(2, 'data.images');
     }
 }

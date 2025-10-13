@@ -4,9 +4,12 @@ namespace Modules\Ad\Http\Requests\Ad;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rules\File;
+use Modules\Ad\Http\Requests\Concerns\NormalizesImageUploads;
 
 class AddAdImagesRequest extends FormRequest
 {
+    use NormalizesImageUploads;
+
     public function authorize(): bool
     {
         return true;
@@ -24,6 +27,11 @@ class AddAdImagesRequest extends FormRequest
         ];
     }
 
+    public function prepareForValidation(): void
+    {
+        $this->normalizeImagesPayload();
+    }
+
     /**
      * @return array<string, array<string, mixed>>
      */
@@ -32,6 +40,7 @@ class AddAdImagesRequest extends FormRequest
         return [
             'images' => [
                 'description' => 'Array of image uploads to append to the gallery. The request must be sent as multipart/form-data using field names such as images[0][file].',
+                'type' => 'array',
                 'example' => [
                     [
                         'file' => 'binary image upload',
@@ -41,10 +50,12 @@ class AddAdImagesRequest extends FormRequest
             ],
             'images[].file' => [
                 'description' => 'Image file that will be stored in the ad gallery.',
+                'type' => 'file',
                 'example' => 'photo.jpg',
             ],
             'images[].custom_properties' => [
                 'description' => 'Optional metadata saved with the image (for example alt text or caption).',
+                'type' => 'object',
                 'example' => ['caption' => 'Dashboard controls'],
             ],
         ];
