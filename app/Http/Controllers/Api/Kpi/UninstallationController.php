@@ -10,6 +10,22 @@ use Illuminate\Http\JsonResponse;
 
 class UninstallationController extends Controller
 {
+    /**
+     * Record an uninstallation event
+     *
+     * Marks a device as inactive and stores the uninstall reason for KPI analysis.
+     *
+     * @group KPI
+     *
+     * @bodyParam device_uuid string required شناسه یکتای دستگاه. Example: 77b47f61-3eea-4bb8-bf68-0c7e3c70fbb5
+     * @bodyParam uninstalled_at string زمان حذف برنامه (ISO 8601). Example: 2024-03-06T18:10:00+03:30
+     * @bodyParam platform string سکوی اجرای برنامه. Example: ios
+     * @bodyParam app_version string نسخه برنامه هنگام حذف. Example: 3.2.6
+     * @bodyParam reason string دلیل حذف. Example: user_choice
+     * @bodyParam report_source string منبع گزارش حذف. Example: in_app
+     * @bodyParam metadata object داده‌های تکمیلی مربوط به حذف.
+     * @bodyParam user_id integer شناسه کاربر مرتبط. Example: 8
+     */
     public function store(StoreUninstallationRequest $request): JsonResponse
     {
         $payload = $request->validated();

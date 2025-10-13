@@ -13,6 +13,26 @@ use Illuminate\Support\Arr;
 
 class SessionController extends Controller
 {
+    /**
+     * Start or upsert a session
+     *
+     * Creates a fresh session or updates an existing one when the same شناسه نشست is provided.
+     *
+     * @group KPI
+     *
+     * @bodyParam device_uuid string required شناسه یکتای دستگاه. Example: 4a8bc1dc-4173-4d60-b58d-48d97de5f235
+     * @bodyParam session_uuid string required شناسه نشست. Example: 1a6941f0-02a9-4c5a-86ec-17cfebbb5d43
+     * @bodyParam started_at string required زمان شروع نشست (ISO 8601). Example: 2024-03-05T12:00:00+03:30
+     * @bodyParam ended_at string زمان پایان نشست (ISO 8601). Example: 2024-03-05T12:20:00+03:30
+     * @bodyParam duration_seconds integer مدت نشست به ثانیه. Example: 1200
+     * @bodyParam app_version string required نسخه برنامه در نشست. Example: 3.2.5
+     * @bodyParam platform string سکوی اجرای برنامه. Example: android
+     * @bodyParam network_type string نوع شبکه کاربر. Example: وای‌فای
+     * @bodyParam city string شهر کاربر. Example: تهران
+     * @bodyParam country string کشور کاربر. Example: ایران
+     * @bodyParam metadata object داده‌های تکمیلی نشست.
+     * @bodyParam user_id integer شناسه کاربر در صورت موجود بودن. Example: 42
+     */
     public function store(StoreSessionRequest $request): JsonResponse
     {
         $payload = $request->validated();
@@ -52,6 +72,24 @@ class SessionController extends Controller
         ], $session->wasRecentlyCreated ? 201 : 200);
     }
 
+    /**
+     * Update an existing session
+     *
+     * Applies partial updates to a stored session and syncs related device metrics.
+     *
+     * @group KPI
+     *
+     * @bodyParam ended_at string زمان پایان نشست (ISO 8601). Example: 2024-03-05T12:45:00+03:30
+     * @bodyParam duration_seconds integer مدت نشست به ثانیه. Example: 1800
+     * @bodyParam app_version string نسخه جدید برنامه. Example: 3.2.6
+     * @bodyParam platform string سکوی اجرای برنامه. Example: android
+     * @bodyParam os_version string نسخه سیستم‌عامل. Example: ۱۴
+     * @bodyParam network_type string نوع شبکه کاربر. Example: ۵جی
+     * @bodyParam city string شهر کاربر. Example: اصفهان
+     * @bodyParam country string کشور کاربر. Example: ایران
+     * @bodyParam metadata object داده‌های تکمیلی نشست.
+     * @bodyParam user_id integer شناسه کاربر در صورت تغییر. Example: 42
+     */
     public function update(UpdateSessionRequest $request, KpiSession $session): JsonResponse
     {
         $payload = $request->validated();

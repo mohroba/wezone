@@ -12,6 +12,27 @@ use Illuminate\Support\Arr;
 
 class DeviceMetricsController extends Controller
 {
+    /**
+     * Register or update a KPI device
+     *
+     * Persists a device profile for KPI tracking or refreshes an existing record with the latest telemetry.
+     *
+     * @group KPI
+     *
+     * @bodyParam device_uuid string required شناسه یکتای دستگاه. Example: 6ff8f7f6-1eb3-3525-be4a-3932c805afed
+     * @bodyParam platform string required سکوی اجرای برنامه. Example: android
+     * @bodyParam app_version string required نسخه برنامه نصب‌شده. Example: 1.0.0
+     * @bodyParam os_version string نسخه سیستم‌عامل دستگاه. Example: ۱۴
+     * @bodyParam device_model string مدل دستگاه کاربر. Example: گلکسی A54
+     * @bodyParam device_manufacturer string سازنده دستگاه. Example: سامسونگ
+     * @bodyParam locale string شناسه زبان کاربر. Example: fa
+     * @bodyParam timezone string منطقه زمانی دستگاه. Example: Asia/Tehran
+     * @bodyParam push_token string توکن پوش نوتیفیکیشن. Example: fcm_token_123
+     * @bodyParam first_seen_at string تاریخ اولین مشاهده (ISO 8601). Example: 2024-03-01T08:30:00+03:30
+     * @bodyParam last_seen_at string تاریخ آخرین مشاهده (ISO 8601). Example: 2024-03-03T10:15:00+03:30
+     * @bodyParam last_heartbeat_at string تاریخ آخرین ضربان (ISO 8601). Example: 2024-03-03T10:20:00+03:30
+     * @bodyParam extra object داده‌های تکمیلی دلخواه.
+     */
     public function register(RegisterDeviceRequest $request): JsonResponse
     {
         $payload = $request->validated();
@@ -67,6 +88,21 @@ class DeviceMetricsController extends Controller
         ], $device->wasRecentlyCreated ? 201 : 200);
     }
 
+    /**
+     * Send a device heartbeat
+     *
+     * Records a lightweight heartbeat from an existing device and keeps the device active for KPI reporting.
+     *
+     * @group KPI
+     *
+     * @bodyParam device_uuid string required شناسه یکتای دستگاه. Example: 6ff8f7f6-1eb3-3525-be4a-3932c805afed
+     * @bodyParam last_seen_at string آخرین زمان مشاهده (ISO 8601). Example: 2024-03-03T10:15:00+03:30
+     * @bodyParam last_heartbeat_at string آخرین ضربان (ISO 8601). Example: 2024-03-03T10:20:00+03:30
+     * @bodyParam app_version string نسخه برنامه فعال. Example: 1.0.1
+     * @bodyParam platform string سکوی اجرای برنامه. Example: ios
+     * @bodyParam os_version string نسخه سیستم‌عامل دستگاه. Example: 17.4
+     * @bodyParam extra object داده‌های تکمیلی دلخواه.
+     */
     public function heartbeat(DeviceHeartbeatRequest $request): JsonResponse
     {
         $payload = $request->validated();

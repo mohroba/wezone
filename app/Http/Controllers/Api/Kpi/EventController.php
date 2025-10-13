@@ -13,6 +13,26 @@ use Illuminate\Support\Facades\DB;
 
 class EventController extends Controller
 {
+    /**
+     * Store KPI events
+     *
+     * Registers one یا چند رخداد KPI برای دستگاه و نشست مشخص‌شده.
+     *
+     * @group KPI
+     *
+     * @bodyParam device_uuid string required شناسه یکتای دستگاه. Example: 3d5c8b93-5a35-49a5-9c31-1aa7f6676b1d
+     * @bodyParam session_uuid string شناسه نشست مرتبط. Example: 0f8fad5b-d9cb-469f-a165-70867728950e
+     * @bodyParam platform string سکوی اجرای برنامه برای انتساب دستگاه. Example: android
+     * @bodyParam user_id integer شناسه کاربر ثبت‌کننده. Example: 24
+     * @bodyParam events array required آرایه‌ای از رخدادها.
+     * @bodyParam events[].event_uuid string شناسه یکتای رخداد جهت upsert. Example: 6f9619ff-8b86-d011-b42d-00c04fc964ff
+     * @bodyParam events[].event_key string required کلید رخداد. Example: بازدید_آگهی
+     * @bodyParam events[].event_name string عنوان انسانی رخداد. Example: مشاهده صفحه جزئیات
+     * @bodyParam events[].event_category string دسته‌بندی رخداد. Example: آگهی
+     * @bodyParam events[].event_value number مقدار رخداد. Example: 1
+     * @bodyParam events[].occurred_at string زمان وقوع رخداد (ISO 8601). Example: 2024-03-05T12:05:00+03:30
+     * @bodyParam events[].metadata object داده‌های تکمیلی رخداد.
+     */
     public function store(StoreEventRequest $request): JsonResponse
     {
         $payload = $request->validated();

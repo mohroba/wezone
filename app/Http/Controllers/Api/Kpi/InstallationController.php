@@ -11,6 +11,25 @@ use Illuminate\Support\Arr;
 
 class InstallationController extends Controller
 {
+    /**
+     * Record an installation event
+     *
+     * Saves installation metadata for a device and links it to the KPI device profile.
+     *
+     * @group KPI
+     *
+     * @bodyParam device_uuid string required شناسه یکتای دستگاه. Example: 991aa9de-8b0c-4679-a9f2-6a5b3fda0a92
+     * @bodyParam installed_at string زمان نصب (ISO 8601). Example: 2024-02-18T09:45:00+03:30
+     * @bodyParam app_version string required نسخه برنامه هنگام نصب. Example: 2.1.0
+     * @bodyParam platform string required سکوی اجرای برنامه. Example: android
+     * @bodyParam os_version string نسخه سیستم‌عامل نصب. Example: ۱۴
+     * @bodyParam device_model string مدل دستگاه کاربر. Example: شیائومی ۱۲T
+     * @bodyParam install_source string منبع نصب یا مارکت. Example: کافه‌بازار
+     * @bodyParam campaign string کمپین نصب. Example: نوروز۱۴۰۳
+     * @bodyParam is_reinstall boolean مشخص می‌کند نصب مجدد بوده است. Example: false
+     * @bodyParam metadata object داده‌های تکمیلی نصب.
+     * @bodyParam user_id integer شناسه کاربر در صورت احراز هویت. Example: 15
+     */
     public function store(StoreInstallationRequest $request): JsonResponse
     {
         $payload = $request->validated();
