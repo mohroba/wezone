@@ -1,0 +1,83 @@
+openapi: 3.1.0
+info:
+  title: WeZone Monetization API
+  version: 1.0.0
+servers:
+  - url: https://api.wezone.test/api/monetization
+paths:
+  /plans:
+    get:
+      summary: List active promotion plans
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Plan'
+  /purchases:
+    post:
+      summary: Create a promotion purchase
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePurchasePayload'
+      responses:
+        '201':
+          description: Purchase created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Purchase'
+components:
+  schemas:
+    Plan:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        slug:
+          type: string
+        price:
+          type: number
+          format: float
+        currency:
+          type: string
+        duration_days:
+          type: integer
+        features:
+          type: object
+          additionalProperties: true
+    Purchase:
+      type: object
+      properties:
+        id:
+          type: integer
+        ad_id:
+          type: integer
+        amount:
+          type: number
+        currency:
+          type: string
+        payment_status:
+          type: string
+    CreatePurchasePayload:
+      type: object
+      properties:
+        ad_id:
+          type: integer
+        plan_slug:
+          type: string
+        pay_with_wallet:
+          type: boolean
+      required:
+        - ad_id
