@@ -2,6 +2,7 @@
 
 namespace Modules\Ad\Models;
 
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -71,5 +72,10 @@ class AdCategory extends Model
             'ancestor_id',
             'descendant_id'
         )->withPivot('depth');
+    }
+
+    protected static function newFactory(): Factory
+    {
+        return \Modules\Ad\Database\Factories\AdCategoryFactory::new();
     }
 }

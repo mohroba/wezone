@@ -11,26 +11,45 @@ class AdCategoryApiTest extends TestCase
 {
     use RefreshDatabase;
 
+    public function test_it_lists_categories_with_filters(): void
+    {
+        $root = $this->createCategory('vehicles', 'وسایل نقلیه');
+        $child = AdCategory::factory()->create([
+            'parent_id' => $root->id,
+            'slug' => 'cars',
+            'name' => 'خودرو',
+        ]);
+        app(CategoryHierarchyManager::class)->handleCreated($child);
+
+        $response = $this->getJson('/api/ad-categories');
+        $response->assertOk()
+            ->assertJsonPath('meta.total', 2)
+            ->assertJsonFragment(['name' => 'وسایل نقلیه'])
+            ->assertJsonFragment(['name' => 'خودرو']);
+
+        $filtered = $this->getJson('/api/ad-categories?parent_id=' . $root->id);
+        $filtered->assertOk()
+            ->assertJsonCount(1, 'data')
+            ->assertJsonPath('data.0.id', $child->id);
+    }
+
     public function test_it_creates_a_category_and_builds_hierarchy(): void
     {
-        $parent = AdCategory::create([
-            'slug' => 'vehicles',
-            'name' => 'Vehicles',
-        ]);
-        app(CategoryHierarchyManager::class)->handleCreated($parent);
-        $parent->refresh();
+        $parent = $this->createCategory('digital-goods', 'کالاهای دیجیتال');
 
         $response = $this->postJson('/api/ad-categories', [
             'parent_id' => $parent->id,
-            'slug' => 'cars',
-            'name' => 'Cars',
+            'slug' => 'mobile-phones',
+            'name' => 'گوشی موبایل',
+            'is_active' => true,
             'sort_order' => 5,
         ]);
 
         $response->assertCreated()
-            ->assertJsonPath('data.slug', 'cars')
+            ->assertJsonPath('data.slug', 'mobile-phones')
+            ->assertJsonPath('data.name', 'گوشی موبایل')
             ->assertJsonPath('data.depth', $parent->depth + 1)
-            ->assertJsonPath('data.path', 'vehicles>cars');
+            ->assertJsonPath('data.path', $parent->path . '>mobile-phones');
 
         $this->assertDatabaseHas('ad_category_closure', [
             'ancestor_id' => $parent->id,
@@ -39,38 +58,38 @@ class AdCategoryApiTest extends TestCase
         ]);
     }
 
+    public function test_it_shows_a_category(): void
+    {
+        $category = $this->createCategory('services', 'خدمات');
+
+        $response = $this->getJson('/api/ad-categories/' . $category->id);
+
+        $response->assertOk()
+            ->assertJsonPath('data.id', $category->id)
+            ->assertJsonPath('data.name', 'خدمات');
+    }
+
     public function test_it_updates_category_and_recalculates_closure(): void
     {
-        $root = AdCategory::create([
-            'slug' => 'root',
-            'name' => 'Root',
-        ]);
-        app(CategoryHierarchyManager::class)->handleCreated($root);
-        $root->refresh();
+        $root = $this->createCategory('root', 'ریشه');
+        $alternativeParent = $this->createCategory('secondary', 'دسته دوم');
 
-        $alternativeParent = AdCategory::create([
-            'slug' => 'secondary',
-            'name' => 'Secondary',
-        ]);
-        app(CategoryHierarchyManager::class)->handleCreated($alternativeParent);
-        $alternativeParent->refresh();
-
-        $child = AdCategory::create([
+        $child = AdCategory::factory()->create([
             'parent_id' => $root->id,
             'slug' => 'child',
-            'name' => 'Child',
+            'name' => 'زیرشاخه',
         ]);
         app(CategoryHierarchyManager::class)->handleCreated($child);
-        $child->refresh();
 
         $response = $this->postJson("/api/ad-categories/{$child->id}/update", [
             'parent_id' => $alternativeParent->id,
             'slug' => 'child-updated',
-            'name' => 'Child Updated',
+            'name' => 'زیرشاخه به‌روز',
+            'is_active' => true,
         ]);
 
         $response->assertOk()
-            ->assertJsonPath('data.path', 'secondary>child-updated')
+            ->assertJsonPath('data.path', $alternativeParent->path . '>child-updated')
             ->assertJsonPath('data.parent_id', $alternativeParent->id);
 
         $this->assertDatabaseHas('ad_category_closure', [
@@ -84,5 +103,27 @@ class AdCategoryApiTest extends TestCase
             'descendant_id' => $child->id,
             'depth' => 1,
         ]);
+    }
+
+    public function test_it_soft_deletes_category(): void
+    {
+        $category = $this->createCategory('temporary', 'موقتی');
+
+        $response = $this->postJson("/api/ad-categories/{$category->id}/delete");
+        $response->assertNoContent();
+
+        $this->assertDatabaseMissing('ad_categories', ['id' => $category->id]);
+    }
+
+    private function createCategory(string $slug, string $name): AdCategory
+    {
+        $category = AdCategory::factory()->create([
+            'slug' => $slug,
+            'name' => $name,
+        ]);
+
+        app(CategoryHierarchyManager::class)->handleCreated($category);
+
+        return $category->fresh();
     }
 }

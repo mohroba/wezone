@@ -21,11 +21,11 @@ class KpiEndpointsTest extends TestCase
             'device_uuid' => $deviceUuid,
             'platform' => 'android',
             'app_version' => '1.0.0',
-            'os_version' => '14',
-            'device_model' => 'Pixel 8',
-            'device_manufacturer' => 'Google',
-            'locale' => 'en',
-            'timezone' => 'UTC',
+            'os_version' => '۱۴',
+            'device_model' => 'گلکسی A54',
+            'device_manufacturer' => 'سامسونگ',
+            'locale' => 'fa',
+            'timezone' => 'Asia/Tehran',
         ]);
 
         $response->assertCreated();
@@ -34,6 +34,9 @@ class KpiEndpointsTest extends TestCase
             'device_uuid' => $deviceUuid,
             'platform' => 'android',
             'app_version' => '1.0.0',
+            'device_model' => 'گلکسی A54',
+            'device_manufacturer' => 'سامسونگ',
+            'locale' => 'fa',
         ]);
     }
 
@@ -73,21 +76,21 @@ class KpiEndpointsTest extends TestCase
             'ended_at' => now()->subMinutes(1)->toIso8601String(),
             'app_version' => '2.0.0',
             'platform' => 'android',
-            'network_type' => 'wifi',
+            'network_type' => 'وای‌فای',
         ]);
 
         $storeResponse->assertCreated();
 
         $updateResponse = $this->patchJson("/api/kpi/sessions/{$sessionUuid}", [
             'ended_at' => now()->toIso8601String(),
-            'network_type' => '5g',
+            'network_type' => '۵جی',
         ]);
 
         $updateResponse->assertOk();
 
         $session = KpiSession::firstWhere('session_uuid', $sessionUuid);
         $this->assertNotNull($session);
-        $this->assertSame('5g', $session->network_type);
+        $this->assertSame('۵جی', $session->network_type);
         $this->assertNotNull($session->duration_seconds);
     }
 
@@ -110,20 +113,29 @@ class KpiEndpointsTest extends TestCase
             'events' => [
                 [
                     'event_uuid' => (string) Str::uuid(),
-                    'event_key' => 'ad_view',
+                    'event_key' => 'بازدید_آگهی',
+                    'event_name' => 'مشاهده صفحه جزئیات',
+                    'event_category' => 'آگهی',
                     'occurred_at' => now()->subMinutes(2)->toIso8601String(),
+                    'metadata' => ['منبع' => 'بنر صفحه اصلی'],
                 ],
                 [
-                    'event_key' => 'ad_click',
+                    'event_key' => 'کلیک_ارتباط',
+                    'event_name' => 'تماس با فروشنده',
+                    'event_category' => 'تعامل',
                     'occurred_at' => now()->subMinute()->toIso8601String(),
                     'event_value' => 1,
+                    'metadata' => ['کانال' => 'واتساپ'],
                 ],
             ],
         ]);
 
         $response->assertCreated();
 
-        $this->assertCount(2, KpiEvent::all());
+        $events = KpiEvent::all();
+        $this->assertCount(2, $events);
+        $this->assertSame('بازدید_آگهی', $events->first()->event_key);
+        $this->assertSame('کانال', array_key_first($events->last()->metadata));
     }
 
     public function test_uninstallation_endpoint_deactivates_device(): void
