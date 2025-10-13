@@ -3,5 +3,6 @@
     "Notification": false,
     "Settings": true,
     "User": true,
-    "Ad": true
+    "Ad": true,
+    "Monetization": true
 }

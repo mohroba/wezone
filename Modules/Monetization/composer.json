@@ -1,0 +1,17 @@
+{
+    "name": "wezone/monetization",
+    "description": "Monetization module",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Modules\\Monetization\\": "app/",
+            "Modules\\Monetization\\Database\\Factories\\": "database/factories/",
+            "Modules\\Monetization\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\Monetization\\Tests\\": "tests/"
+        }
+    }
+}

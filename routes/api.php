@@ -39,4 +39,3 @@ Route::prefix('kpi')->group(function () {
     Route::post('events', [EventController::class, 'store']);
 });
 
-
