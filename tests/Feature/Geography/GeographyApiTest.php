@@ -111,4 +111,22 @@ class GeographyApiTest extends TestCase
             ->assertJsonPath('meta.total', 2);
     }
 
+    public function test_geography_endpoints_return_persian_labels(): void
+    {
+        $data = $this->seedGeography();
+
+        $countryResponse = $this->getJson('/api/geography/countries/' . $data['iran']->id);
+        $countryResponse
+            ->assertOk()
+            ->assertJsonFragment(['name' => 'ایران'])
+            ->assertJsonFragment(['name' => 'تهران'])
+            ->assertJsonFragment(['name' => 'اصفهان']);
+
+        $cityResponse = $this->getJson('/api/geography/cities/' . $data['karajCity']->id);
+        $cityResponse
+            ->assertOk()
+            ->assertJsonPath('data.name', 'کرج')
+            ->assertJsonPath('data.province.name', 'تهران');
+    }
+
 }

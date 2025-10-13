@@ -91,6 +91,37 @@ class AdApiTest extends TestCase
             ->assertJsonPath('data.title', 'آگهی تستی ویژه');
     }
 
+    public function test_it_returns_real_world_persian_ad_details(): void
+    {
+        $user = User::factory()->create();
+        $category = $this->createCategory();
+
+        $ad = Ad::factory()->create([
+            'user_id' => $user->id,
+            'slug' => 'forosh-peugeot-pars',
+            'title' => 'فروش پژو پارس سفارشی',
+            'description' => 'خودرو بدون رنگ با سرویس‌های منظم و لاستیک‌های نو.',
+            'status' => 'published',
+            'contact_channel' => [
+                'تلفن' => '۰۲۱۲۲۳۳۴۴۵۵',
+                'واتساپ' => '۰۹۱۲۳۴۵۶۷۸۹',
+            ],
+        ]);
+
+        $ad->categories()->sync([
+            $category->id => ['is_primary' => true, 'assigned_by' => $user->id],
+        ]);
+
+        $response = $this->getJson('/api/ads/' . $ad->id);
+
+        $response->assertOk()
+            ->assertJsonPath('data.slug', 'forosh-peugeot-pars')
+            ->assertJsonPath('data.title', 'فروش پژو پارس سفارشی')
+            ->assertJsonPath('data.description', 'خودرو بدون رنگ با سرویس‌های منظم و لاستیک‌های نو.')
+            ->assertJsonPath('data.contact_channel.واتساپ', '۰۹۱۲۳۴۵۶۷۸۹')
+            ->assertJsonPath('data.categories.0.name', 'دسته اصلی');
+    }
+
     public function test_it_updates_ad_and_records_status_and_slug_history(): void
     {
         $user = User::factory()->create();
