@@ -11,6 +11,7 @@ use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
+use Modules\Ad\Http\Requests\Ad\AddAdImagesRequest;
 use Modules\Ad\Http\Requests\Ad\StoreAdRequest;
 use Modules\Ad\Http\Requests\Ad\UpdateAdRequest;
 use Modules\Ad\Http\Resources\AdResource;
@@ -189,6 +190,29 @@ class AdController extends Controller
         });
 
         return new AdResource($ad);
+    }
+
+    /**
+     * Upload ad images
+     *
+     * @group Ads
+     *
+     * Append one or more images to the gallery of an existing ad.
+     * The request must be sent as multipart/form-data using fields such as images[0][file].
+    */
+    public function storeImages(AddAdImagesRequest $request, Ad $ad): AdResource
+    {
+        $images = $request->validated('images', []);
+
+        DB::transaction(function () use ($ad, $images): void {
+            $existing = $ad->getMedia(Ad::COLLECTION_IMAGES)
+                ->map(fn (Media $media) => ['id' => $media->id])
+                ->all();
+
+            $this->syncImages($ad, array_merge($existing, $images));
+        });
+
+        return new AdResource($ad->fresh()->load(['categories', 'advertisable', 'media']));
     }
 
     /**

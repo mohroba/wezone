@@ -259,7 +259,7 @@ class StoreAdRequest extends FormRequest
                 ],
             ],
             'images' => [
-                'description' => 'Ordered array of image uploads or existing media identifiers.',
+                'description' => 'Ordered array of image uploads or existing media identifiers. When uploading files, send the request as multipart/form-data with fields such as images[0][file].',
                 'example' => [
                     [
                         'file' => 'binary image upload',
@@ -272,7 +272,7 @@ class StoreAdRequest extends FormRequest
                 ],
             ],
             'images[].file' => [
-                'description' => 'Image file to attach to the ad. Either this or id is required per item.',
+                'description' => 'Image file to attach to the ad. Either this or id is required per item. Provide the file via multipart/form-data.',
                 'example' => 'photo.jpg',
             ],
             'images[].id' => [
