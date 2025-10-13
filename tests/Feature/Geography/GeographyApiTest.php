@@ -56,7 +56,9 @@ class GeographyApiTest extends TestCase
             ->assertOk()
             ->assertJsonCount(2, 'data')
             ->assertJsonPath('meta.total', 2)
-            ->assertJsonMissing(['country_id' => $data['iraq']->id]);
+            ->assertJsonMissing(['country_id' => $data['iraq']->id])
+            ->assertJsonFragment(['name' => 'تهران'])
+            ->assertJsonFragment(['name' => 'اصفهان']);
     }
 
     public function test_can_show_province_with_related_data(): void
@@ -79,7 +81,8 @@ class GeographyApiTest extends TestCase
             ->assertOk()
             ->assertJsonCount(1, 'data')
             ->assertJsonPath('meta.total', 1)
-            ->assertJsonPath('data.0.name_en', 'Tehran');
+            ->assertJsonPath('data.0.name_en', 'Tehran')
+            ->assertJsonPath('data.0.name', 'تهران');
 
         $byCoordinates = $this->getJson('/api/geography/cities?latitude=35.6892&longitude=51.389');
         $byCoordinates

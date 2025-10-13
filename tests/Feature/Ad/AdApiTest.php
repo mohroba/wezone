@@ -16,18 +16,24 @@ class AdApiTest extends TestCase
 
     public function test_it_lists_ads_with_filters(): void
     {
-        $ads = Ad::factory()->count(3)->create();
+        $ads = Ad::factory()->count(2)->create();
+        $featuredAd = Ad::factory()->create([
+            'title' => 'پیشنهاد ویژه اجاره دفتر کار',
+            'description' => 'دفتر کار ۸۰ متری در قلب تهران با دسترسی عالی.',
+            'status' => 'published',
+        ]);
 
         $response = $this->getJson('/api/ads');
         $response->assertOk()
-            ->assertJsonPath('meta.total', $ads->count());
+            ->assertJsonPath('meta.total', $ads->count() + 1)
+            ->assertJsonFragment([
+                'title' => 'پیشنهاد ویژه اجاره دفتر کار',
+                'description' => 'دفتر کار ۸۰ متری در قلب تهران با دسترسی عالی.',
+            ]);
 
-        $published = $ads->firstWhere('status', 'published');
-        if ($published) {
-            $filtered = $this->getJson('/api/ads?status=published');
-            $filtered->assertOk()
-                ->assertJsonCount(Ad::query()->where('status', 'published')->count(), 'data');
-        }
+        $filtered = $this->getJson('/api/ads?status=published');
+        $filtered->assertOk()
+            ->assertJsonFragment(['title' => 'پیشنهاد ویژه اجاره دفتر کار']);
     }
 
     public function test_it_creates_an_ad_with_categories(): void
@@ -65,6 +71,8 @@ class AdApiTest extends TestCase
 
         $response->assertCreated()
             ->assertJsonPath('data.slug', 'forosh-peugeot-jadid')
+            ->assertJsonPath('data.title', 'فروش ویژه پژو ۲۰۷')
+            ->assertJsonPath('data.description', 'این خودرو بسیار تمیز و کم‌کارکرد است.')
             ->assertJsonPath('data.categories.0.id', $category->id);
 
         $this->assertDatabaseHas('ads', [

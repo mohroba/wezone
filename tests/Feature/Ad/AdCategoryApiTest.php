@@ -23,7 +23,9 @@ class AdCategoryApiTest extends TestCase
 
         $response = $this->getJson('/api/ad-categories');
         $response->assertOk()
-            ->assertJsonPath('meta.total', 2);
+            ->assertJsonPath('meta.total', 2)
+            ->assertJsonFragment(['name' => 'وسایل نقلیه'])
+            ->assertJsonFragment(['name' => 'خودرو']);
 
         $filtered = $this->getJson('/api/ad-categories?parent_id=' . $root->id);
         $filtered->assertOk()
@@ -45,6 +47,7 @@ class AdCategoryApiTest extends TestCase
 
         $response->assertCreated()
             ->assertJsonPath('data.slug', 'mobile-phones')
+            ->assertJsonPath('data.name', 'گوشی موبایل')
             ->assertJsonPath('data.depth', $parent->depth + 1)
             ->assertJsonPath('data.path', $parent->path . '>mobile-phones');
 
