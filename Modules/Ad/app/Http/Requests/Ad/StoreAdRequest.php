@@ -7,12 +7,15 @@ use Illuminate\Support\Arr;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\File;
 use Illuminate\Validation\ValidationException;
+use Modules\Ad\Http\Requests\Concerns\NormalizesImageUploads;
 use Modules\Ad\Models\Ad;
 use Modules\Ad\Services\Advertisable\AdvertisablePayloadValidator;
 use Modules\Ad\Support\AdvertisableType;
 
 class StoreAdRequest extends FormRequest
 {
+    use NormalizesImageUploads;
+
     private ?array $advertisablePayload = null;
 
     public function authorize(): bool
@@ -80,6 +83,8 @@ class StoreAdRequest extends FormRequest
 
     public function prepareForValidation(): void
     {
+        $this->normalizeImagesPayload();
+
         $payload = [];
 
         if ($this->exists('is_negotiable')) {
