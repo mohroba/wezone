@@ -134,4 +134,56 @@ class AdMediaTest extends TestCase
         Storage::disk('public')->assertMissing($existingTwo->getPathRelativeToRoot());
         $this->assertDatabaseMissing('media', ['id' => $existingTwo->id]);
     }
+
+    public function test_can_append_images_using_dedicated_endpoint(): void
+    {
+        $user = User::factory()->create();
+        $slug = 'ad-'.Str::random(8);
+        $car = AdCar::create([
+            'slug' => $slug,
+            'brand_id' => 9,
+            'model_id' => 18,
+            'year' => 2022,
+        ]);
+
+        $ad = Ad::create([
+            'user_id' => $user->id,
+            'advertisable_type' => AdCar::class,
+            'advertisable_id' => $car->id,
+            'slug' => $slug,
+            'title' => 'City car',
+        ]);
+
+        $existing = $ad->addMedia(UploadedFile::fake()->image('existing.jpg', 800, 600))
+            ->toMediaCollection(Ad::COLLECTION_IMAGES);
+
+        $response = $this->post("/api/ads/{$ad->id}/images", [
+            'images' => [
+                ['file' => UploadedFile::fake()->image('additional-1.jpg', 800, 600)],
+                [
+                    'file' => UploadedFile::fake()->image('additional-2.jpg', 800, 600),
+                    'custom_properties' => ['alt' => 'Rear exterior'],
+                ],
+            ],
+        ], ['Accept' => 'application/json']);
+
+        $response->assertOk();
+        $response->assertJsonCount(3, 'data.images');
+        $response->assertJsonPath('data.images.0.id', $existing->id);
+        $response->assertJsonPath('data.images.2.custom_properties.alt', 'Rear exterior');
+
+        $ad->refresh();
+        $mediaItems = $ad->getMedia(Ad::COLLECTION_IMAGES);
+
+        $this->assertCount(3, $mediaItems);
+        $this->assertSame($existing->id, $mediaItems->first()->id);
+
+        $newItems = $mediaItems->slice(1)->values();
+        $this->assertCount(2, $newItems);
+
+        foreach ($newItems as $media) {
+            Storage::disk('public')->assertExists($media->getPathRelativeToRoot());
+            Storage::disk('public')->assertExists($media->getPathRelativeToRoot(Ad::CONVERSION_THUMB));
+        }
+    }
 }
