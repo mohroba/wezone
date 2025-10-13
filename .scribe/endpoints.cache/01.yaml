@@ -8,7 +8,7 @@ endpoints:
       - POST
     uri: api/kpi/devices/register
     metadata:
-      groupName: Others
+      groupName: Ads Review
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
@@ -185,7 +185,7 @@ endpoints:
       - POST
     uri: api/kpi/devices/heartbeat
     metadata:
-      groupName: Others
+      groupName: Ads Review
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
@@ -296,7 +296,7 @@ endpoints:
       - POST
     uri: api/kpi/installations
     metadata:
-      groupName: Others
+      groupName: Ads Review
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
@@ -505,7 +505,7 @@ endpoints:
       - POST
     uri: api/kpi/uninstallations
     metadata:
-      groupName: Others
+      groupName: Ads Review
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
@@ -627,7 +627,7 @@ endpoints:
       - POST
     uri: api/kpi/sessions
     metadata:
-      groupName: Others
+      groupName: Ads Review
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
@@ -804,7 +804,7 @@ endpoints:
       - PATCH
     uri: 'api/kpi/sessions/{session_session_uuid}'
     metadata:
-      groupName: Others
+      groupName: Ads Review
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
@@ -959,7 +959,7 @@ endpoints:
       - POST
     uri: api/kpi/events
     metadata:
-      groupName: Others
+      groupName: Settings
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
@@ -1127,7 +1127,7 @@ endpoints:
       - GET
     uri: api/v1/settings
     metadata:
-      groupName: Others
+      groupName: Settings
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
@@ -1174,7 +1174,7 @@ endpoints:
       - POST
     uri: api/v1/settings
     metadata:
-      groupName: Others
+      groupName: Settings
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
@@ -1209,7 +1209,7 @@ endpoints:
       - GET
     uri: 'api/v1/settings/{id}'
     metadata:
-      groupName: Others
+      groupName: Settings
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
@@ -1268,7 +1268,7 @@ endpoints:
       - PATCH
     uri: 'api/v1/settings/{id}'
     metadata:
-      groupName: Others
+      groupName: Settings
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
@@ -1314,7 +1314,7 @@ endpoints:
       - DELETE
     uri: 'api/v1/settings/{id}'
     metadata:
-      groupName: Others
+      groupName: Users
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
@@ -1360,7 +1360,7 @@ endpoints:
       - GET
     uri: 'api/users/{user_id}/followers'
     metadata:
-      groupName: Others
+      groupName: Users
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
@@ -1448,7 +1448,7 @@ endpoints:
       - GET
     uri: api/users
     metadata:
-      groupName: Others
+      groupName: Users
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''

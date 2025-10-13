@@ -9,6 +9,8 @@ class SettingsController extends Controller
 {
     /**
      * Display a listing of the resource.
+     *
+     * @group Settings
      */
     public function index()
     {
@@ -25,11 +27,15 @@ class SettingsController extends Controller
 
     /**
      * Store a newly created resource in storage.
+     *
+     * @group Settings
      */
     public function store(Request $request) {}
 
     /**
      * Show the specified resource.
+     *
+     * @group Settings
      */
     public function show($id)
     {
@@ -46,11 +52,15 @@ class SettingsController extends Controller
 
     /**
      * Update the specified resource in storage.
+     *
+     * @group Settings
      */
     public function update(Request $request, $id) {}
 
     /**
      * Remove the specified resource from storage.
+     *
+     * @group Settings
      */
     public function destroy($id) {}
 }

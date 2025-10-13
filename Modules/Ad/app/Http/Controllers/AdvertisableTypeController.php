@@ -13,6 +13,11 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class AdvertisableTypeController extends Controller
 {
+    /**
+     * List supported advertisable types.
+     *
+     * @group Ads
+     */
     public function index(AdvertisableTypeRegistry $registry): AnonymousResourceCollection
     {
         $types = $registry->all()->map(fn (AdvertisableTypeDefinition $definition) => $this->buildMetadata($definition));
@@ -20,6 +25,11 @@ class AdvertisableTypeController extends Controller
         return AdvertisableTypeResource::collection($types);
     }
 
+    /**
+     * Show metadata for an advertisable type.
+     *
+     * @group Ads
+     */
     public function show(string $key, AdvertisableTypeRegistry $registry): AdvertisableTypeResource
     {
         $definition = $registry->getByKey($key);

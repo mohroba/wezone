@@ -10,6 +10,11 @@ use Illuminate\Http\JsonResponse;
 
 class UninstallationController extends Controller
 {
+    /**
+     * Track an uninstall event.
+     *
+     * @group Ads Review
+     */
     public function store(StoreUninstallationRequest $request): JsonResponse
     {
         $payload = $request->validated();

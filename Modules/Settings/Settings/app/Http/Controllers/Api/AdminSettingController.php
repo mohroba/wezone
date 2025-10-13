@@ -14,6 +14,11 @@ class AdminSettingController extends Controller
     {
     }
 
+    /**
+     * List administrative settings.
+     *
+     * @group Settings
+     */
     public function index(): JsonResponse
     {
         $keys = $this->settings->allowedKeys();
@@ -27,6 +32,11 @@ class AdminSettingController extends Controller
         );
     }
 
+    /**
+     * Update administrative settings.
+     *
+     * @group Settings
+     */
     public function store(UpdateSettingsRequest $request): JsonResponse
     {
         $this->settings->updateSettings($request->settings());

@@ -20,6 +20,11 @@ class AdReportController extends Controller
 {
     private const EAGER_RELATIONS = ['ad', 'reporter', 'handler'];
 
+    /**
+     * List ad reports.
+     *
+     * @group Ads Review
+     */
     public function index(ListAdReportRequest $request): AnonymousResourceCollection
     {
         Gate::authorize('viewAny', AdReport::class);
@@ -56,6 +61,11 @@ class AdReportController extends Controller
         );
     }
 
+    /**
+     * Create an ad report.
+     *
+     * @group Ads Review
+     */
     public function store(StoreAdReportRequest $request): JsonResponse
     {
         $payload = $request->validated();
@@ -66,6 +76,11 @@ class AdReportController extends Controller
         return (new AdReportResource($report))->response()->setStatusCode(Response::HTTP_CREATED);
     }
 
+    /**
+     * View an ad report.
+     *
+     * @group Ads Review
+     */
     public function show(AdReport $adReport): AdReportResource
     {
         Gate::authorize('view', $adReport);
@@ -73,6 +88,11 @@ class AdReportController extends Controller
         return new AdReportResource($adReport->load(self::EAGER_RELATIONS));
     }
 
+    /**
+     * Update an ad report.
+     *
+     * @group Ads Review
+     */
     public function update(UpdateAdReportRequest $request, AdReport $adReport): AdReportResource
     {
         Gate::authorize('update', $adReport);
@@ -82,6 +102,11 @@ class AdReportController extends Controller
         return new AdReportResource($report);
     }
 
+    /**
+     * Delete an ad report.
+     *
+     * @group Ads Review
+     */
     public function destroy(AdReport $adReport): Response
     {
         Gate::authorize('delete', $adReport);
@@ -91,6 +116,11 @@ class AdReportController extends Controller
         return response()->noContent();
     }
 
+    /**
+     * Resolve an ad report.
+     *
+     * @group Ads Review
+     */
     public function resolve(HandleAdReportRequest $request, AdReport $adReport): AdReportResource
     {
         Gate::authorize('update', $adReport);
@@ -101,6 +131,11 @@ class AdReportController extends Controller
         return new AdReportResource($report);
     }
 
+    /**
+     * Dismiss an ad report.
+     *
+     * @group Ads Review
+     */
     public function dismiss(HandleAdReportRequest $request, AdReport $adReport): AdReportResource
     {
         Gate::authorize('update', $adReport);
