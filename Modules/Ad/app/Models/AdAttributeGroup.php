@@ -2,6 +2,7 @@
 
 namespace Modules\Ad\Models;
 
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -26,5 +27,10 @@ class AdAttributeGroup extends Model
     public function definitions(): HasMany
     {
         return $this->hasMany(AdAttributeDefinition::class, 'group_id');
+    }
+
+    protected static function newFactory(): Factory
+    {
+        return \Modules\Ad\Database\Factories\AdAttributeGroupFactory::new();
     }
 }

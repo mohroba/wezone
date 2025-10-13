@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Geography;
 
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\Feature\Geography\Concerns\CreatesGeography;
 use Tests\TestCase;
@@ -10,6 +11,13 @@ class GeographyApiTest extends TestCase
 {
     use RefreshDatabase;
     use CreatesGeography;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->actingAs(User::factory()->create(), 'api');
+    }
 
     public function test_can_list_countries_with_filters(): void
     {

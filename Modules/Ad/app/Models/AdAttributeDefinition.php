@@ -2,6 +2,7 @@
 
 namespace Modules\Ad\Models;
 
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -40,5 +41,10 @@ class AdAttributeDefinition extends Model
     public function values(): HasMany
     {
         return $this->hasMany(AdAttributeValue::class, 'definition_id');
+    }
+
+    protected static function newFactory(): Factory
+    {
+        return \Modules\Ad\Database\Factories\AdAttributeDefinitionFactory::new();
     }
 }

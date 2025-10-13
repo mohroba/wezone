@@ -2,6 +2,7 @@
 
 namespace Modules\Ad\Models;
 
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -37,5 +38,10 @@ class AdAttributeValue extends Model
     public function advertisable(): MorphTo
     {
         return $this->morphTo();
+    }
+
+    protected static function newFactory(): Factory
+    {
+        return \Modules\Ad\Database\Factories\AdAttributeValueFactory::new();
     }
 }

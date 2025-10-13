@@ -10,73 +10,78 @@ trait CreatesGeography
 {
     protected function seedGeography(): array
     {
-        $iran = Country::create([
-            'capital_city' => null,
+        $iran = Country::factory()->create([
             'name' => 'ایران',
             'name_en' => 'Iran',
         ]);
 
-        $iraq = Country::create([
-            'capital_city' => null,
+        $iraq = Country::factory()->create([
             'name' => 'عراق',
             'name_en' => 'Iraq',
         ]);
 
-        $tehranProvince = Province::create([
-            'country' => $iran->id,
-            'name' => 'تهران',
-            'name_en' => 'Tehran',
-            'latitude' => 35.68920000,
-            'longitude' => 51.38900000,
-        ]);
+        $tehranProvince = Province::factory()
+            ->for($iran, 'countryRelation')
+            ->create([
+                'name' => 'تهران',
+                'name_en' => 'Tehran',
+                'latitude' => 35.6892,
+                'longitude' => 51.3890,
+            ]);
 
-        $isfahanProvince = Province::create([
-            'country' => $iran->id,
-            'name' => 'اصفهان',
-            'name_en' => 'Isfahan',
-            'latitude' => 32.65250000,
-            'longitude' => 51.67460000,
-        ]);
+        $isfahanProvince = Province::factory()
+            ->for($iran, 'countryRelation')
+            ->create([
+                'name' => 'اصفهان',
+                'name_en' => 'Isfahan',
+                'latitude' => 32.6525,
+                'longitude' => 51.6746,
+            ]);
 
-        $baghdadProvince = Province::create([
-            'country' => $iraq->id,
-            'name' => 'بغداد',
-            'name_en' => 'Baghdad',
-            'latitude' => 33.31520000,
-            'longitude' => 44.36610000,
-        ]);
+        $baghdadProvince = Province::factory()
+            ->for($iraq, 'countryRelation')
+            ->create([
+                'name' => 'بغداد',
+                'name_en' => 'Baghdad',
+                'latitude' => 33.3152,
+                'longitude' => 44.3661,
+            ]);
 
-        $tehranCity = City::create([
-            'province' => $tehranProvince->id,
-            'name' => 'تهران',
-            'name_en' => 'Tehran',
-            'latitude' => 35.68920000,
-            'longitude' => 51.38900000,
-        ]);
+        $tehranCity = City::factory()
+            ->for($tehranProvince, 'provinceRelation')
+            ->create([
+                'name' => 'تهران',
+                'name_en' => 'Tehran',
+                'latitude' => 35.6892,
+                'longitude' => 51.3890,
+            ]);
 
-        $karajCity = City::create([
-            'province' => $tehranProvince->id,
-            'name' => 'کرج',
-            'name_en' => 'Karaj',
-            'latitude' => 35.83270000,
-            'longitude' => 50.99150000,
-        ]);
+        $karajCity = City::factory()
+            ->for($tehranProvince, 'provinceRelation')
+            ->create([
+                'name' => 'کرج',
+                'name_en' => 'Karaj',
+                'latitude' => 35.8327,
+                'longitude' => 50.9915,
+            ]);
 
-        $isfahanCity = City::create([
-            'province' => $isfahanProvince->id,
-            'name' => 'اصفهان',
-            'name_en' => 'Isfahan',
-            'latitude' => 32.65250000,
-            'longitude' => 51.67460000,
-        ]);
+        $isfahanCity = City::factory()
+            ->for($isfahanProvince, 'provinceRelation')
+            ->create([
+                'name' => 'اصفهان',
+                'name_en' => 'Isfahan',
+                'latitude' => 32.6525,
+                'longitude' => 51.6746,
+            ]);
 
-        $baghdadCity = City::create([
-            'province' => $baghdadProvince->id,
-            'name' => 'بغداد',
-            'name_en' => 'Baghdad',
-            'latitude' => 33.31520000,
-            'longitude' => 44.36610000,
-        ]);
+        $baghdadCity = City::factory()
+            ->for($baghdadProvince, 'provinceRelation')
+            ->create([
+                'name' => 'بغداد',
+                'name_en' => 'Baghdad',
+                'latitude' => 33.3152,
+                'longitude' => 44.3661,
+            ]);
 
         $iran->update(['capital_city' => $tehranCity->id]);
         $iraq->update(['capital_city' => $baghdadCity->id]);
