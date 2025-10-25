@@ -1,12 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\Notification\Http\Controllers\NotificationController;
+use Modules\Notification\Http\Controllers\Api\NotificationController;
 
-Route::middleware(['auth:sanctum'])->prefix('v1')->group(function () {
+Route::middleware(['auth:api'])->prefix('v1')->group(function (): void {
     Route::get('notifications', [NotificationController::class, 'index'])->name('notification.index');
-    Route::post('notifications', [NotificationController::class, 'store'])->name('notification.store');
-    Route::get('notifications/{notification}', [NotificationController::class, 'show'])->name('notification.show');
-    Route::post('notifications/{notification}/update', [NotificationController::class, 'update'])->name('notification.update');
-    Route::post('notifications/{notification}/delete', [NotificationController::class, 'destroy'])->name('notification.destroy');
+    Route::post('notifications/read', [NotificationController::class, 'markAllAsRead'])->name('notification.mark-all-read');
+    Route::post('notifications/{notification}/read', [NotificationController::class, 'markAsRead'])->name('notification.mark-read');
+    Route::post('notifications/{notification}/acknowledge', [NotificationController::class, 'acknowledge'])->name('notification.acknowledge');
 });
