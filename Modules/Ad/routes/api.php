@@ -5,6 +5,7 @@ use Modules\Ad\Http\Controllers\AdAttributeDefinitionController;
 use Modules\Ad\Http\Controllers\AdAttributeGroupController;
 use Modules\Ad\Http\Controllers\AdAttributeValueController;
 use Modules\Ad\Http\Controllers\AdCategoryController;
+use Modules\Ad\Http\Controllers\AdCommentController;
 use Modules\Ad\Http\Controllers\AdController;
 use Modules\Ad\Http\Controllers\AdReportController;
 use Modules\Ad\Http\Controllers\AdvertisableTypeController;
@@ -16,6 +17,8 @@ Route::middleware(['api'])->group(function (): void {
     Route::post('ads/{ad}/update', [AdController::class, 'update']);
     Route::post('ads/{ad}/delete', [AdController::class, 'destroy']);
     Route::post('ads/{ad}/images', [AdController::class, 'storeImages']);
+    Route::get('ads/{ad}/comments', [AdCommentController::class, 'index']);
+    Route::post('ads/{ad}/comments', [AdCommentController::class, 'store'])->middleware('auth:api');
 
     Route::get('ad-categories', [AdCategoryController::class, 'index']);
     Route::post('ad-categories', [AdCategoryController::class, 'store']);

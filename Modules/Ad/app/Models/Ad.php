@@ -113,6 +113,11 @@ class Ad extends Model implements HasMedia
         return $this->hasMany(AdReport::class);
     }
 
+    public function comments(): HasMany
+    {
+        return $this->hasMany(AdComment::class);
+    }
+
     // 🔹 Factory
     protected static function newFactory(): Factory
     {
