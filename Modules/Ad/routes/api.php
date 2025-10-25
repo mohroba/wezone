@@ -6,12 +6,15 @@ use Modules\Ad\Http\Controllers\AdAttributeGroupController;
 use Modules\Ad\Http\Controllers\AdAttributeValueController;
 use Modules\Ad\Http\Controllers\AdCategoryController;
 use Modules\Ad\Http\Controllers\AdController;
+use Modules\Ad\Http\Controllers\AdFavoriteController;
+use Modules\Ad\Http\Controllers\AdLikeController;
 use Modules\Ad\Http\Controllers\AdReportController;
 use Modules\Ad\Http\Controllers\AdvertisableTypeController;
 
 Route::middleware(['api'])->group(function (): void {
     Route::get('ads', [AdController::class, 'index']);
     Route::post('ads', [AdController::class, 'store']);
+    Route::get('ads/bookmarks', [AdFavoriteController::class, 'index'])->middleware('auth:api');
     Route::get('ads/{ad}', [AdController::class, 'show']);
     Route::post('ads/{ad}/update', [AdController::class, 'update']);
     Route::post('ads/{ad}/delete', [AdController::class, 'destroy']);
@@ -52,4 +55,6 @@ Route::middleware(['api', 'auth:api'])->group(function (): void {
     Route::apiResource('ad-reports', AdReportController::class)->except(['store']);
     Route::post('ad-reports/{ad_report}/resolve', [AdReportController::class, 'resolve'])->name('ad-reports.resolve');
     Route::post('ad-reports/{ad_report}/dismiss', [AdReportController::class, 'dismiss'])->name('ad-reports.dismiss');
+    Route::post('ads/{ad}/bookmark', [AdFavoriteController::class, 'toggle']);
+    Route::post('ads/{ad}/like', [AdLikeController::class, 'toggle']);
 });

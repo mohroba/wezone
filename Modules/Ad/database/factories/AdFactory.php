@@ -35,6 +35,7 @@ class AdFactory extends Factory
             'view_count' => 0,
             'share_count' => 0,
             'favorite_count' => 0,
+            'like_count' => 0,
             'featured_until' => null,
             'priority_score' => 0,
         ];
