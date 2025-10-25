@@ -5,6 +5,7 @@ use Modules\Ad\Http\Controllers\AdAttributeDefinitionController;
 use Modules\Ad\Http\Controllers\AdAttributeGroupController;
 use Modules\Ad\Http\Controllers\AdAttributeValueController;
 use Modules\Ad\Http\Controllers\AdCategoryController;
+use Modules\Ad\Http\Controllers\AdCommentController;
 use Modules\Ad\Http\Controllers\AdController;
 use Modules\Ad\Http\Controllers\AdConversationController;
 use Modules\Ad\Http\Controllers\AdMessageController;
@@ -36,6 +37,10 @@ Route::middleware(['api'])->group(function (): void {
     Route::post('ads/{ad}/delete', [AdController::class, 'destroy']);
     Route::post('ads/{ad}/images', [AdController::class, 'storeImages']);
     Route::post('ads/{ad}/seen', [AdController::class, 'markSeen']);
+
+    // --- Ad Comments ---
+    Route::get('ads/{ad}/comments', [AdCommentController::class, 'index']);
+    Route::post('ads/{ad}/comments', [AdCommentController::class, 'store'])->middleware('auth:api');
 
     // --- Ad Categories ---
     Route::get('ad-categories', [AdCategoryController::class, 'index']);
