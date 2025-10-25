@@ -6,10 +6,21 @@ use Modules\Ad\Http\Controllers\AdAttributeGroupController;
 use Modules\Ad\Http\Controllers\AdAttributeValueController;
 use Modules\Ad\Http\Controllers\AdCategoryController;
 use Modules\Ad\Http\Controllers\AdController;
+use Modules\Ad\Http\Controllers\AdConversationController;
+use Modules\Ad\Http\Controllers\AdMessageController;
 use Modules\Ad\Http\Controllers\AdReportController;
 use Modules\Ad\Http\Controllers\AdvertisableTypeController;
 
 Route::middleware(['api'])->group(function (): void {
+    Route::middleware('auth:api')->group(function (): void {
+        Route::get('ads/conversations', [AdConversationController::class, 'index']);
+        Route::post('ads/{ad}/conversations', [AdConversationController::class, 'store']);
+        Route::post('ads/conversations/{conversation}/delete', [AdConversationController::class, 'destroy']);
+
+        Route::get('ads/conversations/{conversation}/messages', [AdMessageController::class, 'index']);
+        Route::post('ads/conversations/{conversation}/messages', [AdMessageController::class, 'store']);
+    });
+
     Route::get('ads', [AdController::class, 'index']);
     Route::post('ads', [AdController::class, 'store']);
     Route::get('ads/{ad}', [AdController::class, 'show']);
