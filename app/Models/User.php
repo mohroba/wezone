@@ -89,4 +89,40 @@ class User extends Authenticatable
             ? $this->followings->contains($user)
             : $this->followings()->whereKey($user->getKey())->exists();
     }
+
+    public function blockedUsers(): BelongsToMany
+    {
+        return $this
+            ->belongsToMany(self::class, 'user_blocks', 'blocker_id', 'blocked_id')
+            ->withTimestamps();
+    }
+
+    public function blockers(): BelongsToMany
+    {
+        return $this
+            ->belongsToMany(self::class, 'user_blocks', 'blocked_id', 'blocker_id')
+            ->withTimestamps();
+    }
+
+    public function hasBlocked(self $user): bool
+    {
+        if (!$this->exists || !$user->exists) {
+            return false;
+        }
+
+        return $this->relationLoaded('blockedUsers')
+            ? $this->blockedUsers->contains($user)
+            : $this->blockedUsers()->whereKey($user->getKey())->exists();
+    }
+
+    public function isBlockedBy(self $user): bool
+    {
+        if (!$this->exists || !$user->exists) {
+            return false;
+        }
+
+        return $this->relationLoaded('blockers')
+            ? $this->blockers->contains($user)
+            : $this->blockers()->whereKey($user->getKey())->exists();
+    }
 }

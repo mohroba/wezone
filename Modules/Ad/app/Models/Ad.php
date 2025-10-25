@@ -51,6 +51,7 @@ class Ad extends Model implements HasMedia
         'view_count',
         'share_count',
         'favorite_count',
+        'like_count',
         'featured_until',
         'priority_score',
     ];
@@ -106,6 +107,11 @@ class Ad extends Model implements HasMedia
     public function favorites(): HasMany
     {
         return $this->hasMany(AdFavorite::class);
+    }
+
+    public function likes(): HasMany
+    {
+        return $this->hasMany(AdLike::class);
     }
 
     public function reports(): HasMany

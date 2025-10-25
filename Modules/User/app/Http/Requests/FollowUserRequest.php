@@ -23,8 +23,20 @@ class FollowUserRequest extends FormRequest
             $authUser = $this->user();
             $targetUser = $this->route('user');
 
-            if ($authUser !== null && $targetUser !== null && $authUser->is($targetUser)) {
+            if ($authUser === null || $targetUser === null) {
+                return;
+            }
+
+            if ($authUser->is($targetUser)) {
                 $validator->errors()->add('user', __('You cannot follow yourself.'));
+            }
+
+            if ($authUser->hasBlocked($targetUser)) {
+                $validator->errors()->add('user', __('You cannot follow a user you have blocked.'));
+            }
+
+            if ($targetUser->hasBlocked($authUser)) {
+                $validator->errors()->add('user', __('You cannot follow a user who has blocked you.'));
             }
         });
     }

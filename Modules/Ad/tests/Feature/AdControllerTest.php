@@ -4,6 +4,7 @@ namespace Modules\Ad\Tests\Feature;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Laravel\Passport\Passport;
 use Modules\Ad\Models\Ad;
 use Modules\Ad\Models\AdCar;
 use Modules\Ad\Models\AdJob;
@@ -118,5 +119,62 @@ class AdControllerTest extends TestCase
             'advertisable.attributes.position_title',
             'advertisable.attributes.employment_type',
         ]);
+    }
+
+    public function test_seen_endpoint_increments_view_count_only_once_per_user(): void
+    {
+        $user = User::factory()->create();
+        $ad = Ad::factory()->create(['view_count' => 2]);
+
+        Passport::actingAs($user);
+
+        $firstResponse = $this->postJson("/api/ads/{$ad->id}/seen");
+        $firstResponse->assertOk();
+        $firstResponse->assertJsonPath('data.incremented', true);
+        $firstResponse->assertJsonPath('data.view_count', 3);
+
+        $secondResponse = $this->postJson("/api/ads/{$ad->id}/seen");
+        $secondResponse->assertOk();
+        $secondResponse->assertJsonPath('data.incremented', false);
+        $secondResponse->assertJsonPath('data.view_count', 3);
+
+        $this->assertDatabaseHas('ads', [
+            'id' => $ad->id,
+            'view_count' => 3,
+        ]);
+    }
+
+    public function test_seen_endpoint_prevents_duplicate_guest_views_using_same_fingerprint(): void
+    {
+        $ad = Ad::factory()->create(['view_count' => 0]);
+
+        $server = [
+            'REMOTE_ADDR' => '203.0.113.10',
+            'HTTP_USER_AGENT' => 'IntegrationTestAgent/1.0',
+        ];
+
+        $firstResponse = $this->withServerVariables($server)
+            ->postJson("/api/ads/{$ad->id}/seen");
+        $firstResponse->assertOk();
+        $firstResponse->assertJsonPath('data.incremented', true);
+        $firstResponse->assertJsonPath('data.view_count', 1);
+
+        $secondResponse = $this->withServerVariables($server)
+            ->postJson("/api/ads/{$ad->id}/seen");
+        $secondResponse->assertOk();
+        $secondResponse->assertJsonPath('data.incremented', false);
+        $secondResponse->assertJsonPath('data.view_count', 1);
+
+        $this->assertDatabaseHas('ads', [
+            'id' => $ad->id,
+            'view_count' => 1,
+        ]);
+    }
+
+    public function test_seen_endpoint_disallows_get_requests(): void
+    {
+        $ad = Ad::factory()->create();
+
+        $this->getJson("/api/ads/{$ad->id}/seen")->assertStatus(405);
     }
 }
