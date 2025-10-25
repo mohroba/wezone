@@ -1,6 +1,6 @@
 {
     "Auth": true,
-    "Notification": false,
+    "Notification": true,
     "Settings": true,
     "User": true,
     "Ad": true,
