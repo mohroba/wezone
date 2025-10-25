@@ -35,6 +35,7 @@ class AdResource extends JsonResource
             'view_count' => $this->view_count,
             'share_count' => $this->share_count,
             'favorite_count' => $this->favorite_count,
+            'like_count' => $this->like_count,
             'featured_until' => $this->featured_until?->toISOString(),
             'priority_score' => $this->priority_score,
             'categories' => $this->whenLoaded('categories', function () {
