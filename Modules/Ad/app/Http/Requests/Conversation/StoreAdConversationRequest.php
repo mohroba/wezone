@@ -27,6 +27,23 @@ class StoreAdConversationRequest extends FormRequest
         ];
     }
 
+    /**
+     * @return array<string, array<string, mixed>>
+     */
+    public function bodyParameters(): array
+    {
+        return [
+            'recipient_id' => [
+                'description' => 'Identifier of the user receiving the first message. Defaults to the ad owner when omitted.',
+                'example' => 128,
+            ],
+            'message' => [
+                'description' => 'Initial message to send to the conversation participant.',
+                'example' => 'Hi! Is this item still available?',
+            ],
+        ];
+    }
+
     public function recipientId(?Ad $ad = null): int
     {
         $recipientId = (int) $this->input('recipient_id');

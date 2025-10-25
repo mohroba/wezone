@@ -27,4 +27,53 @@ class ListAdReportRequest extends FormRequest
             'without_pagination' => ['nullable', 'boolean'],
         ];
     }
+
+    /**
+     * @return array<string, array<string, mixed>>
+     */
+    public function queryParameters(): array
+    {
+        return [
+            'status' => [
+                'description' => 'Filter reports by their current status.',
+                'example' => 'pending',
+            ],
+            'ad_id' => [
+                'description' => 'Limit results to reports targeting a specific ad.',
+                'example' => 512,
+            ],
+            'reported_by' => [
+                'description' => 'Filter by the identifier of the reporting user.',
+                'example' => 33,
+            ],
+            'handled_by' => [
+                'description' => 'Filter by the identifier of the moderator handling the report.',
+                'example' => 7,
+            ],
+            'reason_code' => [
+                'description' => 'Filter by the report reason code.',
+                'example' => 'spam',
+            ],
+            'from' => [
+                'description' => 'Limit reports to those created on or after this ISO 8601 date.',
+                'example' => '2024-04-01',
+            ],
+            'to' => [
+                'description' => 'Limit reports to those created on or before this ISO 8601 date.',
+                'example' => '2024-04-30',
+            ],
+            'search' => [
+                'description' => 'Free-text search across report content and related ad data.',
+                'example' => 'duplicate listing',
+            ],
+            'per_page' => [
+                'description' => 'Number of results to return per page when paginating.',
+                'example' => 25,
+            ],
+            'without_pagination' => [
+                'description' => 'When true, returns all results without pagination.',
+                'example' => false,
+            ],
+        ];
+    }
 }

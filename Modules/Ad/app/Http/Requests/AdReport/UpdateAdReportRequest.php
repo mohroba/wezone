@@ -20,4 +20,27 @@ class UpdateAdReportRequest extends FormRequest
             'metadata' => ['nullable', 'array'],
         ];
     }
+
+    /**
+     * @return array<string, array<string, mixed>>
+     */
+    public function bodyParameters(): array
+    {
+        return [
+            'status' => [
+                'description' => 'New status to assign to the report.',
+                'example' => 'in_review',
+            ],
+            'resolution_notes' => [
+                'description' => 'Notes explaining the actions taken on the report.',
+                'example' => 'Contacted the seller for clarification.',
+            ],
+            'metadata' => [
+                'description' => 'Supplementary metadata maintained by moderators.',
+                'example' => [
+                    'internal_ticket' => 'AD-204',
+                ],
+            ],
+        ];
+    }
 }

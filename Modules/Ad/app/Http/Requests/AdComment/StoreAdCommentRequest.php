@@ -22,6 +22,23 @@ class StoreAdCommentRequest extends FormRequest
         ];
     }
 
+    /**
+     * @return array<string, array<string, mixed>>
+     */
+    public function bodyParameters(): array
+    {
+        return [
+            'body' => [
+                'description' => 'Content of the comment to attach to the ad.',
+                'example' => 'Is the price negotiable?',
+            ],
+            'parent_id' => [
+                'description' => 'Identifier of the parent comment when replying to a thread.',
+                'example' => 87,
+            ],
+        ];
+    }
+
     public function prepareForValidation(): void
     {
         $body = $this->input('body');
