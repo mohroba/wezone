@@ -24,4 +24,47 @@ class StoreUninstallationRequest extends FormRequest
             'user_id' => ['nullable', 'integer', 'exists:users,id'],
         ];
     }
+
+    /**
+     * @return array<string, array<string, mixed>>
+     */
+    public function bodyParameters(): array
+    {
+        return [
+            'device_uuid' => [
+                'description' => 'Unique identifier for the device that uninstalled the app.',
+                'example' => '550e8400-e29b-41d4-a716-446655440000',
+            ],
+            'uninstalled_at' => [
+                'description' => 'Timestamp when the uninstall event occurred.',
+                'example' => '2024-04-05T17:20:00Z',
+            ],
+            'app_version' => [
+                'description' => 'Application version that was uninstalled.',
+                'example' => '2.3.1',
+            ],
+            'platform' => [
+                'description' => 'Operating system of the device.',
+                'example' => 'ios',
+            ],
+            'reason' => [
+                'description' => 'Optional reason provided for the uninstall.',
+                'example' => 'User opted out during offboarding survey.',
+            ],
+            'report_source' => [
+                'description' => 'Source that reported the uninstall event.',
+                'example' => 'app_store',
+            ],
+            'metadata' => [
+                'description' => 'Structured metadata for additional analytics.',
+                'example' => [
+                    'previous_sessions' => 12,
+                ],
+            ],
+            'user_id' => [
+                'description' => 'Identifier of the authenticated user, if available.',
+                'example' => 42,
+            ],
+        ];
+    }
 }

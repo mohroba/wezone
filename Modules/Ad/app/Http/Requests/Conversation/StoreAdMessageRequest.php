@@ -28,4 +28,17 @@ class StoreAdMessageRequest extends FormRequest
             'message' => ['required', 'string', 'max:2000'],
         ];
     }
+
+    /**
+     * @return array<string, array<string, mixed>>
+     */
+    public function bodyParameters(): array
+    {
+        return [
+            'message' => [
+                'description' => 'Message body to send to the conversation participant.',
+                'example' => 'Can you share more photos of the product?',
+            ],
+        ];
+    }
 }
