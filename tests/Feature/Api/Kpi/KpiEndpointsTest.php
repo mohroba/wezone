@@ -78,7 +78,7 @@ class KpiEndpointsTest extends TestCase
 
         $storeResponse->assertCreated();
 
-        $updateResponse = $this->patchJson("/api/kpi/sessions/{$sessionUuid}", [
+        $updateResponse = $this->postJson("/api/kpi/sessions/{$sessionUuid}/update", [
             'ended_at' => now()->toIso8601String(),
             'network_type' => '5g',
         ]);

@@ -49,7 +49,10 @@ Route::middleware(['api'])->group(function (): void {
 });
 
 Route::middleware(['api', 'auth:api'])->group(function (): void {
-    Route::apiResource('ad-reports', AdReportController::class)->except(['store']);
+    Route::get('ad-reports', [AdReportController::class, 'index'])->name('ad-reports.index');
+    Route::get('ad-reports/{ad_report}', [AdReportController::class, 'show'])->name('ad-reports.show');
+    Route::post('ad-reports/{ad_report}/update', [AdReportController::class, 'update'])->name('ad-reports.update');
+    Route::post('ad-reports/{ad_report}/delete', [AdReportController::class, 'destroy'])->name('ad-reports.destroy');
     Route::post('ad-reports/{ad_report}/resolve', [AdReportController::class, 'resolve'])->name('ad-reports.resolve');
     Route::post('ad-reports/{ad_report}/dismiss', [AdReportController::class, 'dismiss'])->name('ad-reports.dismiss');
 });
