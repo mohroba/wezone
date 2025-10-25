@@ -258,8 +258,8 @@
                                                                                 <li class="tocify-item level-2" data-unique="ads-review-POSTapi-kpi-sessions">
                                 <a href="#ads-review-POSTapi-kpi-sessions">POST api/kpi/sessions</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="ads-review-PATCHapi-kpi-sessions--session_session_uuid-">
-                                <a href="#ads-review-PATCHapi-kpi-sessions--session_session_uuid-">PATCH api/kpi/sessions/{session_session_uuid}</a>
+                                                                                <li class="tocify-item level-2" data-unique="ads-review-POSTapi-kpi-sessions--session_session_uuid--update">
+                                <a href="#ads-review-POSTapi-kpi-sessions--session_session_uuid--update">POST api/kpi/sessions/{session_session_uuid}/update</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="ads-review-POSTapi-kpi-events">
                                 <a href="#ads-review-POSTapi-kpi-events">POST api/kpi/events</a>
@@ -302,8 +302,8 @@
                                                     <li class="tocify-item level-2" data-unique="users-POSTapi-users--user_id--follow">
                                 <a href="#users-POSTapi-users--user_id--follow">Follow a user.</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="users-DELETEapi-users--user_id--follow">
-                                <a href="#users-DELETEapi-users--user_id--follow">Unfollow a user.</a>
+                                                    <li class="tocify-item level-2" data-unique="users-POSTapi-users--user_id--unfollow">
+                                <a href="#users-POSTapi-users--user_id--unfollow">Unfollow a user.</a>
                             </li>
                                                                         </ul>
                             </ul>
@@ -10741,7 +10741,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </div>
         </form>
 
-                    <h2 id="ads-review-PATCHapi-kpi-sessions--session_session_uuid-">PATCH api/kpi/sessions/{session_session_uuid}</h2>
+                    <h2 id="ads-review-POSTapi-kpi-sessions--session_session_uuid--update">POST api/kpi/sessions/{session_session_uuid}/update</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
@@ -10749,33 +10749,33 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 
 
-<span id="example-requests-PATCHapi-kpi-sessions--session_session_uuid-">
+<span id="example-requests-POSTapi-kpi-sessions--session_session_uuid--update">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
-    <pre><code class="language-bash">curl --request PATCH \
-    "https://api.wezone.app/api/kpi/sessions/6ff8f7f6-1eb3-3525-be4a-3932c805afed" \
+    <pre><code class="language-bash">curl --request POST \
+    "https://api.wezone.app/api/kpi/sessions/6ff8f7f6-1eb3-3525-be4a-3932c805afed/update" \
     --header "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"ended_at\": \"2025-10-05T20:35:36\",
-    \"duration_seconds\": 27,
-    \"app_version\": \"n\",
-    \"platform\": \"g\",
-    \"os_version\": \"z\",
-    \"network_type\": \"m\",
-    \"city\": \"i\",
-    \"country\": \"y\",
-    \"user_id\": 16
+    "ended_at": "2025-10-05T20:35:36",
+    "duration_seconds": 27,
+    "app_version": "n",
+    "platform": "g",
+    "os_version": "z",
+    "network_type": "m",
+    "city": "i",
+    "country": "y",
+    "user_id": 16
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://api.wezone.app/api/kpi/sessions/6ff8f7f6-1eb3-3525-be4a-3932c805afed"
+    "https://api.wezone.app/api/kpi/sessions/6ff8f7f6-1eb3-3525-be4a-3932c805afed/update"
 );
 
 const headers = {
@@ -10797,213 +10797,193 @@ let body = {
 };
 
 fetch(url, {
-    method: "PATCH",
+    method: "POST",
     headers,
     body: JSON.stringify(body),
 }).then(response =&gt; response.json());</code></pre></div>
 
 </span>
 
-<span id="example-responses-PATCHapi-kpi-sessions--session_session_uuid-">
+<span id="example-responses-POSTapi-kpi-sessions--session_session_uuid--update">
 </span>
-<span id="execution-results-PATCHapi-kpi-sessions--session_session_uuid-" hidden>
+<span id="execution-results-POSTapi-kpi-sessions--session_session_uuid--update" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-PATCHapi-kpi-sessions--session_session_uuid-"></span>:
+                id="execution-response-status-POSTapi-kpi-sessions--session_session_uuid--update"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-PATCHapi-kpi-sessions--session_session_uuid-"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+    <pre class="json"><code id="execution-response-content-POSTapi-kpi-sessions--session_session_uuid--update"
+      data-empty-response-text="&lt;Empty response&gt;" style="max-height: 400px;"></code></pre>
 </span>
-<span id="execution-error-PATCHapi-kpi-sessions--session_session_uuid-" hidden>
+<span id="execution-error-POSTapi-kpi-sessions--session_session_uuid--update" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-PATCHapi-kpi-sessions--session_session_uuid-">
+    <pre><code id="execution-error-message-POSTapi-kpi-sessions--session_session_uuid--update">
 
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+Tip: Check that you&amp;#039;re properly connected to the network.
+If you&amp;#039;re a maintainer of ths API, verify that your API is running and you&amp;#039;ve enabled CORS.
 You can check the Dev Tools console for debugging information.</code></pre>
 </span>
-<form id="form-PATCHapi-kpi-sessions--session_session_uuid-" data-method="PATCH"
-      data-path="api/kpi/sessions/{session_session_uuid}"
+<form id="form-POSTapi-kpi-sessions--session_session_uuid--update" data-method="POST"
+      data-path="api/kpi/sessions/{session_session_uuid}/update"
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('PATCHapi-kpi-sessions--session_session_uuid-', this);">
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-kpi-sessions--session_session_uuid--update', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-PATCHapi-kpi-sessions--session_session_uuid-"
-                    onclick="tryItOut('PATCHapi-kpi-sessions--session_session_uuid-');">Try it out ⚡
+                    id="btn-tryout-POSTapi-kpi-sessions--session_session_uuid--update"
+                    onclick="tryItOut('POSTapi-kpi-sessions--session_session_uuid--update');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-PATCHapi-kpi-sessions--session_session_uuid-"
-                    onclick="cancelTryOut('PATCHapi-kpi-sessions--session_session_uuid-');" hidden>Cancel 🛑
+                    id="btn-canceltryout-POSTapi-kpi-sessions--session_session_uuid--update"
+                    onclick="cancelTryOut('POSTapi-kpi-sessions--session_session_uuid--update');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-PATCHapi-kpi-sessions--session_session_uuid-"
+                    id="btn-executetryout-POSTapi-kpi-sessions--session_session_uuid--update"
                     data-initial-text="Send Request 💥"
                     data-loading-text="⏱ Sending..."
                     hidden>Send Request 💥
             </button>
             </h3>
             <p>
-            <small class="badge badge-purple">PATCH</small>
-            <b><code>api/kpi/sessions/{session_session_uuid}</code></b>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/kpi/sessions/{session_session_uuid}/update</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
+                                <div style=" padding-left: 28px;  clear: unset;">
                 <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Authorization" class="auth-value"               data-endpoint="PATCHapi-kpi-sessions--session_session_uuid-"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-kpi-sessions--session_session_uuid--update"
                value="Bearer {YOUR_ACCESS_TOKEN}"
                data-component="header">
     <br>
 <p>Example: <code>Bearer {YOUR_ACCESS_TOKEN}</code></p>
             </div>
-                                <div style="padding-left: 28px; clear: unset;">
+                                <div style=" padding-left: 28px;  clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="PATCHapi-kpi-sessions--session_session_uuid-"
+                              name="Content-Type"                data-endpoint="POSTapi-kpi-sessions--session_session_uuid--update"
                value="application/json"
                data-component="header">
     <br>
 <p>Example: <code>application/json</code></p>
             </div>
-                                <div style="padding-left: 28px; clear: unset;">
+                                <div style=" padding-left: 28px;  clear: unset;">
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="PATCHapi-kpi-sessions--session_session_uuid-"
+                              name="Accept"                data-endpoint="POSTapi-kpi-sessions--session_session_uuid--update"
                value="application/json"
                data-component="header">
     <br>
 <p>Example: <code>application/json</code></p>
             </div>
                         <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>session_session_uuid</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
+                    <div style=" padding-left: 28px;  clear: unset;">
+                <b style="line-height: 2;"><code>session_session_uuid</code></b>&nbsp;&nbsp;<small>string</small>&nbsp;
+&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="session_session_uuid"                data-endpoint="PATCHapi-kpi-sessions--session_session_uuid-"
+               name="session_session_uuid"                data-endpoint="POSTapi-kpi-sessions--session_session_uuid--update"
                value="6ff8f7f6-1eb3-3525-be4a-3932c805afed"
                data-component="url">
     <br>
-<p>Example: <code>6ff8f7f6-1eb3-3525-be4a-3932c805afed</code></p>
+<p>The session UUID to update. Example: <code>6ff8f7f6-1eb3-3525-be4a-3932c805afed</code></p>
             </div>
-                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>ended_at</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
+                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>ended_at</code></b>&nbsp;&nbsp;<small>string</small>&nbsp;<i>optional</i> &nbsp;
                 <input type="text" style="display: none"
-                              name="ended_at"                data-endpoint="PATCHapi-kpi-sessions--session_session_uuid-"
+                              name="ended_at"                data-endpoint="POSTapi-kpi-sessions--session_session_uuid--update"
                value="2025-10-05T20:35:36"
                data-component="body">
     <br>
 <p>Must be a valid date. Example: <code>2025-10-05T20:35:36</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>duration_seconds</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
-<i>optional</i> &nbsp;
+            <b style="line-height: 2;"><code>duration_seconds</code></b>&nbsp;&nbsp;<small>integer</small>&nbsp;<i>optional</i> &nbsp;
                 <input type="number" style="display: none"
-               step="any"               name="duration_seconds"                data-endpoint="PATCHapi-kpi-sessions--session_session_uuid-"
+               step="any"               name="duration_seconds"                data-endpoint="POSTapi-kpi-sessions--session_session_uuid--update"
                value="27"
                data-component="body">
     <br>
 <p>Must be at least 0. Example: <code>27</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>app_version</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
+            <b style="line-height: 2;"><code>app_version</code></b>&nbsp;&nbsp;<small>string</small>&nbsp;<i>optional</i> &nbsp;
                 <input type="text" style="display: none"
-                              name="app_version"                data-endpoint="PATCHapi-kpi-sessions--session_session_uuid-"
+                              name="app_version"                data-endpoint="POSTapi-kpi-sessions--session_session_uuid--update"
                value="n"
                data-component="body">
     <br>
 <p>Must not be greater than 50 characters. Example: <code>n</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>platform</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
+            <b style="line-height: 2;"><code>platform</code></b>&nbsp;&nbsp;<small>string</small>&nbsp;<i>optional</i> &nbsp;
                 <input type="text" style="display: none"
-                              name="platform"                data-endpoint="PATCHapi-kpi-sessions--session_session_uuid-"
+                              name="platform"                data-endpoint="POSTapi-kpi-sessions--session_session_uuid--update"
                value="g"
                data-component="body">
     <br>
 <p>Must not be greater than 50 characters. Example: <code>g</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>os_version</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
+            <b style="line-height: 2;"><code>os_version</code></b>&nbsp;&nbsp;<small>string</small>&nbsp;<i>optional</i> &nbsp;
                 <input type="text" style="display: none"
-                              name="os_version"                data-endpoint="PATCHapi-kpi-sessions--session_session_uuid-"
+                              name="os_version"                data-endpoint="POSTapi-kpi-sessions--session_session_uuid--update"
                value="z"
                data-component="body">
     <br>
 <p>Must not be greater than 100 characters. Example: <code>z</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>network_type</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
+            <b style="line-height: 2;"><code>network_type</code></b>&nbsp;&nbsp;<small>string</small>&nbsp;<i>optional</i> &nbsp;
                 <input type="text" style="display: none"
-                              name="network_type"                data-endpoint="PATCHapi-kpi-sessions--session_session_uuid-"
+                              name="network_type"                data-endpoint="POSTapi-kpi-sessions--session_session_uuid--update"
                value="m"
                data-component="body">
     <br>
 <p>Must not be greater than 50 characters. Example: <code>m</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>city</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
+            <b style="line-height: 2;"><code>city</code></b>&nbsp;&nbsp;<small>string</small>&nbsp;<i>optional</i> &nbsp;
                 <input type="text" style="display: none"
-                              name="city"                data-endpoint="PATCHapi-kpi-sessions--session_session_uuid-"
+                              name="city"                data-endpoint="POSTapi-kpi-sessions--session_session_uuid--update"
                value="i"
                data-component="body">
     <br>
 <p>Must not be greater than 150 characters. Example: <code>i</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>country</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
+            <b style="line-height: 2;"><code>country</code></b>&nbsp;&nbsp;<small>string</small>&nbsp;<i>optional</i> &nbsp;
                 <input type="text" style="display: none"
-                              name="country"                data-endpoint="PATCHapi-kpi-sessions--session_session_uuid-"
+                              name="country"                data-endpoint="POSTapi-kpi-sessions--session_session_uuid--update"
                value="y"
                data-component="body">
     <br>
 <p>Must not be greater than 150 characters. Example: <code>y</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>metadata</code></b>&nbsp;&nbsp;
-<small>object</small>&nbsp;
-<i>optional</i> &nbsp;
+            <b style="line-height: 2;"><code>metadata</code></b>&nbsp;&nbsp;<small>object</small>&nbsp;<i>optional</i> &nbsp;
                 <input type="text" style="display: none"
-                              name="metadata"                data-endpoint="PATCHapi-kpi-sessions--session_session_uuid-"
+                              name="metadata"                data-endpoint="POSTapi-kpi-sessions--session_session_uuid--update"
                value=""
                data-component="body">
     <br>
 
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>user_id</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
-<i>optional</i> &nbsp;
+            <b style="line-height: 2;"><code>user_id</code></b>&nbsp;&nbsp;<small>integer</small>&nbsp;<i>optional</i> &nbsp;
                 <input type="number" style="display: none"
-               step="any"               name="user_id"                data-endpoint="PATCHapi-kpi-sessions--session_session_uuid-"
+               step="any"               name="user_id"                data-endpoint="POSTapi-kpi-sessions--session_session_uuid--update"
                value="16"
                data-component="body">
     <br>
@@ -12532,7 +12512,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                     </form>
 
-                    <h2 id="users-DELETEapi-users--user_id--follow">Unfollow a user.</h2>
+                    <h2 id="users-POSTapi-users--user_id--unfollow">Unfollow a user.</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
@@ -12540,13 +12520,13 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 
 
-<span id="example-requests-DELETEapi-users--user_id--follow">
+<span id="example-requests-POSTapi-users--user_id--unfollow">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
-    <pre><code class="language-bash">curl --request DELETE \
-    "https://api.wezone.app/api/users/1/follow" \
+    <pre><code class="language-bash">curl --request POST \
+    "https://api.wezone.app/api/users/1/unfollow" \
     --header "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -12554,7 +12534,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://api.wezone.app/api/users/1/follow"
+    "https://api.wezone.app/api/users/1/unfollow"
 );
 
 const headers = {
@@ -12564,59 +12544,59 @@ const headers = {
 };
 
 fetch(url, {
-    method: "DELETE",
+    method: "POST",
     headers,
 }).then(response =&gt; response.json());</code></pre></div>
 
 </span>
 
-<span id="example-responses-DELETEapi-users--user_id--follow">
+<span id="example-responses-POSTapi-users--user_id--unfollow">
 </span>
-<span id="execution-results-DELETEapi-users--user_id--follow" hidden>
+<span id="execution-results-POSTapi-users--user_id--unfollow" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-DELETEapi-users--user_id--follow"></span>:
+                id="execution-response-status-POSTapi-users--user_id--unfollow"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-DELETEapi-users--user_id--follow"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+    <pre class="json"><code id="execution-response-content-POSTapi-users--user_id--unfollow"
+      data-empty-response-text="&lt;Empty response&gt;" style="max-height: 400px;"></code></pre>
 </span>
-<span id="execution-error-DELETEapi-users--user_id--follow" hidden>
+<span id="execution-error-POSTapi-users--user_id--unfollow" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-DELETEapi-users--user_id--follow">
+    <pre><code id="execution-error-message-POSTapi-users--user_id--unfollow">
 
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+Tip: Check that you&amp;#039;re properly connected to the network.
+If you&amp;#039;re a maintainer of ths API, verify that your API is running and you&amp;#039;ve enabled CORS.
 You can check the Dev Tools console for debugging information.</code></pre>
 </span>
-<form id="form-DELETEapi-users--user_id--follow" data-method="DELETE"
-      data-path="api/users/{user_id}/follow"
+<form id="form-POSTapi-users--user_id--unfollow" data-method="POST"
+      data-path="api/users/{user_id}/unfollow"
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-users--user_id--follow', this);">
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-users--user_id--unfollow', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-DELETEapi-users--user_id--follow"
-                    onclick="tryItOut('DELETEapi-users--user_id--follow');">Try it out ⚡
+                    id="btn-tryout-POSTapi-users--user_id--unfollow"
+                    onclick="tryItOut('POSTapi-users--user_id--unfollow');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-DELETEapi-users--user_id--follow"
-                    onclick="cancelTryOut('DELETEapi-users--user_id--follow');" hidden>Cancel 🛑
+                    id="btn-canceltryout-POSTapi-users--user_id--unfollow"
+                    onclick="cancelTryOut('POSTapi-users--user_id--unfollow');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-DELETEapi-users--user_id--follow"
+                    id="btn-executetryout-POSTapi-users--user_id--unfollow"
                     data-initial-text="Send Request 💥"
                     data-loading-text="⏱ Sending..."
                     hidden>Send Request 💥
             </button>
             </h3>
             <p>
-            <small class="badge badge-red">DELETE</small>
-            <b><code>api/users/{user_id}/follow</code></b>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/users/{user_id}/unfollow</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
@@ -12624,7 +12604,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Authorization" class="auth-value"               data-endpoint="DELETEapi-users--user_id--follow"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-users--user_id--unfollow"
                value="Bearer {YOUR_ACCESS_TOKEN}"
                data-component="header">
     <br>
@@ -12635,7 +12615,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="DELETEapi-users--user_id--follow"
+                              name="Content-Type"                data-endpoint="POSTapi-users--user_id--unfollow"
                value="application/json"
                data-component="header">
     <br>
@@ -12646,7 +12626,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="DELETEapi-users--user_id--follow"
+                              name="Accept"                data-endpoint="POSTapi-users--user_id--unfollow"
                value="application/json"
                data-component="header">
     <br>
@@ -12654,22 +12634,22 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                         <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
                     <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>user_id</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
+                <b style="line-height: 2;"><code>user_id</code></b>&nbsp;&nbsp;<small>integer</small>&nbsp;
+&nbsp;
  &nbsp;
                 <input type="number" style="display: none"
-               step="any"               name="user_id"                data-endpoint="DELETEapi-users--user_id--follow"
+               step="any"               name="user_id"                data-endpoint="POSTapi-users--user_id--unfollow"
                value="1"
                data-component="url">
     <br>
 <p>The ID of the user. Example: <code>1</code></p>
             </div>
                     <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>user</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
+                <b style="line-height: 2;"><code>user</code></b>&nbsp;&nbsp;<small>integer</small>&nbsp;
+&nbsp;
  &nbsp;
                 <input type="number" style="display: none"
-               step="any"               name="user"                data-endpoint="DELETEapi-users--user_id--follow"
+               step="any"               name="user"                data-endpoint="POSTapi-users--user_id--unfollow"
                value="123"
                data-component="url">
     <br>
