@@ -3,12 +3,14 @@
 namespace Modules\Auth\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Support\ApiResponse;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Modules\Auth\Http\Requests\ProfileUpdateRequest;
 use Modules\Auth\Http\Resources\ProfileResource;
 use Modules\Auth\Models\Profile as ProfileModel;
+use Modules\Ad\Models\Ad;
 
 class ProfileController extends Controller
 {
@@ -67,10 +69,16 @@ class ProfileController extends Controller
 
         $profile->loadMissing('user.roles', 'user.permissions');
 
+        $adsMetrics = $this->resolveAdsMetrics($user);
+
         return ApiResponse::success(
             'Profile retrieved successfully.',
             [
-                'profile' => new ProfileResource($profile),
+                'profile' => new ProfileResource(
+                    $profile,
+                    $adsMetrics['ads_count'],
+                    $adsMetrics['total_ad_views']
+                ),
             ]
         );
     }
@@ -166,11 +174,36 @@ class ProfileController extends Controller
 
         $profile->loadMissing('user.roles', 'user.permissions');
 
+        $adsMetrics = $this->resolveAdsMetrics($user);
+
         return ApiResponse::success(
             'Profile updated successfully.',
             [
-                'profile' => new ProfileResource($profile),
+                'profile' => new ProfileResource(
+                    $profile,
+                    $adsMetrics['ads_count'],
+                    $adsMetrics['total_ad_views']
+                ),
             ]
         );
+    }
+
+    /**
+     * Resolve advertisement metrics for the provided user.
+     *
+     * @return array{ads_count:int,total_ad_views:int}
+     */
+    private function resolveAdsMetrics(User $user): array
+    {
+        $metrics = Ad::query()
+            ->where('user_id', $user->getKey())
+            ->selectRaw('COUNT(*) as total_ads, COALESCE(SUM(view_count), 0) as total_views')
+            ->toBase()
+            ->first();
+
+        return [
+            'ads_count' => (int) ($metrics->total_ads ?? 0),
+            'total_ad_views' => (int) ($metrics->total_views ?? 0),
+        ];
     }
 }
