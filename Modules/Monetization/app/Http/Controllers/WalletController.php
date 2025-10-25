@@ -2,12 +2,13 @@
 
 namespace Modules\Monetization\Http\Controllers;
 
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Modules\Monetization\Domain\Contracts\Repositories\WalletRepository;
 use Modules\Monetization\Domain\Services\TopUpWallet;
 use Modules\Monetization\Http\Resources\WalletResource;
-use Illuminate\Http\Request;
 
-class WalletController
+class WalletController extends Controller
 {
     public function __construct(
         private readonly WalletRepository $walletRepository,
@@ -15,6 +16,12 @@ class WalletController
     ) {
     }
 
+    /**
+     * @group Monetization
+     * @authenticated
+     *
+     * Show wallet balance
+     */
     public function show(Request $request): WalletResource
     {
         $wallet = $this->walletRepository->findOrCreateForUser($request->user()->getKey(), 'IRR');
@@ -22,6 +29,12 @@ class WalletController
         return new WalletResource($wallet);
     }
 
+    /**
+     * @group Monetization
+     * @authenticated
+     *
+     * Top up wallet balance
+     */
     public function topUp(Request $request): WalletResource
     {
         $validated = $request->validate([

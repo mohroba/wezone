@@ -65,7 +65,13 @@ class ProfileController extends Controller
         $user = $request->user();
         $profile = $user->profile()->firstOrCreate([]);
 
-        $profile->loadMissing('user.roles', 'user.permissions');
+        $user->forceFill(['last_seen_at' => now()])->saveQuietly();
+
+        $user->loadCount('ads');
+        $user->loadSum('ads as ads_view_sum', 'view_count');
+
+        $user->loadMissing('roles', 'permissions');
+        $profile->setRelation('user', $user);
 
         return ApiResponse::success(
             'Profile retrieved successfully.',
@@ -148,6 +154,11 @@ class ProfileController extends Controller
         $profile->fill($request->safe()->except('profile_image'));
         $profile->save();
 
+        $user->forceFill(['last_seen_at' => now()])->saveQuietly();
+
+        $user->loadCount('ads');
+        $user->loadSum('ads as ads_view_sum', 'view_count');
+
         if ($request->hasFile('profile_image')) {
             $uploadedImage = $request->file('profile_image');
             $mediaName = pathinfo((string) $uploadedImage->getClientOriginalName(), PATHINFO_FILENAME);
@@ -164,7 +175,8 @@ class ProfileController extends Controller
                 ->toMediaCollection(ProfileModel::COLLECTION_PROFILE_IMAGES);
         }
 
-        $profile->loadMissing('user.roles', 'user.permissions');
+        $user->loadMissing('roles', 'permissions');
+        $profile->setRelation('user', $user);
 
         return ApiResponse::success(
             'Profile updated successfully.',

@@ -40,6 +40,11 @@ class ProfileResource extends JsonResource
                         'url' => $media->getUrl(),
                     ])->values(),
             ],
+            'stats' => [
+                'ads_count' => (int) ($user?->ads_count ?? 0),
+                'ads_total_views' => (int) ($user?->ads_view_sum ?? 0),
+                'last_seen_at' => $user?->last_seen_at,
+            ],
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];

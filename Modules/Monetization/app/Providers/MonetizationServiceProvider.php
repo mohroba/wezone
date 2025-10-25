@@ -23,7 +23,7 @@ class MonetizationServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->mergeConfigFrom(module_path('Monetization', 'config/config.php'), 'monetization');
+        $this->mergeConfigFrom(__DIR__ . '/../../config/config.php', 'monetization');
 
         $this->app->bind(PlanRepository::class, EloquentPlanRepository::class);
         $this->app->bind(PurchaseRepository::class, EloquentPurchaseRepository::class);
@@ -36,7 +36,9 @@ class MonetizationServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
-        $this->loadMigrationsFrom(module_path('Monetization', 'database/migrations'));
+        if (! $this->app->environment('testing')) {
+            $this->loadMigrationsFrom(__DIR__ . '/../../database/migrations');
+        }
         $this->registerPolicies();
     }
 

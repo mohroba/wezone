@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -57,12 +58,18 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
             'two_factor_confirmed_at' => 'datetime',
+            'last_seen_at' => 'datetime',
         ];
     }
 
     public function profile(): HasOne
     {
         return $this->hasOne(Profile::class);
+    }
+
+    public function ads(): HasMany
+    {
+        return $this->hasMany(\Modules\Ad\Models\Ad::class);
     }
 
     public function followers(): BelongsToMany
@@ -88,5 +95,32 @@ class User extends Authenticatable
         return $this->relationLoaded('followings')
             ? $this->followings->contains($user)
             : $this->followings()->whereKey($user->getKey())->exists();
+    }
+
+    public function blockedUsers(): BelongsToMany
+    {
+        return $this
+            ->belongsToMany(self::class, 'user_blocks', 'blocker_id', 'blocked_id')
+            ->withPivot('blocked_at')
+            ->withTimestamps();
+    }
+
+    public function blockers(): BelongsToMany
+    {
+        return $this
+            ->belongsToMany(self::class, 'user_blocks', 'blocked_id', 'blocker_id')
+            ->withPivot('blocked_at')
+            ->withTimestamps();
+    }
+
+    public function isBlocking(self $user): bool
+    {
+        if (! $this->exists || ! $user->exists) {
+            return false;
+        }
+
+        return $this->relationLoaded('blockedUsers')
+            ? $this->blockedUsers->contains($user)
+            : $this->blockedUsers()->whereKey($user->getKey())->exists();
     }
 }

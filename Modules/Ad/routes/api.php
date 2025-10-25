@@ -4,9 +4,14 @@ use Illuminate\Support\Facades\Route;
 use Modules\Ad\Http\Controllers\AdAttributeDefinitionController;
 use Modules\Ad\Http\Controllers\AdAttributeGroupController;
 use Modules\Ad\Http\Controllers\AdAttributeValueController;
+use Modules\Ad\Http\Controllers\AdBookmarkController;
 use Modules\Ad\Http\Controllers\AdCategoryController;
+use Modules\Ad\Http\Controllers\AdCommentController;
+use Modules\Ad\Http\Controllers\AdConversationController;
 use Modules\Ad\Http\Controllers\AdController;
+use Modules\Ad\Http\Controllers\AdLikeController;
 use Modules\Ad\Http\Controllers\AdReportController;
+use Modules\Ad\Http\Controllers\AdViewController;
 use Modules\Ad\Http\Controllers\AdvertisableTypeController;
 
 Route::middleware(['api'])->group(function (): void {
@@ -16,6 +21,9 @@ Route::middleware(['api'])->group(function (): void {
     Route::post('ads/{ad}/update', [AdController::class, 'update']);
     Route::post('ads/{ad}/delete', [AdController::class, 'destroy']);
     Route::post('ads/{ad}/images', [AdController::class, 'storeImages']);
+    Route::post('ads/{ad}/views', [AdViewController::class, 'store']);
+
+    Route::get('ads/{ad}/comments', [AdCommentController::class, 'index']);
 
     Route::get('ad-categories', [AdCategoryController::class, 'index']);
     Route::post('ad-categories', [AdCategoryController::class, 'store']);
@@ -51,4 +59,21 @@ Route::middleware(['api', 'auth:api'])->group(function (): void {
     Route::apiResource('ad-reports', AdReportController::class)->except(['store']);
     Route::post('ad-reports/{ad_report}/resolve', [AdReportController::class, 'resolve'])->name('ad-reports.resolve');
     Route::post('ad-reports/{ad_report}/dismiss', [AdReportController::class, 'dismiss'])->name('ad-reports.dismiss');
+
+    Route::post('ads/{ad}/comments', [AdCommentController::class, 'store']);
+    Route::post('ads/{ad}/comments/{comment}/reply', [AdCommentController::class, 'reply']);
+    Route::delete('ad-comments/{comment}', [AdCommentController::class, 'destroy']);
+
+    Route::post('ads/{ad}/like', [AdLikeController::class, 'store']);
+    Route::delete('ads/{ad}/like', [AdLikeController::class, 'destroy']);
+
+    Route::post('ads/{ad}/bookmark', [AdBookmarkController::class, 'store']);
+    Route::delete('ads/{ad}/bookmark', [AdBookmarkController::class, 'destroy']);
+    Route::get('bookmarked-ads', [AdBookmarkController::class, 'index']);
+
+    Route::get('conversations', [AdConversationController::class, 'index']);
+    Route::post('ads/{ad}/conversations', [AdConversationController::class, 'store']);
+    Route::get('conversations/{conversation}', [AdConversationController::class, 'show']);
+    Route::post('conversations/{conversation}/messages', [AdConversationController::class, 'sendMessage']);
+    Route::delete('conversations/{conversation}', [AdConversationController::class, 'destroy']);
 });
