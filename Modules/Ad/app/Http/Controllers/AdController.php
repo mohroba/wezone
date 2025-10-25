@@ -8,6 +8,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
@@ -25,6 +26,8 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
  */
 class AdController extends Controller
 {
+    private const VIEW_TRACK_TTL_MINUTES = 60;
+
     /**
      * List ads
      *
@@ -229,6 +232,37 @@ class AdController extends Controller
         return response()->noContent();
     }
 
+    /**
+     * Register an ad view
+     *
+     * @group Ads
+     *
+     * Safely record a view for the specified ad. Repeated requests from the same viewer
+     * within a short time window are ignored to avoid double counting.
+     *
+     * @responseField data.id int The ad identifier.
+     * @responseField data.view_count int The updated total number of views.
+     * @responseField data.incremented bool Indicates whether the counter increased.
+     */
+    public function markSeen(Request $request, Ad $ad): JsonResponse
+    {
+        $cacheKey = $this->viewTrackerCacheKey($request, $ad);
+        $viewRecorded = Cache::add($cacheKey, true, now()->addMinutes(self::VIEW_TRACK_TTL_MINUTES));
+
+        if ($viewRecorded) {
+            $ad->increment('view_count');
+            $ad->refresh();
+        }
+
+        return response()->json([
+            'data' => [
+                'id' => $ad->getKey(),
+                'view_count' => $ad->view_count,
+                'incremented' => $viewRecorded,
+            ],
+        ]);
+    }
+
     private function createAdvertisableModel(string $type, array $attributes, ?string $slug): Model
     {
         /** @var Model $model */
@@ -372,5 +406,26 @@ class AdController extends Controller
         if ($orderedIds !== []) {
             Media::setNewOrder($orderedIds);
         }
+    }
+
+    private function viewTrackerCacheKey(Request $request, Ad $ad): string
+    {
+        $viewerKey = $this->resolveViewerKey($request);
+
+        return sprintf('ads:%s:viewers:%s', $ad->getKey(), $viewerKey);
+    }
+
+    private function resolveViewerKey(Request $request): string
+    {
+        $user = $request->user();
+
+        if ($user !== null) {
+            return 'user:' . $user->getAuthIdentifier();
+        }
+
+        $ipAddress = $request->ip() ?? 'unknown-ip';
+        $userAgent = $request->userAgent() ?? 'unknown-agent';
+
+        return 'guest:' . sha1($ipAddress . '|' . $userAgent);
     }
 }

@@ -16,6 +16,7 @@ Route::middleware(['api'])->group(function (): void {
     Route::post('ads/{ad}/update', [AdController::class, 'update']);
     Route::post('ads/{ad}/delete', [AdController::class, 'destroy']);
     Route::post('ads/{ad}/images', [AdController::class, 'storeImages']);
+    Route::post('ads/{ad}/seen', [AdController::class, 'markSeen']);
 
     Route::get('ad-categories', [AdCategoryController::class, 'index']);
     Route::post('ad-categories', [AdCategoryController::class, 'store']);
