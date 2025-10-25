@@ -4,6 +4,7 @@ namespace Modules\Auth\Tests\Feature;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Date;
 use Laravel\Passport\Passport;
 use Modules\Ad\Models\Ad;
 use Modules\Auth\Models\Profile;
@@ -52,6 +53,35 @@ class ProfileControllerTest extends TestCase
             ->assertOk()
             ->assertJsonPath('data.profile.ads_count', 2)
             ->assertJsonPath('data.profile.total_ad_views', 12);
+    }
+
+    public function test_profile_show_endpoint_updates_last_seen_timestamp(): void
+    {
+        $user = User::factory()->create();
+        $profile = Profile::factory()->for($user)->create([
+            'last_seen_at' => Date::now()->subDay(),
+        ]);
+
+        $expectedLastSeen = Date::now()->addMinutes(5)->setMicrosecond(0);
+
+        Date::setTestNow($expectedLastSeen);
+
+        try {
+            Passport::actingAs($user);
+
+            $response = $this->getJson('/api/auth/profile');
+
+            $response
+                ->assertOk()
+                ->assertJsonPath('data.profile.last_seen_at', $expectedLastSeen->toJSON());
+
+            $this->assertDatabaseHas('profiles', [
+                'id' => $profile->id,
+                'last_seen_at' => $expectedLastSeen->toDateTimeString(),
+            ]);
+        } finally {
+            Date::setTestNow();
+        }
     }
 
     public function test_profile_update_endpoint_returns_ads_metrics(): void

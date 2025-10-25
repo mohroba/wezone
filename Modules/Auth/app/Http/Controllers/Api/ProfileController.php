@@ -67,6 +67,12 @@ class ProfileController extends Controller
         $user = $request->user();
         $profile = $user->profile()->firstOrCreate([]);
 
+        $profile->forceFill(['last_seen_at' => now()]);
+
+        if ($profile->isDirty('last_seen_at')) {
+            $profile->save();
+        }
+
         $profile->loadMissing('user.roles', 'user.permissions');
 
         $adsMetrics = $this->resolveAdsMetrics($user);
