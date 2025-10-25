@@ -35,7 +35,7 @@ Route::prefix('kpi')->group(function () {
     Route::post('installations', [InstallationController::class, 'store']);
     Route::post('uninstallations', [UninstallationController::class, 'store']);
     Route::post('sessions', [SessionController::class, 'store']);
-    Route::patch('sessions/{session:session_uuid}', [SessionController::class, 'update']);
+    Route::post('sessions/{session:session_uuid}/update', [SessionController::class, 'update']);
     Route::post('events', [EventController::class, 'store']);
 });
 

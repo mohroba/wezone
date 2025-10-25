@@ -61,7 +61,7 @@ class FollowApiTest extends TestCase
             'followed_id' => $target->id,
         ]);
 
-        $response = $this->deleteJson("/api/users/{$target->id}/follow");
+        $response = $this->postJson("/api/users/{$target->id}/unfollow");
 
         $response
             ->assertOk()
