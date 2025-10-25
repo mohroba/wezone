@@ -10,6 +10,18 @@ use Modules\Auth\Models\Profile;
  */
 class ProfileResource extends JsonResource
 {
+    private int $adsCount;
+
+    private int $totalAdViews;
+
+    public function __construct($resource, int $adsCount = 0, int $totalAdViews = 0)
+    {
+        parent::__construct($resource);
+
+        $this->adsCount = max(0, $adsCount);
+        $this->totalAdViews = max(0, $totalAdViews);
+    }
+
     public function toArray($request): array
     {
         $user = $this->whenLoaded('user');
@@ -40,6 +52,8 @@ class ProfileResource extends JsonResource
                         'url' => $media->getUrl(),
                     ])->values(),
             ],
+            'ads_count' => $this->adsCount,
+            'total_ad_views' => $this->totalAdViews,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];
