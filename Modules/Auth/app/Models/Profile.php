@@ -25,12 +25,14 @@ class Profile extends Model implements HasMedia
         'national_id',
         'residence_city_id',
         'residence_province_id',
+        'last_seen_at',
     ];
 
     protected $casts = [
         'birth_date' => 'date',
         'residence_city_id' => 'integer',
         'residence_province_id' => 'integer',
+        'last_seen_at' => 'datetime',
     ];
 
     protected $appends = ['full_name'];

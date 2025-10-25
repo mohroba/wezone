@@ -56,6 +56,7 @@ class ProfileResource extends JsonResource
             'total_ad_views' => $this->totalAdViews,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
+            'last_seen_at' => $this->last_seen_at,
         ];
     }
 }
