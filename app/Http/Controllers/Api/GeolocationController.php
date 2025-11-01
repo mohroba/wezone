@@ -198,12 +198,13 @@ class GeolocationController extends Controller
     private function distanceExpression(string $latitudeColumn, string $longitudeColumn): string
     {
         return sprintf(
-            '6371 * ACOS(MIN(1, MAX(-1, COS(? * %3$f) * COS(%1$s * %3$f) * COS((%2$s - ?) * %3$f) + SIN(? * %3$f) * SIN(%1$s * %3$f))))',
+            '6371 * ACOS(LEAST(1, GREATEST(-1, COS(? * %3$f) * COS(%1$s * %3$f) * COS((%2$s - ?) * %3$f) + SIN(? * %3$f) * SIN(%1$s * %3$f))))',
             $latitudeColumn,
             $longitudeColumn,
             self::DEGREE_TO_RADIAN
         );
     }
+
 
     private function filterByRadius(Collection $items, ?float $maxDistance): Collection
     {
