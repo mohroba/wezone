@@ -27,7 +27,6 @@ return new class extends Migration {
             $table->timestamps();
 
             $table->unique('ref_id');
-            $table->index(['payable_type', 'payable_id']);
             $table->index(['status', 'created_at']);
             $table->unique(['idempotency_key', 'gateway']);
         });

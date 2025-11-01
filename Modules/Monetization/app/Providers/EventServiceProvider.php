@@ -3,27 +3,25 @@
 namespace Modules\Monetization\Providers;
 
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
-use Modules\Monetization\Domain\Events\PaymentSucceeded;
-use Modules\Monetization\Domain\Events\PurchaseActivated;
-use Modules\Monetization\Domain\Events\RefundProcessed;
-use Modules\Monetization\Domain\Listeners\LogKpiEvent;
-use Modules\Monetization\Domain\Listeners\SendUserNotification;
 
 class EventServiceProvider extends ServiceProvider
 {
-    protected $subscribe = [
-        LogKpiEvent::class,
-    ];
+    /**
+     * The event handler mappings for the application.
+     *
+     * @var array<string, array<int, string>>
+     */
+    protected $listen = [];
 
-    protected $listen = [
-        PaymentSucceeded::class => [
-            [SendUserNotification::class, 'handlePaymentSucceeded'],
-        ],
-        PurchaseActivated::class => [
-            [SendUserNotification::class, 'handlePurchaseActivated'],
-        ],
-        RefundProcessed::class => [
-            [SendUserNotification::class, 'handleRefundProcessed'],
-        ],
-    ];
+    /**
+     * Indicates if events should be discovered.
+     *
+     * @var bool
+     */
+    protected static $shouldDiscoverEvents = true;
+
+    /**
+     * Configure the proper event listeners for email verification.
+     */
+    protected function configureEmailVerification(): void {}
 }

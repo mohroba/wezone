@@ -174,6 +174,67 @@
                                                                                 <li class="tocify-item level-2" data-unique="ads-POSTapi-ads--ad_id--delete">
                                 <a href="#ads-POSTapi-ads--ad_id--delete">Delete an ad</a>
                             </li>
+                                                                                <li class="tocify-item level-2" data-unique="ads-POSTapi-ads--ad_id--images">
+                                <a href="#ads-POSTapi-ads--ad_id--images">Upload ad images</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="ads-POSTapi-ads--ad_id--seen">
+                                <a href="#ads-POSTapi-ads--ad_id--seen">Register an ad view</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="ads-GETapi-advertisable-types">
+                                <a href="#ads-GETapi-advertisable-types">List supported advertisable types.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="ads-GETapi-advertisable-types--key-">
+                                <a href="#ads-GETapi-advertisable-types--key-">Show metadata for an advertisable type.</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
+                    <ul id="tocify-header-ads-review" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="ads-review">
+                    <a href="#ads-review">Ads Review</a>
+                </li>
+                                    <ul id="tocify-subheader-ads-review" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="ads-review-POSTapi-kpi-devices-register">
+                                <a href="#ads-review-POSTapi-kpi-devices-register">Register or update a KPI device heartbeat profile.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="ads-review-POSTapi-kpi-devices-heartbeat">
+                                <a href="#ads-review-POSTapi-kpi-devices-heartbeat">Record a KPI device heartbeat.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="ads-review-POSTapi-kpi-installations">
+                                <a href="#ads-review-POSTapi-kpi-installations">Track a new installation event.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="ads-review-POSTapi-kpi-uninstallations">
+                                <a href="#ads-review-POSTapi-kpi-uninstallations">Track an uninstall event.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="ads-review-POSTapi-kpi-sessions">
+                                <a href="#ads-review-POSTapi-kpi-sessions">Record or update a KPI session.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="ads-review-POSTapi-kpi-sessions--session_session_uuid--update">
+                                <a href="#ads-review-POSTapi-kpi-sessions--session_session_uuid--update">Update a KPI session.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="ads-review-POSTapi-kpi-events">
+                                <a href="#ads-review-POSTapi-kpi-events">Record KPI events for a device session.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="ads-review-POSTapi-ad-reports">
+                                <a href="#ads-review-POSTapi-ad-reports">Create an ad report.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="ads-review-GETapi-ad-reports">
+                                <a href="#ads-review-GETapi-ad-reports">List ad reports.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="ads-review-GETapi-ad-reports--id-">
+                                <a href="#ads-review-GETapi-ad-reports--id-">View an ad report.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="ads-review-POSTapi-ad-reports--id--update">
+                                <a href="#ads-review-POSTapi-ad-reports--id--update">Update an ad report.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="ads-review-POSTapi-ad-reports--id--delete">
+                                <a href="#ads-review-POSTapi-ad-reports--id--delete">Delete an ad report.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="ads-review-POSTapi-ad-reports--ad_report_id--resolve">
+                                <a href="#ads-review-POSTapi-ad-reports--ad_report_id--resolve">Resolve an ad report.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="ads-review-POSTapi-ad-reports--ad_report_id--dismiss">
+                                <a href="#ads-review-POSTapi-ad-reports--ad_report_id--dismiss">Dismiss an ad report.</a>
+                            </li>
                                                                         </ul>
                             </ul>
                     <ul id="tocify-header-auth" class="tocify-header">
@@ -238,31 +299,85 @@
                             </li>
                                                                         </ul>
                             </ul>
-                    <ul id="tocify-header-ads-review" class="tocify-header">
-                <li class="tocify-item level-1" data-unique="ads-review">
-                    <a href="#ads-review">Ads Review</a>
+                    <ul id="tocify-header-others" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="others">
+                    <a href="#others">Others</a>
                 </li>
-                                    <ul id="tocify-subheader-ads-review" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="ads-review-POSTapi-kpi-devices-register">
-                                <a href="#ads-review-POSTapi-kpi-devices-register">POST api/kpi/devices/register</a>
+                                    <ul id="tocify-subheader-others" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="others-GETapi-ads-conversations">
+                                <a href="#others-GETapi-ads-conversations">GET api/ads/conversations</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="ads-review-POSTapi-kpi-devices-heartbeat">
-                                <a href="#ads-review-POSTapi-kpi-devices-heartbeat">POST api/kpi/devices/heartbeat</a>
+                                                                                <li class="tocify-item level-2" data-unique="others-POSTapi-ads--ad_id--conversations">
+                                <a href="#others-POSTapi-ads--ad_id--conversations">POST api/ads/{ad_id}/conversations</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="ads-review-POSTapi-kpi-installations">
-                                <a href="#ads-review-POSTapi-kpi-installations">POST api/kpi/installations</a>
+                                                                                <li class="tocify-item level-2" data-unique="others-POSTapi-ads-conversations--conversation_id--delete">
+                                <a href="#others-POSTapi-ads-conversations--conversation_id--delete">POST api/ads/conversations/{conversation_id}/delete</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="ads-review-POSTapi-kpi-uninstallations">
-                                <a href="#ads-review-POSTapi-kpi-uninstallations">POST api/kpi/uninstallations</a>
+                                                                                <li class="tocify-item level-2" data-unique="others-GETapi-ads-conversations--conversation_id--messages">
+                                <a href="#others-GETapi-ads-conversations--conversation_id--messages">GET api/ads/conversations/{conversation_id}/messages</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="ads-review-POSTapi-kpi-sessions">
-                                <a href="#ads-review-POSTapi-kpi-sessions">POST api/kpi/sessions</a>
+                                                                                <li class="tocify-item level-2" data-unique="others-POSTapi-ads-conversations--conversation_id--messages">
+                                <a href="#others-POSTapi-ads-conversations--conversation_id--messages">POST api/ads/conversations/{conversation_id}/messages</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="ads-review-POSTapi-kpi-sessions--session_session_uuid--update">
-                                <a href="#ads-review-POSTapi-kpi-sessions--session_session_uuid--update">POST api/kpi/sessions/{session_session_uuid}/update</a>
+                                                                                <li class="tocify-item level-2" data-unique="others-GETapi-ads-bookmarks">
+                                <a href="#others-GETapi-ads-bookmarks">GET api/ads/bookmarks</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="ads-review-POSTapi-kpi-events">
-                                <a href="#ads-review-POSTapi-kpi-events">POST api/kpi/events</a>
+                                                                                <li class="tocify-item level-2" data-unique="others-GETapi-ads--ad_id--comments">
+                                <a href="#others-GETapi-ads--ad_id--comments">GET api/ads/{ad_id}/comments</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="others-POSTapi-ads--ad_id--comments">
+                                <a href="#others-POSTapi-ads--ad_id--comments">POST api/ads/{ad_id}/comments</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="others-POSTapi-ads--ad_id--bookmark">
+                                <a href="#others-POSTapi-ads--ad_id--bookmark">POST api/ads/{ad_id}/bookmark</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="others-POSTapi-ads--ad_id--like">
+                                <a href="#others-POSTapi-ads--ad_id--like">POST api/ads/{ad_id}/like</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="others-GETapi-monetization-plans">
+                                <a href="#others-GETapi-monetization-plans">GET api/monetization/plans</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="others-POSTapi-monetization-purchases">
+                                <a href="#others-POSTapi-monetization-purchases">POST api/monetization/purchases</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="others-GETapi-monetization-purchases--id-">
+                                <a href="#others-GETapi-monetization-purchases--id-">GET api/monetization/purchases/{id}</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="others-POSTapi-monetization-purchases--purchase_id--bump">
+                                <a href="#others-POSTapi-monetization-purchases--purchase_id--bump">POST api/monetization/purchases/{purchase_id}/bump</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="others-POSTapi-monetization-purchases--purchase_id--payments-initiate">
+                                <a href="#others-POSTapi-monetization-purchases--purchase_id--payments-initiate">POST api/monetization/purchases/{purchase_id}/payments/initiate</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="others-POSTapi-monetization-payments-verify">
+                                <a href="#others-POSTapi-monetization-payments-verify">POST api/monetization/payments/verify</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="others-GETapi-monetization-wallet">
+                                <a href="#others-GETapi-monetization-wallet">GET api/monetization/wallet</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="others-POSTapi-monetization-wallet-top-up">
+                                <a href="#others-POSTapi-monetization-wallet-top-up">POST api/monetization/wallet/top-up</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="others-GETapi-v1-notifications">
+                                <a href="#others-GETapi-v1-notifications">GET api/v1/notifications</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="others-POSTapi-v1-notifications-read">
+                                <a href="#others-POSTapi-v1-notifications-read">POST api/v1/notifications/read</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="others-POSTapi-v1-notifications--notification_id--read">
+                                <a href="#others-POSTapi-v1-notifications--notification_id--read">POST api/v1/notifications/{notification_id}/read</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="others-POSTapi-v1-notifications--notification_id--acknowledge">
+                                <a href="#others-POSTapi-v1-notifications--notification_id--acknowledge">POST api/v1/notifications/{notification_id}/acknowledge</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="others-POSTapi-users--user_id--block">
+                                <a href="#others-POSTapi-users--user_id--block">POST api/users/{user_id}/block</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="others-POSTapi-users--user_id--unblock">
+                                <a href="#others-POSTapi-users--user_id--unblock">POST api/users/{user_id}/unblock</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="others-GETapi-users-blocks">
+                                <a href="#others-GETapi-users-blocks">GET api/users/blocks</a>
                             </li>
                                                                         </ul>
                             </ul>
@@ -280,11 +395,11 @@
                                                                                 <li class="tocify-item level-2" data-unique="settings-GETapi-v1-settings--id-">
                                 <a href="#settings-GETapi-v1-settings--id-">Show the specified resource.</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="settings-PUTapi-v1-settings--id-">
-                                <a href="#settings-PUTapi-v1-settings--id-">Update the specified resource in storage.</a>
+                                                                                <li class="tocify-item level-2" data-unique="settings-POSTapi-v1-settings--id--update">
+                                <a href="#settings-POSTapi-v1-settings--id--update">Update the specified resource in storage.</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="settings-DELETEapi-v1-settings--id-">
-                                <a href="#settings-DELETEapi-v1-settings--id-">Remove the specified resource from storage.</a>
+                                                                                <li class="tocify-item level-2" data-unique="settings-POSTapi-v1-settings--id--delete">
+                                <a href="#settings-POSTapi-v1-settings--id--delete">Remove the specified resource from storage.</a>
                             </li>
                                                                         </ul>
                             </ul>
@@ -293,17 +408,17 @@
                     <a href="#users">Users</a>
                 </li>
                                     <ul id="tocify-subheader-users" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="users-GETapi-users--user_id--followers">
-                                <a href="#users-GETapi-users--user_id--followers">GET api/users/{user_id}/followers</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="users-GETapi-users">
-                                <a href="#users-GETapi-users">GET api/users</a>
-                            </li>
                                                     <li class="tocify-item level-2" data-unique="users-POSTapi-users--user_id--follow">
                                 <a href="#users-POSTapi-users--user_id--follow">Follow a user.</a>
                             </li>
-                                                    <li class="tocify-item level-2" data-unique="users-POSTapi-users--user_id--unfollow">
+                                                                                <li class="tocify-item level-2" data-unique="users-POSTapi-users--user_id--unfollow">
                                 <a href="#users-POSTapi-users--user_id--unfollow">Unfollow a user.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="users-GETapi-users--user_id--followers">
+                                <a href="#users-GETapi-users--user_id--followers">List a user's followers.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="users-GETapi-users">
+                                <a href="#users-GETapi-users">Search users.</a>
                             </li>
                                                                         </ul>
                             </ul>
@@ -316,7 +431,7 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: October 5, 2025</li>
+        <li>Last updated: October 29, 2025</li>
     </ul>
 </div>
 
@@ -388,7 +503,7 @@ fetch(url, {
 
 <span id="example-responses-GETapi-ad-attribute-definitions">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (500):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -400,42 +515,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;data&quot;: [],
-    &quot;links&quot;: {
-        &quot;first&quot;: &quot;https://api.wezone.app/api/ad-attribute-definitions?group_id=4&amp;per_page=25&amp;without_pagination=0&amp;page=1&quot;,
-        &quot;last&quot;: &quot;https://api.wezone.app/api/ad-attribute-definitions?group_id=4&amp;per_page=25&amp;without_pagination=0&amp;page=1&quot;,
-        &quot;prev&quot;: null,
-        &quot;next&quot;: null
-    },
-    &quot;meta&quot;: {
-        &quot;current_page&quot;: 1,
-        &quot;from&quot;: null,
-        &quot;last_page&quot;: 1,
-        &quot;links&quot;: [
-            {
-                &quot;url&quot;: null,
-                &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
-                &quot;page&quot;: null,
-                &quot;active&quot;: false
-            },
-            {
-                &quot;url&quot;: &quot;https://api.wezone.app/api/ad-attribute-definitions?group_id=4&amp;per_page=25&amp;without_pagination=0&amp;page=1&quot;,
-                &quot;label&quot;: &quot;1&quot;,
-                &quot;page&quot;: 1,
-                &quot;active&quot;: true
-            },
-            {
-                &quot;url&quot;: null,
-                &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
-                &quot;page&quot;: null,
-                &quot;active&quot;: false
-            }
-        ],
-        &quot;path&quot;: &quot;https://api.wezone.app/api/ad-attribute-definitions&quot;,
-        &quot;per_page&quot;: 25,
-        &quot;to&quot;: null,
-        &quot;total&quot;: 0
-    }
+    &quot;message&quot;: &quot;Server Error&quot;
 }</code>
  </pre>
     </span>
@@ -916,7 +996,7 @@ fetch(url, {
 
 <span id="example-responses-GETapi-ad-attribute-definitions--ad_attribute_definition_id-">
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (500):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -928,7 +1008,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;No query results for model [Modules\\Ad\\Models\\AdAttributeDefinition] architecto&quot;
+    &quot;message&quot;: &quot;Server Error&quot;
 }</code>
  </pre>
     </span>
@@ -1536,7 +1616,7 @@ fetch(url, {
 
 <span id="example-responses-GETapi-ad-attribute-groups">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (500):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -1548,42 +1628,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;data&quot;: [],
-    &quot;links&quot;: {
-        &quot;first&quot;: &quot;https://api.wezone.app/api/ad-attribute-groups?advertisable_type=Modules%5C%5CAd%5C%5CModels%5C%5CAdCar&amp;category_id=8&amp;per_page=25&amp;without_pagination=0&amp;page=1&quot;,
-        &quot;last&quot;: &quot;https://api.wezone.app/api/ad-attribute-groups?advertisable_type=Modules%5C%5CAd%5C%5CModels%5C%5CAdCar&amp;category_id=8&amp;per_page=25&amp;without_pagination=0&amp;page=1&quot;,
-        &quot;prev&quot;: null,
-        &quot;next&quot;: null
-    },
-    &quot;meta&quot;: {
-        &quot;current_page&quot;: 1,
-        &quot;from&quot;: null,
-        &quot;last_page&quot;: 1,
-        &quot;links&quot;: [
-            {
-                &quot;url&quot;: null,
-                &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
-                &quot;page&quot;: null,
-                &quot;active&quot;: false
-            },
-            {
-                &quot;url&quot;: &quot;https://api.wezone.app/api/ad-attribute-groups?advertisable_type=Modules%5C%5CAd%5C%5CModels%5C%5CAdCar&amp;category_id=8&amp;per_page=25&amp;without_pagination=0&amp;page=1&quot;,
-                &quot;label&quot;: &quot;1&quot;,
-                &quot;page&quot;: 1,
-                &quot;active&quot;: true
-            },
-            {
-                &quot;url&quot;: null,
-                &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
-                &quot;page&quot;: null,
-                &quot;active&quot;: false
-            }
-        ],
-        &quot;path&quot;: &quot;https://api.wezone.app/api/ad-attribute-groups&quot;,
-        &quot;per_page&quot;: 25,
-        &quot;to&quot;: null,
-        &quot;total&quot;: 0
-    }
+    &quot;message&quot;: &quot;Server Error&quot;
 }</code>
  </pre>
     </span>
@@ -1948,7 +1993,7 @@ fetch(url, {
 
 <span id="example-responses-GETapi-ad-attribute-groups--ad_attribute_group_id-">
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (500):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -1960,7 +2005,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;No query results for model [Modules\\Ad\\Models\\AdAttributeGroup] architecto&quot;
+    &quot;message&quot;: &quot;Server Error&quot;
 }</code>
  </pre>
     </span>
@@ -2442,7 +2487,7 @@ fetch(url, {
 
 <span id="example-responses-GETapi-ad-attribute-values">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (500):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -2454,42 +2499,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;data&quot;: [],
-    &quot;links&quot;: {
-        &quot;first&quot;: &quot;https://api.wezone.app/api/ad-attribute-values?definition_id=12&amp;advertisable_type=Modules%5C%5CAd%5C%5CModels%5C%5CAdCar&amp;advertisable_id=34&amp;per_page=25&amp;without_pagination=0&amp;page=1&quot;,
-        &quot;last&quot;: &quot;https://api.wezone.app/api/ad-attribute-values?definition_id=12&amp;advertisable_type=Modules%5C%5CAd%5C%5CModels%5C%5CAdCar&amp;advertisable_id=34&amp;per_page=25&amp;without_pagination=0&amp;page=1&quot;,
-        &quot;prev&quot;: null,
-        &quot;next&quot;: null
-    },
-    &quot;meta&quot;: {
-        &quot;current_page&quot;: 1,
-        &quot;from&quot;: null,
-        &quot;last_page&quot;: 1,
-        &quot;links&quot;: [
-            {
-                &quot;url&quot;: null,
-                &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
-                &quot;page&quot;: null,
-                &quot;active&quot;: false
-            },
-            {
-                &quot;url&quot;: &quot;https://api.wezone.app/api/ad-attribute-values?definition_id=12&amp;advertisable_type=Modules%5C%5CAd%5C%5CModels%5C%5CAdCar&amp;advertisable_id=34&amp;per_page=25&amp;without_pagination=0&amp;page=1&quot;,
-                &quot;label&quot;: &quot;1&quot;,
-                &quot;page&quot;: 1,
-                &quot;active&quot;: true
-            },
-            {
-                &quot;url&quot;: null,
-                &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
-                &quot;page&quot;: null,
-                &quot;active&quot;: false
-            }
-        ],
-        &quot;path&quot;: &quot;https://api.wezone.app/api/ad-attribute-values&quot;,
-        &quot;per_page&quot;: 25,
-        &quot;to&quot;: null,
-        &quot;total&quot;: 0
-    }
+    &quot;message&quot;: &quot;Server Error&quot;
 }</code>
  </pre>
     </span>
@@ -2950,7 +2960,7 @@ fetch(url, {
 
 <span id="example-responses-GETapi-ad-attribute-values--ad_attribute_value_id-">
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (500):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -2962,7 +2972,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;No query results for model [Modules\\Ad\\Models\\AdAttributeValue] architecto&quot;
+    &quot;message&quot;: &quot;Server Error&quot;
 }</code>
  </pre>
     </span>
@@ -3529,7 +3539,7 @@ fetch(url, {
 
 <span id="example-responses-GETapi-ad-categories">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (500):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -3541,42 +3551,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;data&quot;: [],
-    &quot;links&quot;: {
-        &quot;first&quot;: &quot;https://api.wezone.app/api/ad-categories?parent_id=1&amp;only_active=1&amp;search=vehicles&amp;per_page=50&amp;without_pagination=0&amp;page=1&quot;,
-        &quot;last&quot;: &quot;https://api.wezone.app/api/ad-categories?parent_id=1&amp;only_active=1&amp;search=vehicles&amp;per_page=50&amp;without_pagination=0&amp;page=1&quot;,
-        &quot;prev&quot;: null,
-        &quot;next&quot;: null
-    },
-    &quot;meta&quot;: {
-        &quot;current_page&quot;: 1,
-        &quot;from&quot;: null,
-        &quot;last_page&quot;: 1,
-        &quot;links&quot;: [
-            {
-                &quot;url&quot;: null,
-                &quot;label&quot;: &quot;&amp;laquo; Previous&quot;,
-                &quot;page&quot;: null,
-                &quot;active&quot;: false
-            },
-            {
-                &quot;url&quot;: &quot;https://api.wezone.app/api/ad-categories?parent_id=1&amp;only_active=1&amp;search=vehicles&amp;per_page=50&amp;without_pagination=0&amp;page=1&quot;,
-                &quot;label&quot;: &quot;1&quot;,
-                &quot;page&quot;: 1,
-                &quot;active&quot;: true
-            },
-            {
-                &quot;url&quot;: null,
-                &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
-                &quot;page&quot;: null,
-                &quot;active&quot;: false
-            }
-        ],
-        &quot;path&quot;: &quot;https://api.wezone.app/api/ad-categories&quot;,
-        &quot;per_page&quot;: 50,
-        &quot;to&quot;: null,
-        &quot;total&quot;: 0
-    }
+    &quot;message&quot;: &quot;Server Error&quot;
 }</code>
  </pre>
     </span>
@@ -4029,7 +4004,7 @@ fetch(url, {
 
 <span id="example-responses-GETapi-ad-categories--ad_category_id-">
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (500):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -4041,7 +4016,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;No query results for model [Modules\\Ad\\Models\\AdCategory] architecto&quot;
+    &quot;message&quot;: &quot;Server Error&quot;
 }</code>
  </pre>
     </span>
@@ -4808,8 +4783,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Accept: application/json" \
     --data "{
     \"user_id\": 42,
-    \"advertisable_type\": \"Modules\\\\Ad\\\\Models\\\\AdCar\",
-    \"advertisable_id\": 10,
+    \"advertisable\": {
+        \"type\": \"Modules\\\\Ad\\\\Models\\\\AdCar\",
+        \"attributes\": {
+            \"brand_id\": 12,
+            \"model_id\": 30,
+            \"year\": 2023
+        }
+    },
     \"slug\": \"peugeot-206-2024\",
     \"title\": \"Peugeot 206 2024\",
     \"subtitle\": \"Full options, low mileage\",
@@ -4839,6 +4820,15 @@ You can check the Dev Tools console for debugging information.</code></pre>
             \"is_primary\": true,
             \"assigned_by\": 42
         }
+    ],
+    \"images\": [
+        {
+            \"id\": 16,
+            \"custom_properties\": {
+                \"alt\": \"n\",
+                \"caption\": \"g\"
+            }
+        }
     ]
 }"
 </code></pre></div>
@@ -4857,8 +4847,14 @@ const headers = {
 
 let body = {
     "user_id": 42,
-    "advertisable_type": "Modules\\Ad\\Models\\AdCar",
-    "advertisable_id": 10,
+    "advertisable": {
+        "type": "Modules\\Ad\\Models\\AdCar",
+        "attributes": {
+            "brand_id": 12,
+            "model_id": 30,
+            "year": 2023
+        }
+    },
     "slug": "peugeot-206-2024",
     "title": "Peugeot 206 2024",
     "subtitle": "Full options, low mileage",
@@ -4887,6 +4883,15 @@ let body = {
             "id": 7,
             "is_primary": true,
             "assigned_by": 42
+        }
+    ],
+    "images": [
+        {
+            "id": 16,
+            "custom_properties": {
+                "alt": "n",
+                "caption": "g"
+            }
         }
     ]
 };
@@ -4994,28 +4999,39 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Identifier of the ad owner. The <code>id</code> of an existing record in the users table. Example: <code>42</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>advertisable_type</code></b>&nbsp;&nbsp;
+        <details>
+            <summary style="padding-bottom: 10px;">
+                <b style="line-height: 2;"><code>advertisable</code></b>&nbsp;&nbsp;
+<small>object</small>&nbsp;
+ &nbsp;
+<br>
+<p>Payload describing the advertisable subtype and its attributes.</p>
+            </summary>
+                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>type</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="advertisable_type"                data-endpoint="POSTapi-ads"
+                              name="advertisable.type"                data-endpoint="POSTapi-ads"
                value="Modules\Ad\Models\AdCar"
                data-component="body">
     <br>
-<p>Fully qualified class name of the advertisable subtype. Example: <code>Modules\Ad\Models\AdCar</code></p>
+<p>Example: <code>Modules\Ad\Models\AdCar</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>Modules\Ad\Models\AdCar</code></li> <li><code>Modules\Ad\Models\AdRealEstate</code></li> <li><code>Modules\Ad\Models\AdJob</code></li></ul>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>advertisable_id</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
+                    </div>
+                                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>attributes</code></b>&nbsp;&nbsp;
+<small>object</small>&nbsp;
  &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="advertisable_id"                data-endpoint="POSTapi-ads"
-               value="10"
+                <input type="text" style="display: none"
+                              name="advertisable.attributes"                data-endpoint="POSTapi-ads"
+               value=""
                data-component="body">
     <br>
-<p>Identifier of the advertisable record. Example: <code>10</code></p>
+
+                    </div>
+                                    </details>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>slug</code></b>&nbsp;&nbsp;
@@ -5324,6 +5340,72 @@ Must be one of:
                     </div>
                                     </details>
         </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+        <details>
+            <summary style="padding-bottom: 10px;">
+                <b style="line-height: 2;"><code>images</code></b>&nbsp;&nbsp;
+<small>object[]</small>&nbsp;
+<i>optional</i> &nbsp;
+<br>
+
+            </summary>
+                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="images.0.id"                data-endpoint="POSTapi-ads"
+               value="16"
+               data-component="body">
+    <br>
+<p>The <code>id</code> of an existing record in the media table. Example: <code>16</code></p>
+                    </div>
+                                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>file</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="images.0.file"                data-endpoint="POSTapi-ads"
+               value=""
+               data-component="body">
+    <br>
+
+                    </div>
+                                                                <div style=" margin-left: 14px; clear: unset;">
+        <details>
+            <summary style="padding-bottom: 10px;">
+                <b style="line-height: 2;"><code>custom_properties</code></b>&nbsp;&nbsp;
+<small>object</small>&nbsp;
+<i>optional</i> &nbsp;
+<br>
+
+            </summary>
+                                                <div style="margin-left: 28px; clear: unset;">
+                        <b style="line-height: 2;"><code>alt</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="images.0.custom_properties.alt"                data-endpoint="POSTapi-ads"
+               value="n"
+               data-component="body">
+    <br>
+<p>Must not be greater than 255 characters. Example: <code>n</code></p>
+                    </div>
+                                                                <div style="margin-left: 28px; clear: unset;">
+                        <b style="line-height: 2;"><code>caption</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="images.0.custom_properties.caption"                data-endpoint="POSTapi-ads"
+               value="g"
+               data-component="body">
+    <br>
+<p>Must not be greater than 255 characters. Example: <code>g</code></p>
+                    </div>
+                                    </details>
+        </div>
+                                        </details>
+        </div>
         </form>
 
                     <h2 id="ads-GETapi-ads--ad_id-">Show ad details</h2>
@@ -5366,7 +5448,7 @@ fetch(url, {
 
 <span id="example-responses-GETapi-ads--ad_id-">
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (500):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -5378,7 +5460,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;No query results for model [Modules\\Ad\\Models\\Ad] 16&quot;
+    &quot;message&quot;: &quot;Server Error&quot;
 }</code>
  </pre>
     </span>
@@ -5496,8 +5578,13 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Accept: application/json" \
     --data "{
     \"user_id\": 42,
-    \"advertisable_type\": \"Modules\\\\Ad\\\\Models\\\\AdCar\",
-    \"advertisable_id\": 10,
+    \"advertisable\": {
+        \"type\": \"Modules\\\\Ad\\\\Models\\\\AdCar\",
+        \"attributes\": {
+            \"mileage\": 12500,
+            \"year\": 2021
+        }
+    },
     \"slug\": \"peugeot-206-2024\",
     \"title\": \"Peugeot 206 2024\",
     \"subtitle\": \"Full options, low mileage\",
@@ -5536,7 +5623,16 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"status_note\": \"Approved by moderator\",
     \"status_metadata\": {
         \"moderator\": \"system\"
-    }
+    },
+    \"images\": [
+        {
+            \"id\": 16,
+            \"custom_properties\": {
+                \"alt\": \"n\",
+                \"caption\": \"g\"
+            }
+        }
+    ]
 }"
 </code></pre></div>
 
@@ -5554,8 +5650,13 @@ const headers = {
 
 let body = {
     "user_id": 42,
-    "advertisable_type": "Modules\\Ad\\Models\\AdCar",
-    "advertisable_id": 10,
+    "advertisable": {
+        "type": "Modules\\Ad\\Models\\AdCar",
+        "attributes": {
+            "mileage": 12500,
+            "year": 2021
+        }
+    },
     "slug": "peugeot-206-2024",
     "title": "Peugeot 206 2024",
     "subtitle": "Full options, low mileage",
@@ -5594,7 +5695,16 @@ let body = {
     "status_note": "Approved by moderator",
     "status_metadata": {
         "moderator": "system"
-    }
+    },
+    "images": [
+        {
+            "id": 16,
+            "custom_properties": {
+                "alt": "n",
+                "caption": "g"
+            }
+        }
+    ]
 };
 
 fetch(url, {
@@ -5712,28 +5822,39 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Identifier of the ad owner. The <code>id</code> of an existing record in the users table. Example: <code>42</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>advertisable_type</code></b>&nbsp;&nbsp;
+        <details>
+            <summary style="padding-bottom: 10px;">
+                <b style="line-height: 2;"><code>advertisable</code></b>&nbsp;&nbsp;
+<small>object</small>&nbsp;
+<i>optional</i> &nbsp;
+<br>
+<p>Payload describing the advertisable subtype to update.</p>
+            </summary>
+                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>type</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
- &nbsp;
+<i>optional</i> &nbsp;
                 <input type="text" style="display: none"
-                              name="advertisable_type"                data-endpoint="POSTapi-ads--ad_id--update"
+                              name="advertisable.type"                data-endpoint="POSTapi-ads--ad_id--update"
                value="Modules\Ad\Models\AdCar"
                data-component="body">
     <br>
-<p>Fully qualified class name of the advertisable subtype. Example: <code>Modules\Ad\Models\AdCar</code></p>
+<p>Example: <code>Modules\Ad\Models\AdCar</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>Modules\Ad\Models\AdCar</code></li> <li><code>Modules\Ad\Models\AdRealEstate</code></li> <li><code>Modules\Ad\Models\AdJob</code></li></ul>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>advertisable_id</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="advertisable_id"                data-endpoint="POSTapi-ads--ad_id--update"
-               value="10"
+                    </div>
+                                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>attributes</code></b>&nbsp;&nbsp;
+<small>object</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="advertisable.attributes"                data-endpoint="POSTapi-ads--ad_id--update"
+               value=""
                data-component="body">
     <br>
-<p>Identifier of the advertisable record. Example: <code>10</code></p>
+
+                    </div>
+                                    </details>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>slug</code></b>&nbsp;&nbsp;
@@ -6027,7 +6148,7 @@ Must be one of:
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
                     </div>
                                                                 <div style="margin-left: 14px; clear: unset;">
                         <b style="line-height: 2;"><code>assigned_by</code></b>&nbsp;&nbsp;
@@ -6063,6 +6184,72 @@ Must be one of:
                data-component="body">
     <br>
 <p>Structured metadata explaining the status change.</p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+        <details>
+            <summary style="padding-bottom: 10px;">
+                <b style="line-height: 2;"><code>images</code></b>&nbsp;&nbsp;
+<small>object[]</small>&nbsp;
+<i>optional</i> &nbsp;
+<br>
+
+            </summary>
+                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="images.0.id"                data-endpoint="POSTapi-ads--ad_id--update"
+               value="16"
+               data-component="body">
+    <br>
+<p>The <code>id</code> of an existing record in the media table. Example: <code>16</code></p>
+                    </div>
+                                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>file</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="images.0.file"                data-endpoint="POSTapi-ads--ad_id--update"
+               value=""
+               data-component="body">
+    <br>
+
+                    </div>
+                                                                <div style=" margin-left: 14px; clear: unset;">
+        <details>
+            <summary style="padding-bottom: 10px;">
+                <b style="line-height: 2;"><code>custom_properties</code></b>&nbsp;&nbsp;
+<small>object</small>&nbsp;
+<i>optional</i> &nbsp;
+<br>
+
+            </summary>
+                                                <div style="margin-left: 28px; clear: unset;">
+                        <b style="line-height: 2;"><code>alt</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="images.0.custom_properties.alt"                data-endpoint="POSTapi-ads--ad_id--update"
+               value="n"
+               data-component="body">
+    <br>
+<p>Must not be greater than 255 characters. Example: <code>n</code></p>
+                    </div>
+                                                                <div style="margin-left: 28px; clear: unset;">
+                        <b style="line-height: 2;"><code>caption</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="images.0.custom_properties.caption"                data-endpoint="POSTapi-ads--ad_id--update"
+               value="g"
+               data-component="body">
+    <br>
+<p>Must not be greater than 255 characters. Example: <code>g</code></p>
+                    </div>
+                                    </details>
+        </div>
+                                        </details>
         </div>
         </form>
 
@@ -6199,6 +6386,3961 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>The ID of the ad. Example: <code>16</code></p>
             </div>
                     </form>
+
+                    <h2 id="ads-POSTapi-ads--ad_id--images">Upload ad images</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-POSTapi-ads--ad_id--images">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "https://api.wezone.app/api/ads/16/images" \
+    --header "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"images\": [
+        {
+            \"file\": \"architecto\",
+            \"custom_properties\": {
+                \"alt\": \"n\",
+                \"caption\": \"g\"
+            }
+        }
+    ]
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://api.wezone.app/api/ads/16/images"
+);
+
+const headers = {
+    "Authorization": "Bearer {YOUR_ACCESS_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "images": [
+        {
+            "file": "architecto",
+            "custom_properties": {
+                "alt": "n",
+                "caption": "g"
+            }
+        }
+    ]
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-ads--ad_id--images">
+</span>
+<span id="execution-results-POSTapi-ads--ad_id--images" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-ads--ad_id--images"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-ads--ad_id--images"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-ads--ad_id--images" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-ads--ad_id--images">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-ads--ad_id--images" data-method="POST"
+      data-path="api/ads/{ad_id}/images"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-ads--ad_id--images', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-ads--ad_id--images"
+                    onclick="tryItOut('POSTapi-ads--ad_id--images');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-ads--ad_id--images"
+                    onclick="cancelTryOut('POSTapi-ads--ad_id--images');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-ads--ad_id--images"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/ads/{ad_id}/images</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-ads--ad_id--images"
+               value="Bearer {YOUR_ACCESS_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_ACCESS_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-ads--ad_id--images"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-ads--ad_id--images"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>ad_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="ad_id"                data-endpoint="POSTapi-ads--ad_id--images"
+               value="16"
+               data-component="url">
+    <br>
+<p>The ID of the ad. Example: <code>16</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+        <details>
+            <summary style="padding-bottom: 10px;">
+                <b style="line-height: 2;"><code>images</code></b>&nbsp;&nbsp;
+<small>object[]</small>&nbsp;
+ &nbsp;
+<br>
+
+            </summary>
+                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>file</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="images.0.file"                data-endpoint="POSTapi-ads--ad_id--images"
+               value="architecto"
+               data-component="body">
+    <br>
+<p>Example: <code>architecto</code></p>
+                    </div>
+                                                                <div style=" margin-left: 14px; clear: unset;">
+        <details>
+            <summary style="padding-bottom: 10px;">
+                <b style="line-height: 2;"><code>custom_properties</code></b>&nbsp;&nbsp;
+<small>object</small>&nbsp;
+<i>optional</i> &nbsp;
+<br>
+
+            </summary>
+                                                <div style="margin-left: 28px; clear: unset;">
+                        <b style="line-height: 2;"><code>alt</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="images.0.custom_properties.alt"                data-endpoint="POSTapi-ads--ad_id--images"
+               value="n"
+               data-component="body">
+    <br>
+<p>Must not be greater than 255 characters. Example: <code>n</code></p>
+                    </div>
+                                                                <div style="margin-left: 28px; clear: unset;">
+                        <b style="line-height: 2;"><code>caption</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="images.0.custom_properties.caption"                data-endpoint="POSTapi-ads--ad_id--images"
+               value="g"
+               data-component="body">
+    <br>
+<p>Must not be greater than 255 characters. Example: <code>g</code></p>
+                    </div>
+                                    </details>
+        </div>
+                                        </details>
+        </div>
+        </form>
+
+                    <h2 id="ads-POSTapi-ads--ad_id--seen">Register an ad view</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-POSTapi-ads--ad_id--seen">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "https://api.wezone.app/api/ads/16/seen" \
+    --header "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://api.wezone.app/api/ads/16/seen"
+);
+
+const headers = {
+    "Authorization": "Bearer {YOUR_ACCESS_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-ads--ad_id--seen">
+</span>
+<span id="execution-results-POSTapi-ads--ad_id--seen" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-ads--ad_id--seen"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-ads--ad_id--seen"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-ads--ad_id--seen" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-ads--ad_id--seen">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-ads--ad_id--seen" data-method="POST"
+      data-path="api/ads/{ad_id}/seen"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-ads--ad_id--seen', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-ads--ad_id--seen"
+                    onclick="tryItOut('POSTapi-ads--ad_id--seen');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-ads--ad_id--seen"
+                    onclick="cancelTryOut('POSTapi-ads--ad_id--seen');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-ads--ad_id--seen"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/ads/{ad_id}/seen</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-ads--ad_id--seen"
+               value="Bearer {YOUR_ACCESS_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_ACCESS_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-ads--ad_id--seen"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-ads--ad_id--seen"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>ad_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="ad_id"                data-endpoint="POSTapi-ads--ad_id--seen"
+               value="16"
+               data-component="url">
+    <br>
+<p>The ID of the ad. Example: <code>16</code></p>
+            </div>
+                    </form>
+
+    <h3>Response</h3>
+    <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+    <div style=" padding-left: 28px;  clear: unset;">
+        <details>
+            <summary style="padding-bottom: 10px;">
+                <b style="line-height: 2;"><code>data</code></b>&nbsp;&nbsp;
+<small>object</small>&nbsp;
+ &nbsp;
+<br>
+
+            </summary>
+                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+<br>
+<p>The ad identifier.</p>
+                    </div>
+                                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>view_count</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+<br>
+<p>The updated total number of views.</p>
+                    </div>
+                                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>incremented</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+ &nbsp;
+<br>
+<p>Indicates whether the counter increased.</p>
+                    </div>
+                                    </details>
+        </div>
+                        <h2 id="ads-GETapi-advertisable-types">List supported advertisable types.</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-GETapi-advertisable-types">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "https://api.wezone.app/api/advertisable-types" \
+    --header "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://api.wezone.app/api/advertisable-types"
+);
+
+const headers = {
+    "Authorization": "Bearer {YOUR_ACCESS_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-advertisable-types">
+            <blockquote>
+            <p>Example response (500):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Server Error&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-advertisable-types" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-advertisable-types"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-advertisable-types"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-advertisable-types" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-advertisable-types">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-advertisable-types" data-method="GET"
+      data-path="api/advertisable-types"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-advertisable-types', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-advertisable-types"
+                    onclick="tryItOut('GETapi-advertisable-types');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-advertisable-types"
+                    onclick="cancelTryOut('GETapi-advertisable-types');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-advertisable-types"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/advertisable-types</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-advertisable-types"
+               value="Bearer {YOUR_ACCESS_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_ACCESS_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-advertisable-types"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-advertisable-types"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="ads-GETapi-advertisable-types--key-">Show metadata for an advertisable type.</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-GETapi-advertisable-types--key-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "https://api.wezone.app/api/advertisable-types/architecto" \
+    --header "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://api.wezone.app/api/advertisable-types/architecto"
+);
+
+const headers = {
+    "Authorization": "Bearer {YOUR_ACCESS_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-advertisable-types--key-">
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Advertisable type not found.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-advertisable-types--key-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-advertisable-types--key-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-advertisable-types--key-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-advertisable-types--key-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-advertisable-types--key-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-advertisable-types--key-" data-method="GET"
+      data-path="api/advertisable-types/{key}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-advertisable-types--key-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-advertisable-types--key-"
+                    onclick="tryItOut('GETapi-advertisable-types--key-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-advertisable-types--key-"
+                    onclick="cancelTryOut('GETapi-advertisable-types--key-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-advertisable-types--key-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/advertisable-types/{key}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-advertisable-types--key-"
+               value="Bearer {YOUR_ACCESS_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_ACCESS_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-advertisable-types--key-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-advertisable-types--key-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>key</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="key"                data-endpoint="GETapi-advertisable-types--key-"
+               value="architecto"
+               data-component="url">
+    <br>
+<p>Example: <code>architecto</code></p>
+            </div>
+                    </form>
+
+                <h1 id="ads-review">Ads Review</h1>
+
+    
+
+                                <h2 id="ads-review-POSTapi-kpi-devices-register">Register or update a KPI device heartbeat profile.</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-POSTapi-kpi-devices-register">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "https://api.wezone.app/api/kpi/devices/register" \
+    --header "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"device_uuid\": \"550e8400-e29b-41d4-a716-446655440000\",
+    \"platform\": \"ios\",
+    \"app_version\": \"2.3.1\",
+    \"os_version\": \"16.4.1\",
+    \"device_model\": \"iPhone 14 Pro\",
+    \"device_manufacturer\": \"Apple\",
+    \"locale\": \"en-US\",
+    \"timezone\": \"America\\/New_York\",
+    \"push_token\": \"d2f7aa31e7f846d3a2b99b9cb6a1ef01\",
+    \"first_seen_at\": \"2024-04-01T10:30:00Z\",
+    \"last_seen_at\": \"2024-04-03T12:15:00Z\",
+    \"last_heartbeat_at\": \"2024-04-03T12:00:00Z\",
+    \"extra\": {
+        \"carrier\": \"Verizon\",
+        \"build_number\": \"20301\"
+    }
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://api.wezone.app/api/kpi/devices/register"
+);
+
+const headers = {
+    "Authorization": "Bearer {YOUR_ACCESS_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "device_uuid": "550e8400-e29b-41d4-a716-446655440000",
+    "platform": "ios",
+    "app_version": "2.3.1",
+    "os_version": "16.4.1",
+    "device_model": "iPhone 14 Pro",
+    "device_manufacturer": "Apple",
+    "locale": "en-US",
+    "timezone": "America\/New_York",
+    "push_token": "d2f7aa31e7f846d3a2b99b9cb6a1ef01",
+    "first_seen_at": "2024-04-01T10:30:00Z",
+    "last_seen_at": "2024-04-03T12:15:00Z",
+    "last_heartbeat_at": "2024-04-03T12:00:00Z",
+    "extra": {
+        "carrier": "Verizon",
+        "build_number": "20301"
+    }
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-kpi-devices-register">
+</span>
+<span id="execution-results-POSTapi-kpi-devices-register" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-kpi-devices-register"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-kpi-devices-register"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-kpi-devices-register" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-kpi-devices-register">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-kpi-devices-register" data-method="POST"
+      data-path="api/kpi/devices/register"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-kpi-devices-register', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-kpi-devices-register"
+                    onclick="tryItOut('POSTapi-kpi-devices-register');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-kpi-devices-register"
+                    onclick="cancelTryOut('POSTapi-kpi-devices-register');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-kpi-devices-register"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/kpi/devices/register</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-kpi-devices-register"
+               value="Bearer {YOUR_ACCESS_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_ACCESS_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-kpi-devices-register"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-kpi-devices-register"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>device_uuid</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="device_uuid"                data-endpoint="POSTapi-kpi-devices-register"
+               value="550e8400-e29b-41d4-a716-446655440000"
+               data-component="body">
+    <br>
+<p>Unique identifier for the device in UUID format. Must be a valid UUID. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>platform</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="platform"                data-endpoint="POSTapi-kpi-devices-register"
+               value="ios"
+               data-component="body">
+    <br>
+<p>The operating system running on the device. Must not be greater than 50 characters. Example: <code>ios</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>app_version</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="app_version"                data-endpoint="POSTapi-kpi-devices-register"
+               value="2.3.1"
+               data-component="body">
+    <br>
+<p>Semantic version of the application installed on the device. Must not be greater than 50 characters. Example: <code>2.3.1</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>os_version</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="os_version"                data-endpoint="POSTapi-kpi-devices-register"
+               value="16.4.1"
+               data-component="body">
+    <br>
+<p>Version of the operating system. Must not be greater than 100 characters. Example: <code>16.4.1</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>device_model</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="device_model"                data-endpoint="POSTapi-kpi-devices-register"
+               value="iPhone 14 Pro"
+               data-component="body">
+    <br>
+<p>Human readable model name of the device. Must not be greater than 150 characters. Example: <code>iPhone 14 Pro</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>device_manufacturer</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="device_manufacturer"                data-endpoint="POSTapi-kpi-devices-register"
+               value="Apple"
+               data-component="body">
+    <br>
+<p>Manufacturer of the device hardware. Must not be greater than 150 characters. Example: <code>Apple</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>locale</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="locale"                data-endpoint="POSTapi-kpi-devices-register"
+               value="en-US"
+               data-component="body">
+    <br>
+<p>IETF language tag representing the device locale. Must not be greater than 10 characters. Example: <code>en-US</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>timezone</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="timezone"                data-endpoint="POSTapi-kpi-devices-register"
+               value="America/New_York"
+               data-component="body">
+    <br>
+<p>IANA timezone identifier reported by the device. Must not be greater than 60 characters. Example: <code>America/New_York</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>push_token</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="push_token"                data-endpoint="POSTapi-kpi-devices-register"
+               value="d2f7aa31e7f846d3a2b99b9cb6a1ef01"
+               data-component="body">
+    <br>
+<p>Token used for sending push notifications to the device. Must not be greater than 255 characters. Example: <code>d2f7aa31e7f846d3a2b99b9cb6a1ef01</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>first_seen_at</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="first_seen_at"                data-endpoint="POSTapi-kpi-devices-register"
+               value="2024-04-01T10:30:00Z"
+               data-component="body">
+    <br>
+<p>Timestamp when the device was first seen. Must be a valid date. Example: <code>2024-04-01T10:30:00Z</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>last_seen_at</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="last_seen_at"                data-endpoint="POSTapi-kpi-devices-register"
+               value="2024-04-03T12:15:00Z"
+               data-component="body">
+    <br>
+<p>Timestamp of the most recent device interaction. Must be a valid date. Example: <code>2024-04-03T12:15:00Z</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>last_heartbeat_at</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="last_heartbeat_at"                data-endpoint="POSTapi-kpi-devices-register"
+               value="2024-04-03T12:00:00Z"
+               data-component="body">
+    <br>
+<p>Timestamp of the latest heartbeat received from the device. Must be a valid date. Example: <code>2024-04-03T12:00:00Z</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>extra</code></b>&nbsp;&nbsp;
+<small>object</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="extra"                data-endpoint="POSTapi-kpi-devices-register"
+               value=""
+               data-component="body">
+    <br>
+<p>Additional key-value metadata captured during registration.</p>
+        </div>
+        </form>
+
+                    <h2 id="ads-review-POSTapi-kpi-devices-heartbeat">Record a KPI device heartbeat.</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-POSTapi-kpi-devices-heartbeat">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "https://api.wezone.app/api/kpi/devices/heartbeat" \
+    --header "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"device_uuid\": \"550e8400-e29b-41d4-a716-446655440000\",
+    \"last_seen_at\": \"2024-04-03T11:59:00Z\",
+    \"last_heartbeat_at\": \"2024-04-03T12:00:00Z\",
+    \"app_version\": \"2.3.1\",
+    \"platform\": \"android\",
+    \"os_version\": \"14\",
+    \"extra\": {
+        \"battery_level\": 82,
+        \"network\": \"wifi\"
+    }
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://api.wezone.app/api/kpi/devices/heartbeat"
+);
+
+const headers = {
+    "Authorization": "Bearer {YOUR_ACCESS_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "device_uuid": "550e8400-e29b-41d4-a716-446655440000",
+    "last_seen_at": "2024-04-03T11:59:00Z",
+    "last_heartbeat_at": "2024-04-03T12:00:00Z",
+    "app_version": "2.3.1",
+    "platform": "android",
+    "os_version": "14",
+    "extra": {
+        "battery_level": 82,
+        "network": "wifi"
+    }
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-kpi-devices-heartbeat">
+</span>
+<span id="execution-results-POSTapi-kpi-devices-heartbeat" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-kpi-devices-heartbeat"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-kpi-devices-heartbeat"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-kpi-devices-heartbeat" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-kpi-devices-heartbeat">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-kpi-devices-heartbeat" data-method="POST"
+      data-path="api/kpi/devices/heartbeat"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-kpi-devices-heartbeat', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-kpi-devices-heartbeat"
+                    onclick="tryItOut('POSTapi-kpi-devices-heartbeat');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-kpi-devices-heartbeat"
+                    onclick="cancelTryOut('POSTapi-kpi-devices-heartbeat');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-kpi-devices-heartbeat"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/kpi/devices/heartbeat</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-kpi-devices-heartbeat"
+               value="Bearer {YOUR_ACCESS_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_ACCESS_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-kpi-devices-heartbeat"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-kpi-devices-heartbeat"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>device_uuid</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="device_uuid"                data-endpoint="POSTapi-kpi-devices-heartbeat"
+               value="550e8400-e29b-41d4-a716-446655440000"
+               data-component="body">
+    <br>
+<p>Unique identifier for the device sending the heartbeat. Must be a valid UUID. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>last_seen_at</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="last_seen_at"                data-endpoint="POSTapi-kpi-devices-heartbeat"
+               value="2024-04-03T11:59:00Z"
+               data-component="body">
+    <br>
+<p>Timestamp when the device last interacted with the platform. Must be a valid date. Example: <code>2024-04-03T11:59:00Z</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>last_heartbeat_at</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="last_heartbeat_at"                data-endpoint="POSTapi-kpi-devices-heartbeat"
+               value="2024-04-03T12:00:00Z"
+               data-component="body">
+    <br>
+<p>Timestamp for the most recent heartbeat event. Must be a valid date. Example: <code>2024-04-03T12:00:00Z</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>app_version</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="app_version"                data-endpoint="POSTapi-kpi-devices-heartbeat"
+               value="2.3.1"
+               data-component="body">
+    <br>
+<p>Current application version running on the device. Must not be greater than 50 characters. Example: <code>2.3.1</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>platform</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="platform"                data-endpoint="POSTapi-kpi-devices-heartbeat"
+               value="android"
+               data-component="body">
+    <br>
+<p>Operating system of the device. Must not be greater than 50 characters. Example: <code>android</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>os_version</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="os_version"                data-endpoint="POSTapi-kpi-devices-heartbeat"
+               value="14"
+               data-component="body">
+    <br>
+<p>Version string of the device operating system. Must not be greater than 100 characters. Example: <code>14</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>extra</code></b>&nbsp;&nbsp;
+<small>object</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="extra"                data-endpoint="POSTapi-kpi-devices-heartbeat"
+               value=""
+               data-component="body">
+    <br>
+<p>Additional metadata provided by the client.</p>
+        </div>
+        </form>
+
+                    <h2 id="ads-review-POSTapi-kpi-installations">Track a new installation event.</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-POSTapi-kpi-installations">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "https://api.wezone.app/api/kpi/installations" \
+    --header "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"device_uuid\": \"550e8400-e29b-41d4-a716-446655440000\",
+    \"installed_at\": \"2024-04-01T09:15:00Z\",
+    \"app_version\": \"2.3.1\",
+    \"platform\": \"android\",
+    \"os_version\": \"14\",
+    \"device_model\": \"Pixel 8\",
+    \"device_manufacturer\": \"Google\",
+    \"locale\": \"en-GB\",
+    \"timezone\": \"Europe\\/London\",
+    \"push_token\": \"b9df77f8faae4b079c6dce20472f923d\",
+    \"install_source\": \"google-play\",
+    \"campaign\": \"spring_sale_2024\",
+    \"is_reinstall\": false,
+    \"metadata\": {
+        \"referrer\": \"newsletter\"
+    },
+    \"extra\": {
+        \"sdk_version\": \"1.4.0\"
+    },
+    \"user_id\": 42
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://api.wezone.app/api/kpi/installations"
+);
+
+const headers = {
+    "Authorization": "Bearer {YOUR_ACCESS_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "device_uuid": "550e8400-e29b-41d4-a716-446655440000",
+    "installed_at": "2024-04-01T09:15:00Z",
+    "app_version": "2.3.1",
+    "platform": "android",
+    "os_version": "14",
+    "device_model": "Pixel 8",
+    "device_manufacturer": "Google",
+    "locale": "en-GB",
+    "timezone": "Europe\/London",
+    "push_token": "b9df77f8faae4b079c6dce20472f923d",
+    "install_source": "google-play",
+    "campaign": "spring_sale_2024",
+    "is_reinstall": false,
+    "metadata": {
+        "referrer": "newsletter"
+    },
+    "extra": {
+        "sdk_version": "1.4.0"
+    },
+    "user_id": 42
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-kpi-installations">
+</span>
+<span id="execution-results-POSTapi-kpi-installations" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-kpi-installations"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-kpi-installations"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-kpi-installations" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-kpi-installations">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-kpi-installations" data-method="POST"
+      data-path="api/kpi/installations"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-kpi-installations', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-kpi-installations"
+                    onclick="tryItOut('POSTapi-kpi-installations');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-kpi-installations"
+                    onclick="cancelTryOut('POSTapi-kpi-installations');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-kpi-installations"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/kpi/installations</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-kpi-installations"
+               value="Bearer {YOUR_ACCESS_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_ACCESS_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-kpi-installations"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-kpi-installations"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>device_uuid</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="device_uuid"                data-endpoint="POSTapi-kpi-installations"
+               value="550e8400-e29b-41d4-a716-446655440000"
+               data-component="body">
+    <br>
+<p>Unique identifier for the device that installed the app. Must be a valid UUID. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>installed_at</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="installed_at"                data-endpoint="POSTapi-kpi-installations"
+               value="2024-04-01T09:15:00Z"
+               data-component="body">
+    <br>
+<p>Timestamp when the installation occurred. Must be a valid date. Example: <code>2024-04-01T09:15:00Z</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>app_version</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="app_version"                data-endpoint="POSTapi-kpi-installations"
+               value="2.3.1"
+               data-component="body">
+    <br>
+<p>Version of the app that was installed. Must not be greater than 50 characters. Example: <code>2.3.1</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>platform</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="platform"                data-endpoint="POSTapi-kpi-installations"
+               value="android"
+               data-component="body">
+    <br>
+<p>Operating system of the device. Must not be greater than 50 characters. Example: <code>android</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>os_version</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="os_version"                data-endpoint="POSTapi-kpi-installations"
+               value="14"
+               data-component="body">
+    <br>
+<p>Version string of the device operating system. Must not be greater than 100 characters. Example: <code>14</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>device_model</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="device_model"                data-endpoint="POSTapi-kpi-installations"
+               value="Pixel 8"
+               data-component="body">
+    <br>
+<p>Marketing name of the device model. Must not be greater than 150 characters. Example: <code>Pixel 8</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>device_manufacturer</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="device_manufacturer"                data-endpoint="POSTapi-kpi-installations"
+               value="Google"
+               data-component="body">
+    <br>
+<p>Hardware manufacturer of the device. Must not be greater than 150 characters. Example: <code>Google</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>locale</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="locale"                data-endpoint="POSTapi-kpi-installations"
+               value="en-GB"
+               data-component="body">
+    <br>
+<p>Locale configured on the device. Must not be greater than 10 characters. Example: <code>en-GB</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>timezone</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="timezone"                data-endpoint="POSTapi-kpi-installations"
+               value="Europe/London"
+               data-component="body">
+    <br>
+<p>Time zone reported by the device. Must not be greater than 60 characters. Example: <code>Europe/London</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>push_token</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="push_token"                data-endpoint="POSTapi-kpi-installations"
+               value="b9df77f8faae4b079c6dce20472f923d"
+               data-component="body">
+    <br>
+<p>Token to send push notifications to the device. Must not be greater than 255 characters. Example: <code>b9df77f8faae4b079c6dce20472f923d</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>install_source</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="install_source"                data-endpoint="POSTapi-kpi-installations"
+               value="google-play"
+               data-component="body">
+    <br>
+<p>Identifier for the store or campaign that initiated the install. Must not be greater than 100 characters. Example: <code>google-play</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>campaign</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="campaign"                data-endpoint="POSTapi-kpi-installations"
+               value="spring_sale_2024"
+               data-component="body">
+    <br>
+<p>Marketing campaign identifier associated with the install. Must not be greater than 100 characters. Example: <code>spring_sale_2024</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>is_reinstall</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="POSTapi-kpi-installations" style="display: none">
+            <input type="radio" name="is_reinstall"
+                   value="true"
+                   data-endpoint="POSTapi-kpi-installations"
+                   data-component="body"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="POSTapi-kpi-installations" style="display: none">
+            <input type="radio" name="is_reinstall"
+                   value="false"
+                   data-endpoint="POSTapi-kpi-installations"
+                   data-component="body"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Whether the install is a reinstall event. Example: <code>false</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>metadata</code></b>&nbsp;&nbsp;
+<small>object</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="metadata"                data-endpoint="POSTapi-kpi-installations"
+               value=""
+               data-component="body">
+    <br>
+<p>Structured metadata recorded for the install.</p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>extra</code></b>&nbsp;&nbsp;
+<small>object</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="extra"                data-endpoint="POSTapi-kpi-installations"
+               value=""
+               data-component="body">
+    <br>
+<p>Additional data sent by the client.</p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>user_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="user_id"                data-endpoint="POSTapi-kpi-installations"
+               value="42"
+               data-component="body">
+    <br>
+<p>Identifier of the authenticated user associated with the device, when available. The <code>id</code> of an existing record in the users table. Example: <code>42</code></p>
+        </div>
+        </form>
+
+                    <h2 id="ads-review-POSTapi-kpi-uninstallations">Track an uninstall event.</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-POSTapi-kpi-uninstallations">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "https://api.wezone.app/api/kpi/uninstallations" \
+    --header "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"device_uuid\": \"550e8400-e29b-41d4-a716-446655440000\",
+    \"uninstalled_at\": \"2024-04-05T17:20:00Z\",
+    \"app_version\": \"2.3.1\",
+    \"platform\": \"ios\",
+    \"reason\": \"User opted out during offboarding survey.\",
+    \"report_source\": \"app_store\",
+    \"metadata\": {
+        \"previous_sessions\": 12
+    },
+    \"user_id\": 42
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://api.wezone.app/api/kpi/uninstallations"
+);
+
+const headers = {
+    "Authorization": "Bearer {YOUR_ACCESS_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "device_uuid": "550e8400-e29b-41d4-a716-446655440000",
+    "uninstalled_at": "2024-04-05T17:20:00Z",
+    "app_version": "2.3.1",
+    "platform": "ios",
+    "reason": "User opted out during offboarding survey.",
+    "report_source": "app_store",
+    "metadata": {
+        "previous_sessions": 12
+    },
+    "user_id": 42
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-kpi-uninstallations">
+</span>
+<span id="execution-results-POSTapi-kpi-uninstallations" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-kpi-uninstallations"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-kpi-uninstallations"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-kpi-uninstallations" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-kpi-uninstallations">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-kpi-uninstallations" data-method="POST"
+      data-path="api/kpi/uninstallations"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-kpi-uninstallations', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-kpi-uninstallations"
+                    onclick="tryItOut('POSTapi-kpi-uninstallations');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-kpi-uninstallations"
+                    onclick="cancelTryOut('POSTapi-kpi-uninstallations');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-kpi-uninstallations"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/kpi/uninstallations</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-kpi-uninstallations"
+               value="Bearer {YOUR_ACCESS_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_ACCESS_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-kpi-uninstallations"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-kpi-uninstallations"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>device_uuid</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="device_uuid"                data-endpoint="POSTapi-kpi-uninstallations"
+               value="550e8400-e29b-41d4-a716-446655440000"
+               data-component="body">
+    <br>
+<p>Unique identifier for the device that uninstalled the app. Must be a valid UUID. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>uninstalled_at</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="uninstalled_at"                data-endpoint="POSTapi-kpi-uninstallations"
+               value="2024-04-05T17:20:00Z"
+               data-component="body">
+    <br>
+<p>Timestamp when the uninstall event occurred. Must be a valid date. Example: <code>2024-04-05T17:20:00Z</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>app_version</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="app_version"                data-endpoint="POSTapi-kpi-uninstallations"
+               value="2.3.1"
+               data-component="body">
+    <br>
+<p>Application version that was uninstalled. Must not be greater than 50 characters. Example: <code>2.3.1</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>platform</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="platform"                data-endpoint="POSTapi-kpi-uninstallations"
+               value="ios"
+               data-component="body">
+    <br>
+<p>Operating system of the device. Must not be greater than 50 characters. Example: <code>ios</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>reason</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="reason"                data-endpoint="POSTapi-kpi-uninstallations"
+               value="User opted out during offboarding survey."
+               data-component="body">
+    <br>
+<p>Optional reason provided for the uninstall. Must not be greater than 255 characters. Example: <code>User opted out during offboarding survey.</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>report_source</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="report_source"                data-endpoint="POSTapi-kpi-uninstallations"
+               value="app_store"
+               data-component="body">
+    <br>
+<p>Source that reported the uninstall event. Must not be greater than 100 characters. Example: <code>app_store</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>metadata</code></b>&nbsp;&nbsp;
+<small>object</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="metadata"                data-endpoint="POSTapi-kpi-uninstallations"
+               value=""
+               data-component="body">
+    <br>
+<p>Structured metadata for additional analytics.</p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>user_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="user_id"                data-endpoint="POSTapi-kpi-uninstallations"
+               value="42"
+               data-component="body">
+    <br>
+<p>Identifier of the authenticated user, if available. The <code>id</code> of an existing record in the users table. Example: <code>42</code></p>
+        </div>
+        </form>
+
+                    <h2 id="ads-review-POSTapi-kpi-sessions">Record or update a KPI session.</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-POSTapi-kpi-sessions">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "https://api.wezone.app/api/kpi/sessions" \
+    --header "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"device_uuid\": \"550e8400-e29b-41d4-a716-446655440000\",
+    \"session_uuid\": \"3f2504e0-4f89-11d3-9a0c-0305e82c3301\",
+    \"started_at\": \"2024-04-05T10:00:00Z\",
+    \"ended_at\": \"2024-04-05T10:25:00Z\",
+    \"duration_seconds\": 1500,
+    \"app_version\": \"2.3.1\",
+    \"platform\": \"android\",
+    \"os_version\": \"14\",
+    \"network_type\": \"wifi\",
+    \"city\": \"San Francisco\",
+    \"country\": \"United States\",
+    \"metadata\": {
+        \"screen_count\": 5
+    },
+    \"user_id\": 42
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://api.wezone.app/api/kpi/sessions"
+);
+
+const headers = {
+    "Authorization": "Bearer {YOUR_ACCESS_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "device_uuid": "550e8400-e29b-41d4-a716-446655440000",
+    "session_uuid": "3f2504e0-4f89-11d3-9a0c-0305e82c3301",
+    "started_at": "2024-04-05T10:00:00Z",
+    "ended_at": "2024-04-05T10:25:00Z",
+    "duration_seconds": 1500,
+    "app_version": "2.3.1",
+    "platform": "android",
+    "os_version": "14",
+    "network_type": "wifi",
+    "city": "San Francisco",
+    "country": "United States",
+    "metadata": {
+        "screen_count": 5
+    },
+    "user_id": 42
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-kpi-sessions">
+</span>
+<span id="execution-results-POSTapi-kpi-sessions" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-kpi-sessions"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-kpi-sessions"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-kpi-sessions" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-kpi-sessions">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-kpi-sessions" data-method="POST"
+      data-path="api/kpi/sessions"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-kpi-sessions', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-kpi-sessions"
+                    onclick="tryItOut('POSTapi-kpi-sessions');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-kpi-sessions"
+                    onclick="cancelTryOut('POSTapi-kpi-sessions');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-kpi-sessions"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/kpi/sessions</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-kpi-sessions"
+               value="Bearer {YOUR_ACCESS_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_ACCESS_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-kpi-sessions"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-kpi-sessions"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>device_uuid</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="device_uuid"                data-endpoint="POSTapi-kpi-sessions"
+               value="550e8400-e29b-41d4-a716-446655440000"
+               data-component="body">
+    <br>
+<p>Unique identifier for the device that generated the session. Must be a valid UUID. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>session_uuid</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="session_uuid"                data-endpoint="POSTapi-kpi-sessions"
+               value="3f2504e0-4f89-11d3-9a0c-0305e82c3301"
+               data-component="body">
+    <br>
+<p>Unique identifier for the tracked session. Must be a valid UUID. Example: <code>3f2504e0-4f89-11d3-9a0c-0305e82c3301</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>started_at</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="started_at"                data-endpoint="POSTapi-kpi-sessions"
+               value="2024-04-05T10:00:00Z"
+               data-component="body">
+    <br>
+<p>Timestamp indicating when the session started. Must be a valid date. Example: <code>2024-04-05T10:00:00Z</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>ended_at</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="ended_at"                data-endpoint="POSTapi-kpi-sessions"
+               value="2024-04-05T10:25:00Z"
+               data-component="body">
+    <br>
+<p>Timestamp indicating when the session ended, if finished. Must be a valid date. Must be a date after or equal to <code>started_at</code>. Example: <code>2024-04-05T10:25:00Z</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>duration_seconds</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="duration_seconds"                data-endpoint="POSTapi-kpi-sessions"
+               value="1500"
+               data-component="body">
+    <br>
+<p>Total session duration in seconds, when already computed. Must be at least 0. Example: <code>1500</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>app_version</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="app_version"                data-endpoint="POSTapi-kpi-sessions"
+               value="2.3.1"
+               data-component="body">
+    <br>
+<p>Version of the app used during the session. Must not be greater than 50 characters. Example: <code>2.3.1</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>platform</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="platform"                data-endpoint="POSTapi-kpi-sessions"
+               value="android"
+               data-component="body">
+    <br>
+<p>Operating system of the device. Must not be greater than 50 characters. Example: <code>android</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>os_version</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="os_version"                data-endpoint="POSTapi-kpi-sessions"
+               value="14"
+               data-component="body">
+    <br>
+<p>Version of the operating system. Must not be greater than 100 characters. Example: <code>14</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>network_type</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="network_type"                data-endpoint="POSTapi-kpi-sessions"
+               value="wifi"
+               data-component="body">
+    <br>
+<p>Network connection type observed during the session. Must not be greater than 50 characters. Example: <code>wifi</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>city</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="city"                data-endpoint="POSTapi-kpi-sessions"
+               value="San Francisco"
+               data-component="body">
+    <br>
+<p>City resolved for the session location, if available. Must not be greater than 150 characters. Example: <code>San Francisco</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>country</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="country"                data-endpoint="POSTapi-kpi-sessions"
+               value="United States"
+               data-component="body">
+    <br>
+<p>Country resolved for the session location, if available. Must not be greater than 150 characters. Example: <code>United States</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>metadata</code></b>&nbsp;&nbsp;
+<small>object</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="metadata"                data-endpoint="POSTapi-kpi-sessions"
+               value=""
+               data-component="body">
+    <br>
+<p>Additional metadata captured for the session.</p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>user_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="user_id"                data-endpoint="POSTapi-kpi-sessions"
+               value="42"
+               data-component="body">
+    <br>
+<p>Identifier of the authenticated user linked to the session. The <code>id</code> of an existing record in the users table. Example: <code>42</code></p>
+        </div>
+        </form>
+
+                    <h2 id="ads-review-POSTapi-kpi-sessions--session_session_uuid--update">Update a KPI session.</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-POSTapi-kpi-sessions--session_session_uuid--update">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "https://api.wezone.app/api/kpi/sessions/6ff8f7f6-1eb3-3525-be4a-3932c805afed/update" \
+    --header "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"ended_at\": \"2024-04-05T10:25:00Z\",
+    \"duration_seconds\": 1520,
+    \"app_version\": \"2.3.2\",
+    \"platform\": \"android\",
+    \"os_version\": \"14\",
+    \"network_type\": \"4g\",
+    \"city\": \"New York\",
+    \"country\": \"United States\",
+    \"metadata\": {
+        \"last_screen\": \"checkout\"
+    },
+    \"user_id\": 42
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://api.wezone.app/api/kpi/sessions/6ff8f7f6-1eb3-3525-be4a-3932c805afed/update"
+);
+
+const headers = {
+    "Authorization": "Bearer {YOUR_ACCESS_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "ended_at": "2024-04-05T10:25:00Z",
+    "duration_seconds": 1520,
+    "app_version": "2.3.2",
+    "platform": "android",
+    "os_version": "14",
+    "network_type": "4g",
+    "city": "New York",
+    "country": "United States",
+    "metadata": {
+        "last_screen": "checkout"
+    },
+    "user_id": 42
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-kpi-sessions--session_session_uuid--update">
+</span>
+<span id="execution-results-POSTapi-kpi-sessions--session_session_uuid--update" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-kpi-sessions--session_session_uuid--update"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-kpi-sessions--session_session_uuid--update"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-kpi-sessions--session_session_uuid--update" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-kpi-sessions--session_session_uuid--update">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-kpi-sessions--session_session_uuid--update" data-method="POST"
+      data-path="api/kpi/sessions/{session_session_uuid}/update"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-kpi-sessions--session_session_uuid--update', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-kpi-sessions--session_session_uuid--update"
+                    onclick="tryItOut('POSTapi-kpi-sessions--session_session_uuid--update');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-kpi-sessions--session_session_uuid--update"
+                    onclick="cancelTryOut('POSTapi-kpi-sessions--session_session_uuid--update');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-kpi-sessions--session_session_uuid--update"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/kpi/sessions/{session_session_uuid}/update</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-kpi-sessions--session_session_uuid--update"
+               value="Bearer {YOUR_ACCESS_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_ACCESS_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-kpi-sessions--session_session_uuid--update"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-kpi-sessions--session_session_uuid--update"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>session_session_uuid</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="session_session_uuid"                data-endpoint="POSTapi-kpi-sessions--session_session_uuid--update"
+               value="6ff8f7f6-1eb3-3525-be4a-3932c805afed"
+               data-component="url">
+    <br>
+<p>Example: <code>6ff8f7f6-1eb3-3525-be4a-3932c805afed</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>ended_at</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="ended_at"                data-endpoint="POSTapi-kpi-sessions--session_session_uuid--update"
+               value="2024-04-05T10:25:00Z"
+               data-component="body">
+    <br>
+<p>Timestamp when the session concluded. Must be a valid date. Example: <code>2024-04-05T10:25:00Z</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>duration_seconds</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="duration_seconds"                data-endpoint="POSTapi-kpi-sessions--session_session_uuid--update"
+               value="1520"
+               data-component="body">
+    <br>
+<p>Updated total duration of the session in seconds. Must be at least 0. Example: <code>1520</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>app_version</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="app_version"                data-endpoint="POSTapi-kpi-sessions--session_session_uuid--update"
+               value="2.3.2"
+               data-component="body">
+    <br>
+<p>Updated app version associated with the session. Must not be greater than 50 characters. Example: <code>2.3.2</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>platform</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="platform"                data-endpoint="POSTapi-kpi-sessions--session_session_uuid--update"
+               value="android"
+               data-component="body">
+    <br>
+<p>Operating system of the device. Must not be greater than 50 characters. Example: <code>android</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>os_version</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="os_version"                data-endpoint="POSTapi-kpi-sessions--session_session_uuid--update"
+               value="14"
+               data-component="body">
+    <br>
+<p>Updated operating system version. Must not be greater than 100 characters. Example: <code>14</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>network_type</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="network_type"                data-endpoint="POSTapi-kpi-sessions--session_session_uuid--update"
+               value="4g"
+               data-component="body">
+    <br>
+<p>Network connection type detected at the end of the session. Must not be greater than 50 characters. Example: <code>4g</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>city</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="city"                data-endpoint="POSTapi-kpi-sessions--session_session_uuid--update"
+               value="New York"
+               data-component="body">
+    <br>
+<p>Updated city for the session, if applicable. Must not be greater than 150 characters. Example: <code>New York</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>country</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="country"                data-endpoint="POSTapi-kpi-sessions--session_session_uuid--update"
+               value="United States"
+               data-component="body">
+    <br>
+<p>Updated country for the session, if applicable. Must not be greater than 150 characters. Example: <code>United States</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>metadata</code></b>&nbsp;&nbsp;
+<small>object</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="metadata"                data-endpoint="POSTapi-kpi-sessions--session_session_uuid--update"
+               value=""
+               data-component="body">
+    <br>
+<p>Additional metadata merged into the session record.</p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>user_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="user_id"                data-endpoint="POSTapi-kpi-sessions--session_session_uuid--update"
+               value="42"
+               data-component="body">
+    <br>
+<p>Identifier of the authenticated user associated with the session. The <code>id</code> of an existing record in the users table. Example: <code>42</code></p>
+        </div>
+        </form>
+
+                    <h2 id="ads-review-POSTapi-kpi-events">Record KPI events for a device session.</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-POSTapi-kpi-events">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "https://api.wezone.app/api/kpi/events" \
+    --header "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"device_uuid\": \"550e8400-e29b-41d4-a716-446655440000\",
+    \"session_uuid\": \"3f2504e0-4f89-11d3-9a0c-0305e82c3301\",
+    \"platform\": \"android\",
+    \"user_id\": 42,
+    \"events\": [
+        {
+            \"event_uuid\": \"d94f0ab4-9fc9-4e36-8d92-3d1b60fa7f30\",
+            \"event_key\": \"search_performed\",
+            \"event_name\": \"Search Performed\",
+            \"event_category\": \"engagement\",
+            \"event_value\": 1,
+            \"occurred_at\": \"2024-04-05T10:05:00Z\",
+            \"metadata\": {
+                \"query\": \"wireless headphones\",
+                \"results_count\": 12
+            }
+        }
+    ]
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://api.wezone.app/api/kpi/events"
+);
+
+const headers = {
+    "Authorization": "Bearer {YOUR_ACCESS_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "device_uuid": "550e8400-e29b-41d4-a716-446655440000",
+    "session_uuid": "3f2504e0-4f89-11d3-9a0c-0305e82c3301",
+    "platform": "android",
+    "user_id": 42,
+    "events": [
+        {
+            "event_uuid": "d94f0ab4-9fc9-4e36-8d92-3d1b60fa7f30",
+            "event_key": "search_performed",
+            "event_name": "Search Performed",
+            "event_category": "engagement",
+            "event_value": 1,
+            "occurred_at": "2024-04-05T10:05:00Z",
+            "metadata": {
+                "query": "wireless headphones",
+                "results_count": 12
+            }
+        }
+    ]
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-kpi-events">
+</span>
+<span id="execution-results-POSTapi-kpi-events" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-kpi-events"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-kpi-events"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-kpi-events" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-kpi-events">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-kpi-events" data-method="POST"
+      data-path="api/kpi/events"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-kpi-events', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-kpi-events"
+                    onclick="tryItOut('POSTapi-kpi-events');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-kpi-events"
+                    onclick="cancelTryOut('POSTapi-kpi-events');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-kpi-events"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/kpi/events</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-kpi-events"
+               value="Bearer {YOUR_ACCESS_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_ACCESS_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-kpi-events"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-kpi-events"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>device_uuid</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="device_uuid"                data-endpoint="POSTapi-kpi-events"
+               value="550e8400-e29b-41d4-a716-446655440000"
+               data-component="body">
+    <br>
+<p>Unique identifier for the device emitting the events. Must be a valid UUID. Example: <code>550e8400-e29b-41d4-a716-446655440000</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>session_uuid</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="session_uuid"                data-endpoint="POSTapi-kpi-events"
+               value="3f2504e0-4f89-11d3-9a0c-0305e82c3301"
+               data-component="body">
+    <br>
+<p>Identifier of the session that captured the events. Must be a valid UUID. Example: <code>3f2504e0-4f89-11d3-9a0c-0305e82c3301</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>platform</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="platform"                data-endpoint="POSTapi-kpi-events"
+               value="android"
+               data-component="body">
+    <br>
+<p>Operating system of the device. Must not be greater than 50 characters. Example: <code>android</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>user_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="user_id"                data-endpoint="POSTapi-kpi-events"
+               value="42"
+               data-component="body">
+    <br>
+<p>Identifier of the authenticated user emitting the events. The <code>id</code> of an existing record in the users table. Example: <code>42</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+        <details>
+            <summary style="padding-bottom: 10px;">
+                <b style="line-height: 2;"><code>events</code></b>&nbsp;&nbsp;
+<small>object[]</small>&nbsp;
+ &nbsp;
+<br>
+<p>Collection of analytics events to record. Must have at least 1 items.</p>
+            </summary>
+                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>event_uuid</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="events.0.event_uuid"                data-endpoint="POSTapi-kpi-events"
+               value="d94f0ab4-9fc9-4e36-8d92-3d1b60fa7f30"
+               data-component="body">
+    <br>
+<p>Client-generated identifier for the individual event. Must be a valid UUID. Example: <code>d94f0ab4-9fc9-4e36-8d92-3d1b60fa7f30</code></p>
+                    </div>
+                                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>event_key</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="events.0.event_key"                data-endpoint="POSTapi-kpi-events"
+               value="search_performed"
+               data-component="body">
+    <br>
+<p>Key representing the type of event. Must not be greater than 100 characters. Example: <code>search_performed</code></p>
+                    </div>
+                                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>event_name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="events.0.event_name"                data-endpoint="POSTapi-kpi-events"
+               value="Search Performed"
+               data-component="body">
+    <br>
+<p>Human-readable name of the event. Must not be greater than 255 characters. Example: <code>Search Performed</code></p>
+                    </div>
+                                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>event_category</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="events.0.event_category"                data-endpoint="POSTapi-kpi-events"
+               value="engagement"
+               data-component="body">
+    <br>
+<p>Category grouping for the event. Must not be greater than 100 characters. Example: <code>engagement</code></p>
+                    </div>
+                                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>event_value</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="events.0.event_value"                data-endpoint="POSTapi-kpi-events"
+               value="1"
+               data-component="body">
+    <br>
+<p>Numeric value associated with the event. Example: <code>1</code></p>
+                    </div>
+                                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>occurred_at</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="events.0.occurred_at"                data-endpoint="POSTapi-kpi-events"
+               value="2024-04-05T10:05:00Z"
+               data-component="body">
+    <br>
+<p>Timestamp indicating when the event happened. Must be a valid date. Example: <code>2024-04-05T10:05:00Z</code></p>
+                    </div>
+                                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>metadata</code></b>&nbsp;&nbsp;
+<small>object</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="events.0.metadata"                data-endpoint="POSTapi-kpi-events"
+               value=""
+               data-component="body">
+    <br>
+<p>Arbitrary metadata for the event payload.</p>
+                    </div>
+                                    </details>
+        </div>
+        </form>
+
+                    <h2 id="ads-review-POSTapi-ad-reports">Create an ad report.</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-POSTapi-ad-reports">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "https://api.wezone.app/api/ad-reports" \
+    --header "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"ad_id\": 512,
+    \"reason_code\": \"spam\",
+    \"description\": \"This listing is duplicated multiple times.\",
+    \"metadata\": {
+        \"screenshot_url\": \"https:\\/\\/example.com\\/evidence.png\"
+    }
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://api.wezone.app/api/ad-reports"
+);
+
+const headers = {
+    "Authorization": "Bearer {YOUR_ACCESS_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "ad_id": 512,
+    "reason_code": "spam",
+    "description": "This listing is duplicated multiple times.",
+    "metadata": {
+        "screenshot_url": "https:\/\/example.com\/evidence.png"
+    }
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-ad-reports">
+</span>
+<span id="execution-results-POSTapi-ad-reports" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-ad-reports"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-ad-reports"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-ad-reports" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-ad-reports">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-ad-reports" data-method="POST"
+      data-path="api/ad-reports"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-ad-reports', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-ad-reports"
+                    onclick="tryItOut('POSTapi-ad-reports');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-ad-reports"
+                    onclick="cancelTryOut('POSTapi-ad-reports');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-ad-reports"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/ad-reports</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-ad-reports"
+               value="Bearer {YOUR_ACCESS_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_ACCESS_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-ad-reports"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-ad-reports"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>ad_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="ad_id"                data-endpoint="POSTapi-ad-reports"
+               value="512"
+               data-component="body">
+    <br>
+<p>Identifier of the ad being reported. The <code>id</code> of an existing record in the ads table. Example: <code>512</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>reason_code</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="reason_code"                data-endpoint="POSTapi-ad-reports"
+               value="spam"
+               data-component="body">
+    <br>
+<p>Machine-readable code representing the report reason. Must not be greater than 255 characters. Example: <code>spam</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="description"                data-endpoint="POSTapi-ad-reports"
+               value="This listing is duplicated multiple times."
+               data-component="body">
+    <br>
+<p>Free-form explanation provided by the reporter. Must not be greater than 2000 characters. Example: <code>This listing is duplicated multiple times.</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>metadata</code></b>&nbsp;&nbsp;
+<small>object</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="metadata"                data-endpoint="POSTapi-ad-reports"
+               value=""
+               data-component="body">
+    <br>
+<p>Additional context supplied with the report.</p>
+        </div>
+        </form>
+
+                    <h2 id="ads-review-GETapi-ad-reports">List ad reports.</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-GETapi-ad-reports">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "https://api.wezone.app/api/ad-reports?status=pending&amp;ad_id=512&amp;reported_by=33&amp;handled_by=7&amp;reason_code=spam&amp;from=2024-04-01&amp;to=2024-04-30&amp;search=duplicate+listing&amp;per_page=25&amp;without_pagination=" \
+    --header "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://api.wezone.app/api/ad-reports"
+);
+
+const params = {
+    "status": "pending",
+    "ad_id": "512",
+    "reported_by": "33",
+    "handled_by": "7",
+    "reason_code": "spam",
+    "from": "2024-04-01",
+    "to": "2024-04-30",
+    "search": "duplicate listing",
+    "per_page": "25",
+    "without_pagination": "0",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Authorization": "Bearer {YOUR_ACCESS_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-ad-reports">
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-ad-reports" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-ad-reports"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-ad-reports"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-ad-reports" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-ad-reports">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-ad-reports" data-method="GET"
+      data-path="api/ad-reports"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-ad-reports', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-ad-reports"
+                    onclick="tryItOut('GETapi-ad-reports');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-ad-reports"
+                    onclick="cancelTryOut('GETapi-ad-reports');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-ad-reports"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/ad-reports</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-ad-reports"
+               value="Bearer {YOUR_ACCESS_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_ACCESS_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-ad-reports"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-ad-reports"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="status"                data-endpoint="GETapi-ad-reports"
+               value="pending"
+               data-component="query">
+    <br>
+<p>Filter reports by their current status. Example: <code>pending</code></p>
+Must be one of:
+<ul style="list-style-type: square;"><li><code>pending</code></li> <li><code>in_review</code></li> <li><code>resolved</code></li> <li><code>dismissed</code></li></ul>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>ad_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="ad_id"                data-endpoint="GETapi-ad-reports"
+               value="512"
+               data-component="query">
+    <br>
+<p>Limit results to reports targeting a specific ad. The <code>id</code> of an existing record in the ads table. Example: <code>512</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>reported_by</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="reported_by"                data-endpoint="GETapi-ad-reports"
+               value="33"
+               data-component="query">
+    <br>
+<p>Filter by the identifier of the reporting user. The <code>id</code> of an existing record in the users table. Example: <code>33</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>handled_by</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="handled_by"                data-endpoint="GETapi-ad-reports"
+               value="7"
+               data-component="query">
+    <br>
+<p>Filter by the identifier of the moderator handling the report. The <code>id</code> of an existing record in the users table. Example: <code>7</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>reason_code</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="reason_code"                data-endpoint="GETapi-ad-reports"
+               value="spam"
+               data-component="query">
+    <br>
+<p>Filter by the report reason code. Must not be greater than 255 characters. Example: <code>spam</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>from</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="from"                data-endpoint="GETapi-ad-reports"
+               value="2024-04-01"
+               data-component="query">
+    <br>
+<p>Limit reports to those created on or after this ISO 8601 date. Must be a valid date. Example: <code>2024-04-01</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>to</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="to"                data-endpoint="GETapi-ad-reports"
+               value="2024-04-30"
+               data-component="query">
+    <br>
+<p>Limit reports to those created on or before this ISO 8601 date. Must be a valid date. Must be a date after or equal to <code>from</code>. Example: <code>2024-04-30</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="search"                data-endpoint="GETapi-ad-reports"
+               value="duplicate listing"
+               data-component="query">
+    <br>
+<p>Free-text search across report content and related ad data. Must not be greater than 500 characters. Example: <code>duplicate listing</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="per_page"                data-endpoint="GETapi-ad-reports"
+               value="25"
+               data-component="query">
+    <br>
+<p>Number of results to return per page when paginating. Must be at least 1. Must not be greater than 100. Example: <code>25</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>without_pagination</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="GETapi-ad-reports" style="display: none">
+            <input type="radio" name="without_pagination"
+                   value="1"
+                   data-endpoint="GETapi-ad-reports"
+                   data-component="query"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="GETapi-ad-reports" style="display: none">
+            <input type="radio" name="without_pagination"
+                   value="0"
+                   data-endpoint="GETapi-ad-reports"
+                   data-component="query"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>When true, returns all results without pagination. Example: <code>false</code></p>
+            </div>
+                </form>
+
+                    <h2 id="ads-review-GETapi-ad-reports--id-">View an ad report.</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-GETapi-ad-reports--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "https://api.wezone.app/api/ad-reports/16" \
+    --header "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://api.wezone.app/api/ad-reports/16"
+);
+
+const headers = {
+    "Authorization": "Bearer {YOUR_ACCESS_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-ad-reports--id-">
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-ad-reports--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-ad-reports--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-ad-reports--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-ad-reports--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-ad-reports--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-ad-reports--id-" data-method="GET"
+      data-path="api/ad-reports/{id}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-ad-reports--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-ad-reports--id-"
+                    onclick="tryItOut('GETapi-ad-reports--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-ad-reports--id-"
+                    onclick="cancelTryOut('GETapi-ad-reports--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-ad-reports--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/ad-reports/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-ad-reports--id-"
+               value="Bearer {YOUR_ACCESS_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_ACCESS_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-ad-reports--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-ad-reports--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="id"                data-endpoint="GETapi-ad-reports--id-"
+               value="16"
+               data-component="url">
+    <br>
+<p>The ID of the ad report. Example: <code>16</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="ads-review-POSTapi-ad-reports--id--update">Update an ad report.</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-POSTapi-ad-reports--id--update">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "https://api.wezone.app/api/ad-reports/16/update" \
+    --header "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"status\": \"in_review\",
+    \"resolution_notes\": \"Contacted the seller for clarification.\",
+    \"metadata\": {
+        \"internal_ticket\": \"AD-204\"
+    }
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://api.wezone.app/api/ad-reports/16/update"
+);
+
+const headers = {
+    "Authorization": "Bearer {YOUR_ACCESS_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "status": "in_review",
+    "resolution_notes": "Contacted the seller for clarification.",
+    "metadata": {
+        "internal_ticket": "AD-204"
+    }
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-ad-reports--id--update">
+</span>
+<span id="execution-results-POSTapi-ad-reports--id--update" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-ad-reports--id--update"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-ad-reports--id--update"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-ad-reports--id--update" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-ad-reports--id--update">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-ad-reports--id--update" data-method="POST"
+      data-path="api/ad-reports/{id}/update"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-ad-reports--id--update', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-ad-reports--id--update"
+                    onclick="tryItOut('POSTapi-ad-reports--id--update');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-ad-reports--id--update"
+                    onclick="cancelTryOut('POSTapi-ad-reports--id--update');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-ad-reports--id--update"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/ad-reports/{id}/update</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-ad-reports--id--update"
+               value="Bearer {YOUR_ACCESS_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_ACCESS_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-ad-reports--id--update"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-ad-reports--id--update"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="id"                data-endpoint="POSTapi-ad-reports--id--update"
+               value="16"
+               data-component="url">
+    <br>
+<p>The ID of the ad report. Example: <code>16</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="status"                data-endpoint="POSTapi-ad-reports--id--update"
+               value="in_review"
+               data-component="body">
+    <br>
+<p>New status to assign to the report. Example: <code>in_review</code></p>
+Must be one of:
+<ul style="list-style-type: square;"><li><code>pending</code></li> <li><code>in_review</code></li> <li><code>resolved</code></li> <li><code>dismissed</code></li></ul>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>resolution_notes</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="resolution_notes"                data-endpoint="POSTapi-ad-reports--id--update"
+               value="Contacted the seller for clarification."
+               data-component="body">
+    <br>
+<p>Notes explaining the actions taken on the report. Must not be greater than 2000 characters. Example: <code>Contacted the seller for clarification.</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>metadata</code></b>&nbsp;&nbsp;
+<small>object</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="metadata"                data-endpoint="POSTapi-ad-reports--id--update"
+               value=""
+               data-component="body">
+    <br>
+<p>Supplementary metadata maintained by moderators.</p>
+        </div>
+        </form>
+
+                    <h2 id="ads-review-POSTapi-ad-reports--id--delete">Delete an ad report.</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-POSTapi-ad-reports--id--delete">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "https://api.wezone.app/api/ad-reports/16/delete" \
+    --header "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://api.wezone.app/api/ad-reports/16/delete"
+);
+
+const headers = {
+    "Authorization": "Bearer {YOUR_ACCESS_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-ad-reports--id--delete">
+</span>
+<span id="execution-results-POSTapi-ad-reports--id--delete" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-ad-reports--id--delete"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-ad-reports--id--delete"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-ad-reports--id--delete" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-ad-reports--id--delete">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-ad-reports--id--delete" data-method="POST"
+      data-path="api/ad-reports/{id}/delete"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-ad-reports--id--delete', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-ad-reports--id--delete"
+                    onclick="tryItOut('POSTapi-ad-reports--id--delete');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-ad-reports--id--delete"
+                    onclick="cancelTryOut('POSTapi-ad-reports--id--delete');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-ad-reports--id--delete"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/ad-reports/{id}/delete</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-ad-reports--id--delete"
+               value="Bearer {YOUR_ACCESS_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_ACCESS_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-ad-reports--id--delete"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-ad-reports--id--delete"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="id"                data-endpoint="POSTapi-ad-reports--id--delete"
+               value="16"
+               data-component="url">
+    <br>
+<p>The ID of the ad report. Example: <code>16</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="ads-review-POSTapi-ad-reports--ad_report_id--resolve">Resolve an ad report.</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-POSTapi-ad-reports--ad_report_id--resolve">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "https://api.wezone.app/api/ad-reports/architecto/resolve" \
+    --header "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"resolution_notes\": \"Listing was reviewed and found to comply with guidelines.\",
+    \"metadata\": {
+        \"action_taken\": \"monitored\"
+    }
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://api.wezone.app/api/ad-reports/architecto/resolve"
+);
+
+const headers = {
+    "Authorization": "Bearer {YOUR_ACCESS_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "resolution_notes": "Listing was reviewed and found to comply with guidelines.",
+    "metadata": {
+        "action_taken": "monitored"
+    }
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-ad-reports--ad_report_id--resolve">
+</span>
+<span id="execution-results-POSTapi-ad-reports--ad_report_id--resolve" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-ad-reports--ad_report_id--resolve"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-ad-reports--ad_report_id--resolve"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-ad-reports--ad_report_id--resolve" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-ad-reports--ad_report_id--resolve">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-ad-reports--ad_report_id--resolve" data-method="POST"
+      data-path="api/ad-reports/{ad_report_id}/resolve"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-ad-reports--ad_report_id--resolve', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-ad-reports--ad_report_id--resolve"
+                    onclick="tryItOut('POSTapi-ad-reports--ad_report_id--resolve');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-ad-reports--ad_report_id--resolve"
+                    onclick="cancelTryOut('POSTapi-ad-reports--ad_report_id--resolve');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-ad-reports--ad_report_id--resolve"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/ad-reports/{ad_report_id}/resolve</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-ad-reports--ad_report_id--resolve"
+               value="Bearer {YOUR_ACCESS_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_ACCESS_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-ad-reports--ad_report_id--resolve"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-ad-reports--ad_report_id--resolve"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>ad_report_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="ad_report_id"                data-endpoint="POSTapi-ad-reports--ad_report_id--resolve"
+               value="architecto"
+               data-component="url">
+    <br>
+<p>The ID of the ad report. Example: <code>architecto</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>resolution_notes</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="resolution_notes"                data-endpoint="POSTapi-ad-reports--ad_report_id--resolve"
+               value="Listing was reviewed and found to comply with guidelines."
+               data-component="body">
+    <br>
+<p>Notes shared with the report to explain the resolution. Must not be greater than 2000 characters. Example: <code>Listing was reviewed and found to comply with guidelines.</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>metadata</code></b>&nbsp;&nbsp;
+<small>object</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="metadata"                data-endpoint="POSTapi-ad-reports--ad_report_id--resolve"
+               value=""
+               data-component="body">
+    <br>
+<p>Additional metadata recorded during report handling.</p>
+        </div>
+        </form>
+
+                    <h2 id="ads-review-POSTapi-ad-reports--ad_report_id--dismiss">Dismiss an ad report.</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-POSTapi-ad-reports--ad_report_id--dismiss">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "https://api.wezone.app/api/ad-reports/architecto/dismiss" \
+    --header "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"resolution_notes\": \"Listing was reviewed and found to comply with guidelines.\",
+    \"metadata\": {
+        \"action_taken\": \"monitored\"
+    }
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://api.wezone.app/api/ad-reports/architecto/dismiss"
+);
+
+const headers = {
+    "Authorization": "Bearer {YOUR_ACCESS_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "resolution_notes": "Listing was reviewed and found to comply with guidelines.",
+    "metadata": {
+        "action_taken": "monitored"
+    }
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-ad-reports--ad_report_id--dismiss">
+</span>
+<span id="execution-results-POSTapi-ad-reports--ad_report_id--dismiss" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-ad-reports--ad_report_id--dismiss"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-ad-reports--ad_report_id--dismiss"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-ad-reports--ad_report_id--dismiss" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-ad-reports--ad_report_id--dismiss">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-ad-reports--ad_report_id--dismiss" data-method="POST"
+      data-path="api/ad-reports/{ad_report_id}/dismiss"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-ad-reports--ad_report_id--dismiss', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-ad-reports--ad_report_id--dismiss"
+                    onclick="tryItOut('POSTapi-ad-reports--ad_report_id--dismiss');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-ad-reports--ad_report_id--dismiss"
+                    onclick="cancelTryOut('POSTapi-ad-reports--ad_report_id--dismiss');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-ad-reports--ad_report_id--dismiss"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/ad-reports/{ad_report_id}/dismiss</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-ad-reports--ad_report_id--dismiss"
+               value="Bearer {YOUR_ACCESS_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_ACCESS_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-ad-reports--ad_report_id--dismiss"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-ad-reports--ad_report_id--dismiss"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>ad_report_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="ad_report_id"                data-endpoint="POSTapi-ad-reports--ad_report_id--dismiss"
+               value="architecto"
+               data-component="url">
+    <br>
+<p>The ID of the ad report. Example: <code>architecto</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>resolution_notes</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="resolution_notes"                data-endpoint="POSTapi-ad-reports--ad_report_id--dismiss"
+               value="Listing was reviewed and found to comply with guidelines."
+               data-component="body">
+    <br>
+<p>Notes shared with the report to explain the resolution. Must not be greater than 2000 characters. Example: <code>Listing was reviewed and found to comply with guidelines.</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>metadata</code></b>&nbsp;&nbsp;
+<small>object</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="metadata"                data-endpoint="POSTapi-ad-reports--ad_report_id--dismiss"
+               value=""
+               data-component="body">
+    <br>
+<p>Additional metadata recorded during report handling.</p>
+        </div>
+        </form>
 
                 <h1 id="auth">Auth</h1>
 
@@ -6860,7 +11002,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "national_id="""\
     --form "residence_city_id=10"\
     --form "residence_province_id=2"\
-    --form "profile_image=@C:\Users\Mohsen\AppData\Local\Temp\phpCC0.tmp" </code></pre></div>
+    --form "profile_image=@C:\Users\Safir\AppData\Local\Temp\phpA4E.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -7110,7 +11252,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>optional Profile image file (JPEG, PNG, BMP, GIF, SVG, or WebP). Example: <code>C:\Users\Mohsen\AppData\Local\Temp\phpCC0.tmp</code></p>
+<p>optional Profile image file (JPEG, PNG, BMP, GIF, SVG, or WebP). Example: <code>C:\Users\Safir\AppData\Local\Temp\phpA4E.tmp</code></p>
         </div>
         </form>
 
@@ -9348,11 +13490,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                 </form>
 
-                <h1 id="ads-review">Ads Review</h1>
+                <h1 id="others">Others</h1>
 
     
 
-                                <h2 id="ads-review-POSTapi-kpi-devices-register">POST api/kpi/devices/register</h2>
+                                <h2 id="others-GETapi-ads-conversations">GET api/ads/conversations</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
@@ -9360,36 +13502,21 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 
 
-<span id="example-requests-POSTapi-kpi-devices-register">
+<span id="example-requests-GETapi-ads-conversations">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
-    <pre><code class="language-bash">curl --request POST \
-    "https://api.wezone.app/api/kpi/devices/register" \
+    <pre><code class="language-bash">curl --request GET \
+    --get "https://api.wezone.app/api/ads/conversations" \
     --header "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
     --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --data "{
-    \"device_uuid\": \"6ff8f7f6-1eb3-3525-be4a-3932c805afed\",
-    \"platform\": \"g\",
-    \"app_version\": \"z\",
-    \"os_version\": \"m\",
-    \"device_model\": \"i\",
-    \"device_manufacturer\": \"y\",
-    \"locale\": \"ar_LY\",
-    \"timezone\": \"Asia\\/Aqtau\",
-    \"push_token\": \"l\",
-    \"first_seen_at\": \"2025-10-05T20:35:36\",
-    \"last_seen_at\": \"2025-10-05T20:35:36\",
-    \"last_heartbeat_at\": \"2025-10-05T20:35:36\"
-}"
-</code></pre></div>
+    --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://api.wezone.app/api/kpi/devices/register"
+    "https://api.wezone.app/api/ads/conversations"
 );
 
 const headers = {
@@ -9398,76 +13525,76 @@ const headers = {
     "Accept": "application/json",
 };
 
-let body = {
-    "device_uuid": "6ff8f7f6-1eb3-3525-be4a-3932c805afed",
-    "platform": "g",
-    "app_version": "z",
-    "os_version": "m",
-    "device_model": "i",
-    "device_manufacturer": "y",
-    "locale": "ar_LY",
-    "timezone": "Asia\/Aqtau",
-    "push_token": "l",
-    "first_seen_at": "2025-10-05T20:35:36",
-    "last_seen_at": "2025-10-05T20:35:36",
-    "last_heartbeat_at": "2025-10-05T20:35:36"
-};
-
 fetch(url, {
-    method: "POST",
+    method: "GET",
     headers,
-    body: JSON.stringify(body),
 }).then(response =&gt; response.json());</code></pre></div>
 
 </span>
 
-<span id="example-responses-POSTapi-kpi-devices-register">
-</span>
-<span id="execution-results-POSTapi-kpi-devices-register" hidden>
+<span id="example-responses-GETapi-ads-conversations">
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-ads-conversations" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-POSTapi-kpi-devices-register"></span>:
+                id="execution-response-status-GETapi-ads-conversations"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-kpi-devices-register"
+    <pre class="json"><code id="execution-response-content-GETapi-ads-conversations"
       data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
 </span>
-<span id="execution-error-POSTapi-kpi-devices-register" hidden>
+<span id="execution-error-GETapi-ads-conversations" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-kpi-devices-register">
+    <pre><code id="execution-error-message-GETapi-ads-conversations">
 
 Tip: Check that you&#039;re properly connected to the network.
 If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
 You can check the Dev Tools console for debugging information.</code></pre>
 </span>
-<form id="form-POSTapi-kpi-devices-register" data-method="POST"
-      data-path="api/kpi/devices/register"
+<form id="form-GETapi-ads-conversations" data-method="GET"
+      data-path="api/ads/conversations"
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTapi-kpi-devices-register', this);">
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-ads-conversations', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTapi-kpi-devices-register"
-                    onclick="tryItOut('POSTapi-kpi-devices-register');">Try it out ⚡
+                    id="btn-tryout-GETapi-ads-conversations"
+                    onclick="tryItOut('GETapi-ads-conversations');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTapi-kpi-devices-register"
-                    onclick="cancelTryOut('POSTapi-kpi-devices-register');" hidden>Cancel 🛑
+                    id="btn-canceltryout-GETapi-ads-conversations"
+                    onclick="cancelTryOut('GETapi-ads-conversations');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTapi-kpi-devices-register"
+                    id="btn-executetryout-GETapi-ads-conversations"
                     data-initial-text="Send Request 💥"
                     data-loading-text="⏱ Sending..."
                     hidden>Send Request 💥
             </button>
             </h3>
             <p>
-            <small class="badge badge-black">POST</small>
-            <b><code>api/kpi/devices/register</code></b>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/ads/conversations</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
@@ -9475,7 +13602,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-kpi-devices-register"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-ads-conversations"
                value="Bearer {YOUR_ACCESS_TOKEN}"
                data-component="header">
     <br>
@@ -9486,7 +13613,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="POSTapi-kpi-devices-register"
+                              name="Content-Type"                data-endpoint="GETapi-ads-conversations"
                value="application/json"
                data-component="header">
     <br>
@@ -9497,159 +13624,15 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="POSTapi-kpi-devices-register"
+                              name="Accept"                data-endpoint="GETapi-ads-conversations"
                value="application/json"
                data-component="header">
     <br>
 <p>Example: <code>application/json</code></p>
             </div>
-                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>device_uuid</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="device_uuid"                data-endpoint="POSTapi-kpi-devices-register"
-               value="6ff8f7f6-1eb3-3525-be4a-3932c805afed"
-               data-component="body">
-    <br>
-<p>Must be a valid UUID. Example: <code>6ff8f7f6-1eb3-3525-be4a-3932c805afed</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>platform</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="platform"                data-endpoint="POSTapi-kpi-devices-register"
-               value="g"
-               data-component="body">
-    <br>
-<p>Must not be greater than 50 characters. Example: <code>g</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>app_version</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="app_version"                data-endpoint="POSTapi-kpi-devices-register"
-               value="z"
-               data-component="body">
-    <br>
-<p>Must not be greater than 50 characters. Example: <code>z</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>os_version</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="os_version"                data-endpoint="POSTapi-kpi-devices-register"
-               value="m"
-               data-component="body">
-    <br>
-<p>Must not be greater than 100 characters. Example: <code>m</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>device_model</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="device_model"                data-endpoint="POSTapi-kpi-devices-register"
-               value="i"
-               data-component="body">
-    <br>
-<p>Must not be greater than 150 characters. Example: <code>i</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>device_manufacturer</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="device_manufacturer"                data-endpoint="POSTapi-kpi-devices-register"
-               value="y"
-               data-component="body">
-    <br>
-<p>Must not be greater than 150 characters. Example: <code>y</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>locale</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="locale"                data-endpoint="POSTapi-kpi-devices-register"
-               value="ar_LY"
-               data-component="body">
-    <br>
-<p>Must not be greater than 10 characters. Example: <code>ar_LY</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>timezone</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="timezone"                data-endpoint="POSTapi-kpi-devices-register"
-               value="Asia/Aqtau"
-               data-component="body">
-    <br>
-<p>Must not be greater than 60 characters. Example: <code>Asia/Aqtau</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>push_token</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="push_token"                data-endpoint="POSTapi-kpi-devices-register"
-               value="l"
-               data-component="body">
-    <br>
-<p>Must not be greater than 255 characters. Example: <code>l</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>first_seen_at</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="first_seen_at"                data-endpoint="POSTapi-kpi-devices-register"
-               value="2025-10-05T20:35:36"
-               data-component="body">
-    <br>
-<p>Must be a valid date. Example: <code>2025-10-05T20:35:36</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>last_seen_at</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="last_seen_at"                data-endpoint="POSTapi-kpi-devices-register"
-               value="2025-10-05T20:35:36"
-               data-component="body">
-    <br>
-<p>Must be a valid date. Example: <code>2025-10-05T20:35:36</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>last_heartbeat_at</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="last_heartbeat_at"                data-endpoint="POSTapi-kpi-devices-register"
-               value="2025-10-05T20:35:36"
-               data-component="body">
-    <br>
-<p>Must be a valid date. Example: <code>2025-10-05T20:35:36</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>extra</code></b>&nbsp;&nbsp;
-<small>object</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="extra"                data-endpoint="POSTapi-kpi-devices-register"
-               value=""
-               data-component="body">
-    <br>
+                        </form>
 
-        </div>
-        </form>
-
-                    <h2 id="ads-review-POSTapi-kpi-devices-heartbeat">POST api/kpi/devices/heartbeat</h2>
+                    <h2 id="others-POSTapi-ads--ad_id--conversations">POST api/ads/{ad_id}/conversations</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
@@ -9657,30 +13640,26 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 
 
-<span id="example-requests-POSTapi-kpi-devices-heartbeat">
+<span id="example-requests-POSTapi-ads--ad_id--conversations">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "https://api.wezone.app/api/kpi/devices/heartbeat" \
+    "https://api.wezone.app/api/ads/16/conversations" \
     --header "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"device_uuid\": \"6ff8f7f6-1eb3-3525-be4a-3932c805afed\",
-    \"last_seen_at\": \"2025-10-05T20:35:36\",
-    \"last_heartbeat_at\": \"2025-10-05T20:35:36\",
-    \"app_version\": \"g\",
-    \"platform\": \"z\",
-    \"os_version\": \"m\"
+    \"recipient_id\": 128,
+    \"message\": \"Hi! Is this item still available?\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://api.wezone.app/api/kpi/devices/heartbeat"
+    "https://api.wezone.app/api/ads/16/conversations"
 );
 
 const headers = {
@@ -9690,12 +13669,8 @@ const headers = {
 };
 
 let body = {
-    "device_uuid": "6ff8f7f6-1eb3-3525-be4a-3932c805afed",
-    "last_seen_at": "2025-10-05T20:35:36",
-    "last_heartbeat_at": "2025-10-05T20:35:36",
-    "app_version": "g",
-    "platform": "z",
-    "os_version": "m"
+    "recipient_id": 128,
+    "message": "Hi! Is this item still available?"
 };
 
 fetch(url, {
@@ -9706,45 +13681,45 @@ fetch(url, {
 
 </span>
 
-<span id="example-responses-POSTapi-kpi-devices-heartbeat">
+<span id="example-responses-POSTapi-ads--ad_id--conversations">
 </span>
-<span id="execution-results-POSTapi-kpi-devices-heartbeat" hidden>
+<span id="execution-results-POSTapi-ads--ad_id--conversations" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-POSTapi-kpi-devices-heartbeat"></span>:
+                id="execution-response-status-POSTapi-ads--ad_id--conversations"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-kpi-devices-heartbeat"
+    <pre class="json"><code id="execution-response-content-POSTapi-ads--ad_id--conversations"
       data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
 </span>
-<span id="execution-error-POSTapi-kpi-devices-heartbeat" hidden>
+<span id="execution-error-POSTapi-ads--ad_id--conversations" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-kpi-devices-heartbeat">
+    <pre><code id="execution-error-message-POSTapi-ads--ad_id--conversations">
 
 Tip: Check that you&#039;re properly connected to the network.
 If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
 You can check the Dev Tools console for debugging information.</code></pre>
 </span>
-<form id="form-POSTapi-kpi-devices-heartbeat" data-method="POST"
-      data-path="api/kpi/devices/heartbeat"
+<form id="form-POSTapi-ads--ad_id--conversations" data-method="POST"
+      data-path="api/ads/{ad_id}/conversations"
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTapi-kpi-devices-heartbeat', this);">
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-ads--ad_id--conversations', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTapi-kpi-devices-heartbeat"
-                    onclick="tryItOut('POSTapi-kpi-devices-heartbeat');">Try it out ⚡
+                    id="btn-tryout-POSTapi-ads--ad_id--conversations"
+                    onclick="tryItOut('POSTapi-ads--ad_id--conversations');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTapi-kpi-devices-heartbeat"
-                    onclick="cancelTryOut('POSTapi-kpi-devices-heartbeat');" hidden>Cancel 🛑
+                    id="btn-canceltryout-POSTapi-ads--ad_id--conversations"
+                    onclick="cancelTryOut('POSTapi-ads--ad_id--conversations');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTapi-kpi-devices-heartbeat"
+                    id="btn-executetryout-POSTapi-ads--ad_id--conversations"
                     data-initial-text="Send Request 💥"
                     data-loading-text="⏱ Sending..."
                     hidden>Send Request 💥
@@ -9752,7 +13727,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </h3>
             <p>
             <small class="badge badge-black">POST</small>
-            <b><code>api/kpi/devices/heartbeat</code></b>
+            <b><code>api/ads/{ad_id}/conversations</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
@@ -9760,7 +13735,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-kpi-devices-heartbeat"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-ads--ad_id--conversations"
                value="Bearer {YOUR_ACCESS_TOKEN}"
                data-component="header">
     <br>
@@ -9771,7 +13746,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="POSTapi-kpi-devices-heartbeat"
+                              name="Content-Type"                data-endpoint="POSTapi-ads--ad_id--conversations"
                value="application/json"
                data-component="header">
     <br>
@@ -9782,1216 +13757,50 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="POSTapi-kpi-devices-heartbeat"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>device_uuid</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="device_uuid"                data-endpoint="POSTapi-kpi-devices-heartbeat"
-               value="6ff8f7f6-1eb3-3525-be4a-3932c805afed"
-               data-component="body">
-    <br>
-<p>Must be a valid UUID. Example: <code>6ff8f7f6-1eb3-3525-be4a-3932c805afed</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>last_seen_at</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="last_seen_at"                data-endpoint="POSTapi-kpi-devices-heartbeat"
-               value="2025-10-05T20:35:36"
-               data-component="body">
-    <br>
-<p>Must be a valid date. Example: <code>2025-10-05T20:35:36</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>last_heartbeat_at</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="last_heartbeat_at"                data-endpoint="POSTapi-kpi-devices-heartbeat"
-               value="2025-10-05T20:35:36"
-               data-component="body">
-    <br>
-<p>Must be a valid date. Example: <code>2025-10-05T20:35:36</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>app_version</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="app_version"                data-endpoint="POSTapi-kpi-devices-heartbeat"
-               value="g"
-               data-component="body">
-    <br>
-<p>Must not be greater than 50 characters. Example: <code>g</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>platform</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="platform"                data-endpoint="POSTapi-kpi-devices-heartbeat"
-               value="z"
-               data-component="body">
-    <br>
-<p>Must not be greater than 50 characters. Example: <code>z</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>os_version</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="os_version"                data-endpoint="POSTapi-kpi-devices-heartbeat"
-               value="m"
-               data-component="body">
-    <br>
-<p>Must not be greater than 100 characters. Example: <code>m</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>extra</code></b>&nbsp;&nbsp;
-<small>object</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="extra"                data-endpoint="POSTapi-kpi-devices-heartbeat"
-               value=""
-               data-component="body">
-    <br>
-
-        </div>
-        </form>
-
-                    <h2 id="ads-review-POSTapi-kpi-installations">POST api/kpi/installations</h2>
-
-<p>
-<small class="badge badge-darkred">requires authentication</small>
-</p>
-
-
-
-<span id="example-requests-POSTapi-kpi-installations">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request POST \
-    "https://api.wezone.app/api/kpi/installations" \
-    --header "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --data "{
-    \"device_uuid\": \"6ff8f7f6-1eb3-3525-be4a-3932c805afed\",
-    \"installed_at\": \"2025-10-05T20:35:36\",
-    \"app_version\": \"g\",
-    \"platform\": \"z\",
-    \"os_version\": \"m\",
-    \"device_model\": \"i\",
-    \"device_manufacturer\": \"y\",
-    \"locale\": \"ar_LY\",
-    \"timezone\": \"Asia\\/Aqtau\",
-    \"push_token\": \"l\",
-    \"install_source\": \"j\",
-    \"campaign\": \"n\",
-    \"is_reinstall\": false,
-    \"user_id\": 16
-}"
-</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "https://api.wezone.app/api/kpi/installations"
-);
-
-const headers = {
-    "Authorization": "Bearer {YOUR_ACCESS_TOKEN}",
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-let body = {
-    "device_uuid": "6ff8f7f6-1eb3-3525-be4a-3932c805afed",
-    "installed_at": "2025-10-05T20:35:36",
-    "app_version": "g",
-    "platform": "z",
-    "os_version": "m",
-    "device_model": "i",
-    "device_manufacturer": "y",
-    "locale": "ar_LY",
-    "timezone": "Asia\/Aqtau",
-    "push_token": "l",
-    "install_source": "j",
-    "campaign": "n",
-    "is_reinstall": false,
-    "user_id": 16
-};
-
-fetch(url, {
-    method: "POST",
-    headers,
-    body: JSON.stringify(body),
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-POSTapi-kpi-installations">
-</span>
-<span id="execution-results-POSTapi-kpi-installations" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-POSTapi-kpi-installations"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-kpi-installations"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-POSTapi-kpi-installations" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-kpi-installations">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-POSTapi-kpi-installations" data-method="POST"
-      data-path="api/kpi/installations"
-      data-authed="1"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTapi-kpi-installations', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTapi-kpi-installations"
-                    onclick="tryItOut('POSTapi-kpi-installations');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTapi-kpi-installations"
-                    onclick="cancelTryOut('POSTapi-kpi-installations');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTapi-kpi-installations"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-black">POST</small>
-            <b><code>api/kpi/installations</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-kpi-installations"
-               value="Bearer {YOUR_ACCESS_TOKEN}"
-               data-component="header">
-    <br>
-<p>Example: <code>Bearer {YOUR_ACCESS_TOKEN}</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="POSTapi-kpi-installations"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="POSTapi-kpi-installations"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>device_uuid</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="device_uuid"                data-endpoint="POSTapi-kpi-installations"
-               value="6ff8f7f6-1eb3-3525-be4a-3932c805afed"
-               data-component="body">
-    <br>
-<p>Must be a valid UUID. Example: <code>6ff8f7f6-1eb3-3525-be4a-3932c805afed</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>installed_at</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="installed_at"                data-endpoint="POSTapi-kpi-installations"
-               value="2025-10-05T20:35:36"
-               data-component="body">
-    <br>
-<p>Must be a valid date. Example: <code>2025-10-05T20:35:36</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>app_version</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="app_version"                data-endpoint="POSTapi-kpi-installations"
-               value="g"
-               data-component="body">
-    <br>
-<p>Must not be greater than 50 characters. Example: <code>g</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>platform</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="platform"                data-endpoint="POSTapi-kpi-installations"
-               value="z"
-               data-component="body">
-    <br>
-<p>Must not be greater than 50 characters. Example: <code>z</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>os_version</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="os_version"                data-endpoint="POSTapi-kpi-installations"
-               value="m"
-               data-component="body">
-    <br>
-<p>Must not be greater than 100 characters. Example: <code>m</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>device_model</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="device_model"                data-endpoint="POSTapi-kpi-installations"
-               value="i"
-               data-component="body">
-    <br>
-<p>Must not be greater than 150 characters. Example: <code>i</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>device_manufacturer</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="device_manufacturer"                data-endpoint="POSTapi-kpi-installations"
-               value="y"
-               data-component="body">
-    <br>
-<p>Must not be greater than 150 characters. Example: <code>y</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>locale</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="locale"                data-endpoint="POSTapi-kpi-installations"
-               value="ar_LY"
-               data-component="body">
-    <br>
-<p>Must not be greater than 10 characters. Example: <code>ar_LY</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>timezone</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="timezone"                data-endpoint="POSTapi-kpi-installations"
-               value="Asia/Aqtau"
-               data-component="body">
-    <br>
-<p>Must not be greater than 60 characters. Example: <code>Asia/Aqtau</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>push_token</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="push_token"                data-endpoint="POSTapi-kpi-installations"
-               value="l"
-               data-component="body">
-    <br>
-<p>Must not be greater than 255 characters. Example: <code>l</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>install_source</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="install_source"                data-endpoint="POSTapi-kpi-installations"
-               value="j"
-               data-component="body">
-    <br>
-<p>Must not be greater than 100 characters. Example: <code>j</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>campaign</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="campaign"                data-endpoint="POSTapi-kpi-installations"
-               value="n"
-               data-component="body">
-    <br>
-<p>Must not be greater than 100 characters. Example: <code>n</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>is_reinstall</code></b>&nbsp;&nbsp;
-<small>boolean</small>&nbsp;
-<i>optional</i> &nbsp;
-                <label data-endpoint="POSTapi-kpi-installations" style="display: none">
-            <input type="radio" name="is_reinstall"
-                   value="true"
-                   data-endpoint="POSTapi-kpi-installations"
-                   data-component="body"             >
-            <code>true</code>
-        </label>
-        <label data-endpoint="POSTapi-kpi-installations" style="display: none">
-            <input type="radio" name="is_reinstall"
-                   value="false"
-                   data-endpoint="POSTapi-kpi-installations"
-                   data-component="body"             >
-            <code>false</code>
-        </label>
-    <br>
-<p>Example: <code>false</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>metadata</code></b>&nbsp;&nbsp;
-<small>object</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="metadata"                data-endpoint="POSTapi-kpi-installations"
-               value=""
-               data-component="body">
-    <br>
-
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>extra</code></b>&nbsp;&nbsp;
-<small>object</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="extra"                data-endpoint="POSTapi-kpi-installations"
-               value=""
-               data-component="body">
-    <br>
-
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>user_id</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="user_id"                data-endpoint="POSTapi-kpi-installations"
-               value="16"
-               data-component="body">
-    <br>
-<p>The <code>id</code> of an existing record in the users table. Example: <code>16</code></p>
-        </div>
-        </form>
-
-                    <h2 id="ads-review-POSTapi-kpi-uninstallations">POST api/kpi/uninstallations</h2>
-
-<p>
-<small class="badge badge-darkred">requires authentication</small>
-</p>
-
-
-
-<span id="example-requests-POSTapi-kpi-uninstallations">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request POST \
-    "https://api.wezone.app/api/kpi/uninstallations" \
-    --header "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --data "{
-    \"device_uuid\": \"6ff8f7f6-1eb3-3525-be4a-3932c805afed\",
-    \"uninstalled_at\": \"2025-10-05T20:35:36\",
-    \"app_version\": \"g\",
-    \"platform\": \"z\",
-    \"reason\": \"m\",
-    \"report_source\": \"i\",
-    \"user_id\": 16
-}"
-</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "https://api.wezone.app/api/kpi/uninstallations"
-);
-
-const headers = {
-    "Authorization": "Bearer {YOUR_ACCESS_TOKEN}",
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-let body = {
-    "device_uuid": "6ff8f7f6-1eb3-3525-be4a-3932c805afed",
-    "uninstalled_at": "2025-10-05T20:35:36",
-    "app_version": "g",
-    "platform": "z",
-    "reason": "m",
-    "report_source": "i",
-    "user_id": 16
-};
-
-fetch(url, {
-    method: "POST",
-    headers,
-    body: JSON.stringify(body),
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-POSTapi-kpi-uninstallations">
-</span>
-<span id="execution-results-POSTapi-kpi-uninstallations" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-POSTapi-kpi-uninstallations"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-kpi-uninstallations"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-POSTapi-kpi-uninstallations" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-kpi-uninstallations">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-POSTapi-kpi-uninstallations" data-method="POST"
-      data-path="api/kpi/uninstallations"
-      data-authed="1"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTapi-kpi-uninstallations', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTapi-kpi-uninstallations"
-                    onclick="tryItOut('POSTapi-kpi-uninstallations');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTapi-kpi-uninstallations"
-                    onclick="cancelTryOut('POSTapi-kpi-uninstallations');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTapi-kpi-uninstallations"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-black">POST</small>
-            <b><code>api/kpi/uninstallations</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-kpi-uninstallations"
-               value="Bearer {YOUR_ACCESS_TOKEN}"
-               data-component="header">
-    <br>
-<p>Example: <code>Bearer {YOUR_ACCESS_TOKEN}</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="POSTapi-kpi-uninstallations"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="POSTapi-kpi-uninstallations"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>device_uuid</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="device_uuid"                data-endpoint="POSTapi-kpi-uninstallations"
-               value="6ff8f7f6-1eb3-3525-be4a-3932c805afed"
-               data-component="body">
-    <br>
-<p>Must be a valid UUID. Example: <code>6ff8f7f6-1eb3-3525-be4a-3932c805afed</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>uninstalled_at</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="uninstalled_at"                data-endpoint="POSTapi-kpi-uninstallations"
-               value="2025-10-05T20:35:36"
-               data-component="body">
-    <br>
-<p>Must be a valid date. Example: <code>2025-10-05T20:35:36</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>app_version</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="app_version"                data-endpoint="POSTapi-kpi-uninstallations"
-               value="g"
-               data-component="body">
-    <br>
-<p>Must not be greater than 50 characters. Example: <code>g</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>platform</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="platform"                data-endpoint="POSTapi-kpi-uninstallations"
-               value="z"
-               data-component="body">
-    <br>
-<p>Must not be greater than 50 characters. Example: <code>z</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>reason</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="reason"                data-endpoint="POSTapi-kpi-uninstallations"
-               value="m"
-               data-component="body">
-    <br>
-<p>Must not be greater than 255 characters. Example: <code>m</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>report_source</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="report_source"                data-endpoint="POSTapi-kpi-uninstallations"
-               value="i"
-               data-component="body">
-    <br>
-<p>Must not be greater than 100 characters. Example: <code>i</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>metadata</code></b>&nbsp;&nbsp;
-<small>object</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="metadata"                data-endpoint="POSTapi-kpi-uninstallations"
-               value=""
-               data-component="body">
-    <br>
-
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>user_id</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="user_id"                data-endpoint="POSTapi-kpi-uninstallations"
-               value="16"
-               data-component="body">
-    <br>
-<p>The <code>id</code> of an existing record in the users table. Example: <code>16</code></p>
-        </div>
-        </form>
-
-                    <h2 id="ads-review-POSTapi-kpi-sessions">POST api/kpi/sessions</h2>
-
-<p>
-<small class="badge badge-darkred">requires authentication</small>
-</p>
-
-
-
-<span id="example-requests-POSTapi-kpi-sessions">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request POST \
-    "https://api.wezone.app/api/kpi/sessions" \
-    --header "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --data "{
-    \"device_uuid\": \"6ff8f7f6-1eb3-3525-be4a-3932c805afed\",
-    \"session_uuid\": \"6b72fe4a-5b40-307c-bc24-f79acf9a1bb9\",
-    \"started_at\": \"2025-10-05T20:35:36\",
-    \"ended_at\": \"2051-10-29\",
-    \"duration_seconds\": 39,
-    \"app_version\": \"g\",
-    \"platform\": \"z\",
-    \"os_version\": \"m\",
-    \"network_type\": \"i\",
-    \"city\": \"y\",
-    \"country\": \"v\",
-    \"user_id\": 16
-}"
-</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "https://api.wezone.app/api/kpi/sessions"
-);
-
-const headers = {
-    "Authorization": "Bearer {YOUR_ACCESS_TOKEN}",
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-let body = {
-    "device_uuid": "6ff8f7f6-1eb3-3525-be4a-3932c805afed",
-    "session_uuid": "6b72fe4a-5b40-307c-bc24-f79acf9a1bb9",
-    "started_at": "2025-10-05T20:35:36",
-    "ended_at": "2051-10-29",
-    "duration_seconds": 39,
-    "app_version": "g",
-    "platform": "z",
-    "os_version": "m",
-    "network_type": "i",
-    "city": "y",
-    "country": "v",
-    "user_id": 16
-};
-
-fetch(url, {
-    method: "POST",
-    headers,
-    body: JSON.stringify(body),
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-POSTapi-kpi-sessions">
-</span>
-<span id="execution-results-POSTapi-kpi-sessions" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-POSTapi-kpi-sessions"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-kpi-sessions"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-POSTapi-kpi-sessions" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-kpi-sessions">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-POSTapi-kpi-sessions" data-method="POST"
-      data-path="api/kpi/sessions"
-      data-authed="1"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTapi-kpi-sessions', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTapi-kpi-sessions"
-                    onclick="tryItOut('POSTapi-kpi-sessions');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTapi-kpi-sessions"
-                    onclick="cancelTryOut('POSTapi-kpi-sessions');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTapi-kpi-sessions"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-black">POST</small>
-            <b><code>api/kpi/sessions</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-kpi-sessions"
-               value="Bearer {YOUR_ACCESS_TOKEN}"
-               data-component="header">
-    <br>
-<p>Example: <code>Bearer {YOUR_ACCESS_TOKEN}</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="POSTapi-kpi-sessions"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="POSTapi-kpi-sessions"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>device_uuid</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="device_uuid"                data-endpoint="POSTapi-kpi-sessions"
-               value="6ff8f7f6-1eb3-3525-be4a-3932c805afed"
-               data-component="body">
-    <br>
-<p>Must be a valid UUID. Example: <code>6ff8f7f6-1eb3-3525-be4a-3932c805afed</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>session_uuid</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="session_uuid"                data-endpoint="POSTapi-kpi-sessions"
-               value="6b72fe4a-5b40-307c-bc24-f79acf9a1bb9"
-               data-component="body">
-    <br>
-<p>Must be a valid UUID. Example: <code>6b72fe4a-5b40-307c-bc24-f79acf9a1bb9</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>started_at</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="started_at"                data-endpoint="POSTapi-kpi-sessions"
-               value="2025-10-05T20:35:36"
-               data-component="body">
-    <br>
-<p>Must be a valid date. Example: <code>2025-10-05T20:35:36</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>ended_at</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="ended_at"                data-endpoint="POSTapi-kpi-sessions"
-               value="2051-10-29"
-               data-component="body">
-    <br>
-<p>Must be a valid date. Must be a date after or equal to <code>started_at</code>. Example: <code>2051-10-29</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>duration_seconds</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="duration_seconds"                data-endpoint="POSTapi-kpi-sessions"
-               value="39"
-               data-component="body">
-    <br>
-<p>Must be at least 0. Example: <code>39</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>app_version</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="app_version"                data-endpoint="POSTapi-kpi-sessions"
-               value="g"
-               data-component="body">
-    <br>
-<p>Must not be greater than 50 characters. Example: <code>g</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>platform</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="platform"                data-endpoint="POSTapi-kpi-sessions"
-               value="z"
-               data-component="body">
-    <br>
-<p>Must not be greater than 50 characters. Example: <code>z</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>os_version</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="os_version"                data-endpoint="POSTapi-kpi-sessions"
-               value="m"
-               data-component="body">
-    <br>
-<p>Must not be greater than 100 characters. Example: <code>m</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>network_type</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="network_type"                data-endpoint="POSTapi-kpi-sessions"
-               value="i"
-               data-component="body">
-    <br>
-<p>Must not be greater than 50 characters. Example: <code>i</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>city</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="city"                data-endpoint="POSTapi-kpi-sessions"
-               value="y"
-               data-component="body">
-    <br>
-<p>Must not be greater than 150 characters. Example: <code>y</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>country</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="country"                data-endpoint="POSTapi-kpi-sessions"
-               value="v"
-               data-component="body">
-    <br>
-<p>Must not be greater than 150 characters. Example: <code>v</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>metadata</code></b>&nbsp;&nbsp;
-<small>object</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="metadata"                data-endpoint="POSTapi-kpi-sessions"
-               value=""
-               data-component="body">
-    <br>
-
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>user_id</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="user_id"                data-endpoint="POSTapi-kpi-sessions"
-               value="16"
-               data-component="body">
-    <br>
-<p>The <code>id</code> of an existing record in the users table. Example: <code>16</code></p>
-        </div>
-        </form>
-
-                    <h2 id="ads-review-POSTapi-kpi-sessions--session_session_uuid--update">POST api/kpi/sessions/{session_session_uuid}/update</h2>
-
-<p>
-<small class="badge badge-darkred">requires authentication</small>
-</p>
-
-
-
-<span id="example-requests-POSTapi-kpi-sessions--session_session_uuid--update">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request POST \
-    "https://api.wezone.app/api/kpi/sessions/6ff8f7f6-1eb3-3525-be4a-3932c805afed/update" \
-    --header "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --data "{
-    "ended_at": "2025-10-05T20:35:36",
-    "duration_seconds": 27,
-    "app_version": "n",
-    "platform": "g",
-    "os_version": "z",
-    "network_type": "m",
-    "city": "i",
-    "country": "y",
-    "user_id": 16
-}"
-</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "https://api.wezone.app/api/kpi/sessions/6ff8f7f6-1eb3-3525-be4a-3932c805afed/update"
-);
-
-const headers = {
-    "Authorization": "Bearer {YOUR_ACCESS_TOKEN}",
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-let body = {
-    "ended_at": "2025-10-05T20:35:36",
-    "duration_seconds": 27,
-    "app_version": "n",
-    "platform": "g",
-    "os_version": "z",
-    "network_type": "m",
-    "city": "i",
-    "country": "y",
-    "user_id": 16
-};
-
-fetch(url, {
-    method: "POST",
-    headers,
-    body: JSON.stringify(body),
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-POSTapi-kpi-sessions--session_session_uuid--update">
-</span>
-<span id="execution-results-POSTapi-kpi-sessions--session_session_uuid--update" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-POSTapi-kpi-sessions--session_session_uuid--update"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-kpi-sessions--session_session_uuid--update"
-      data-empty-response-text="&lt;Empty response&gt;" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-POSTapi-kpi-sessions--session_session_uuid--update" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-kpi-sessions--session_session_uuid--update">
-
-Tip: Check that you&amp;#039;re properly connected to the network.
-If you&amp;#039;re a maintainer of ths API, verify that your API is running and you&amp;#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-POSTapi-kpi-sessions--session_session_uuid--update" data-method="POST"
-      data-path="api/kpi/sessions/{session_session_uuid}/update"
-      data-authed="1"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTapi-kpi-sessions--session_session_uuid--update', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTapi-kpi-sessions--session_session_uuid--update"
-                    onclick="tryItOut('POSTapi-kpi-sessions--session_session_uuid--update');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTapi-kpi-sessions--session_session_uuid--update"
-                    onclick="cancelTryOut('POSTapi-kpi-sessions--session_session_uuid--update');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTapi-kpi-sessions--session_session_uuid--update"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-black">POST</small>
-            <b><code>api/kpi/sessions/{session_session_uuid}/update</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style=" padding-left: 28px;  clear: unset;">
-                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-kpi-sessions--session_session_uuid--update"
-               value="Bearer {YOUR_ACCESS_TOKEN}"
-               data-component="header">
-    <br>
-<p>Example: <code>Bearer {YOUR_ACCESS_TOKEN}</code></p>
-            </div>
-                                <div style=" padding-left: 28px;  clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="POSTapi-kpi-sessions--session_session_uuid--update"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style=" padding-left: 28px;  clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="POSTapi-kpi-sessions--session_session_uuid--update"
+                              name="Accept"                data-endpoint="POSTapi-ads--ad_id--conversations"
                value="application/json"
                data-component="header">
     <br>
 <p>Example: <code>application/json</code></p>
             </div>
                         <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-                    <div style=" padding-left: 28px;  clear: unset;">
-                <b style="line-height: 2;"><code>session_session_uuid</code></b>&nbsp;&nbsp;<small>string</small>&nbsp;
-&nbsp;
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>ad_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
  &nbsp;
-                <input type="text" style="display: none"
-               name="session_session_uuid"                data-endpoint="POSTapi-kpi-sessions--session_session_uuid--update"
-               value="6ff8f7f6-1eb3-3525-be4a-3932c805afed"
+                <input type="number" style="display: none"
+               step="any"               name="ad_id"                data-endpoint="POSTapi-ads--ad_id--conversations"
+               value="16"
                data-component="url">
     <br>
-<p>The session UUID to update. Example: <code>6ff8f7f6-1eb3-3525-be4a-3932c805afed</code></p>
+<p>The ID of the ad. Example: <code>16</code></p>
             </div>
-                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>ended_at</code></b>&nbsp;&nbsp;<small>string</small>&nbsp;<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="ended_at"                data-endpoint="POSTapi-kpi-sessions--session_session_uuid--update"
-               value="2025-10-05T20:35:36"
-               data-component="body">
-    <br>
-<p>Must be a valid date. Example: <code>2025-10-05T20:35:36</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>duration_seconds</code></b>&nbsp;&nbsp;<small>integer</small>&nbsp;<i>optional</i> &nbsp;
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>recipient_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
                 <input type="number" style="display: none"
-               step="any"               name="duration_seconds"                data-endpoint="POSTapi-kpi-sessions--session_session_uuid--update"
-               value="27"
+               step="any"               name="recipient_id"                data-endpoint="POSTapi-ads--ad_id--conversations"
+               value="128"
                data-component="body">
     <br>
-<p>Must be at least 0. Example: <code>27</code></p>
+<p>Identifier of the user receiving the first message. Defaults to the ad owner when omitted. The <code>id</code> of an existing record in the users table. Example: <code>128</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>app_version</code></b>&nbsp;&nbsp;<small>string</small>&nbsp;<i>optional</i> &nbsp;
+            <b style="line-height: 2;"><code>message</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
                 <input type="text" style="display: none"
-                              name="app_version"                data-endpoint="POSTapi-kpi-sessions--session_session_uuid--update"
-               value="n"
+                              name="message"                data-endpoint="POSTapi-ads--ad_id--conversations"
+               value="Hi! Is this item still available?"
                data-component="body">
     <br>
-<p>Must not be greater than 50 characters. Example: <code>n</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>platform</code></b>&nbsp;&nbsp;<small>string</small>&nbsp;<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="platform"                data-endpoint="POSTapi-kpi-sessions--session_session_uuid--update"
-               value="g"
-               data-component="body">
-    <br>
-<p>Must not be greater than 50 characters. Example: <code>g</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>os_version</code></b>&nbsp;&nbsp;<small>string</small>&nbsp;<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="os_version"                data-endpoint="POSTapi-kpi-sessions--session_session_uuid--update"
-               value="z"
-               data-component="body">
-    <br>
-<p>Must not be greater than 100 characters. Example: <code>z</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>network_type</code></b>&nbsp;&nbsp;<small>string</small>&nbsp;<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="network_type"                data-endpoint="POSTapi-kpi-sessions--session_session_uuid--update"
-               value="m"
-               data-component="body">
-    <br>
-<p>Must not be greater than 50 characters. Example: <code>m</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>city</code></b>&nbsp;&nbsp;<small>string</small>&nbsp;<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="city"                data-endpoint="POSTapi-kpi-sessions--session_session_uuid--update"
-               value="i"
-               data-component="body">
-    <br>
-<p>Must not be greater than 150 characters. Example: <code>i</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>country</code></b>&nbsp;&nbsp;<small>string</small>&nbsp;<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="country"                data-endpoint="POSTapi-kpi-sessions--session_session_uuid--update"
-               value="y"
-               data-component="body">
-    <br>
-<p>Must not be greater than 150 characters. Example: <code>y</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>metadata</code></b>&nbsp;&nbsp;<small>object</small>&nbsp;<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="metadata"                data-endpoint="POSTapi-kpi-sessions--session_session_uuid--update"
-               value=""
-               data-component="body">
-    <br>
-
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>user_id</code></b>&nbsp;&nbsp;<small>integer</small>&nbsp;<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="user_id"                data-endpoint="POSTapi-kpi-sessions--session_session_uuid--update"
-               value="16"
-               data-component="body">
-    <br>
-<p>The <code>id</code> of an existing record in the users table. Example: <code>16</code></p>
+<p>Initial message to send to the conversation participant. Must not be greater than 2000 characters. Example: <code>Hi! Is this item still available?</code></p>
         </div>
         </form>
 
-                    <h2 id="ads-review-POSTapi-kpi-events">POST api/kpi/events</h2>
+                    <h2 id="others-POSTapi-ads-conversations--conversation_id--delete">POST api/ads/conversations/{conversation_id}/delete</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
@@ -10999,38 +13808,21 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 
 
-<span id="example-requests-POSTapi-kpi-events">
+<span id="example-requests-POSTapi-ads-conversations--conversation_id--delete">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "https://api.wezone.app/api/kpi/events" \
+    "https://api.wezone.app/api/ads/conversations/16/delete" \
     --header "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
     --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --data "{
-    \"device_uuid\": \"6ff8f7f6-1eb3-3525-be4a-3932c805afed\",
-    \"session_uuid\": \"6b72fe4a-5b40-307c-bc24-f79acf9a1bb9\",
-    \"platform\": \"m\",
-    \"user_id\": 16,
-    \"events\": [
-        {
-            \"event_uuid\": \"6ff8f7f6-1eb3-3525-be4a-3932c805afed\",
-            \"event_key\": \"g\",
-            \"event_name\": \"z\",
-            \"event_category\": \"m\",
-            \"event_value\": 4326.41688,
-            \"occurred_at\": \"2025-10-05T20:35:36\"
-        }
-    ]
-}"
-</code></pre></div>
+    --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://api.wezone.app/api/kpi/events"
+    "https://api.wezone.app/api/ads/conversations/16/delete"
 );
 
 const headers = {
@@ -11039,70 +13831,52 @@ const headers = {
     "Accept": "application/json",
 };
 
-let body = {
-    "device_uuid": "6ff8f7f6-1eb3-3525-be4a-3932c805afed",
-    "session_uuid": "6b72fe4a-5b40-307c-bc24-f79acf9a1bb9",
-    "platform": "m",
-    "user_id": 16,
-    "events": [
-        {
-            "event_uuid": "6ff8f7f6-1eb3-3525-be4a-3932c805afed",
-            "event_key": "g",
-            "event_name": "z",
-            "event_category": "m",
-            "event_value": 4326.41688,
-            "occurred_at": "2025-10-05T20:35:36"
-        }
-    ]
-};
-
 fetch(url, {
     method: "POST",
     headers,
-    body: JSON.stringify(body),
 }).then(response =&gt; response.json());</code></pre></div>
 
 </span>
 
-<span id="example-responses-POSTapi-kpi-events">
+<span id="example-responses-POSTapi-ads-conversations--conversation_id--delete">
 </span>
-<span id="execution-results-POSTapi-kpi-events" hidden>
+<span id="execution-results-POSTapi-ads-conversations--conversation_id--delete" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-POSTapi-kpi-events"></span>:
+                id="execution-response-status-POSTapi-ads-conversations--conversation_id--delete"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-kpi-events"
+    <pre class="json"><code id="execution-response-content-POSTapi-ads-conversations--conversation_id--delete"
       data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
 </span>
-<span id="execution-error-POSTapi-kpi-events" hidden>
+<span id="execution-error-POSTapi-ads-conversations--conversation_id--delete" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-kpi-events">
+    <pre><code id="execution-error-message-POSTapi-ads-conversations--conversation_id--delete">
 
 Tip: Check that you&#039;re properly connected to the network.
 If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
 You can check the Dev Tools console for debugging information.</code></pre>
 </span>
-<form id="form-POSTapi-kpi-events" data-method="POST"
-      data-path="api/kpi/events"
+<form id="form-POSTapi-ads-conversations--conversation_id--delete" data-method="POST"
+      data-path="api/ads/conversations/{conversation_id}/delete"
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTapi-kpi-events', this);">
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-ads-conversations--conversation_id--delete', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTapi-kpi-events"
-                    onclick="tryItOut('POSTapi-kpi-events');">Try it out ⚡
+                    id="btn-tryout-POSTapi-ads-conversations--conversation_id--delete"
+                    onclick="tryItOut('POSTapi-ads-conversations--conversation_id--delete');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTapi-kpi-events"
-                    onclick="cancelTryOut('POSTapi-kpi-events');" hidden>Cancel 🛑
+                    id="btn-canceltryout-POSTapi-ads-conversations--conversation_id--delete"
+                    onclick="cancelTryOut('POSTapi-ads-conversations--conversation_id--delete');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTapi-kpi-events"
+                    id="btn-executetryout-POSTapi-ads-conversations--conversation_id--delete"
                     data-initial-text="Send Request 💥"
                     data-loading-text="⏱ Sending..."
                     hidden>Send Request 💥
@@ -11110,7 +13884,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </h3>
             <p>
             <small class="badge badge-black">POST</small>
-            <b><code>api/kpi/events</code></b>
+            <b><code>api/ads/conversations/{conversation_id}/delete</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
@@ -11118,7 +13892,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-kpi-events"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-ads-conversations--conversation_id--delete"
                value="Bearer {YOUR_ACCESS_TOKEN}"
                data-component="header">
     <br>
@@ -11129,7 +13903,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="POSTapi-kpi-events"
+                              name="Content-Type"                data-endpoint="POSTapi-ads-conversations--conversation_id--delete"
                value="application/json"
                data-component="header">
     <br>
@@ -11140,7 +13914,1325 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="POSTapi-kpi-events"
+                              name="Accept"                data-endpoint="POSTapi-ads-conversations--conversation_id--delete"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>conversation_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="conversation_id"                data-endpoint="POSTapi-ads-conversations--conversation_id--delete"
+               value="16"
+               data-component="url">
+    <br>
+<p>The ID of the conversation. Example: <code>16</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="others-GETapi-ads-conversations--conversation_id--messages">GET api/ads/conversations/{conversation_id}/messages</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-GETapi-ads-conversations--conversation_id--messages">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "https://api.wezone.app/api/ads/conversations/16/messages" \
+    --header "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://api.wezone.app/api/ads/conversations/16/messages"
+);
+
+const headers = {
+    "Authorization": "Bearer {YOUR_ACCESS_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-ads-conversations--conversation_id--messages">
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-ads-conversations--conversation_id--messages" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-ads-conversations--conversation_id--messages"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-ads-conversations--conversation_id--messages"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-ads-conversations--conversation_id--messages" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-ads-conversations--conversation_id--messages">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-ads-conversations--conversation_id--messages" data-method="GET"
+      data-path="api/ads/conversations/{conversation_id}/messages"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-ads-conversations--conversation_id--messages', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-ads-conversations--conversation_id--messages"
+                    onclick="tryItOut('GETapi-ads-conversations--conversation_id--messages');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-ads-conversations--conversation_id--messages"
+                    onclick="cancelTryOut('GETapi-ads-conversations--conversation_id--messages');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-ads-conversations--conversation_id--messages"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/ads/conversations/{conversation_id}/messages</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-ads-conversations--conversation_id--messages"
+               value="Bearer {YOUR_ACCESS_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_ACCESS_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-ads-conversations--conversation_id--messages"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-ads-conversations--conversation_id--messages"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>conversation_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="conversation_id"                data-endpoint="GETapi-ads-conversations--conversation_id--messages"
+               value="16"
+               data-component="url">
+    <br>
+<p>The ID of the conversation. Example: <code>16</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="others-POSTapi-ads-conversations--conversation_id--messages">POST api/ads/conversations/{conversation_id}/messages</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-POSTapi-ads-conversations--conversation_id--messages">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "https://api.wezone.app/api/ads/conversations/16/messages" \
+    --header "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"message\": \"Can you share more photos of the product?\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://api.wezone.app/api/ads/conversations/16/messages"
+);
+
+const headers = {
+    "Authorization": "Bearer {YOUR_ACCESS_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "message": "Can you share more photos of the product?"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-ads-conversations--conversation_id--messages">
+</span>
+<span id="execution-results-POSTapi-ads-conversations--conversation_id--messages" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-ads-conversations--conversation_id--messages"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-ads-conversations--conversation_id--messages"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-ads-conversations--conversation_id--messages" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-ads-conversations--conversation_id--messages">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-ads-conversations--conversation_id--messages" data-method="POST"
+      data-path="api/ads/conversations/{conversation_id}/messages"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-ads-conversations--conversation_id--messages', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-ads-conversations--conversation_id--messages"
+                    onclick="tryItOut('POSTapi-ads-conversations--conversation_id--messages');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-ads-conversations--conversation_id--messages"
+                    onclick="cancelTryOut('POSTapi-ads-conversations--conversation_id--messages');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-ads-conversations--conversation_id--messages"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/ads/conversations/{conversation_id}/messages</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-ads-conversations--conversation_id--messages"
+               value="Bearer {YOUR_ACCESS_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_ACCESS_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-ads-conversations--conversation_id--messages"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-ads-conversations--conversation_id--messages"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>conversation_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="conversation_id"                data-endpoint="POSTapi-ads-conversations--conversation_id--messages"
+               value="16"
+               data-component="url">
+    <br>
+<p>The ID of the conversation. Example: <code>16</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>message</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="message"                data-endpoint="POSTapi-ads-conversations--conversation_id--messages"
+               value="Can you share more photos of the product?"
+               data-component="body">
+    <br>
+<p>Message body to send to the conversation participant. Must not be greater than 2000 characters. Example: <code>Can you share more photos of the product?</code></p>
+        </div>
+        </form>
+
+                    <h2 id="others-GETapi-ads-bookmarks">GET api/ads/bookmarks</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-GETapi-ads-bookmarks">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "https://api.wezone.app/api/ads/bookmarks" \
+    --header "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://api.wezone.app/api/ads/bookmarks"
+);
+
+const headers = {
+    "Authorization": "Bearer {YOUR_ACCESS_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-ads-bookmarks">
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-ads-bookmarks" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-ads-bookmarks"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-ads-bookmarks"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-ads-bookmarks" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-ads-bookmarks">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-ads-bookmarks" data-method="GET"
+      data-path="api/ads/bookmarks"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-ads-bookmarks', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-ads-bookmarks"
+                    onclick="tryItOut('GETapi-ads-bookmarks');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-ads-bookmarks"
+                    onclick="cancelTryOut('GETapi-ads-bookmarks');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-ads-bookmarks"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/ads/bookmarks</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-ads-bookmarks"
+               value="Bearer {YOUR_ACCESS_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_ACCESS_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-ads-bookmarks"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-ads-bookmarks"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="others-GETapi-ads--ad_id--comments">GET api/ads/{ad_id}/comments</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-GETapi-ads--ad_id--comments">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "https://api.wezone.app/api/ads/16/comments" \
+    --header "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://api.wezone.app/api/ads/16/comments"
+);
+
+const headers = {
+    "Authorization": "Bearer {YOUR_ACCESS_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-ads--ad_id--comments">
+            <blockquote>
+            <p>Example response (500):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Server Error&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-ads--ad_id--comments" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-ads--ad_id--comments"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-ads--ad_id--comments"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-ads--ad_id--comments" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-ads--ad_id--comments">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-ads--ad_id--comments" data-method="GET"
+      data-path="api/ads/{ad_id}/comments"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-ads--ad_id--comments', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-ads--ad_id--comments"
+                    onclick="tryItOut('GETapi-ads--ad_id--comments');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-ads--ad_id--comments"
+                    onclick="cancelTryOut('GETapi-ads--ad_id--comments');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-ads--ad_id--comments"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/ads/{ad_id}/comments</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-ads--ad_id--comments"
+               value="Bearer {YOUR_ACCESS_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_ACCESS_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-ads--ad_id--comments"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-ads--ad_id--comments"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>ad_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="ad_id"                data-endpoint="GETapi-ads--ad_id--comments"
+               value="16"
+               data-component="url">
+    <br>
+<p>The ID of the ad. Example: <code>16</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="others-POSTapi-ads--ad_id--comments">POST api/ads/{ad_id}/comments</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-POSTapi-ads--ad_id--comments">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "https://api.wezone.app/api/ads/16/comments" \
+    --header "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"body\": \"Is the price negotiable?\",
+    \"parent_id\": 87
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://api.wezone.app/api/ads/16/comments"
+);
+
+const headers = {
+    "Authorization": "Bearer {YOUR_ACCESS_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "body": "Is the price negotiable?",
+    "parent_id": 87
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-ads--ad_id--comments">
+</span>
+<span id="execution-results-POSTapi-ads--ad_id--comments" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-ads--ad_id--comments"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-ads--ad_id--comments"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-ads--ad_id--comments" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-ads--ad_id--comments">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-ads--ad_id--comments" data-method="POST"
+      data-path="api/ads/{ad_id}/comments"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-ads--ad_id--comments', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-ads--ad_id--comments"
+                    onclick="tryItOut('POSTapi-ads--ad_id--comments');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-ads--ad_id--comments"
+                    onclick="cancelTryOut('POSTapi-ads--ad_id--comments');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-ads--ad_id--comments"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/ads/{ad_id}/comments</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-ads--ad_id--comments"
+               value="Bearer {YOUR_ACCESS_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_ACCESS_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-ads--ad_id--comments"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-ads--ad_id--comments"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>ad_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="ad_id"                data-endpoint="POSTapi-ads--ad_id--comments"
+               value="16"
+               data-component="url">
+    <br>
+<p>The ID of the ad. Example: <code>16</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>body</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="body"                data-endpoint="POSTapi-ads--ad_id--comments"
+               value="Is the price negotiable?"
+               data-component="body">
+    <br>
+<p>Content of the comment to attach to the ad. Must be at least 1 character. Must not be greater than 2000 characters. Example: <code>Is the price negotiable?</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>parent_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="parent_id"                data-endpoint="POSTapi-ads--ad_id--comments"
+               value="87"
+               data-component="body">
+    <br>
+<p>Identifier of the parent comment when replying to a thread. The <code>id</code> of an existing record in the ad_comments table. Example: <code>87</code></p>
+        </div>
+        </form>
+
+                    <h2 id="others-POSTapi-ads--ad_id--bookmark">POST api/ads/{ad_id}/bookmark</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-POSTapi-ads--ad_id--bookmark">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "https://api.wezone.app/api/ads/16/bookmark" \
+    --header "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://api.wezone.app/api/ads/16/bookmark"
+);
+
+const headers = {
+    "Authorization": "Bearer {YOUR_ACCESS_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-ads--ad_id--bookmark">
+</span>
+<span id="execution-results-POSTapi-ads--ad_id--bookmark" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-ads--ad_id--bookmark"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-ads--ad_id--bookmark"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-ads--ad_id--bookmark" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-ads--ad_id--bookmark">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-ads--ad_id--bookmark" data-method="POST"
+      data-path="api/ads/{ad_id}/bookmark"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-ads--ad_id--bookmark', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-ads--ad_id--bookmark"
+                    onclick="tryItOut('POSTapi-ads--ad_id--bookmark');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-ads--ad_id--bookmark"
+                    onclick="cancelTryOut('POSTapi-ads--ad_id--bookmark');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-ads--ad_id--bookmark"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/ads/{ad_id}/bookmark</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-ads--ad_id--bookmark"
+               value="Bearer {YOUR_ACCESS_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_ACCESS_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-ads--ad_id--bookmark"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-ads--ad_id--bookmark"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>ad_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="ad_id"                data-endpoint="POSTapi-ads--ad_id--bookmark"
+               value="16"
+               data-component="url">
+    <br>
+<p>The ID of the ad. Example: <code>16</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="others-POSTapi-ads--ad_id--like">POST api/ads/{ad_id}/like</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-POSTapi-ads--ad_id--like">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "https://api.wezone.app/api/ads/16/like" \
+    --header "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://api.wezone.app/api/ads/16/like"
+);
+
+const headers = {
+    "Authorization": "Bearer {YOUR_ACCESS_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-ads--ad_id--like">
+</span>
+<span id="execution-results-POSTapi-ads--ad_id--like" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-ads--ad_id--like"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-ads--ad_id--like"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-ads--ad_id--like" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-ads--ad_id--like">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-ads--ad_id--like" data-method="POST"
+      data-path="api/ads/{ad_id}/like"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-ads--ad_id--like', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-ads--ad_id--like"
+                    onclick="tryItOut('POSTapi-ads--ad_id--like');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-ads--ad_id--like"
+                    onclick="cancelTryOut('POSTapi-ads--ad_id--like');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-ads--ad_id--like"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/ads/{ad_id}/like</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-ads--ad_id--like"
+               value="Bearer {YOUR_ACCESS_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_ACCESS_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-ads--ad_id--like"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-ads--ad_id--like"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>ad_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="ad_id"                data-endpoint="POSTapi-ads--ad_id--like"
+               value="16"
+               data-component="url">
+    <br>
+<p>The ID of the ad. Example: <code>16</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="others-GETapi-monetization-plans">GET api/monetization/plans</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-GETapi-monetization-plans">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "https://api.wezone.app/api/monetization/plans" \
+    --header "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://api.wezone.app/api/monetization/plans"
+);
+
+const headers = {
+    "Authorization": "Bearer {YOUR_ACCESS_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-monetization-plans">
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-monetization-plans" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-monetization-plans"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-monetization-plans"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-monetization-plans" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-monetization-plans">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-monetization-plans" data-method="GET"
+      data-path="api/monetization/plans"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-monetization-plans', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-monetization-plans"
+                    onclick="tryItOut('GETapi-monetization-plans');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-monetization-plans"
+                    onclick="cancelTryOut('GETapi-monetization-plans');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-monetization-plans"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/monetization/plans</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-monetization-plans"
+               value="Bearer {YOUR_ACCESS_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_ACCESS_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-monetization-plans"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-monetization-plans"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="others-POSTapi-monetization-purchases">POST api/monetization/purchases</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-POSTapi-monetization-purchases">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "https://api.wezone.app/api/monetization/purchases" \
+    --header "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"ad_id\": 16,
+    \"plan_id\": 16,
+    \"plan_slug\": \"architecto\",
+    \"gateway\": \"architecto\",
+    \"pay_with_wallet\": false
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://api.wezone.app/api/monetization/purchases"
+);
+
+const headers = {
+    "Authorization": "Bearer {YOUR_ACCESS_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "ad_id": 16,
+    "plan_id": 16,
+    "plan_slug": "architecto",
+    "gateway": "architecto",
+    "pay_with_wallet": false
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-monetization-purchases">
+</span>
+<span id="execution-results-POSTapi-monetization-purchases" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-monetization-purchases"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-monetization-purchases"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-monetization-purchases" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-monetization-purchases">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-monetization-purchases" data-method="POST"
+      data-path="api/monetization/purchases"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-monetization-purchases', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-monetization-purchases"
+                    onclick="tryItOut('POSTapi-monetization-purchases');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-monetization-purchases"
+                    onclick="cancelTryOut('POSTapi-monetization-purchases');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-monetization-purchases"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/monetization/purchases</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-monetization-purchases"
+               value="Bearer {YOUR_ACCESS_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_ACCESS_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-monetization-purchases"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-monetization-purchases"
                value="application/json"
                data-component="header">
     <br>
@@ -11148,142 +15240,1918 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                                 <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>device_uuid</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="device_uuid"                data-endpoint="POSTapi-kpi-events"
-               value="6ff8f7f6-1eb3-3525-be4a-3932c805afed"
-               data-component="body">
-    <br>
-<p>Must be a valid UUID. Example: <code>6ff8f7f6-1eb3-3525-be4a-3932c805afed</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>session_uuid</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="session_uuid"                data-endpoint="POSTapi-kpi-events"
-               value="6b72fe4a-5b40-307c-bc24-f79acf9a1bb9"
-               data-component="body">
-    <br>
-<p>Must be a valid UUID. Example: <code>6b72fe4a-5b40-307c-bc24-f79acf9a1bb9</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>platform</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="platform"                data-endpoint="POSTapi-kpi-events"
-               value="m"
-               data-component="body">
-    <br>
-<p>Must not be greater than 50 characters. Example: <code>m</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>user_id</code></b>&nbsp;&nbsp;
+            <b style="line-height: 2;"><code>ad_id</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
-<i>optional</i> &nbsp;
+ &nbsp;
                 <input type="number" style="display: none"
-               step="any"               name="user_id"                data-endpoint="POSTapi-kpi-events"
+               step="any"               name="ad_id"                data-endpoint="POSTapi-monetization-purchases"
                value="16"
                data-component="body">
     <br>
-<p>The <code>id</code> of an existing record in the users table. Example: <code>16</code></p>
+<p>Example: <code>16</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
-        <details>
-            <summary style="padding-bottom: 10px;">
-                <b style="line-height: 2;"><code>events</code></b>&nbsp;&nbsp;
-<small>object[]</small>&nbsp;
- &nbsp;
-<br>
-<p>Must have at least 1 items.</p>
-            </summary>
-                                                <div style="margin-left: 14px; clear: unset;">
-                        <b style="line-height: 2;"><code>event_uuid</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="events.0.event_uuid"                data-endpoint="POSTapi-kpi-events"
-               value="6ff8f7f6-1eb3-3525-be4a-3932c805afed"
-               data-component="body">
-    <br>
-<p>Must be a valid UUID. Example: <code>6ff8f7f6-1eb3-3525-be4a-3932c805afed</code></p>
-                    </div>
-                                                                <div style="margin-left: 14px; clear: unset;">
-                        <b style="line-height: 2;"><code>event_key</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="events.0.event_key"                data-endpoint="POSTapi-kpi-events"
-               value="g"
-               data-component="body">
-    <br>
-<p>Must not be greater than 100 characters. Example: <code>g</code></p>
-                    </div>
-                                                                <div style="margin-left: 14px; clear: unset;">
-                        <b style="line-height: 2;"><code>event_name</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="events.0.event_name"                data-endpoint="POSTapi-kpi-events"
-               value="z"
-               data-component="body">
-    <br>
-<p>Must not be greater than 255 characters. Example: <code>z</code></p>
-                    </div>
-                                                                <div style="margin-left: 14px; clear: unset;">
-                        <b style="line-height: 2;"><code>event_category</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="events.0.event_category"                data-endpoint="POSTapi-kpi-events"
-               value="m"
-               data-component="body">
-    <br>
-<p>Must not be greater than 100 characters. Example: <code>m</code></p>
-                    </div>
-                                                                <div style="margin-left: 14px; clear: unset;">
-                        <b style="line-height: 2;"><code>event_value</code></b>&nbsp;&nbsp;
-<small>number</small>&nbsp;
+            <b style="line-height: 2;"><code>plan_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
 <i>optional</i> &nbsp;
                 <input type="number" style="display: none"
-               step="any"               name="events.0.event_value"                data-endpoint="POSTapi-kpi-events"
-               value="4326.41688"
+               step="any"               name="plan_id"                data-endpoint="POSTapi-monetization-purchases"
+               value="16"
                data-component="body">
     <br>
-<p>Example: <code>4326.41688</code></p>
-                    </div>
-                                                                <div style="margin-left: 14px; clear: unset;">
-                        <b style="line-height: 2;"><code>occurred_at</code></b>&nbsp;&nbsp;
+<p>Example: <code>16</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>plan_slug</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
-                              name="events.0.occurred_at"                data-endpoint="POSTapi-kpi-events"
-               value="2025-10-05T20:35:36"
+                              name="plan_slug"                data-endpoint="POSTapi-monetization-purchases"
+               value="architecto"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-10-05T20:35:36</code></p>
-                    </div>
-                                                                <div style="margin-left: 14px; clear: unset;">
-                        <b style="line-height: 2;"><code>metadata</code></b>&nbsp;&nbsp;
-<small>object</small>&nbsp;
+<p>Example: <code>architecto</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>gateway</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
-                              name="events.0.metadata"                data-endpoint="POSTapi-kpi-events"
+                              name="gateway"                data-endpoint="POSTapi-monetization-purchases"
+               value="architecto"
+               data-component="body">
+    <br>
+<p>Example: <code>architecto</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>pay_with_wallet</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="POSTapi-monetization-purchases" style="display: none">
+            <input type="radio" name="pay_with_wallet"
+                   value="true"
+                   data-endpoint="POSTapi-monetization-purchases"
+                   data-component="body"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="POSTapi-monetization-purchases" style="display: none">
+            <input type="radio" name="pay_with_wallet"
+                   value="false"
+                   data-endpoint="POSTapi-monetization-purchases"
+                   data-component="body"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Example: <code>false</code></p>
+        </div>
+        </form>
+
+                    <h2 id="others-GETapi-monetization-purchases--id-">GET api/monetization/purchases/{id}</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-GETapi-monetization-purchases--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "https://api.wezone.app/api/monetization/purchases/16" \
+    --header "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://api.wezone.app/api/monetization/purchases/16"
+);
+
+const headers = {
+    "Authorization": "Bearer {YOUR_ACCESS_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-monetization-purchases--id-">
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-monetization-purchases--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-monetization-purchases--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-monetization-purchases--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-monetization-purchases--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-monetization-purchases--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-monetization-purchases--id-" data-method="GET"
+      data-path="api/monetization/purchases/{id}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-monetization-purchases--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-monetization-purchases--id-"
+                    onclick="tryItOut('GETapi-monetization-purchases--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-monetization-purchases--id-"
+                    onclick="cancelTryOut('GETapi-monetization-purchases--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-monetization-purchases--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/monetization/purchases/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-monetization-purchases--id-"
+               value="Bearer {YOUR_ACCESS_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_ACCESS_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-monetization-purchases--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-monetization-purchases--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="id"                data-endpoint="GETapi-monetization-purchases--id-"
+               value="16"
+               data-component="url">
+    <br>
+<p>The ID of the purchase. Example: <code>16</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="others-POSTapi-monetization-purchases--purchase_id--bump">POST api/monetization/purchases/{purchase_id}/bump</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-POSTapi-monetization-purchases--purchase_id--bump">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "https://api.wezone.app/api/monetization/purchases/16/bump" \
+    --header "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://api.wezone.app/api/monetization/purchases/16/bump"
+);
+
+const headers = {
+    "Authorization": "Bearer {YOUR_ACCESS_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-monetization-purchases--purchase_id--bump">
+</span>
+<span id="execution-results-POSTapi-monetization-purchases--purchase_id--bump" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-monetization-purchases--purchase_id--bump"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-monetization-purchases--purchase_id--bump"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-monetization-purchases--purchase_id--bump" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-monetization-purchases--purchase_id--bump">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-monetization-purchases--purchase_id--bump" data-method="POST"
+      data-path="api/monetization/purchases/{purchase_id}/bump"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-monetization-purchases--purchase_id--bump', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-monetization-purchases--purchase_id--bump"
+                    onclick="tryItOut('POSTapi-monetization-purchases--purchase_id--bump');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-monetization-purchases--purchase_id--bump"
+                    onclick="cancelTryOut('POSTapi-monetization-purchases--purchase_id--bump');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-monetization-purchases--purchase_id--bump"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/monetization/purchases/{purchase_id}/bump</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-monetization-purchases--purchase_id--bump"
+               value="Bearer {YOUR_ACCESS_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_ACCESS_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-monetization-purchases--purchase_id--bump"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-monetization-purchases--purchase_id--bump"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>purchase_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="purchase_id"                data-endpoint="POSTapi-monetization-purchases--purchase_id--bump"
+               value="16"
+               data-component="url">
+    <br>
+<p>The ID of the purchase. Example: <code>16</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="others-POSTapi-monetization-purchases--purchase_id--payments-initiate">POST api/monetization/purchases/{purchase_id}/payments/initiate</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-POSTapi-monetization-purchases--purchase_id--payments-initiate">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "https://api.wezone.app/api/monetization/purchases/16/payments/initiate" \
+    --header "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"gateway\": \"architecto\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://api.wezone.app/api/monetization/purchases/16/payments/initiate"
+);
+
+const headers = {
+    "Authorization": "Bearer {YOUR_ACCESS_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "gateway": "architecto"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-monetization-purchases--purchase_id--payments-initiate">
+</span>
+<span id="execution-results-POSTapi-monetization-purchases--purchase_id--payments-initiate" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-monetization-purchases--purchase_id--payments-initiate"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-monetization-purchases--purchase_id--payments-initiate"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-monetization-purchases--purchase_id--payments-initiate" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-monetization-purchases--purchase_id--payments-initiate">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-monetization-purchases--purchase_id--payments-initiate" data-method="POST"
+      data-path="api/monetization/purchases/{purchase_id}/payments/initiate"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-monetization-purchases--purchase_id--payments-initiate', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-monetization-purchases--purchase_id--payments-initiate"
+                    onclick="tryItOut('POSTapi-monetization-purchases--purchase_id--payments-initiate');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-monetization-purchases--purchase_id--payments-initiate"
+                    onclick="cancelTryOut('POSTapi-monetization-purchases--purchase_id--payments-initiate');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-monetization-purchases--purchase_id--payments-initiate"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/monetization/purchases/{purchase_id}/payments/initiate</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-monetization-purchases--purchase_id--payments-initiate"
+               value="Bearer {YOUR_ACCESS_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_ACCESS_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-monetization-purchases--purchase_id--payments-initiate"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-monetization-purchases--purchase_id--payments-initiate"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>purchase_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="purchase_id"                data-endpoint="POSTapi-monetization-purchases--purchase_id--payments-initiate"
+               value="16"
+               data-component="url">
+    <br>
+<p>The ID of the purchase. Example: <code>16</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>gateway</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="gateway"                data-endpoint="POSTapi-monetization-purchases--purchase_id--payments-initiate"
+               value="architecto"
+               data-component="body">
+    <br>
+<p>Example: <code>architecto</code></p>
+        </div>
+        </form>
+
+                    <h2 id="others-POSTapi-monetization-payments-verify">POST api/monetization/payments/verify</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-POSTapi-monetization-payments-verify">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "https://api.wezone.app/api/monetization/payments/verify" \
+    --header "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"gateway\": \"architecto\",
+    \"payload\": []
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://api.wezone.app/api/monetization/payments/verify"
+);
+
+const headers = {
+    "Authorization": "Bearer {YOUR_ACCESS_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "gateway": "architecto",
+    "payload": []
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-monetization-payments-verify">
+</span>
+<span id="execution-results-POSTapi-monetization-payments-verify" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-monetization-payments-verify"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-monetization-payments-verify"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-monetization-payments-verify" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-monetization-payments-verify">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-monetization-payments-verify" data-method="POST"
+      data-path="api/monetization/payments/verify"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-monetization-payments-verify', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-monetization-payments-verify"
+                    onclick="tryItOut('POSTapi-monetization-payments-verify');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-monetization-payments-verify"
+                    onclick="cancelTryOut('POSTapi-monetization-payments-verify');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-monetization-payments-verify"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/monetization/payments/verify</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-monetization-payments-verify"
+               value="Bearer {YOUR_ACCESS_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_ACCESS_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-monetization-payments-verify"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-monetization-payments-verify"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>gateway</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="gateway"                data-endpoint="POSTapi-monetization-payments-verify"
+               value="architecto"
+               data-component="body">
+    <br>
+<p>Example: <code>architecto</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>payload</code></b>&nbsp;&nbsp;
+<small>object</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="payload"                data-endpoint="POSTapi-monetization-payments-verify"
                value=""
                data-component="body">
     <br>
 
-                    </div>
-                                    </details>
         </div>
         </form>
 
+                    <h2 id="others-GETapi-monetization-wallet">GET api/monetization/wallet</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-GETapi-monetization-wallet">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "https://api.wezone.app/api/monetization/wallet" \
+    --header "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://api.wezone.app/api/monetization/wallet"
+);
+
+const headers = {
+    "Authorization": "Bearer {YOUR_ACCESS_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-monetization-wallet">
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-monetization-wallet" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-monetization-wallet"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-monetization-wallet"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-monetization-wallet" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-monetization-wallet">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-monetization-wallet" data-method="GET"
+      data-path="api/monetization/wallet"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-monetization-wallet', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-monetization-wallet"
+                    onclick="tryItOut('GETapi-monetization-wallet');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-monetization-wallet"
+                    onclick="cancelTryOut('GETapi-monetization-wallet');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-monetization-wallet"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/monetization/wallet</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-monetization-wallet"
+               value="Bearer {YOUR_ACCESS_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_ACCESS_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-monetization-wallet"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-monetization-wallet"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="others-POSTapi-monetization-wallet-top-up">POST api/monetization/wallet/top-up</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-POSTapi-monetization-wallet-top-up">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "https://api.wezone.app/api/monetization/wallet/top-up" \
+    --header "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"amount\": 16,
+    \"currency\": \"ngz\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://api.wezone.app/api/monetization/wallet/top-up"
+);
+
+const headers = {
+    "Authorization": "Bearer {YOUR_ACCESS_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "amount": 16,
+    "currency": "ngz"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-monetization-wallet-top-up">
+</span>
+<span id="execution-results-POSTapi-monetization-wallet-top-up" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-monetization-wallet-top-up"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-monetization-wallet-top-up"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-monetization-wallet-top-up" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-monetization-wallet-top-up">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-monetization-wallet-top-up" data-method="POST"
+      data-path="api/monetization/wallet/top-up"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-monetization-wallet-top-up', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-monetization-wallet-top-up"
+                    onclick="tryItOut('POSTapi-monetization-wallet-top-up');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-monetization-wallet-top-up"
+                    onclick="cancelTryOut('POSTapi-monetization-wallet-top-up');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-monetization-wallet-top-up"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/monetization/wallet/top-up</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-monetization-wallet-top-up"
+               value="Bearer {YOUR_ACCESS_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_ACCESS_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-monetization-wallet-top-up"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-monetization-wallet-top-up"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>amount</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="amount"                data-endpoint="POSTapi-monetization-wallet-top-up"
+               value="16"
+               data-component="body">
+    <br>
+<p>Must be at least 1. Example: <code>16</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>currency</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="currency"                data-endpoint="POSTapi-monetization-wallet-top-up"
+               value="ngz"
+               data-component="body">
+    <br>
+<p>Must be 3 characters. Example: <code>ngz</code></p>
+        </div>
+        </form>
+
+                    <h2 id="others-GETapi-v1-notifications">GET api/v1/notifications</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-GETapi-v1-notifications">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "https://api.wezone.app/api/v1/notifications" \
+    --header "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://api.wezone.app/api/v1/notifications"
+);
+
+const headers = {
+    "Authorization": "Bearer {YOUR_ACCESS_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v1-notifications">
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-notifications" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-notifications"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-notifications"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-notifications" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-notifications">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-v1-notifications" data-method="GET"
+      data-path="api/v1/notifications"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-notifications', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-notifications"
+                    onclick="tryItOut('GETapi-v1-notifications');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-notifications"
+                    onclick="cancelTryOut('GETapi-v1-notifications');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-notifications"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/notifications</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-v1-notifications"
+               value="Bearer {YOUR_ACCESS_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_ACCESS_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-v1-notifications"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-v1-notifications"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="others-POSTapi-v1-notifications-read">POST api/v1/notifications/read</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-POSTapi-v1-notifications-read">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "https://api.wezone.app/api/v1/notifications/read" \
+    --header "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://api.wezone.app/api/v1/notifications/read"
+);
+
+const headers = {
+    "Authorization": "Bearer {YOUR_ACCESS_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-v1-notifications-read">
+</span>
+<span id="execution-results-POSTapi-v1-notifications-read" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-v1-notifications-read"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-notifications-read"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-v1-notifications-read" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v1-notifications-read">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-v1-notifications-read" data-method="POST"
+      data-path="api/v1/notifications/read"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-notifications-read', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-v1-notifications-read"
+                    onclick="tryItOut('POSTapi-v1-notifications-read');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-v1-notifications-read"
+                    onclick="cancelTryOut('POSTapi-v1-notifications-read');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-v1-notifications-read"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/v1/notifications/read</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-v1-notifications-read"
+               value="Bearer {YOUR_ACCESS_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_ACCESS_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-v1-notifications-read"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-v1-notifications-read"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="others-POSTapi-v1-notifications--notification_id--read">POST api/v1/notifications/{notification_id}/read</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-POSTapi-v1-notifications--notification_id--read">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "https://api.wezone.app/api/v1/notifications/architecto/read" \
+    --header "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://api.wezone.app/api/v1/notifications/architecto/read"
+);
+
+const headers = {
+    "Authorization": "Bearer {YOUR_ACCESS_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-v1-notifications--notification_id--read">
+</span>
+<span id="execution-results-POSTapi-v1-notifications--notification_id--read" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-v1-notifications--notification_id--read"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-notifications--notification_id--read"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-v1-notifications--notification_id--read" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v1-notifications--notification_id--read">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-v1-notifications--notification_id--read" data-method="POST"
+      data-path="api/v1/notifications/{notification_id}/read"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-notifications--notification_id--read', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-v1-notifications--notification_id--read"
+                    onclick="tryItOut('POSTapi-v1-notifications--notification_id--read');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-v1-notifications--notification_id--read"
+                    onclick="cancelTryOut('POSTapi-v1-notifications--notification_id--read');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-v1-notifications--notification_id--read"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/v1/notifications/{notification_id}/read</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-v1-notifications--notification_id--read"
+               value="Bearer {YOUR_ACCESS_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_ACCESS_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-v1-notifications--notification_id--read"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-v1-notifications--notification_id--read"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>notification_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="notification_id"                data-endpoint="POSTapi-v1-notifications--notification_id--read"
+               value="architecto"
+               data-component="url">
+    <br>
+<p>The ID of the notification. Example: <code>architecto</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="others-POSTapi-v1-notifications--notification_id--acknowledge">POST api/v1/notifications/{notification_id}/acknowledge</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-POSTapi-v1-notifications--notification_id--acknowledge">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "https://api.wezone.app/api/v1/notifications/architecto/acknowledge" \
+    --header "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://api.wezone.app/api/v1/notifications/architecto/acknowledge"
+);
+
+const headers = {
+    "Authorization": "Bearer {YOUR_ACCESS_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-v1-notifications--notification_id--acknowledge">
+</span>
+<span id="execution-results-POSTapi-v1-notifications--notification_id--acknowledge" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-v1-notifications--notification_id--acknowledge"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-notifications--notification_id--acknowledge"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-v1-notifications--notification_id--acknowledge" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v1-notifications--notification_id--acknowledge">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-v1-notifications--notification_id--acknowledge" data-method="POST"
+      data-path="api/v1/notifications/{notification_id}/acknowledge"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-notifications--notification_id--acknowledge', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-v1-notifications--notification_id--acknowledge"
+                    onclick="tryItOut('POSTapi-v1-notifications--notification_id--acknowledge');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-v1-notifications--notification_id--acknowledge"
+                    onclick="cancelTryOut('POSTapi-v1-notifications--notification_id--acknowledge');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-v1-notifications--notification_id--acknowledge"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/v1/notifications/{notification_id}/acknowledge</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-v1-notifications--notification_id--acknowledge"
+               value="Bearer {YOUR_ACCESS_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_ACCESS_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-v1-notifications--notification_id--acknowledge"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-v1-notifications--notification_id--acknowledge"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>notification_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="notification_id"                data-endpoint="POSTapi-v1-notifications--notification_id--acknowledge"
+               value="architecto"
+               data-component="url">
+    <br>
+<p>The ID of the notification. Example: <code>architecto</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="others-POSTapi-users--user_id--block">POST api/users/{user_id}/block</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-POSTapi-users--user_id--block">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "https://api.wezone.app/api/users/1/block" \
+    --header "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://api.wezone.app/api/users/1/block"
+);
+
+const headers = {
+    "Authorization": "Bearer {YOUR_ACCESS_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-users--user_id--block">
+</span>
+<span id="execution-results-POSTapi-users--user_id--block" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-users--user_id--block"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-users--user_id--block"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-users--user_id--block" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-users--user_id--block">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-users--user_id--block" data-method="POST"
+      data-path="api/users/{user_id}/block"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-users--user_id--block', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-users--user_id--block"
+                    onclick="tryItOut('POSTapi-users--user_id--block');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-users--user_id--block"
+                    onclick="cancelTryOut('POSTapi-users--user_id--block');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-users--user_id--block"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/users/{user_id}/block</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-users--user_id--block"
+               value="Bearer {YOUR_ACCESS_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_ACCESS_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-users--user_id--block"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-users--user_id--block"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>user_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="user_id"                data-endpoint="POSTapi-users--user_id--block"
+               value="1"
+               data-component="url">
+    <br>
+<p>The ID of the user. Example: <code>1</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="others-POSTapi-users--user_id--unblock">POST api/users/{user_id}/unblock</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-POSTapi-users--user_id--unblock">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "https://api.wezone.app/api/users/1/unblock" \
+    --header "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://api.wezone.app/api/users/1/unblock"
+);
+
+const headers = {
+    "Authorization": "Bearer {YOUR_ACCESS_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-users--user_id--unblock">
+</span>
+<span id="execution-results-POSTapi-users--user_id--unblock" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-users--user_id--unblock"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-users--user_id--unblock"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-users--user_id--unblock" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-users--user_id--unblock">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-users--user_id--unblock" data-method="POST"
+      data-path="api/users/{user_id}/unblock"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-users--user_id--unblock', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-users--user_id--unblock"
+                    onclick="tryItOut('POSTapi-users--user_id--unblock');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-users--user_id--unblock"
+                    onclick="cancelTryOut('POSTapi-users--user_id--unblock');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-users--user_id--unblock"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/users/{user_id}/unblock</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-users--user_id--unblock"
+               value="Bearer {YOUR_ACCESS_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_ACCESS_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-users--user_id--unblock"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-users--user_id--unblock"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>user_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="user_id"                data-endpoint="POSTapi-users--user_id--unblock"
+               value="1"
+               data-component="url">
+    <br>
+<p>The ID of the user. Example: <code>1</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="others-GETapi-users-blocks">GET api/users/blocks</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-GETapi-users-blocks">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "https://api.wezone.app/api/users/blocks?per_page=15" \
+    --header "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://api.wezone.app/api/users/blocks"
+);
+
+const params = {
+    "per_page": "15",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Authorization": "Bearer {YOUR_ACCESS_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-users-blocks">
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-users-blocks" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-users-blocks"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-users-blocks"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-users-blocks" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-users-blocks">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-users-blocks" data-method="GET"
+      data-path="api/users/blocks"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-users-blocks', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-users-blocks"
+                    onclick="tryItOut('GETapi-users-blocks');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-users-blocks"
+                    onclick="cancelTryOut('GETapi-users-blocks');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-users-blocks"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/users/blocks</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-users-blocks"
+               value="Bearer {YOUR_ACCESS_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_ACCESS_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-users-blocks"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-users-blocks"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="per_page"                data-endpoint="GETapi-users-blocks"
+               value="15"
+               data-component="query">
+    <br>
+<p>Items per page when listing blocked users (1–100). Must be at least 1. Must not be greater than 100. Example: <code>15</code></p>
+            </div>
+                </form>
+
                 <h1 id="settings">Settings</h1>
 
-                    <h2 id="settings-GETapi-v1-settings">Display a listing of the resource.</h2>
+    
+
+                                <h2 id="settings-GETapi-v1-settings">Display a listing of the resource.</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
@@ -11693,7 +17561,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                     </form>
 
-                    <h2 id="settings-PUTapi-v1-settings--id-">Update the specified resource in storage.</h2>
+                    <h2 id="settings-POSTapi-v1-settings--id--update">Update the specified resource in storage.</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
@@ -11701,13 +17569,13 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 
 
-<span id="example-requests-PUTapi-v1-settings--id-">
+<span id="example-requests-POSTapi-v1-settings--id--update">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
-    <pre><code class="language-bash">curl --request PUT \
-    "https://api.wezone.app/api/v1/settings/architecto" \
+    <pre><code class="language-bash">curl --request POST \
+    "https://api.wezone.app/api/v1/settings/architecto/update" \
     --header "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -11715,7 +17583,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://api.wezone.app/api/v1/settings/architecto"
+    "https://api.wezone.app/api/v1/settings/architecto/update"
 );
 
 const headers = {
@@ -11725,63 +17593,59 @@ const headers = {
 };
 
 fetch(url, {
-    method: "PUT",
+    method: "POST",
     headers,
 }).then(response =&gt; response.json());</code></pre></div>
 
 </span>
 
-<span id="example-responses-PUTapi-v1-settings--id-">
+<span id="example-responses-POSTapi-v1-settings--id--update">
 </span>
-<span id="execution-results-PUTapi-v1-settings--id-" hidden>
+<span id="execution-results-POSTapi-v1-settings--id--update" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-PUTapi-v1-settings--id-"></span>:
+                id="execution-response-status-POSTapi-v1-settings--id--update"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-PUTapi-v1-settings--id-"
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-settings--id--update"
       data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
 </span>
-<span id="execution-error-PUTapi-v1-settings--id-" hidden>
+<span id="execution-error-POSTapi-v1-settings--id--update" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-PUTapi-v1-settings--id-">
+    <pre><code id="execution-error-message-POSTapi-v1-settings--id--update">
 
 Tip: Check that you&#039;re properly connected to the network.
 If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
 You can check the Dev Tools console for debugging information.</code></pre>
 </span>
-<form id="form-PUTapi-v1-settings--id-" data-method="PUT"
-      data-path="api/v1/settings/{id}"
+<form id="form-POSTapi-v1-settings--id--update" data-method="POST"
+      data-path="api/v1/settings/{id}/update"
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('PUTapi-v1-settings--id-', this);">
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-settings--id--update', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-PUTapi-v1-settings--id-"
-                    onclick="tryItOut('PUTapi-v1-settings--id-');">Try it out ⚡
+                    id="btn-tryout-POSTapi-v1-settings--id--update"
+                    onclick="tryItOut('POSTapi-v1-settings--id--update');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-PUTapi-v1-settings--id-"
-                    onclick="cancelTryOut('PUTapi-v1-settings--id-');" hidden>Cancel 🛑
+                    id="btn-canceltryout-POSTapi-v1-settings--id--update"
+                    onclick="cancelTryOut('POSTapi-v1-settings--id--update');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-PUTapi-v1-settings--id-"
+                    id="btn-executetryout-POSTapi-v1-settings--id--update"
                     data-initial-text="Send Request 💥"
                     data-loading-text="⏱ Sending..."
                     hidden>Send Request 💥
             </button>
             </h3>
             <p>
-            <small class="badge badge-darkblue">PUT</small>
-            <b><code>api/v1/settings/{id}</code></b>
-        </p>
-            <p>
-            <small class="badge badge-purple">PATCH</small>
-            <b><code>api/v1/settings/{id}</code></b>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/v1/settings/{id}/update</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
@@ -11789,7 +17653,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Authorization" class="auth-value"               data-endpoint="PUTapi-v1-settings--id-"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-v1-settings--id--update"
                value="Bearer {YOUR_ACCESS_TOKEN}"
                data-component="header">
     <br>
@@ -11800,7 +17664,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="PUTapi-v1-settings--id-"
+                              name="Content-Type"                data-endpoint="POSTapi-v1-settings--id--update"
                value="application/json"
                data-component="header">
     <br>
@@ -11811,7 +17675,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="PUTapi-v1-settings--id-"
+                              name="Accept"                data-endpoint="POSTapi-v1-settings--id--update"
                value="application/json"
                data-component="header">
     <br>
@@ -11823,7 +17687,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="id"                data-endpoint="PUTapi-v1-settings--id-"
+                              name="id"                data-endpoint="POSTapi-v1-settings--id--update"
                value="architecto"
                data-component="url">
     <br>
@@ -11831,7 +17695,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                     </form>
 
-                    <h2 id="settings-DELETEapi-v1-settings--id-">Remove the specified resource from storage.</h2>
+                    <h2 id="settings-POSTapi-v1-settings--id--delete">Remove the specified resource from storage.</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
@@ -11839,13 +17703,13 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 
 
-<span id="example-requests-DELETEapi-v1-settings--id-">
+<span id="example-requests-POSTapi-v1-settings--id--delete">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
-    <pre><code class="language-bash">curl --request DELETE \
-    "https://api.wezone.app/api/v1/settings/architecto" \
+    <pre><code class="language-bash">curl --request POST \
+    "https://api.wezone.app/api/v1/settings/architecto/delete" \
     --header "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -11853,7 +17717,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://api.wezone.app/api/v1/settings/architecto"
+    "https://api.wezone.app/api/v1/settings/architecto/delete"
 );
 
 const headers = {
@@ -11863,59 +17727,59 @@ const headers = {
 };
 
 fetch(url, {
-    method: "DELETE",
+    method: "POST",
     headers,
 }).then(response =&gt; response.json());</code></pre></div>
 
 </span>
 
-<span id="example-responses-DELETEapi-v1-settings--id-">
+<span id="example-responses-POSTapi-v1-settings--id--delete">
 </span>
-<span id="execution-results-DELETEapi-v1-settings--id-" hidden>
+<span id="execution-results-POSTapi-v1-settings--id--delete" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-DELETEapi-v1-settings--id-"></span>:
+                id="execution-response-status-POSTapi-v1-settings--id--delete"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-DELETEapi-v1-settings--id-"
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-settings--id--delete"
       data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
 </span>
-<span id="execution-error-DELETEapi-v1-settings--id-" hidden>
+<span id="execution-error-POSTapi-v1-settings--id--delete" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-DELETEapi-v1-settings--id-">
+    <pre><code id="execution-error-message-POSTapi-v1-settings--id--delete">
 
 Tip: Check that you&#039;re properly connected to the network.
 If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
 You can check the Dev Tools console for debugging information.</code></pre>
 </span>
-<form id="form-DELETEapi-v1-settings--id-" data-method="DELETE"
-      data-path="api/v1/settings/{id}"
+<form id="form-POSTapi-v1-settings--id--delete" data-method="POST"
+      data-path="api/v1/settings/{id}/delete"
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-v1-settings--id-', this);">
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-settings--id--delete', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-DELETEapi-v1-settings--id-"
-                    onclick="tryItOut('DELETEapi-v1-settings--id-');">Try it out ⚡
+                    id="btn-tryout-POSTapi-v1-settings--id--delete"
+                    onclick="tryItOut('POSTapi-v1-settings--id--delete');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-DELETEapi-v1-settings--id-"
-                    onclick="cancelTryOut('DELETEapi-v1-settings--id-');" hidden>Cancel 🛑
+                    id="btn-canceltryout-POSTapi-v1-settings--id--delete"
+                    onclick="cancelTryOut('POSTapi-v1-settings--id--delete');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-DELETEapi-v1-settings--id-"
+                    id="btn-executetryout-POSTapi-v1-settings--id--delete"
                     data-initial-text="Send Request 💥"
                     data-loading-text="⏱ Sending..."
                     hidden>Send Request 💥
             </button>
             </h3>
             <p>
-            <small class="badge badge-red">DELETE</small>
-            <b><code>api/v1/settings/{id}</code></b>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/v1/settings/{id}/delete</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
@@ -11923,7 +17787,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Authorization" class="auth-value"               data-endpoint="DELETEapi-v1-settings--id-"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-v1-settings--id--delete"
                value="Bearer {YOUR_ACCESS_TOKEN}"
                data-component="header">
     <br>
@@ -11934,7 +17798,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="DELETEapi-v1-settings--id-"
+                              name="Content-Type"                data-endpoint="POSTapi-v1-settings--id--delete"
                value="application/json"
                data-component="header">
     <br>
@@ -11945,7 +17809,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="DELETEapi-v1-settings--id-"
+                              name="Accept"                data-endpoint="POSTapi-v1-settings--id--delete"
                value="application/json"
                data-component="header">
     <br>
@@ -11957,7 +17821,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="id"                data-endpoint="DELETEapi-v1-settings--id-"
+                              name="id"                data-endpoint="POSTapi-v1-settings--id--delete"
                value="architecto"
                data-component="url">
     <br>
@@ -11967,7 +17831,299 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
                 <h1 id="users">Users</h1>
 
-                    <h2 id="users-GETapi-users--user_id--followers">GET api/users/{user_id}/followers</h2>
+    
+
+                                <h2 id="users-POSTapi-users--user_id--follow">Follow a user.</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-POSTapi-users--user_id--follow">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "https://api.wezone.app/api/users/1/follow" \
+    --header "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://api.wezone.app/api/users/1/follow"
+);
+
+const headers = {
+    "Authorization": "Bearer {YOUR_ACCESS_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-users--user_id--follow">
+</span>
+<span id="execution-results-POSTapi-users--user_id--follow" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-users--user_id--follow"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-users--user_id--follow"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-users--user_id--follow" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-users--user_id--follow">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-users--user_id--follow" data-method="POST"
+      data-path="api/users/{user_id}/follow"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-users--user_id--follow', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-users--user_id--follow"
+                    onclick="tryItOut('POSTapi-users--user_id--follow');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-users--user_id--follow"
+                    onclick="cancelTryOut('POSTapi-users--user_id--follow');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-users--user_id--follow"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/users/{user_id}/follow</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-users--user_id--follow"
+               value="Bearer {YOUR_ACCESS_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_ACCESS_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-users--user_id--follow"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-users--user_id--follow"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>user_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="user_id"                data-endpoint="POSTapi-users--user_id--follow"
+               value="1"
+               data-component="url">
+    <br>
+<p>The ID of the user. Example: <code>1</code></p>
+            </div>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>user</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="user"                data-endpoint="POSTapi-users--user_id--follow"
+               value="123"
+               data-component="url">
+    <br>
+<p>The ID of the user to follow. Example: <code>123</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="users-POSTapi-users--user_id--unfollow">Unfollow a user.</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-POSTapi-users--user_id--unfollow">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "https://api.wezone.app/api/users/1/unfollow" \
+    --header "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://api.wezone.app/api/users/1/unfollow"
+);
+
+const headers = {
+    "Authorization": "Bearer {YOUR_ACCESS_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-users--user_id--unfollow">
+</span>
+<span id="execution-results-POSTapi-users--user_id--unfollow" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-users--user_id--unfollow"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-users--user_id--unfollow"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-users--user_id--unfollow" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-users--user_id--unfollow">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-users--user_id--unfollow" data-method="POST"
+      data-path="api/users/{user_id}/unfollow"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-users--user_id--unfollow', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-users--user_id--unfollow"
+                    onclick="tryItOut('POSTapi-users--user_id--unfollow');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-users--user_id--unfollow"
+                    onclick="cancelTryOut('POSTapi-users--user_id--unfollow');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-users--user_id--unfollow"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/users/{user_id}/unfollow</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-users--user_id--unfollow"
+               value="Bearer {YOUR_ACCESS_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_ACCESS_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-users--user_id--unfollow"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-users--user_id--unfollow"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>user_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="user_id"                data-endpoint="POSTapi-users--user_id--unfollow"
+               value="1"
+               data-component="url">
+    <br>
+<p>The ID of the user. Example: <code>1</code></p>
+            </div>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>user</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="user"                data-endpoint="POSTapi-users--user_id--unfollow"
+               value="123"
+               data-component="url">
+    <br>
+<p>The ID of the user to unfollow. Example: <code>123</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="users-GETapi-users--user_id--followers">List a user&#039;s followers.</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
@@ -12159,7 +18315,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                 </form>
 
-                    <h2 id="users-GETapi-users">GET api/users</h2>
+                    <h2 id="users-GETapi-users">Search users.</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
@@ -12362,300 +18518,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Items per page (1–100). Must be at least 1. Must not be greater than 100. Example: <code>20</code></p>
             </div>
                 </form>
-
-                <h1 id="users">Users</h1>
-
-    
-
-                                <h2 id="users-POSTapi-users--user_id--follow">Follow a user.</h2>
-
-<p>
-<small class="badge badge-darkred">requires authentication</small>
-</p>
-
-
-
-<span id="example-requests-POSTapi-users--user_id--follow">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request POST \
-    "https://api.wezone.app/api/users/1/follow" \
-    --header "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "https://api.wezone.app/api/users/1/follow"
-);
-
-const headers = {
-    "Authorization": "Bearer {YOUR_ACCESS_TOKEN}",
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "POST",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-POSTapi-users--user_id--follow">
-</span>
-<span id="execution-results-POSTapi-users--user_id--follow" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-POSTapi-users--user_id--follow"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-users--user_id--follow"
-      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-POSTapi-users--user_id--follow" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-users--user_id--follow">
-
-Tip: Check that you&#039;re properly connected to the network.
-If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-POSTapi-users--user_id--follow" data-method="POST"
-      data-path="api/users/{user_id}/follow"
-      data-authed="1"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTapi-users--user_id--follow', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTapi-users--user_id--follow"
-                    onclick="tryItOut('POSTapi-users--user_id--follow');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTapi-users--user_id--follow"
-                    onclick="cancelTryOut('POSTapi-users--user_id--follow');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTapi-users--user_id--follow"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-black">POST</small>
-            <b><code>api/users/{user_id}/follow</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-users--user_id--follow"
-               value="Bearer {YOUR_ACCESS_TOKEN}"
-               data-component="header">
-    <br>
-<p>Example: <code>Bearer {YOUR_ACCESS_TOKEN}</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="POSTapi-users--user_id--follow"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="POSTapi-users--user_id--follow"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>user_id</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="user_id"                data-endpoint="POSTapi-users--user_id--follow"
-               value="1"
-               data-component="url">
-    <br>
-<p>The ID of the user. Example: <code>1</code></p>
-            </div>
-                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>user</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="user"                data-endpoint="POSTapi-users--user_id--follow"
-               value="123"
-               data-component="url">
-    <br>
-<p>The ID of the user to follow. Example: <code>123</code></p>
-            </div>
-                    </form>
-
-                    <h2 id="users-POSTapi-users--user_id--unfollow">Unfollow a user.</h2>
-
-<p>
-<small class="badge badge-darkred">requires authentication</small>
-</p>
-
-
-
-<span id="example-requests-POSTapi-users--user_id--unfollow">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request POST \
-    "https://api.wezone.app/api/users/1/unfollow" \
-    --header "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "https://api.wezone.app/api/users/1/unfollow"
-);
-
-const headers = {
-    "Authorization": "Bearer {YOUR_ACCESS_TOKEN}",
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "POST",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-POSTapi-users--user_id--unfollow">
-</span>
-<span id="execution-results-POSTapi-users--user_id--unfollow" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-POSTapi-users--user_id--unfollow"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-users--user_id--unfollow"
-      data-empty-response-text="&lt;Empty response&gt;" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-POSTapi-users--user_id--unfollow" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-users--user_id--unfollow">
-
-Tip: Check that you&amp;#039;re properly connected to the network.
-If you&amp;#039;re a maintainer of ths API, verify that your API is running and you&amp;#039;ve enabled CORS.
-You can check the Dev Tools console for debugging information.</code></pre>
-</span>
-<form id="form-POSTapi-users--user_id--unfollow" data-method="POST"
-      data-path="api/users/{user_id}/unfollow"
-      data-authed="1"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTapi-users--user_id--unfollow', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTapi-users--user_id--unfollow"
-                    onclick="tryItOut('POSTapi-users--user_id--unfollow');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTapi-users--user_id--unfollow"
-                    onclick="cancelTryOut('POSTapi-users--user_id--unfollow');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTapi-users--user_id--unfollow"
-                    data-initial-text="Send Request 💥"
-                    data-loading-text="⏱ Sending..."
-                    hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-black">POST</small>
-            <b><code>api/users/{user_id}/unfollow</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-users--user_id--unfollow"
-               value="Bearer {YOUR_ACCESS_TOKEN}"
-               data-component="header">
-    <br>
-<p>Example: <code>Bearer {YOUR_ACCESS_TOKEN}</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="POSTapi-users--user_id--unfollow"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="POSTapi-users--user_id--unfollow"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>user_id</code></b>&nbsp;&nbsp;<small>integer</small>&nbsp;
-&nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="user_id"                data-endpoint="POSTapi-users--user_id--unfollow"
-               value="1"
-               data-component="url">
-    <br>
-<p>The ID of the user. Example: <code>1</code></p>
-            </div>
-                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>user</code></b>&nbsp;&nbsp;<small>integer</small>&nbsp;
-&nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="user"                data-endpoint="POSTapi-users--user_id--unfollow"
-               value="123"
-               data-component="url">
-    <br>
-<p>The ID of the user to unfollow. Example: <code>123</code></p>
-            </div>
-                    </form>
 
             
 

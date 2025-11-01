@@ -1,8 +1,8 @@
 {
     "name": "Monetization",
     "alias": "monetization",
-    "description": "Monetization and payment module for WeZone",
-    "keywords": ["payments", "plans", "wallet"],
+    "description": "",
+    "keywords": [],
     "priority": 0,
     "providers": [
         "Modules\\Monetization\\Providers\\MonetizationServiceProvider"

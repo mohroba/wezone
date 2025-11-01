@@ -10,18 +10,11 @@ return new class extends Migration
     {
         Schema::create('cities', function (Blueprint $table) {
             $table->id();
-            $table->unsignedSmallInteger('province');
+            $table->foreignId('province_id')->constrained('provinces')->cascadeOnUpdate()->restrictOnDelete();
             $table->string('name', 255);
             $table->string('name_en', 255);
             $table->decimal('latitude', 10, 8);
             $table->decimal('longitude', 11, 8);
-
-            $table
-                ->foreign('province')
-                ->references('id')
-                ->on('provinces')
-                ->cascadeOnUpdate()
-                ->restrictOnDelete();
         });
     }
 
