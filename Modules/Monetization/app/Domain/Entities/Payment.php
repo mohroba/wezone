@@ -57,14 +57,34 @@ class Payment extends Model
     protected function requestPayload(): Attribute
     {
         return Attribute::make(
-            get: fn (?array $value) => $value ?? [],
+            get: fn (mixed $value) => $this->normalizeJsonAttribute($value),
         );
     }
 
     protected function responsePayload(): Attribute
     {
         return Attribute::make(
-            get: fn (?array $value) => $value ?? [],
+            get: fn (mixed $value) => $this->normalizeJsonAttribute($value),
         );
+    }
+
+    /**
+     * @return array<int|string, mixed>
+     */
+    private function normalizeJsonAttribute(mixed $value): array
+    {
+        if (is_array($value)) {
+            return $value;
+        }
+
+        if (is_string($value) && $value !== '') {
+            $decoded = json_decode($value, true);
+
+            if (json_last_error() === JSON_ERROR_NONE && is_array($decoded)) {
+                return $decoded;
+            }
+        }
+
+        return [];
     }
 }
