@@ -11,8 +11,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Modules\Monetization\Domain\Entities\AdPlanPurchase;
+use Modules\Monetization\Domain\Entities\Payment;
 use Spatie\Image\Enums\Fit;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
@@ -122,6 +125,25 @@ class Ad extends Model implements HasMedia
     public function comments(): HasMany
     {
         return $this->hasMany(AdComment::class);
+    }
+
+    public function planPurchases(): HasMany
+    {
+        return $this->hasMany(AdPlanPurchase::class, 'ad_id');
+    }
+
+    public function payments(): HasManyThrough
+    {
+        return $this
+            ->hasManyThrough(
+                Payment::class,
+                AdPlanPurchase::class,
+                'ad_id',
+                'payable_id',
+                'id',
+                'id'
+            )
+            ->where('payments.payable_type', AdPlanPurchase::class);
     }
 
     // 🔹 Factory

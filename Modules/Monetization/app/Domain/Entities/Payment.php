@@ -3,6 +3,8 @@
 namespace Modules\Monetization\Domain\Entities;
 
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
@@ -18,6 +20,8 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
  */
 class Payment extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
         'user_id',
         'amount',
@@ -86,5 +90,10 @@ class Payment extends Model
         }
 
         return [];
+    }
+
+    protected static function newFactory(): Factory
+    {
+        return \Modules\Monetization\Database\Factories\PaymentFactory::new();
     }
 }
