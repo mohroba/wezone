@@ -5,7 +5,9 @@ namespace Modules\Monetization\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Str;
+use RuntimeException;
 use Modules\Ad\Models\Ad;
 use Modules\Monetization\Domain\DTO\InitiatePaymentDTO;
 use Modules\Monetization\Domain\DTO\VerifyPaymentDTO;
@@ -96,7 +98,10 @@ class PaymentController
         $payment = ($this->initiatePayment)(new InitiatePaymentDTO(
             purchaseId: $purchase->getKey(),
             userId: $request->user()->getKey(),
-            gateway: $request->input('gateway', $purchase->payment_gateway),
+            gateway: $this->resolveGateway(
+                $request->input('gateway'),
+                $purchase->payment_gateway
+            ),
             idempotencyKey: $request->header('X-Idempotency-Key'),
             correlationId: $request->header('X-Correlation-Id') ?? Str::uuid()->toString(),
         ));
@@ -117,7 +122,10 @@ class PaymentController
         $payment = ($this->initiatePayment)(new InitiatePaymentDTO(
             purchaseId: $purchase->getKey(),
             userId: $request->user()->getKey(),
-            gateway: $request->input('gateway', $purchase->payment_gateway),
+            gateway: $this->resolveGateway(
+                $request->input('gateway'),
+                $purchase->payment_gateway
+            ),
             idempotencyKey: $request->header('X-Idempotency-Key'),
             correlationId: $request->header('X-Correlation-Id') ?? Str::uuid()->toString(),
         ));
@@ -201,5 +209,37 @@ class PaymentController
             ->appends($request->query());
 
         return PaymentResource::collection($payments);
+}
+
+    private function resolveGateway(?string $requestedGateway, ?string $purchaseGateway): string
+    {
+        $requested = $this->normalizeGateway($requestedGateway);
+        if ($requested !== null) {
+            return $requested;
+        }
+
+        $stored = $this->normalizeGateway($purchaseGateway);
+        if ($stored !== null) {
+            return $stored;
+        }
+
+        $default = $this->normalizeGateway(Config::get('monetization.default_gateway'));
+
+        if ($default !== null) {
+            return $default;
+        }
+
+        throw new RuntimeException('Default payment gateway is not configured.');
+    }
+
+    private function normalizeGateway(?string $gateway): ?string
+    {
+        if (! is_string($gateway)) {
+            return null;
+        }
+
+        $trimmed = trim($gateway);
+
+        return $trimmed !== '' ? $trimmed : null;
     }
 }
