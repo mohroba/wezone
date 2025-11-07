@@ -4,6 +4,9 @@ namespace Modules\Ad\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 use Modules\Ad\Models\Ad;
+use Modules\Auth\Models\Profile;
+use Modules\Monetization\Http\Resources\PaymentResource;
+use Modules\Monetization\Http\Resources\PurchaseResource;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 /** @mixin \Modules\Ad\Models\Ad */
@@ -57,6 +60,19 @@ class AdResource extends JsonResource
             'advertisable' => $this->whenLoaded('advertisable', function () {
                 return $this->advertisable?->toArray();
             }),
+            'creator' => $this->whenLoaded('user', function () {
+                $profile = $this->user->profile;
+                $profileImage = $profile?->getFirstMedia(Profile::COLLECTION_PROFILE_IMAGES)?->getUrl();
+
+                return [
+                    'id' => $this->user->id,
+                    'username' => $this->user->username,
+                    'full_name' => $profile?->full_name ?? $this->user->username,
+                    'ads_count' => (int) ($this->user->published_ads_count ?? 0),
+                    'followers_count' => (int) ($this->user->followers_count ?? 0),
+                    'profile_image' => $profileImage,
+                ];
+            }),
             'images' => $this->getMedia(Ad::COLLECTION_IMAGES)->map(function (Media $media) {
                 return [
                     'id' => $media->id,
@@ -73,6 +89,19 @@ class AdResource extends JsonResource
                     ],
                     'created_at' => $media->created_at?->toISOString(),
                     'updated_at' => $media->updated_at?->toISOString(),
+                ];
+            }),
+            'payments' => $this->whenLoaded('payments', function () {
+                return PaymentResource::collection($this->payments);
+            }),
+            'monetization' => $this->whenLoaded('planPurchases', function () {
+                $activePromotions = $this->planPurchases->filter(function ($purchase) {
+                    return $purchase->payment_status === 'active';
+                });
+
+                return [
+                    'active_promotions_count' => $activePromotions->count(),
+                    'purchases' => PurchaseResource::collection($this->planPurchases),
                 ];
             }),
             'created_at' => $this->created_at?->toISOString(),

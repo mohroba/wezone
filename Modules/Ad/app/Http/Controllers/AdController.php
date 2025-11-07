@@ -124,7 +124,25 @@ class AdController extends Controller
      */
     public function show(Ad $ad): AdResource
     {
-        $ad->load(['categories', 'advertisable']);
+        $ad->load([
+            'categories',
+            'advertisable',
+            'user' => function ($query): void {
+                $query
+                    ->with(['profile.media'])
+                    ->withCount([
+                        'ads as published_ads_count' => fn ($builder) => $builder->where('status', 'published'),
+                        'followers',
+                    ]);
+            },
+            'payments' => fn ($query) => $query->latest(),
+            'planPurchases' => fn ($query) => $query
+                ->with([
+                    'plan',
+                    'payments' => fn ($paymentQuery) => $paymentQuery->latest(),
+                ])
+                ->latest(),
+        ]);
 
         return new AdResource($ad);
     }

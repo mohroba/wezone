@@ -7,6 +7,7 @@ use Modules\Ad\Http\Controllers\AdAttributeValueController;
 use Modules\Ad\Http\Controllers\AdCategoryController;
 use Modules\Ad\Http\Controllers\AdCommentController;
 use Modules\Ad\Http\Controllers\AdController;
+use Modules\Ad\Http\Controllers\AdExploreController;
 use Modules\Ad\Http\Controllers\AdConversationController;
 use Modules\Ad\Http\Controllers\AdMessageController;
 use Modules\Ad\Http\Controllers\AdFavoriteController;
@@ -30,6 +31,7 @@ Route::middleware(['api'])->group(function (): void {
     });
 
     // --- Ads CRUD ---
+    Route::get('ads/explore', [AdExploreController::class, 'index']);
     Route::get('ads', [AdController::class, 'index']);
     Route::post('ads', [AdController::class, 'store']);
     Route::get('ads/{ad}', [AdController::class, 'show']);

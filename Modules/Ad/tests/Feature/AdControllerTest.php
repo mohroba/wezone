@@ -8,6 +8,10 @@ use Laravel\Passport\Passport;
 use Modules\Ad\Models\Ad;
 use Modules\Ad\Models\AdCar;
 use Modules\Ad\Models\AdJob;
+use Modules\Auth\Models\Profile;
+use Modules\Monetization\Domain\Entities\AdPlanPurchase;
+use Modules\Monetization\Domain\Entities\Payment;
+use Modules\Monetization\Domain\Entities\Plan;
 use Tests\TestCase;
 
 class AdControllerTest extends TestCase
@@ -176,5 +180,63 @@ class AdControllerTest extends TestCase
         $ad = Ad::factory()->create();
 
         $this->getJson("/api/ads/{$ad->id}/seen")->assertStatus(405);
+    }
+
+    public function test_show_endpoint_includes_creator_and_payments(): void
+    {
+        $user = User::factory()->create();
+        Profile::factory()->create([
+            'user_id' => $user->id,
+            'first_name' => 'Jane',
+            'last_name' => 'Doe',
+        ]);
+
+        $follower = User::factory()->create();
+        $user->followers()->attach($follower->id);
+
+        $ad = Ad::factory()->create([
+            'user_id' => $user->id,
+            'status' => 'published',
+        ]);
+
+        $plan = Plan::factory()->create([
+            'price' => 1200,
+            'currency' => 'IRR',
+        ]);
+
+        $purchase = AdPlanPurchase::factory()
+            ->for($user, 'user')
+            ->for($ad, 'ad')
+            ->for($plan, 'plan')
+            ->create([
+                'amount' => 1200,
+                'currency' => 'IRR',
+                'payment_gateway' => 'payping',
+                'payment_status' => 'active',
+            ]);
+
+        $payment = Payment::factory()
+            ->for($user, 'user')
+            ->state([
+                'payable_type' => AdPlanPurchase::class,
+                'payable_id' => $purchase->id,
+                'user_id' => $user->id,
+                'gateway' => 'payping',
+                'ref_id' => 'REF-12345',
+            ])
+            ->create();
+
+        $response = $this->getJson("/api/ads/{$ad->id}");
+
+        $response->assertOk();
+        $response->assertJsonPath('data.creator.full_name', 'Jane Doe');
+        $response->assertJsonPath('data.creator.ads_count', 1);
+        $response->assertJsonPath('data.creator.followers_count', 1);
+        $response->assertJsonPath('data.payments.0.id', $payment->id);
+        $response->assertJsonPath('data.payments.0.gateway', 'payping');
+        $response->assertJsonPath('data.monetization.active_promotions_count', 1);
+        $response->assertJsonPath('data.monetization.purchases.0.id', $purchase->id);
+        $response->assertJsonPath('data.monetization.purchases.0.plan.id', $plan->id);
+        $response->assertJsonPath('data.monetization.purchases.0.payments.0.id', $payment->id);
     }
 }

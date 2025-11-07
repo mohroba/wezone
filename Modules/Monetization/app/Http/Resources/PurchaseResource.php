@@ -4,6 +4,7 @@ namespace Modules\Monetization\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Modules\Monetization\Http\Resources\PaymentResource;
 
 class PurchaseResource extends JsonResource
 {
@@ -20,6 +21,9 @@ class PurchaseResource extends JsonResource
             'starts_at' => optional($this->starts_at)->toIso8601String(),
             'ends_at' => optional($this->ends_at)->toIso8601String(),
             'meta' => $this->meta,
+            'payments' => $this->whenLoaded('payments', function () {
+                return PaymentResource::collection($this->payments);
+            }),
         ];
     }
 }

@@ -3,10 +3,14 @@
 namespace Modules\Monetization\Domain\Entities;
 
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
+use Modules\Ad\Models\Ad;
 
 /**
  * @property int $id
@@ -25,6 +29,8 @@ use Illuminate\Support\Carbon;
  */
 class AdPlanPurchase extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
         'ad_id',
         'plan_id',
@@ -53,6 +59,16 @@ class AdPlanPurchase extends Model
         return $this->belongsTo(Plan::class);
     }
 
+    public function ad(): BelongsTo
+    {
+        return $this->belongsTo(Ad::class);
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
     public function payments(): HasMany
     {
         return $this->hasMany(Payment::class, 'payable_id')->where('payable_type', self::class);
@@ -63,5 +79,10 @@ class AdPlanPurchase extends Model
         return Attribute::make(
             get: fn (?array $value) => $value ?? [],
         );
+    }
+
+    protected static function newFactory(): Factory
+    {
+        return \Modules\Monetization\Database\Factories\AdPlanPurchaseFactory::new();
     }
 }
