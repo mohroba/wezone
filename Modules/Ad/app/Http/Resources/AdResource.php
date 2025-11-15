@@ -73,24 +73,19 @@ class AdResource extends JsonResource
                     'profile_image' => $profileImage,
                 ];
             }),
-            'images' => $this->getMedia(Ad::COLLECTION_IMAGES)->map(function (Media $media) {
-                return [
-                    'id' => $media->id,
-                    'name' => $media->name,
-                    'file_name' => $media->file_name,
-                    'mime_type' => $media->mime_type,
-                    'size' => $media->size,
-                    'order' => $media->order_column,
-                    'custom_properties' => $media->custom_properties,
-                    'original_url' => $media->getUrl(),
-                    'conversions' => [
-                        Ad::CONVERSION_THUMB => $media->getUrl(Ad::CONVERSION_THUMB),
-                        Ad::CONVERSION_MEDIUM => $media->getUrl(Ad::CONVERSION_MEDIUM),
-                    ],
-                    'created_at' => $media->created_at?->toISOString(),
-                    'updated_at' => $media->updated_at?->toISOString(),
-                ];
-            }),
+            'images' => AdImageResource::collection(
+                $this->getMedia(Ad::COLLECTION_IMAGES)
+                    ->sortBy(function (Media $media) {
+                        $order = $media->getCustomProperty('display_order');
+
+                        return [
+                            is_numeric($order) ? (int) $order : 0,
+                            $media->order_column ?? 0,
+                            $media->id,
+                        ];
+                    })
+                    ->values()
+            ),
             'payments' => $this->whenLoaded('payments', function () {
                 return PaymentResource::collection($this->payments);
             }),
