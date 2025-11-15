@@ -3,16 +3,16 @@
 namespace Modules\Ad\Tests\Feature;
 
 use App\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Passport\Passport;
 use Nwidart\Modules\Facades\Module;
 use Modules\Ad\Models\Ad;
 use Modules\Ad\Models\AdFavorite;
+use Modules\Ad\Tests\Support\RefreshesAdDatabase;
 use Tests\TestCase;
 
 class AdFavoriteControllerTest extends TestCase
 {
-    use RefreshDatabase;
+    use RefreshesAdDatabase;
 
     private static ?string $moduleStatusBackup = null;
 

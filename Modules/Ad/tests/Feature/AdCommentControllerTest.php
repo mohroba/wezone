@@ -3,35 +3,22 @@
 namespace Modules\Ad\Tests\Feature;
 
 use App\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Artisan;
 use Laravel\Passport\Passport;
 use Modules\Ad\Models\Ad;
 use Modules\Ad\Models\AdComment;
+use Modules\Ad\Tests\Support\RefreshesAdDatabase;
 use Tests\TestCase;
 
 class AdCommentControllerTest extends TestCase
 {
-    use RefreshDatabase;
+    use RefreshesAdDatabase;
 
     protected function setUp(): void
     {
         parent::setUp();
 
         config()->set('app.key', 'base64:' . base64_encode(str_repeat('a', 32)));
-    }
-
-    protected function migrateFreshUsing(): array
-    {
-        return ['--path' => 'database/migrations'];
-    }
-
-    protected function afterRefreshingDatabase(): void
-    {
-        Artisan::call('migrate', [
-            '--path' => 'Modules/Ad/database/migrations',
-            '--force' => true,
-        ]);
     }
 
     public function test_authenticated_user_can_create_comment(): void

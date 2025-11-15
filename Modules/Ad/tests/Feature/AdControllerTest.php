@@ -3,11 +3,15 @@
 namespace Modules\Ad\Tests\Feature;
 
 use App\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Passport\Passport;
 use Modules\Ad\Models\Ad;
+use Modules\Ad\Models\AdAttributeDefinition;
+use Modules\Ad\Models\AdAttributeGroup;
 use Modules\Ad\Models\AdCar;
+use Modules\Ad\Models\AdCategory;
 use Modules\Ad\Models\AdJob;
+use Modules\Ad\Models\AdvertisableType;
+use Modules\Ad\Tests\Support\RefreshesAdDatabase;
 use Modules\Auth\Models\Profile;
 use Modules\Monetization\Domain\Entities\AdPlanPurchase;
 use Modules\Monetization\Domain\Entities\Payment;
@@ -16,16 +20,24 @@ use Tests\TestCase;
 
 class AdControllerTest extends TestCase
 {
-    use RefreshDatabase;
+    use RefreshesAdDatabase;
 
     public function test_store_creates_ad_and_nested_advertisable(): void
     {
         $user = User::factory()->create();
+        $context = $this->prepareAdvertisableContext(AdCar::class);
 
         $payload = [
             'user_id' => $user->id,
+            'advertisable_type_id' => $context['type']->id,
             'slug' => 'sporty-coupe',
             'title' => 'Sporty coupe for sale',
+            'categories' => [
+                ['id' => $context['category']->id, 'is_primary' => true],
+            ],
+            'attribute_values' => [
+                ['definition_id' => $context['definition']->id, 'value_string' => 'Red'],
+            ],
             'advertisable' => [
                 'type' => AdCar::class,
                 'attributes' => [
@@ -47,6 +59,7 @@ class AdControllerTest extends TestCase
         $this->assertDatabaseHas('ads', [
             'slug' => 'sporty-coupe',
             'advertisable_type' => AdCar::class,
+            'advertisable_type_id' => $context['type']->id,
         ]);
 
         $car = AdCar::query()->first();
@@ -58,6 +71,7 @@ class AdControllerTest extends TestCase
     public function test_update_mutates_nested_advertisable_and_synchronises_slug(): void
     {
         $user = User::factory()->create();
+        $context = $this->prepareAdvertisableContext(AdCar::class);
         $adSlug = 'city-hatchback';
         $car = AdCar::create([
             'slug' => $adSlug,
@@ -69,6 +83,7 @@ class AdControllerTest extends TestCase
 
         $ad = Ad::create([
             'user_id' => $user->id,
+            'advertisable_type_id' => $context['type']->id,
             'advertisable_type' => AdCar::class,
             'advertisable_id' => $car->id,
             'slug' => $adSlug,
@@ -76,10 +91,19 @@ class AdControllerTest extends TestCase
         ]);
 
         $payload = [
+            'advertisable_type_id' => $context['type']->id,
             'slug' => 'city-hatchback-updated',
+            'categories' => [
+                ['id' => $context['category']->id, 'is_primary' => true],
+            ],
+            'attribute_values' => [
+                ['definition_id' => $context['definition']->id, 'value_string' => 'Blue'],
+            ],
             'advertisable' => [
                 'type' => AdCar::class,
                 'attributes' => [
+                    'brand_id' => 1,
+                    'model_id' => 2,
                     'mileage' => 41000,
                     'year' => 2021,
                 ],
@@ -102,16 +126,23 @@ class AdControllerTest extends TestCase
     public function test_store_rejects_invalid_advertisable_payload(): void
     {
         $user = User::factory()->create();
+        $context = $this->prepareAdvertisableContext(AdJob::class);
 
         $payload = [
             'user_id' => $user->id,
+            'advertisable_type_id' => $context['type']->id,
             'slug' => 'remote-role',
             'title' => 'Remote role',
+            'categories' => [
+                ['id' => $context['category']->id, 'is_primary' => true],
+            ],
+            'attribute_values' => [
+                ['definition_id' => $context['definition']->id, 'value_string' => 'Hybrid'],
+            ],
             'advertisable' => [
                 'type' => AdJob::class,
                 'attributes' => [
                     'company_name' => 'Acme Corp',
-                    // Missing position_title and employment_type
                 ],
             ],
         ];
@@ -128,7 +159,12 @@ class AdControllerTest extends TestCase
     public function test_seen_endpoint_increments_view_count_only_once_per_user(): void
     {
         $user = User::factory()->create();
-        $ad = Ad::factory()->create(['view_count' => 2]);
+        $context = $this->prepareAdvertisableContext(AdCar::class);
+        $ad = Ad::factory()->create([
+            'view_count' => 2,
+            'advertisable_type_id' => $context['type']->id,
+            'advertisable_type' => $context['type']->model_class,
+        ]);
 
         Passport::actingAs($user);
 
@@ -150,7 +186,12 @@ class AdControllerTest extends TestCase
 
     public function test_seen_endpoint_prevents_duplicate_guest_views_using_same_fingerprint(): void
     {
-        $ad = Ad::factory()->create(['view_count' => 0]);
+        $context = $this->prepareAdvertisableContext(AdCar::class);
+        $ad = Ad::factory()->create([
+            'view_count' => 0,
+            'advertisable_type_id' => $context['type']->id,
+            'advertisable_type' => $context['type']->model_class,
+        ]);
 
         $server = [
             'REMOTE_ADDR' => '203.0.113.10',
@@ -238,5 +279,42 @@ class AdControllerTest extends TestCase
         $response->assertJsonPath('data.monetization.purchases.0.id', $purchase->id);
         $response->assertJsonPath('data.monetization.purchases.0.plan.id', $plan->id);
         $response->assertJsonPath('data.monetization.purchases.0.payments.0.id', $payment->id);
+    }
+
+    private function prepareAdvertisableContext(string $modelClass): array
+    {
+        $faker = fake();
+
+        $type = AdvertisableType::factory()->create([
+            'key' => $faker->unique()->slug(),
+            'label' => 'Test Type',
+            'model_class' => $modelClass,
+        ]);
+
+        $category = AdCategory::create([
+            'slug' => $faker->unique()->slug(),
+            'name' => 'Root',
+            'advertisable_type_id' => $type->id,
+            'is_active' => true,
+            'sort_order' => 1,
+        ]);
+
+        $group = AdAttributeGroup::create([
+            'advertisable_type_id' => $type->id,
+            'name' => 'Specs',
+            'display_order' => 1,
+        ]);
+
+        $definition = AdAttributeDefinition::create([
+            'attribute_group_id' => $group->id,
+            'key' => 'test_attribute_'.$faker->unique()->numberBetween(1, 999),
+            'label' => 'Test Attribute',
+            'data_type' => 'string',
+            'is_required' => false,
+            'is_filterable' => false,
+            'is_searchable' => false,
+        ]);
+
+        return compact('type', 'category', 'group', 'definition');
     }
 }
