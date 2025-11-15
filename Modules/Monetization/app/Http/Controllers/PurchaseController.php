@@ -17,6 +17,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Symfony\Component\HttpFoundation\Response;
 
+/**
+ * @group Monetization
+ *
+ * Create, inspect, and manage ad plan purchases.
+ */
 class PurchaseController
 {
     public function __construct(
@@ -27,6 +32,23 @@ class PurchaseController
     ) {
     }
 
+    /**
+     * Create ad plan purchase
+     *
+     * @group Monetization
+     *
+     * Start a new purchase for an ad promotion plan. Depending on the payload, the purchase may be automatically paid with the
+     * wallet.
+     *
+     * @bodyParam ad_id int required Identifier of the ad to promote. Example: 41
+     * @bodyParam plan_id int Optional plan identifier when selecting directly by ID. Example: 5
+     * @bodyParam plan_slug string Optional plan slug alternative to `plan_id`. Example: premium-weekly
+     * @bodyParam gateway string Preferred payment gateway key. Example: payping
+     * @bodyParam pay_with_wallet boolean Whether to use the wallet balance immediately. Example: false
+     *
+     * @responseField data.id integer Unique identifier of the created purchase.
+     * @responseField payment object|null Included when the wallet covers the full purchase amount.
+     */
     public function store(CreatePurchaseRequest $request): PurchaseResource
     {
         $idempotencyKey = $request->header('X-Idempotency-Key') ?? Str::uuid()->toString();
@@ -55,11 +77,27 @@ class PurchaseController
         return new PurchaseResource($purchase->load('plan'));
     }
 
+    /**
+     * Retrieve purchase details
+     *
+     * @group Monetization
+     *
+     * @urlParam purchase integer required The purchase identifier.
+     */
     public function show(AdPlanPurchase $purchase): PurchaseResource
     {
         return new PurchaseResource($purchase->load('plan'));
     }
 
+    /**
+     * Apply ad bump
+     *
+     * @group Monetization
+     *
+     * Refresh the ad associated with the purchase to the top of listings when supported by the plan.
+     *
+     * @urlParam purchase integer required The purchase identifier.
+     */
     public function bump(BumpRequest $request, AdPlanPurchase $purchase): PurchaseResource
     {
         $updated = ($this->applyBump)($purchase);

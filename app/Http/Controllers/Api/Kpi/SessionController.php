@@ -11,12 +11,17 @@ use Carbon\CarbonImmutable;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Arr;
 
+/**
+ * @group KPI
+ *
+ * Handle KPI session lifecycle management.
+ */
 class SessionController extends Controller
 {
     /**
      * Record or update a KPI session.
      *
-     * @group Ads Review
+     * @group KPI
      */
     public function store(StoreSessionRequest $request): JsonResponse
     {
@@ -60,7 +65,7 @@ class SessionController extends Controller
     /**
      * Update a KPI session.
      *
-     * @group Ads Review
+     * @group KPI
      */
     public function update(UpdateSessionRequest $request, KpiSession $session): JsonResponse
     {

@@ -115,6 +115,7 @@ class PaymentController
      * @group Monetization
      *
      * @urlParam purchase integer required The purchase identifier.
+     * @bodyParam gateway string optional Override the payment gateway key. Example: stripe
      * @responseField data.redirect_url string|null Gateway redirection URL when available.
      */
     public function initiate(InitiatePaymentRequest $request, AdPlanPurchase $purchase): PaymentResource
@@ -173,6 +174,11 @@ class PaymentController
      * Verify payment callback
      *
      * @group Monetization
+     *
+     * Process an asynchronous callback received directly from the payment gateway.
+     *
+     * @bodyParam gateway string required Payment gateway key for the callback. Example: payping
+     * @bodyParam payload object required Raw callback payload forwarded from the gateway. Example: {"status":"paid"}
      */
     public function verify(VerifyCallbackRequest $request): PaymentResource
     {
@@ -194,6 +200,7 @@ class PaymentController
      * Retrieve payments associated with a specific ad owned by the authenticated user.
      *
      * @queryParam per_page integer Results per page (max 100). Example: 15
+     * @urlParam ad integer required The ad identifier.
      */
     public function adPayments(Request $request, Ad $ad): AnonymousResourceCollection
     {
