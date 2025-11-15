@@ -3,17 +3,17 @@
 namespace Modules\Ad\Tests\Feature;
 
 use App\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Passport\Passport;
 use Modules\Ad\Models\Ad;
 use Modules\Ad\Models\AdReport;
+use Modules\Ad\Tests\Support\RefreshesAdDatabase;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\PermissionRegistrar;
 use Tests\TestCase;
 
 class AdReportControllerTest extends TestCase
 {
-    use RefreshDatabase;
+    use RefreshesAdDatabase;
 
     protected function setUp(): void
     {
@@ -92,7 +92,7 @@ class AdReportControllerTest extends TestCase
 
         Passport::actingAs($moderator);
 
-        $response = $this->patchJson("/api/ad-reports/{$report->id}", [
+        $response = $this->postJson("/api/ad-reports/{$report->id}/update", [
             'status' => 'in_review',
             'resolution_notes' => 'Investigating the reported content.',
         ]);

@@ -3,17 +3,21 @@
 namespace Modules\Ad\Tests\Feature;
 
 use App\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Modules\Ad\Models\Ad;
+use Modules\Ad\Models\AdAttributeDefinition;
+use Modules\Ad\Models\AdAttributeGroup;
 use Modules\Ad\Models\AdCar;
+use Modules\Ad\Models\AdCategory;
+use Modules\Ad\Models\AdvertisableType;
+use Modules\Ad\Tests\Support\RefreshesAdDatabase;
 use Tests\TestCase;
 
 class AdMediaTest extends TestCase
 {
-    use RefreshDatabase;
+    use RefreshesAdDatabase;
 
     protected function setUp(): void
     {
@@ -27,6 +31,7 @@ class AdMediaTest extends TestCase
     public function test_ad_creation_persists_uploaded_images_and_returns_media_payload(): void
     {
         $user = User::factory()->create();
+        $context = $this->prepareAdvertisableContext();
         $carAttributes = [
             'brand_id' => 10,
             'model_id' => 20,
@@ -35,6 +40,7 @@ class AdMediaTest extends TestCase
 
         $response = $this->post('/api/ads', [
             'user_id' => $user->id,
+            'advertisable_type_id' => $context['type']->id,
             'advertisable' => [
                 'type' => AdCar::class,
                 'attributes' => $carAttributes,
@@ -43,6 +49,12 @@ class AdMediaTest extends TestCase
             'title' => 'Brand new car',
             'is_negotiable' => false,
             'is_exchangeable' => false,
+            'categories' => [
+                ['id' => $context['category']->id, 'is_primary' => true],
+            ],
+            'attribute_values' => [
+                ['definition_id' => $context['definition']->id, 'value_string' => 'Red'],
+            ],
             'images' => [
                 ['file' => UploadedFile::fake()->image('front.jpg', 800, 600)],
                 ['file' => UploadedFile::fake()->image('rear.jpg', 800, 600)],
@@ -76,6 +88,7 @@ class AdMediaTest extends TestCase
     public function test_ad_creation_accepts_plain_file_array_images(): void
     {
         $user = User::factory()->create();
+        $context = $this->prepareAdvertisableContext();
         $carAttributes = [
             'brand_id' => 8,
             'model_id' => 21,
@@ -84,6 +97,7 @@ class AdMediaTest extends TestCase
 
         $response = $this->post('/api/ads', [
             'user_id' => $user->id,
+            'advertisable_type_id' => $context['type']->id,
             'advertisable' => [
                 'type' => AdCar::class,
                 'attributes' => $carAttributes,
@@ -92,9 +106,15 @@ class AdMediaTest extends TestCase
             'title' => 'Compact car',
             'is_negotiable' => false,
             'is_exchangeable' => false,
+            'categories' => [
+                ['id' => $context['category']->id, 'is_primary' => true],
+            ],
+            'attribute_values' => [
+                ['definition_id' => $context['definition']->id, 'value_string' => 'Blue'],
+            ],
             'images' => [
-                UploadedFile::fake()->image('side.jpg', 800, 600),
-                UploadedFile::fake()->image('interior.jpg', 800, 600),
+                ['file' => UploadedFile::fake()->image('side.jpg', 800, 600)],
+                ['file' => UploadedFile::fake()->image('interior.jpg', 800, 600)],
             ],
         ], ['Accept' => 'application/json']);
 
@@ -113,8 +133,10 @@ class AdMediaTest extends TestCase
             'year' => 2020,
         ]);
 
+        $context = $this->prepareAdvertisableContext();
         $ad = Ad::create([
             'user_id' => $user->id,
+            'advertisable_type_id' => $context['type']->id,
             'advertisable_type' => AdCar::class,
             'advertisable_id' => $car->id,
             'slug' => $slug,
@@ -127,6 +149,13 @@ class AdMediaTest extends TestCase
             ->toMediaCollection(Ad::COLLECTION_IMAGES);
 
         $updateResponse = $this->post("/api/ads/{$ad->id}/update", [
+            'advertisable_type_id' => $context['type']->id,
+            'categories' => [
+                ['id' => $context['category']->id, 'is_primary' => true],
+            ],
+            'attribute_values' => [
+                ['definition_id' => $context['definition']->id, 'value_string' => 'Updated'],
+            ],
             'is_negotiable' => false,
             'is_exchangeable' => false,
             'images' => [
@@ -175,8 +204,10 @@ class AdMediaTest extends TestCase
             'year' => 2021,
         ]);
 
+        $context = $this->prepareAdvertisableContext();
         $ad = Ad::create([
             'user_id' => $user->id,
+            'advertisable_type_id' => $context['type']->id,
             'advertisable_type' => AdCar::class,
             'advertisable_id' => $car->id,
             'slug' => $slug,
@@ -187,9 +218,16 @@ class AdMediaTest extends TestCase
             ->toMediaCollection(Ad::COLLECTION_IMAGES);
 
         $response = $this->post("/api/ads/{$ad->id}/update", [
+            'advertisable_type_id' => $context['type']->id,
+            'categories' => [
+                ['id' => $context['category']->id, 'is_primary' => true],
+            ],
+            'attribute_values' => [
+                ['definition_id' => $context['definition']->id, 'value_string' => 'Silver'],
+            ],
             'images' => [
                 ['id' => $existing->id],
-                UploadedFile::fake()->image('new-exterior.jpg', 800, 600),
+                ['file' => UploadedFile::fake()->image('new-exterior.jpg', 800, 600)],
             ],
         ], ['Accept' => 'application/json']);
 
@@ -202,6 +240,7 @@ class AdMediaTest extends TestCase
     {
         $user = User::factory()->create();
         $slug = 'ad-'.Str::random(8);
+        $context = $this->prepareAdvertisableContext();
         $car = AdCar::create([
             'slug' => $slug,
             'brand_id' => 9,
@@ -211,6 +250,7 @@ class AdMediaTest extends TestCase
 
         $ad = Ad::create([
             'user_id' => $user->id,
+            'advertisable_type_id' => $context['type']->id,
             'advertisable_type' => AdCar::class,
             'advertisable_id' => $car->id,
             'slug' => $slug,
@@ -254,6 +294,7 @@ class AdMediaTest extends TestCase
     {
         $user = User::factory()->create();
         $slug = 'ad-'.Str::random(8);
+        $context = $this->prepareAdvertisableContext();
         $car = AdCar::create([
             'slug' => $slug,
             'brand_id' => 7,
@@ -263,6 +304,7 @@ class AdMediaTest extends TestCase
 
         $ad = Ad::create([
             'user_id' => $user->id,
+            'advertisable_type_id' => $context['type']->id,
             'advertisable_type' => AdCar::class,
             'advertisable_id' => $car->id,
             'slug' => $slug,
@@ -271,12 +313,47 @@ class AdMediaTest extends TestCase
 
         $response = $this->post("/api/ads/{$ad->id}/images", [
             'images' => [
-                UploadedFile::fake()->image('front-extra.jpg', 800, 600),
-                UploadedFile::fake()->image('rear-extra.jpg', 800, 600),
+                ['file' => UploadedFile::fake()->image('front-extra.jpg', 800, 600)],
+                ['file' => UploadedFile::fake()->image('rear-extra.jpg', 800, 600)],
             ],
         ], ['Accept' => 'application/json']);
 
         $response->assertOk();
         $response->assertJsonCount(2, 'data.images');
+    }
+
+    private function prepareAdvertisableContext(): array
+    {
+        $type = AdvertisableType::factory()->create([
+            'key' => 'media-type-'.Str::random(4),
+            'label' => 'Media Type',
+            'model_class' => AdCar::class,
+        ]);
+
+        $category = AdCategory::create([
+            'slug' => 'media-category-'.Str::random(4),
+            'name' => 'Media Category',
+            'advertisable_type_id' => $type->id,
+            'is_active' => true,
+            'sort_order' => 1,
+        ]);
+
+        $group = AdAttributeGroup::create([
+            'advertisable_type_id' => $type->id,
+            'name' => 'Meta',
+            'display_order' => 1,
+        ]);
+
+        $definition = AdAttributeDefinition::create([
+            'attribute_group_id' => $group->id,
+            'key' => 'media_attr_'.Str::random(3),
+            'label' => 'Media Attribute',
+            'data_type' => 'string',
+            'is_required' => false,
+            'is_filterable' => false,
+            'is_searchable' => false,
+        ]);
+
+        return compact('type', 'category', 'definition');
     }
 }
