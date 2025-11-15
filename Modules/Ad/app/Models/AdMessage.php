@@ -15,9 +15,19 @@ class AdMessage extends Model
         'ad_conversation_id',
         'user_id',
         'body',
+        'type',
+        'payload',
     ];
 
     protected $touches = ['conversation'];
+
+    protected $casts = [
+        'payload' => 'array',
+    ];
+
+    protected $attributes = [
+        'type' => 'text',
+    ];
 
     /**
      * @return BelongsTo<AdConversation, AdMessage>
