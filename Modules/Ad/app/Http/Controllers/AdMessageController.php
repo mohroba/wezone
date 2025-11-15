@@ -13,9 +13,12 @@ use Illuminate\Support\Facades\DB;
 use Modules\Ad\Http\Requests\Conversation\StoreAdMessageRequest;
 use Modules\Ad\Http\Resources\AdMessageResource;
 use Modules\Ad\Models\AdConversation;
+use Modules\Ad\Support\HandlesConversationMessages;
 
 class AdMessageController extends Controller
 {
+    use HandlesConversationMessages;
+
     /**
      * List messages in a conversation.
      *
@@ -88,6 +91,10 @@ class AdMessageController extends Controller
             throw new ModelNotFoundException('Conversation not found.');
         }
 
+        $participants = $conversation->participants()->get(['users.id', 'users.username']);
+
+        $this->guardAgainstBlockedParticipants($user, $participants);
+
         $message = DB::transaction(function () use ($conversation, $user, $request) {
             $conversation->ensureParticipant($user);
 
@@ -98,10 +105,7 @@ class AdMessageController extends Controller
                 ]);
             });
 
-            return $conversation->messages()->create([
-                'user_id' => $user->getKey(),
-                'body' => $request->string('message')->toString(),
-            ])->load('sender:id,username');
+            return $this->createConversationMessage($conversation, $request, $user);
         });
 
         return (new AdMessageResource($message))->response()->setStatusCode(Response::HTTP_CREATED);
