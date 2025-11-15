@@ -16,6 +16,29 @@ use Modules\Ad\Models\AdConversation;
 
 class AdMessageController extends Controller
 {
+    /**
+     * List messages in a conversation.
+     *
+     * @group Ads
+     * @subgroup Conversations
+     * @authenticated
+     *
+     * @urlParam conversation integer required The identifier of the conversation to fetch.
+     * @queryParam per_page int Limit the number of messages per page (1-200). Example: 50
+     *
+     * @response 200 {
+     *   "data": [
+     *     {
+     *       "id": 120,
+     *       "body": "Can you share more details?",
+     *       "sender": {
+     *         "id": 15,
+     *         "username": "buyer42"
+     *       }
+     *     }
+     *   ]
+     * }
+     */
     public function index(Request $request, AdConversation $conversation): AnonymousResourceCollection
     {
         /** @var User $user */
@@ -36,6 +59,26 @@ class AdMessageController extends Controller
         return AdMessageResource::collection($messages);
     }
 
+    /**
+     * Send a message within a conversation.
+     *
+     * @group Ads
+     * @subgroup Conversations
+     * @authenticated
+     *
+     * @urlParam conversation integer required The identifier of the conversation to send the message to.
+     *
+     * @response 201 {
+     *   "data": {
+     *     "id": 121,
+     *     "body": "Here are the photos you requested.",
+     *     "sender": {
+     *       "id": 7,
+     *       "username": "seller42"
+     *     }
+     *   }
+     * }
+     */
     public function store(StoreAdMessageRequest $request, AdConversation $conversation): JsonResponse
     {
         /** @var User $user */

@@ -17,6 +17,50 @@ use Modules\Ad\Models\AdConversation;
 
 class AdConversationController extends Controller
 {
+    /**
+     * List conversations for the authenticated user.
+     *
+     * @group Ads
+     * @subgroup Conversations
+     * @authenticated
+     *
+     * @queryParam per_page int Limit the number of conversations per page (1-100). Example: 20
+     *
+     * @response 200 {
+     *   "data": [
+     *     {
+     *       "id": 56,
+     *       "ad": {
+     *         "id": 84,
+     *         "title": "Vintage bicycle"
+     *       },
+     *       "latest_message": {
+     *         "id": 120,
+     *         "body": "Thanks for the update!",
+     *         "sender": {
+     *           "id": 7,
+     *           "username": "seller42"
+     *         }
+     *       }
+     *     }
+     *   ],
+     *   "links": {
+     *     "first": "https://example.com/api/ads/conversations?page=1",
+     *     "last": "https://example.com/api/ads/conversations?page=1",
+     *     "prev": null,
+     *     "next": null
+     *   },
+     *   "meta": {
+     *     "current_page": 1,
+     *     "from": 1,
+     *     "last_page": 1,
+     *     "path": "https://example.com/api/ads/conversations",
+     *     "per_page": 20,
+     *     "to": 1,
+     *     "total": 1
+     *   }
+     * }
+     */
     public function index(Request $request): AnonymousResourceCollection
     {
         /** @var User $user */
@@ -39,6 +83,34 @@ class AdConversationController extends Controller
         return AdConversationResource::collection($conversations);
     }
 
+    /**
+     * Start a conversation about an ad.
+     *
+     * Creates a conversation (or reopens an existing one) and sends the first message.
+     *
+     * @group Ads
+     * @subgroup Conversations
+     * @authenticated
+     *
+     * @urlParam ad integer required The identifier of the ad to discuss.
+     *
+     * @response 201 {
+     *   "data": {
+     *     "id": 57,
+     *     "ad": {
+     *       "id": 84,
+     *       "title": "Vintage bicycle"
+     *     },
+     *     "latest_message": {
+     *       "body": "Is this still available?",
+     *       "sender": {
+     *         "id": 15,
+     *         "username": "buyer42"
+     *       }
+     *     }
+     *   }
+     * }
+     */
     public function store(StoreAdConversationRequest $request, Ad $ad): JsonResponse
     {
         /** @var User $user */
@@ -103,6 +175,21 @@ class AdConversationController extends Controller
         return (new AdConversationResource($conversation))->response()->setStatusCode(Response::HTTP_CREATED);
     }
 
+    /**
+     * Hide a conversation for the authenticated user.
+     *
+     * @group Ads
+     * @subgroup Conversations
+     * @authenticated
+     *
+     * @urlParam conversation integer required The identifier of the conversation to hide.
+     *
+     * @response 200 {
+     *   "meta": {
+     *     "message": "Conversation hidden successfully."
+     *   }
+     * }
+     */
     public function destroy(Request $request, AdConversation $conversation): JsonResponse
     {
         /** @var User $user */

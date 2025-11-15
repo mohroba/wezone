@@ -17,6 +17,42 @@ use Modules\User\Models\UserFollow;
 
 class BlockController extends Controller
 {
+    /**
+     * Block a user.
+     *
+     * @group Users
+     * @authenticated
+     *
+     * @urlParam user integer required The identifier of the user to block.
+     *
+     * @response 201 scenario="User newly blocked" {
+     *   "data": {
+     *     "id": 42,
+     *     "username": "blocked-user",
+     *     "profile": {
+     *       "first_name": "Blocked",
+     *       "last_name": "User"
+     *     }
+     *   },
+     *   "meta": {
+     *     "message": "User blocked successfully."
+     *   }
+     * }
+     *
+     * @response 200 scenario="User already blocked" {
+     *   "data": {
+     *     "id": 42,
+     *     "username": "blocked-user",
+     *     "profile": {
+     *       "first_name": "Blocked",
+     *       "last_name": "User"
+     *     }
+     *   },
+     *   "meta": {
+     *     "message": "User already blocked."
+     *   }
+     * }
+     */
     public function store(BlockUserRequest $request, User $user): JsonResponse
     {
         $blocker = $request->user();
@@ -54,6 +90,26 @@ class BlockController extends Controller
             ])->response()->setStatusCode($status);
     }
 
+    /**
+     * Unblock a user.
+     *
+     * @group Users
+     * @authenticated
+     *
+     * @urlParam user integer required The identifier of the user to unblock.
+     *
+     * @response 200 scenario="User unblocked" {
+     *   "meta": {
+     *     "message": "User unblocked successfully."
+     *   }
+     * }
+     *
+     * @response 200 scenario="User not previously blocked" {
+     *   "meta": {
+     *     "message": "User was not blocked."
+     *   }
+     * }
+     */
     public function unblock(UnblockUserRequest $request, User $user): JsonResponse
     {
         $blocker = $request->user();
@@ -72,6 +128,44 @@ class BlockController extends Controller
         ]);
     }
 
+    /**
+     * List blocked users for the authenticated account.
+     *
+     * @group Users
+     * @authenticated
+     *
+     * @queryParam per_page int The number of results per page (1-100). Example: 15
+     *
+     * @response 200 {
+     *   "data": [
+     *     {
+     *       "id": 42,
+     *       "username": "blocked-user",
+     *       "profile": {
+     *         "first_name": "Blocked",
+     *         "last_name": "User"
+     *       },
+     *       "followers_count": 10,
+     *       "followings_count": 5
+     *     }
+     *   ],
+     *   "links": {
+     *     "first": "https://example.com/api/users/blocks?page=1",
+     *     "last": "https://example.com/api/users/blocks?page=1",
+     *     "prev": null,
+     *     "next": null
+     *   },
+     *   "meta": {
+     *     "current_page": 1,
+     *     "from": 1,
+     *     "last_page": 1,
+     *     "path": "https://example.com/api/users/blocks",
+     *     "per_page": 15,
+     *     "to": 1,
+     *     "total": 1
+     *   }
+     * }
+     */
     public function index(BlockedUsersRequest $request): AnonymousResourceCollection
     {
         $validated = $request->validated();

@@ -11,6 +11,29 @@ use Modules\Ad\Models\AdLike;
 
 class AdLikeController extends Controller
 {
+    /**
+     * Toggle the like state for an ad.
+     *
+     * @group Ads
+     * @subgroup Engagement
+     * @authenticated
+     *
+     * @urlParam ad integer required The identifier of the ad to like or unlike.
+     *
+     * @response 200 scenario="Liked" {
+     *   "data": {
+     *     "liked": true,
+     *     "like_count": 34
+     *   }
+     * }
+     *
+     * @response 200 scenario="Unliked" {
+     *   "data": {
+     *     "liked": false,
+     *     "like_count": 33
+     *   }
+     * }
+     */
     public function toggle(Request $request, Ad $ad): JsonResponse
     {
         $user = $request->user();

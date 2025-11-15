@@ -12,6 +12,28 @@ use Modules\Ad\Models\AdComment;
 
 class AdCommentController
 {
+    /**
+     * List comments for an ad.
+     *
+     * @group Ads
+     * @subgroup Comments
+     *
+     * @urlParam ad integer required The identifier of the ad whose comments should be listed.
+     *
+     * @response 200 {
+     *   "data": [
+     *     {
+     *       "id": 198,
+     *       "body": "Is this still available?",
+     *       "user": {
+     *         "id": 12,
+     *         "username": "buyer42"
+     *       },
+     *       "replies": []
+     *     }
+     *   ]
+     * }
+     */
     public function index(Ad $ad): AnonymousResourceCollection
     {
         $comments = $ad->comments()
@@ -23,6 +45,29 @@ class AdCommentController
         return AdCommentResource::collection($comments);
     }
 
+    /**
+     * Create a comment on an ad.
+     *
+     * @group Ads
+     * @subgroup Comments
+     * @authenticated
+     *
+     * @urlParam ad integer required The identifier of the ad to comment on.
+     * @bodyParam body string required The message to publish as a comment. Example: "Can you share more pictures?"
+     * @bodyParam parent_id integer The parent comment identifier when replying to another comment. Example: 197
+     *
+     * @response 201 {
+     *   "data": {
+     *     "id": 199,
+     *     "body": "Can you share more pictures?",
+     *     "user": {
+     *       "id": 15,
+     *       "username": "interested-buyer"
+     *     },
+     *     "replies": []
+     *   }
+     * }
+     */
     public function store(StoreAdCommentRequest $request, Ad $ad): JsonResponse
     {
         /** @var \App\Models\User $user */

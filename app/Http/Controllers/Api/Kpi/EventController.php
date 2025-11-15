@@ -11,12 +11,17 @@ use Carbon\CarbonImmutable;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
 
+/**
+ * @group KPI
+ *
+ * Record KPI events against tracked sessions and devices.
+ */
 class EventController extends Controller
 {
     /**
      * Record KPI events for a device session.
      *
-     * @group Ads Review
+     * @group KPI
      */
     public function store(StoreEventRequest $request): JsonResponse
     {

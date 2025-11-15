@@ -10,12 +10,17 @@ use Carbon\CarbonImmutable;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Arr;
 
+/**
+ * @group KPI
+ *
+ * Manage KPI device registration and heartbeat reporting.
+ */
 class DeviceMetricsController extends Controller
 {
     /**
      * Register or update a KPI device heartbeat profile.
      *
-     * @group Ads Review
+     * @group KPI
      */
     public function register(RegisterDeviceRequest $request): JsonResponse
     {
@@ -75,7 +80,7 @@ class DeviceMetricsController extends Controller
     /**
      * Record a KPI device heartbeat.
      *
-     * @group Ads Review
+     * @group KPI
      */
     public function heartbeat(DeviceHeartbeatRequest $request): JsonResponse
     {

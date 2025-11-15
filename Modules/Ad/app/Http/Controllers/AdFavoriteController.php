@@ -14,6 +14,57 @@ use Modules\Ad\Models\AdFavorite;
 
 class AdFavoriteController extends Controller
 {
+    /**
+     * List bookmarked ads for the authenticated user.
+     *
+     * @group Ads
+     * @subgroup Engagement
+     * @authenticated
+     *
+     * @queryParam per_page int The number of bookmarks per page when paginating (1-100). Example: 20
+     * @queryParam without_pagination boolean Return all bookmarks without pagination. Example: true
+     *
+     * @response 200 scenario="Paginated" {
+     *   "data": [
+     *     {
+     *       "id": 15,
+     *       "ad_id": 84,
+     *       "ad": {
+     *         "id": 84,
+     *         "title": "Vintage bicycle"
+     *       }
+     *     }
+     *   ],
+     *   "links": {
+     *     "first": "https://example.com/api/ads/bookmarks?page=1",
+     *     "last": "https://example.com/api/ads/bookmarks?page=1",
+     *     "prev": null,
+     *     "next": null
+     *   },
+     *   "meta": {
+     *     "current_page": 1,
+     *     "from": 1,
+     *     "last_page": 1,
+     *     "path": "https://example.com/api/ads/bookmarks",
+     *     "per_page": 20,
+     *     "to": 1,
+     *     "total": 1
+     *   }
+     * }
+     *
+     * @response 200 scenario="Without pagination" {
+     *   "data": [
+     *     {
+     *       "id": 15,
+     *       "ad_id": 84,
+     *       "ad": {
+     *         "id": 84,
+     *         "title": "Vintage bicycle"
+     *       }
+     *     }
+     *   ]
+     * }
+     */
     public function index(Request $request): AnonymousResourceCollection
     {
         $user = $request->user();
@@ -37,6 +88,29 @@ class AdFavoriteController extends Controller
         return AdFavoriteResource::collection($paginator);
     }
 
+    /**
+     * Toggle the bookmark state for an ad.
+     *
+     * @group Ads
+     * @subgroup Engagement
+     * @authenticated
+     *
+     * @urlParam ad integer required The identifier of the ad to bookmark or un-bookmark.
+     *
+     * @response 200 scenario="Bookmarked" {
+     *   "data": {
+     *     "favorited": true,
+     *     "favorite_count": 12
+     *   }
+     * }
+     *
+     * @response 200 scenario="Removed from bookmarks" {
+     *   "data": {
+     *     "favorited": false,
+     *     "favorite_count": 11
+     *   }
+     * }
+     */
     public function toggle(Request $request, Ad $ad): JsonResponse
     {
         $user = $request->user();

@@ -11,6 +11,50 @@ use Illuminate\Support\Carbon;
 
 class NotificationController extends Controller
 {
+    /**
+     * List notifications for the authenticated user.
+     *
+     * Fetch paginated notifications ordered by newest first. By default, only unread
+     * notifications are returned.
+     *
+     * @group Notifications
+     * @authenticated
+     *
+     * @queryParam per_page int The number of notifications to return per page (1-100). Example: 20
+     * @queryParam page int The current pagination page. Example: 2
+     * @queryParam include_read boolean Include notifications that have already been read. Example: true
+     *
+     * @response 200 scenario="Unread notifications" {
+     *   "data": [
+     *     {
+     *       "id": "8550c7b4-6c93-4f23-94b2-7b7f46cb3d09",
+     *       "type": "Modules\\Notification\\Notifications\\AdLiked",
+     *       "data": {
+     *         "title": "Your ad received a like",
+     *         "body": "User123 liked your ad."
+     *       },
+     *       "read_at": null,
+     *       "acknowledged_at": null,
+     *       "created_at": "2024-02-18T11:20:15+00:00",
+     *       "updated_at": "2024-02-18T11:20:15+00:00"
+     *     }
+     *   ],
+     *   "meta": {
+     *     "current_page": 1,
+     *     "from": 1,
+     *     "last_page": 1,
+     *     "per_page": 20,
+     *     "to": 1,
+     *     "total": 1,
+     *     "links": {
+     *       "first": "https://example.com/api/v1/notifications?page=1",
+     *       "last": "https://example.com/api/v1/notifications?page=1",
+     *       "prev": null,
+     *       "next": null
+     *     }
+     *   }
+     * }
+     */
     public function index(Request $request): JsonResponse
     {
         $user = $request->user();
@@ -58,6 +102,19 @@ class NotificationController extends Controller
         ]);
     }
 
+    /**
+     * Mark a notification as read.
+     *
+     * @group Notifications
+     * @authenticated
+     *
+     * @urlParam notification string required The notification identifier.
+     *
+     * @response 200 {
+     *   "id": "8550c7b4-6c93-4f23-94b2-7b7f46cb3d09",
+     *   "read_at": "2024-02-18T12:41:09+00:00"
+     * }
+     */
     public function markAsRead(Request $request, DatabaseNotification $notification): JsonResponse
     {
         $user = $request->user();
@@ -78,6 +135,16 @@ class NotificationController extends Controller
         ]);
     }
 
+    /**
+     * Mark every unread notification as read.
+     *
+     * @group Notifications
+     * @authenticated
+     *
+     * @response 200 {
+     *   "updated": 4
+     * }
+     */
     public function markAllAsRead(Request $request): JsonResponse
     {
         $user = $request->user();
@@ -95,6 +162,22 @@ class NotificationController extends Controller
         ]);
     }
 
+    /**
+     * Acknowledge a notification without marking it as read.
+     *
+     * Use this when a notification should be tracked separately from the read
+     * timestamp (for example, when dismissing announcements).
+     *
+     * @group Notifications
+     * @authenticated
+     *
+     * @urlParam notification string required The notification identifier.
+     *
+     * @response 200 {
+     *   "id": "8550c7b4-6c93-4f23-94b2-7b7f46cb3d09",
+     *   "acknowledged_at": "2024-02-18T12:41:09+00:00"
+     * }
+     */
     public function acknowledge(Request $request, DatabaseNotification $notification): JsonResponse
     {
         $user = $request->user();
