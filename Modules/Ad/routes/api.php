@@ -8,6 +8,7 @@ use Modules\Ad\Http\Controllers\AdCategoryController;
 use Modules\Ad\Http\Controllers\AdCommentController;
 use Modules\Ad\Http\Controllers\AdController;
 use Modules\Ad\Http\Controllers\AdExploreController;
+use Modules\Ad\Http\Controllers\AdImageController;
 use Modules\Ad\Http\Controllers\AdConversationController;
 use Modules\Ad\Http\Controllers\AdMessageController;
 use Modules\Ad\Http\Controllers\AdFavoriteController;
@@ -37,7 +38,6 @@ Route::middleware(['api'])->group(function (): void {
     Route::get('ads/{ad}', [AdController::class, 'show']);
     Route::post('ads/{ad}/update', [AdController::class, 'update']);
     Route::post('ads/{ad}/delete', [AdController::class, 'destroy']);
-    Route::post('ads/{ad}/images', [AdController::class, 'storeImages']);
     Route::post('ads/{ad}/seen', [AdController::class, 'markSeen']);
 
     // --- Ad Comments ---
@@ -81,6 +81,13 @@ Route::middleware(['api'])->group(function (): void {
 });
 
 Route::middleware(['api', 'auth:api'])->group(function (): void {
+    // --- Image management ---
+    Route::get('ads/{ad}/images', [AdImageController::class, 'index']);
+    Route::post('ads/{ad}/images', [AdImageController::class, 'store']);
+    Route::post('ads/{ad}/images/{media}/update', [AdImageController::class, 'update']);
+    Route::delete('ads/{ad}/images/{media}', [AdImageController::class, 'destroy']);
+    Route::post('ads/{ad}/images/reorder', [AdImageController::class, 'reorder']);
+
     // --- Admin or Authenticated Report Management ---
     Route::get('ad-reports', [AdReportController::class, 'index'])->name('ad-reports.index');
     Route::get('ad-reports/{ad_report}', [AdReportController::class, 'show'])->name('ad-reports.show');

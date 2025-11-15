@@ -11,13 +11,10 @@ use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
-use Illuminate\Validation\ValidationException;
-use Modules\Ad\Http\Requests\Ad\AddAdImagesRequest;
 use Modules\Ad\Http\Requests\Ad\StoreAdRequest;
 use Modules\Ad\Http\Requests\Ad\UpdateAdRequest;
 use Modules\Ad\Http\Resources\AdResource;
 use Modules\Ad\Models\Ad;
-use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 /**
  * @group Ads
@@ -90,11 +87,10 @@ class AdController extends Controller
         $payload = collect($request->validated());
         $advertisablePayload = $request->advertisablePayload();
         $categories = $payload->pull('categories', []);
-        $images = $payload->pull('images', []);
         $payload->pull('advertisable');
 
         /** @var Ad $ad */
-        $ad = DB::transaction(function () use ($payload, $categories, $images, $advertisablePayload) {
+        $ad = DB::transaction(function () use ($payload, $categories, $advertisablePayload) {
             $advertisableModel = $this->createAdvertisableModel(
                 $advertisablePayload['type'],
                 $advertisablePayload['attributes'],
@@ -107,7 +103,6 @@ class AdController extends Controller
             $ad = Ad::create($payload->toArray());
 
             $this->syncCategories($ad, $categories);
-            $this->syncImages($ad, $images);
 
             return $ad->load(['categories', 'advertisable', 'media']);
         });
@@ -161,14 +156,13 @@ class AdController extends Controller
         $categories = $payload->pull('categories', null);
         $statusNote = $payload->pull('status_note');
         $statusMetadata = $payload->pull('status_metadata');
-        $images = $payload->pull('images', null);
         $payload->pull('advertisable');
 
         $previousStatus = $ad->status;
         $previousSlug = $ad->slug;
 
         /** @var Ad $ad */
-        $ad = DB::transaction(function () use ($ad, $payload, $categories, $previousStatus, $previousSlug, $statusNote, $statusMetadata, $request, $images, $advertisablePayload) {
+        $ad = DB::transaction(function () use ($ad, $payload, $categories, $previousStatus, $previousSlug, $statusNote, $statusMetadata, $request, $advertisablePayload) {
             $targetSlug = $payload->get('slug', $ad->slug);
 
             if ($advertisablePayload !== null) {
@@ -203,37 +197,10 @@ class AdController extends Controller
                 ]);
             }
 
-            if ($images !== null) {
-                $this->syncImages($ad, $images);
-            }
-
             return $ad->load(['categories', 'advertisable', 'media']);
         });
 
         return new AdResource($ad);
-    }
-
-    /**
-     * Upload ad images
-     *
-     * @group Ads
-     *
-     * Append one or more images to the gallery of an existing ad.
-     * The request must be sent as multipart/form-data using fields such as images[0][file].
-    */
-    public function storeImages(AddAdImagesRequest $request, Ad $ad): AdResource
-    {
-        $images = $request->validated('images', []);
-
-        DB::transaction(function () use ($ad, $images): void {
-            $existing = $ad->getMedia(Ad::COLLECTION_IMAGES)
-                ->map(fn (Media $media) => ['id' => $media->id])
-                ->all();
-
-            $this->syncImages($ad, array_merge($existing, $images));
-        });
-
-        return new AdResource($ad->fresh()->load(['categories', 'advertisable', 'media']));
     }
 
     /**
@@ -361,70 +328,6 @@ class AdController extends Controller
         $ad->categories()->sync($payload);
     }
 
-    private function syncImages(Ad $ad, array $images): void
-    {
-        if ($images === []) {
-            $ad->clearMediaCollection(Ad::COLLECTION_IMAGES);
-
-            return;
-        }
-
-        $existingMedia = $ad->getMedia(Ad::COLLECTION_IMAGES)->keyBy('id');
-        $orderedIds = [];
-
-        foreach (array_values($images) as $index => $image) {
-            $customPropertiesProvided = array_key_exists('custom_properties', $image);
-            $customProperties = $customPropertiesProvided && is_array($image['custom_properties'])
-                ? array_filter($image['custom_properties'], static fn ($value) => $value !== null)
-                : [];
-
-            if (isset($image['id'])) {
-                $mediaId = (int) $image['id'];
-                $media = $existingMedia->get($mediaId);
-
-                if (! $media) {
-                    throw ValidationException::withMessages([
-                        "images.$index.id" => 'The selected image does not belong to this ad.',
-                    ]);
-                }
-
-                if (in_array($mediaId, $orderedIds, true)) {
-                    continue;
-                }
-
-                if ($customPropertiesProvided) {
-                    $media->custom_properties = $customProperties;
-                    $media->save();
-                }
-
-                $orderedIds[] = $mediaId;
-
-                continue;
-            }
-
-            if (isset($image['file'])) {
-                $mediaAdder = $ad->addMedia($image['file']);
-
-                if ($customProperties !== []) {
-                    $mediaAdder->withCustomProperties($customProperties);
-                }
-
-                $media = $mediaAdder->toMediaCollection(Ad::COLLECTION_IMAGES);
-                $orderedIds[] = $media->id;
-            }
-        }
-
-        $ad->media()
-            ->where('collection_name', Ad::COLLECTION_IMAGES)
-            ->whereNotIn('id', $orderedIds)
-            ->get()
-            ->each
-            ->delete();
-
-        if ($orderedIds !== []) {
-            Media::setNewOrder($orderedIds);
-        }
-    }
 
     private function viewTrackerCacheKey(Request $request, Ad $ad): string
     {
