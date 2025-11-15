@@ -37,27 +37,27 @@ class AddAdImagesRequest extends FormRequest
      */
     public function bodyParameters(): array
     {
+        // in AddAdImagesRequest::bodyParameters()
         return [
             'images' => [
-                'description' => 'Array of image uploads to append to the gallery. The request must be sent as multipart/form-data using field names such as images[0][file].',
+                'description' => 'Array of image uploads...',
                 'type' => 'array',
-                'example' => [
-                    [
-                        'file' => 'binary image upload',
-                        'custom_properties' => ['alt' => 'Front view'],
-                    ],
-                ],
+                'example' => [[
+                    // DO NOT provide an example path here
+                    'custom_properties' => ['alt' => 'Front view'],
+                ]],
             ],
             'images[].file' => [
                 'description' => 'Image file that will be stored in the ad gallery.',
                 'type' => 'file',
-                'example' => 'photo.jpg',
+                // no "example" key; Scribe will create a fake image file
             ],
             'images[].custom_properties' => [
-                'description' => 'Optional metadata saved with the image (for example alt text or caption).',
+                'description' => 'Optional metadata...',
                 'type' => 'object',
                 'example' => ['caption' => 'Dashboard controls'],
             ],
         ];
+
     }
 }

@@ -7,11 +7,13 @@ use Modules\User\Http\Controllers\UserIndexController;
 
 Route::middleware('api')->prefix('api')->group(function () {
     Route::middleware('auth:api')->prefix('users')->group(function () {
-        Route::post('{user}/follow', [FollowController::class, 'store']);
-        Route::post('{user}/unfollow', [FollowController::class, 'destroy']);
-        Route::get('{user}/followers', [FollowController::class, 'index']);
-        Route::post('{user}/block', [BlockController::class, 'store']);
-        Route::post('{user}/unblock', [BlockController::class, 'unblock']);
+        Route::post('{user_id}/follow', [FollowController::class, 'store']);
+        Route::post('{user_id}/unfollow', [FollowController::class, 'destroy']);
+        Route::get('{user_id}/followers', [FollowController::class, 'index']);
+
+        Route::post('{user_id}/block', [BlockController::class, 'store']);
+        Route::post('{user_id}/unblock', [BlockController::class, 'unblock']);
+
         Route::get('blocks', [BlockController::class, 'index']);
 
         Route::get('/', [UserIndexController::class, 'index']);

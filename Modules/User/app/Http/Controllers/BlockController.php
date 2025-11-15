@@ -53,9 +53,17 @@ class BlockController extends Controller
      *   }
      * }
      */
-    public function store(BlockUserRequest $request, User $user): JsonResponse
+    public function store(BlockUserRequest $request, $user_id): JsonResponse
     {
         $blocker = $request->user();
+
+        $user = User::find($user_id);
+
+        if (!$user) {
+            return response()->json([
+                'message' => 'User not found.'
+            ], 404);
+        }
 
         $block = DB::transaction(function () use ($blocker, $user): UserBlock {
             $record = UserBlock::firstOrCreate([
@@ -63,6 +71,7 @@ class BlockController extends Controller
                 'blocked_id' => $user->id,
             ]);
 
+            // Remove follow relationships in both directions
             UserFollow::query()
                 ->where(function (Builder $query) use ($blocker, $user): void {
                     $query->where('follower_id', $blocker->id)
@@ -78,17 +87,19 @@ class BlockController extends Controller
         });
 
         $status = $block->wasRecentlyCreated ? 201 : 200;
-        $message = $block->wasRecentlyCreated
-            ? __('User blocked successfully.')
-            : __('User already blocked.');
 
         return (new UserResource($user->load('profile')))
             ->additional([
                 'meta' => [
-                    'message' => $message,
+                    'message' => $block->wasRecentlyCreated
+                        ? __('User blocked successfully.')
+                        : __('User already blocked.'),
                 ],
-            ])->response()->setStatusCode($status);
+            ])
+            ->response()
+            ->setStatusCode($status);
     }
+
 
     /**
      * Unblock a user.
@@ -110,9 +121,17 @@ class BlockController extends Controller
      *   }
      * }
      */
-    public function unblock(UnblockUserRequest $request, User $user): JsonResponse
+    public function unblock(UnblockUserRequest $request, $user_id): JsonResponse
     {
         $blocker = $request->user();
+
+        $user = User::find($user_id);
+
+        if (!$user) {
+            return response()->json([
+                'message' => 'User not found.'
+            ], 404);
+        }
 
         $deleted = UserBlock::query()
             ->where('blocker_id', $blocker->id)

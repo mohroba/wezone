@@ -20,9 +20,14 @@ class FollowController extends Controller
      * @group Users
      * @urlParam user integer required The ID of the user to follow. Example: 123
      */
-    public function store(FollowUserRequest $request, User $user): JsonResponse
+    public function store(FollowUserRequest $request, $user_id): JsonResponse
     {
         $follower = $request->user();
+        $user = User::find($user_id);
+
+        if (!$user) {
+            return response()->json(['message' => 'User not found.'], 404);
+        }
 
         $follow = UserFollow::firstOrCreate([
             'follower_id' => $follower->id,
@@ -34,19 +39,29 @@ class FollowController extends Controller
         return (new UserResource($user->load('profile')))
             ->additional([
                 'meta' => [
-                    'message' => $follow->wasRecentlyCreated ? __('Followed successfully.') : __('Already following user.'),
+                    'message' => $follow->wasRecentlyCreated
+                        ? __('Followed successfully.')
+                        : __('Already following user.'),
                 ],
-            ])->response()->setStatusCode($status);
+            ])
+            ->response()
+            ->setStatusCode($status);
     }
+
 
     /**
      * Unfollow a user.
      * @group Users
      * @urlParam user integer required The ID of the user to unfollow. Example: 123
      */
-    public function destroy(UnfollowUserRequest $request, User $user): JsonResponse
+    public function destroy(UnfollowUserRequest $request, $user_id): JsonResponse
     {
         $follower = $request->user();
+        $user = User::find($user_id);
+
+        if (!$user) {
+            return response()->json(['message' => 'User not found.'], 404);
+        }
 
         $deleted = UserFollow::query()
             ->where('follower_id', $follower->id)
@@ -55,18 +70,27 @@ class FollowController extends Controller
 
         return response()->json([
             'meta' => [
-                'message' => $deleted ? __('Unfollowed successfully.') : __('You were not following this user.'),
+                'message' => $deleted
+                    ? __('Unfollowed successfully.')
+                    : __('You were not following this user.'),
             ],
         ]);
     }
+
 
     /**
      * List a user's followers.
      *
      * @group Users
      */
-    public function index(UserFollowersRequest $request, User $user): AnonymousResourceCollection
+    public function index(UserFollowersRequest $request, $user_id): AnonymousResourceCollection
     {
+        $user = User::find($user_id);
+
+        if (!$user) {
+            return response()->json(['message' => 'User not found.'], 404);
+        }
+
         $validated = $request->validated();
         $perPage = $validated['per_page'] ?? 15;
 
@@ -87,4 +111,5 @@ class FollowController extends Controller
 
         return UserResource::collection($followers);
     }
+
 }
