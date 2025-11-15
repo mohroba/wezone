@@ -14,7 +14,7 @@ class InstallationController extends Controller
     /**
      * Track a new installation event.
      *
-     * @group Ads Review
+     * @group KPI
      */
     public function store(StoreInstallationRequest $request): JsonResponse
     {

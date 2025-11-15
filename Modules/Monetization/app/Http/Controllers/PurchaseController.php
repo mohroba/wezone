@@ -97,6 +97,33 @@ class PurchaseController
      * Refresh the ad associated with the purchase to the top of listings when supported by the plan.
      *
      * @urlParam purchase integer required The purchase identifier.
+     * @response 200 {
+     *   "data": {
+     *     "id": 16,
+     *     "ad_id": 42,
+     *     "plan": {
+     *       "id": 5,
+     *       "name": "Premium Weekly",
+     *       "slug": "premium-weekly",
+     *       "description": "Promote the ad for seven days.",
+     *       "price": 90000,
+     *       "currency": "IRR",
+     *       "duration_days": 7,
+     *       "features": {
+     *         "highlight": true,
+     *         "bump": true
+     *       }
+     *     },
+     *     "amount": 90000,
+     *     "currency": "IRR",
+     *     "payment_status": "paid",
+     *     "payment_gateway": "payping",
+     *     "starts_at": "2025-01-01T00:00:00+00:00",
+     *     "ends_at": "2025-01-08T00:00:00+00:00",
+     *     "meta": {},
+     *     "payments": []
+     *   }
+     * }
      */
     public function bump(BumpRequest $request, AdPlanPurchase $purchase): PurchaseResource
     {

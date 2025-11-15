@@ -47,6 +47,42 @@ class PaymentController
      * @queryParam ad_id integer Limit to payments linked to the specified ad. Example: 42
      * @queryParam purchase_id integer Limit to payments for a specific purchase. Example: 15
      * @queryParam per_page integer Results per page (max 100). Example: 20
+     * @response 200 {
+     *   "data": [
+     *     {
+     *       "id": 12,
+     *       "amount": 25000,
+     *       "currency": "IRR",
+     *       "gateway": "payping",
+     *       "status": "paid",
+     *       "ref_id": "ABC123",
+     *       "tracking_code": "TRK-XYZ",
+     *       "paid_at": "2025-01-01T12:00:00+00:00",
+     *       "redirect_url": null
+     *     }
+     *   ],
+     *   "links": [
+     *     {
+     *       "url": "http://localhost/api/monetization/payments?page=1",
+     *       "label": "1",
+     *       "active": true
+     *     },
+     *     {
+     *       "url": "http://localhost/api/monetization/payments?page=2",
+     *       "label": "2",
+     *       "active": false
+     *     }
+     *   ],
+     *   "meta": {
+     *     "current_page": 1,
+     *     "from": 1,
+     *     "last_page": 5,
+     *     "path": "http://localhost/api/monetization/payments",
+     *     "per_page": 15,
+     *     "to": 15,
+     *     "total": 75
+     *   }
+     * }
      */
     public function index(ListPaymentsRequest $request): AnonymousResourceCollection
     {
@@ -83,6 +119,19 @@ class PaymentController
      * @bodyParam gateway string optional Override the payment gateway key. Example: zarinpal
      *
      * @responseField data.redirect_url string|null Gateway redirection URL when available.
+     * @response 200 {
+     *   "data": {
+     *     "id": 30,
+     *     "amount": 90000,
+     *     "currency": "IRR",
+     *     "gateway": "payping",
+     *     "status": "pending",
+     *     "ref_id": null,
+     *     "tracking_code": null,
+     *     "paid_at": null,
+     *     "redirect_url": "https://api.payping.ir/v2/payments/XXX"
+     *   }
+     * }
      */
     public function store(CreatePaymentRequest $request): PaymentResource
     {
@@ -117,6 +166,19 @@ class PaymentController
      * @urlParam purchase integer required The purchase identifier.
      * @bodyParam gateway string optional Override the payment gateway key. Example: stripe
      * @responseField data.redirect_url string|null Gateway redirection URL when available.
+     * @response 200 {
+     *   "data": {
+     *     "id": 32,
+     *     "amount": 90000,
+     *     "currency": "IRR",
+     *     "gateway": "stripe",
+     *     "status": "pending",
+     *     "ref_id": null,
+     *     "tracking_code": null,
+     *     "paid_at": null,
+     *     "redirect_url": "https://checkout.stripe.com/pay/abc123"
+     *   }
+     * }
      */
     public function initiate(InitiatePaymentRequest $request, AdPlanPurchase $purchase): PaymentResource
     {
@@ -142,6 +204,19 @@ class PaymentController
      * Manually trigger validation for a payment after returning from the gateway.
      *
      * @bodyParam payload object optional Gateway callback payload. Example: {"authority": "A0001"}
+     * @response 200 {
+     *   "data": {
+     *     "id": 32,
+     *     "amount": 90000,
+     *     "currency": "IRR",
+     *     "gateway": "payping",
+     *     "status": "paid",
+     *     "ref_id": "ABC123",
+     *     "tracking_code": "TRK-XYZ",
+     *     "paid_at": "2025-01-01T12:00:00+00:00",
+     *     "redirect_url": null
+     *   }
+     * }
      */
     public function validatePayment(ValidatePaymentRequest $request, Payment $payment): PaymentResource
     {
@@ -179,6 +254,19 @@ class PaymentController
      *
      * @bodyParam gateway string required Payment gateway key for the callback. Example: payping
      * @bodyParam payload object required Raw callback payload forwarded from the gateway. Example: {"status":"paid"}
+     * @response 200 {
+     *   "data": {
+     *     "id": 32,
+     *     "amount": 90000,
+     *     "currency": "IRR",
+     *     "gateway": "payping",
+     *     "status": "paid",
+     *     "ref_id": "ABC123",
+     *     "tracking_code": "TRK-XYZ",
+     *     "paid_at": "2025-01-01T12:00:00+00:00",
+     *     "redirect_url": null
+     *   }
+     * }
      */
     public function verify(VerifyCallbackRequest $request): PaymentResource
     {
@@ -201,6 +289,37 @@ class PaymentController
      *
      * @queryParam per_page integer Results per page (max 100). Example: 15
      * @urlParam ad integer required The ad identifier.
+     * @response 200 {
+     *   "data": [
+     *     {
+     *       "id": 40,
+     *       "amount": 50000,
+     *       "currency": "IRR",
+     *       "gateway": "payping",
+     *       "status": "paid",
+     *       "ref_id": "REF40",
+     *       "tracking_code": "TRK-40",
+     *       "paid_at": "2025-01-02T08:00:00+00:00",
+     *       "redirect_url": null
+     *     }
+     *   ],
+     *   "links": [
+     *     {
+     *       "url": "http://localhost/api/monetization/ads/37/payments?page=1",
+     *       "label": "1",
+     *       "active": true
+     *     }
+     *   ],
+     *   "meta": {
+     *     "current_page": 1,
+     *     "from": 1,
+     *     "last_page": 1,
+     *     "path": "http://localhost/api/monetization/ads/37/payments",
+     *     "per_page": 15,
+     *     "to": 1,
+     *     "total": 1
+     *   }
+     * }
      */
     public function adPayments(Request $request, Ad $ad): AnonymousResourceCollection
     {

@@ -13,7 +13,7 @@ class UninstallationController extends Controller
     /**
      * Track an uninstall event.
      *
-     * @group Ads Review
+     * @group KPI
      */
     public function store(StoreUninstallationRequest $request): JsonResponse
     {
