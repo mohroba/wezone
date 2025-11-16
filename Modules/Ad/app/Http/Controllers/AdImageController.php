@@ -20,6 +20,19 @@ class AdImageController extends Controller
     {
     }
 
+    /**
+     * List ad images
+     *
+     * Retrieve every media item currently attached to the specified ad.
+     *
+     * @group Ad Images
+     * @authenticated
+     *
+     * @urlParam ad integer required The ID of the ad whose images should be listed.
+     * @responseField data[].id integer Media identifier.
+     * @responseField data[].url string Original image URL.
+     * @responseField data[].thumb_url string Thumbnail URL.
+     */
     public function index(Request $request, Ad $ad): JsonResponse
     {
         $this->authorizeAdAccess($request, $ad);
@@ -29,6 +42,21 @@ class AdImageController extends Controller
             ->response();
     }
 
+    /**
+     * Upload ad images
+     *
+     * Attach one or more images to the specified ad.
+     *
+     * @group Ad Images
+     * @authenticated
+     *
+     * @urlParam ad integer required The ID of the ad receiving the images.
+     * @bodyParam images array required Collection of image payloads.
+     * @bodyParam images[].file file required JPEG/PNG/WEBP file (max 5 MB). Example: (binary)
+     * @bodyParam images[].alt string optional Alternative text for accessibility. Example: Front view of the car
+     * @bodyParam images[].caption string optional Short caption shown in galleries. Example: Taken last week
+     * @bodyParam images[].display_order integer optional Display order override. Example: 2
+     */
     public function store(UploadAdImagesRequest $request, Ad $ad): JsonResponse
     {
         $this->authorizeAdAccess($request, $ad);
@@ -40,6 +68,20 @@ class AdImageController extends Controller
             ->response();
     }
 
+    /**
+     * Update image metadata
+     *
+     * Modify the caption, alt text, or display order for an ad image.
+     *
+     * @group Ad Images
+     * @authenticated
+     *
+     * @urlParam ad integer required The ID of the parent ad.
+     * @urlParam media integer required The media identifier returned from uploads.
+     * @bodyParam alt string optional Alternative text (max 150 chars). Example: Interior photo
+     * @bodyParam caption string optional Caption displayed under the asset. Example: Dashboard close-up
+     * @bodyParam display_order integer optional New numeric position. Example: 1
+     */
     public function update(UpdateAdImageRequest $request, Ad $ad, Media $media): JsonResponse
     {
         $this->authorizeAdAccess($request, $ad);
@@ -51,6 +93,17 @@ class AdImageController extends Controller
             ->response();
     }
 
+    /**
+     * Delete ad image
+     *
+     * Remove a single media item from the specified ad.
+     *
+     * @group Ad Images
+     * @authenticated
+     *
+     * @urlParam ad integer required The ID of the parent ad.
+     * @urlParam media integer required The media identifier.
+     */
     public function destroy(Request $request, Ad $ad, Media $media): JsonResponse
     {
         $this->authorizeAdAccess($request, $ad);
@@ -63,6 +116,19 @@ class AdImageController extends Controller
         ]);
     }
 
+    /**
+     * Reorder ad images
+     *
+     * Update the display order of multiple images in one request.
+     *
+     * @group Ad Images
+     * @authenticated
+     *
+     * @urlParam ad integer required The ID of the parent ad.
+     * @bodyParam order array required New ordering instructions.
+     * @bodyParam order[].media_id integer required Media identifier to update. Example: 45
+     * @bodyParam order[].display_order integer required Position to assign. Example: 0
+     */
     public function reorder(ReorderAdImagesRequest $request, Ad $ad): JsonResponse
     {
         $this->authorizeAdAccess($request, $ad);

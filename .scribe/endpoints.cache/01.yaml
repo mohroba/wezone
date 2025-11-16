@@ -304,6 +304,346 @@ endpoints:
   -
     httpMethods:
       - POST
+    uri: api/kpi/installations
+    metadata:
+      groupName: KPI
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Track a new installation event.'
+      description: ''
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      device_uuid:
+        name: device_uuid
+        description: 'Unique identifier for the device that installed the app. Must be a valid UUID.'
+        required: true
+        example: 550e8400-e29b-41d4-a716-446655440000
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      installed_at:
+        name: installed_at
+        description: 'Timestamp when the installation occurred. Must be a valid date.'
+        required: false
+        example: '2024-04-01T09:15:00Z'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      app_version:
+        name: app_version
+        description: 'Version of the app that was installed. Must not be greater than 50 characters.'
+        required: true
+        example: 2.3.1
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      platform:
+        name: platform
+        description: 'Operating system of the device. Must not be greater than 50 characters.'
+        required: true
+        example: android
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      os_version:
+        name: os_version
+        description: 'Version string of the device operating system. Must not be greater than 100 characters.'
+        required: false
+        example: '14'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      device_model:
+        name: device_model
+        description: 'Marketing name of the device model. Must not be greater than 150 characters.'
+        required: false
+        example: 'Pixel 8'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      device_manufacturer:
+        name: device_manufacturer
+        description: 'Hardware manufacturer of the device. Must not be greater than 150 characters.'
+        required: false
+        example: Google
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      locale:
+        name: locale
+        description: 'Locale configured on the device. Must not be greater than 10 characters.'
+        required: false
+        example: en-GB
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      timezone:
+        name: timezone
+        description: 'Time zone reported by the device. Must not be greater than 60 characters.'
+        required: false
+        example: Europe/London
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      push_token:
+        name: push_token
+        description: 'Token to send push notifications to the device. Must not be greater than 255 characters.'
+        required: false
+        example: b9df77f8faae4b079c6dce20472f923d
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      install_source:
+        name: install_source
+        description: 'Identifier for the store or campaign that initiated the install. Must not be greater than 100 characters.'
+        required: false
+        example: google-play
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      campaign:
+        name: campaign
+        description: 'Marketing campaign identifier associated with the install. Must not be greater than 100 characters.'
+        required: false
+        example: spring_sale_2024
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      is_reinstall:
+        name: is_reinstall
+        description: 'Whether the install is a reinstall event.'
+        required: false
+        example: false
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      metadata:
+        name: metadata
+        description: 'Structured metadata recorded for the install.'
+        required: false
+        example:
+          referrer: newsletter
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      extra:
+        name: extra
+        description: 'Additional data sent by the client.'
+        required: false
+        example:
+          sdk_version: 1.4.0
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      user_id:
+        name: user_id
+        description: 'Identifier of the authenticated user associated with the device, when available. The <code>id</code> of an existing record in the users table.'
+        required: false
+        example: 42
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+    cleanBodyParameters:
+      device_uuid: 550e8400-e29b-41d4-a716-446655440000
+      installed_at: '2024-04-01T09:15:00Z'
+      app_version: 2.3.1
+      platform: android
+      os_version: '14'
+      device_model: 'Pixel 8'
+      device_manufacturer: Google
+      locale: en-GB
+      timezone: Europe/London
+      push_token: b9df77f8faae4b079c6dce20472f923d
+      install_source: google-play
+      campaign: spring_sale_2024
+      is_reinstall: false
+      metadata:
+        referrer: newsletter
+      extra:
+        sdk_version: 1.4.0
+      user_id: 42
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/kpi/uninstallations
+    metadata:
+      groupName: KPI
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Track an uninstall event.'
+      description: ''
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      device_uuid:
+        name: device_uuid
+        description: 'Unique identifier for the device that uninstalled the app. Must be a valid UUID.'
+        required: true
+        example: 550e8400-e29b-41d4-a716-446655440000
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      uninstalled_at:
+        name: uninstalled_at
+        description: 'Timestamp when the uninstall event occurred. Must be a valid date.'
+        required: false
+        example: '2024-04-05T17:20:00Z'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      app_version:
+        name: app_version
+        description: 'Application version that was uninstalled. Must not be greater than 50 characters.'
+        required: false
+        example: 2.3.1
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      platform:
+        name: platform
+        description: 'Operating system of the device. Must not be greater than 50 characters.'
+        required: false
+        example: ios
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      reason:
+        name: reason
+        description: 'Optional reason provided for the uninstall. Must not be greater than 255 characters.'
+        required: false
+        example: 'User opted out during offboarding survey.'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      report_source:
+        name: report_source
+        description: 'Source that reported the uninstall event. Must not be greater than 100 characters.'
+        required: false
+        example: app_store
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      metadata:
+        name: metadata
+        description: 'Structured metadata for additional analytics.'
+        required: false
+        example:
+          previous_sessions: 12
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      user_id:
+        name: user_id
+        description: 'Identifier of the authenticated user, if available. The <code>id</code> of an existing record in the users table.'
+        required: false
+        example: 42
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+    cleanBodyParameters:
+      device_uuid: 550e8400-e29b-41d4-a716-446655440000
+      uninstalled_at: '2024-04-05T17:20:00Z'
+      app_version: 2.3.1
+      platform: ios
+      reason: 'User opted out during offboarding survey.'
+      report_source: app_store
+      metadata:
+        previous_sessions: 12
+      user_id: 42
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
     uri: api/kpi/sessions
     metadata:
       groupName: KPI

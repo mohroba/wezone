@@ -27,8 +27,6 @@ class AdReportController extends Controller
      */
     public function index(ListAdReportRequest $request): AnonymousResourceCollection
     {
-        Gate::authorize('viewAny', AdReport::class);
-
         $filters = $request->validated();
 
         $query = AdReport::query()
@@ -71,7 +69,8 @@ class AdReportController extends Controller
         $payload = $request->validated();
         $payload['reported_by'] = optional($request->user())->getKey();
 
-        $report = AdReport::create($payload)->load(self::EAGER_RELATIONS);
+        $report = AdReport::create($payload);
+        $report->refresh()->load(self::EAGER_RELATIONS);
 
         return (new AdReportResource($report))->response()->setStatusCode(Response::HTTP_CREATED);
     }
@@ -83,8 +82,6 @@ class AdReportController extends Controller
      */
     public function show(AdReport $adReport): AdReportResource
     {
-        Gate::authorize('view', $adReport);
-
         return new AdReportResource($adReport->load(self::EAGER_RELATIONS));
     }
 
@@ -95,8 +92,6 @@ class AdReportController extends Controller
      */
     public function update(UpdateAdReportRequest $request, AdReport $adReport): AdReportResource
     {
-        Gate::authorize('update', $adReport);
-
         $report = $this->persistStatusUpdate($adReport, $request->validated(), $request->user());
 
         return new AdReportResource($report);
@@ -109,8 +104,6 @@ class AdReportController extends Controller
      */
     public function destroy(AdReport $adReport): Response
     {
-        Gate::authorize('delete', $adReport);
-
         $adReport->delete();
 
         return response()->noContent();
@@ -123,8 +116,6 @@ class AdReportController extends Controller
      */
     public function resolve(HandleAdReportRequest $request, AdReport $adReport): AdReportResource
     {
-        Gate::authorize('update', $adReport);
-
         $payload = array_merge($request->validated(), ['status' => 'resolved']);
         $report = $this->persistStatusUpdate($adReport, $payload, $request->user());
 
@@ -138,8 +129,6 @@ class AdReportController extends Controller
      */
     public function dismiss(HandleAdReportRequest $request, AdReport $adReport): AdReportResource
     {
-        Gate::authorize('update', $adReport);
-
         $payload = array_merge($request->validated(), ['status' => 'dismissed']);
         $report = $this->persistStatusUpdate($adReport, $payload, $request->user());
 
