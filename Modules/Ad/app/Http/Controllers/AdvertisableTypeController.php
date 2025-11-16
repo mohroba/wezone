@@ -9,6 +9,7 @@ use Modules\Ad\Advertisable\Contracts\AdvertisableTypeDefinition;
 use Modules\Ad\Advertisable\DTO\AdvertisableTypeMetadata;
 use Modules\Ad\Http\Resources\AdvertisableTypeResource;
 use Modules\Ad\Models\AdAttributeGroup;
+use Modules\Ad\Models\AdvertisableType;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class AdvertisableTypeController extends Controller
@@ -43,9 +44,16 @@ class AdvertisableTypeController extends Controller
 
     private function buildMetadata(AdvertisableTypeDefinition $definition): AdvertisableTypeMetadata
     {
+        $typeModel = AdvertisableType::query()
+            ->where('model_class', $definition->modelClass())
+            ->first();
+
         $groups = AdAttributeGroup::query()
-            ->with(['definitions' => fn ($query) => $query->orderBy('id')])
-            ->where('advertisable_type', $definition->modelClass())
+            ->with([
+                'definitions' => fn ($query) => $query->orderBy('id'),
+                'advertisableType',
+            ])
+            ->when($typeModel, fn ($query) => $query->where('advertisable_type_id', $typeModel->id), fn ($query) => $query->whereRaw('0 = 1'))
             ->orderBy('display_order')
             ->orderBy('id')
             ->get();

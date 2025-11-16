@@ -2,9 +2,11 @@
 
 namespace Modules\Ad\Models;
 
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
+use Modules\Ad\Database\Factories\AdCarFactory;
 
 class AdCar extends Model
 {
@@ -35,5 +37,10 @@ class AdCar extends Model
     public function ad(): MorphOne
     {
         return $this->morphOne(Ad::class, 'advertisable');
+    }
+
+    protected static function newFactory(): Factory
+    {
+        return AdCarFactory::new();
     }
 }

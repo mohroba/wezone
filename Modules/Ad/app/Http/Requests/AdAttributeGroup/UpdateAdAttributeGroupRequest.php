@@ -3,8 +3,6 @@
 namespace Modules\Ad\Http\Requests\AdAttributeGroup;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
-use Modules\Ad\Support\AdvertisableType;
 
 class UpdateAdAttributeGroupRequest extends FormRequest
 {
@@ -17,8 +15,7 @@ class UpdateAdAttributeGroupRequest extends FormRequest
     {
         return [
             'name' => ['sometimes', 'required', 'string', 'max:255'],
-            'advertisable_type' => ['nullable', 'string', Rule::in(AdvertisableType::allowed())],
-            'category_id' => ['nullable', 'integer', 'exists:ad_categories,id'],
+            'advertisable_type_id' => ['nullable', 'integer', 'exists:advertisable_types,id'],
             'display_order' => ['nullable', 'integer', 'min:0'],
         ];
     }
@@ -33,13 +30,9 @@ class UpdateAdAttributeGroupRequest extends FormRequest
                 'description' => 'Display name of the attribute group.',
                 'example' => 'Engine specifications',
             ],
-            'advertisable_type' => [
-                'description' => 'Advertisable model class this group applies to.',
-                'example' => 'Modules\\Ad\\Models\\AdCar',
-            ],
-            'category_id' => [
-                'description' => 'Optional category scope for the group.',
-                'example' => 7,
+            'advertisable_type_id' => [
+                'description' => 'Identifier of the advertisable type this group belongs to.',
+                'example' => 2,
             ],
             'display_order' => [
                 'description' => 'Numeric sorting weight for UI rendering.',

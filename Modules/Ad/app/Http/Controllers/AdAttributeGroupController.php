@@ -11,6 +11,7 @@ use Modules\Ad\Http\Requests\AdAttributeGroup\StoreAdAttributeGroupRequest;
 use Modules\Ad\Http\Requests\AdAttributeGroup\UpdateAdAttributeGroupRequest;
 use Modules\Ad\Http\Resources\AdAttributeGroupResource;
 use Modules\Ad\Models\AdAttributeGroup;
+use Modules\Ad\Models\AdvertisableType;
 
 /**
  * @group Ad Attribute Groups
@@ -26,16 +27,27 @@ class AdAttributeGroupController extends Controller
      *
      * Retrieve attribute groups filtered by advertisable type or category.
      *
-     * @queryParam advertisable_type string Filter by advertisable class name. Example: Modules\\Ad\\Models\\AdCar
-     * @queryParam category_id integer Filter groups scoped to the given category. Example: 8
+     * @queryParam advertisable_type_id integer Filter by advertisable type ID. Example: 2
+     * @queryParam advertisable_type string Filter by advertisable model class name. Example: Modules\\Ad\\Models\\AdCar
      * @queryParam per_page integer Number of results per page, up to 200. Example: 25
      * @queryParam without_pagination boolean Set to true to return all groups without pagination. Example: false
      */
     public function index(Request $request): AnonymousResourceCollection
     {
         $query = AdAttributeGroup::query()
-            ->when($request->filled('advertisable_type'), fn ($q) => $q->where('advertisable_type', $request->input('advertisable_type')))
-            ->when($request->filled('category_id'), fn ($q) => $q->where('category_id', $request->input('category_id')))
+            ->with('advertisableType')
+            ->when($request->filled('advertisable_type_id'), fn ($q) => $q->where('advertisable_type_id', $request->input('advertisable_type_id')))
+            ->when($request->filled('advertisable_type'), function ($q) use ($request) {
+                $typeId = AdvertisableType::query()
+                    ->where('model_class', $request->input('advertisable_type'))
+                    ->value('id');
+
+                if ($typeId) {
+                    $q->where('advertisable_type_id', $typeId);
+                } else {
+                    $q->whereRaw('0 = 1');
+                }
+            })
             ->orderBy('display_order')
             ->orderBy('id');
 
@@ -59,7 +71,7 @@ class AdAttributeGroupController extends Controller
      */
     public function store(StoreAdAttributeGroupRequest $request): JsonResponse
     {
-        $group = AdAttributeGroup::create($request->validated());
+        $group = AdAttributeGroup::create($request->validated())->load('advertisableType');
 
         return (new AdAttributeGroupResource($group))->response()->setStatusCode(Response::HTTP_CREATED);
     }
@@ -73,7 +85,7 @@ class AdAttributeGroupController extends Controller
      */
     public function show(AdAttributeGroup $adAttributeGroup): AdAttributeGroupResource
     {
-        return new AdAttributeGroupResource($adAttributeGroup);
+        return new AdAttributeGroupResource($adAttributeGroup->load('advertisableType'));
     }
 
     /**
@@ -88,7 +100,7 @@ class AdAttributeGroupController extends Controller
         $adAttributeGroup->fill($request->validated());
         $adAttributeGroup->save();
 
-        return new AdAttributeGroupResource($adAttributeGroup);
+        return new AdAttributeGroupResource($adAttributeGroup->load('advertisableType'));
     }
 
     /**

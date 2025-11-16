@@ -17,6 +17,7 @@ class AdResource extends JsonResource
         return [
             'id' => $this->id,
             'user_id' => $this->user_id,
+            'advertisable_type_id' => $this->advertisable_type_id,
             'advertisable_type' => $this->advertisable_type,
             'advertisable_id' => $this->advertisable_id,
             'slug' => $this->slug,

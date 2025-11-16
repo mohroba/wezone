@@ -27,8 +27,7 @@ class AdAttributeValueController extends Controller
      * Retrieve attribute values filtered by definition or advertisable linkage.
      *
      * @queryParam definition_id integer Filter by attribute definition. Example: 12
-     * @queryParam advertisable_type string Filter by advertisable class name. Example: Modules\\Ad\\Models\\AdCar
-     * @queryParam advertisable_id integer Filter by advertisable identifier. Example: 34
+     * @queryParam ad_id integer Filter by the owning ad identifier. Example: 34
      * @queryParam per_page integer Number of results per page, up to 200. Example: 25
      * @queryParam without_pagination boolean Set to true to return all values without pagination. Example: false
      */
@@ -37,8 +36,7 @@ class AdAttributeValueController extends Controller
         $query = AdAttributeValue::query()
             ->with('definition')
             ->when($request->filled('definition_id'), fn ($q) => $q->where('definition_id', $request->input('definition_id')))
-            ->when($request->filled('advertisable_type'), fn ($q) => $q->where('advertisable_type', $request->input('advertisable_type')))
-            ->when($request->filled('advertisable_id'), fn ($q) => $q->where('advertisable_id', $request->input('advertisable_id')))
+            ->when($request->filled('ad_id'), fn ($q) => $q->where('ad_id', $request->input('ad_id')))
             ->orderByDesc('updated_at');
 
         if ($request->boolean('without_pagination')) {
@@ -112,12 +110,12 @@ class AdAttributeValueController extends Controller
     {
         $columns = [
             'definition_id',
-            'advertisable_type',
-            'advertisable_id',
+            'ad_id',
             'value_string',
             'value_integer',
             'value_decimal',
             'value_boolean',
+            'value_date',
             'value_json',
             'normalized_value',
         ];
@@ -127,7 +125,7 @@ class AdAttributeValueController extends Controller
         foreach ($columns as $column) {
             if (array_key_exists($column, $payload)) {
                 $result[$column] = $payload[$column];
-            } elseif ($includeMissing && ! in_array($column, ['definition_id', 'advertisable_type', 'advertisable_id'], true)) {
+            } elseif ($includeMissing && ! in_array($column, ['definition_id', 'ad_id'], true)) {
                 $result[$column] = null;
             }
         }

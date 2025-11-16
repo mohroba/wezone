@@ -33,6 +33,7 @@ class Ad extends Model implements HasMedia
 
     protected $fillable = [
         'user_id',
+        'advertisable_type_id',
         'advertisable_type',
         'advertisable_id',
         'slug',
@@ -72,6 +73,11 @@ class Ad extends Model implements HasMedia
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function advertisableType(): BelongsTo
+    {
+        return $this->belongsTo(AdvertisableType::class, 'advertisable_type_id');
     }
 
     public function city(): BelongsTo
@@ -120,6 +126,11 @@ class Ad extends Model implements HasMedia
     public function reports(): HasMany
     {
         return $this->hasMany(AdReport::class);
+    }
+
+    public function attributeValues(): HasMany
+    {
+        return $this->hasMany(AdAttributeValue::class, 'ad_id');
     }
 
     public function comments(): HasMany

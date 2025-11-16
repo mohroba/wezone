@@ -15,16 +15,16 @@ class StoreAdAttributeDefinitionRequest extends FormRequest
 
     public function rules(): array
     {
-        $dataTypes = ['string', 'integer', 'decimal', 'boolean', 'enum', 'json'];
+        $dataTypes = ['string', 'integer', 'decimal', 'boolean', 'enum', 'json', 'date'];
 
         return [
-            'group_id' => ['nullable', 'integer', 'exists:ad_attribute_groups,id'],
+            'attribute_group_id' => ['nullable', 'integer', 'exists:ad_attribute_groups,id'],
             'key' => [
                 'required',
                 'string',
                 'max:255',
                 Rule::unique((new AdAttributeDefinition())->getTable(), 'key')->where(function ($query) {
-                    return $query->where('group_id', $this->input('group_id'));
+                    return $query->where('attribute_group_id', $this->input('attribute_group_id'));
                 }),
             ],
             'label' => ['required', 'string', 'max:255'],
@@ -54,7 +54,7 @@ class StoreAdAttributeDefinitionRequest extends FormRequest
     public function bodyParameters(): array
     {
         return [
-            'group_id' => [
+            'attribute_group_id' => [
                 'description' => 'Identifier of the attribute group this definition belongs to.',
                 'example' => 2,
             ],

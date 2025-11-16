@@ -11,10 +11,12 @@ use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use Illuminate\Validation\ValidationException;
 use Modules\Ad\Http\Requests\Ad\StoreAdRequest;
 use Modules\Ad\Http\Requests\Ad\UpdateAdRequest;
 use Modules\Ad\Http\Resources\AdResource;
 use Modules\Ad\Models\Ad;
+use Modules\Ad\Models\AdvertisableType;
 
 /**
  * @group Ads
@@ -89,8 +91,10 @@ class AdController extends Controller
         $categories = $payload->pull('categories', []);
         $payload->pull('advertisable');
 
+        $typeId = $this->resolveAdvertisableTypeId($advertisablePayload['type']);
+
         /** @var Ad $ad */
-        $ad = DB::transaction(function () use ($payload, $categories, $advertisablePayload) {
+        $ad = DB::transaction(function () use ($payload, $categories, $advertisablePayload, $typeId) {
             $advertisableModel = $this->createAdvertisableModel(
                 $advertisablePayload['type'],
                 $advertisablePayload['attributes'],
@@ -99,6 +103,7 @@ class AdController extends Controller
 
             $payload->put('advertisable_type', $advertisablePayload['type']);
             $payload->put('advertisable_id', $advertisableModel->getKey());
+            $payload->put('advertisable_type_id', $typeId);
 
             $ad = Ad::create($payload->toArray());
 
@@ -169,6 +174,7 @@ class AdController extends Controller
                 $advertisableModel = $this->persistUpdatedAdvertisable($ad, $advertisablePayload, $targetSlug);
                 $payload->put('advertisable_type', $advertisablePayload['type']);
                 $payload->put('advertisable_id', $advertisableModel->getKey());
+                $payload->put('advertisable_type_id', $this->resolveAdvertisableTypeId($advertisablePayload['type']));
             } elseif ($payload->has('slug') && $ad->advertisable) {
                 $this->ensureAdvertisableSlug($ad->advertisable, $targetSlug);
             }
@@ -348,5 +354,18 @@ class AdController extends Controller
         $userAgent = $request->userAgent() ?? 'unknown-agent';
 
         return 'guest:' . sha1($ipAddress . '|' . $userAgent);
+    }
+
+    private function resolveAdvertisableTypeId(string $modelClass): int
+    {
+        $typeId = AdvertisableType::query()->where('model_class', $modelClass)->value('id');
+
+        if ($typeId === null) {
+            throw ValidationException::withMessages([
+                'advertisable.type' => 'The selected advertisable type is not registered.',
+            ]);
+        }
+
+        return (int) $typeId;
     }
 }

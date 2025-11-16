@@ -12,7 +12,7 @@ class AdAttributeDefinition extends Model
     use HasFactory;
 
     protected $fillable = [
-        'group_id',
+        'attribute_group_id',
         'key',
         'label',
         'help_text',
@@ -32,9 +32,14 @@ class AdAttributeDefinition extends Model
         'is_searchable' => 'boolean',
     ];
 
+    public function attributeGroup(): BelongsTo
+    {
+        return $this->belongsTo(AdAttributeGroup::class, 'attribute_group_id');
+    }
+
     public function group(): BelongsTo
     {
-        return $this->belongsTo(AdAttributeGroup::class, 'group_id');
+        return $this->attributeGroup();
     }
 
     public function values(): HasMany
