@@ -9,35 +9,38 @@ use Modules\Ad\Models\AdCategoryClosure;
 class CategoryHierarchyManager
 {
     /**
-     * Apply hierarchy metadata and closure records for a newly created category.
+     * Apply closure records for a newly created category.
      */
     public function handleCreated(AdCategory $category): void
     {
         $category->refresh();
-        $parent = $category->parent()->first();
-        $this->applyRecursively($category, $parent);
+        $this->applyRecursively($category);
     }
 
     /**
-     * Recalculate hierarchy metadata for the provided category and its descendants.
+     * Recalculate closure records for the provided category and its descendants.
      */
     public function rebuildSubtree(AdCategory $category): void
     {
         $category->refresh();
-        $parent = $category->parent()->first();
-        $this->applyRecursively($category, $parent);
+        $this->applyRecursively($category);
     }
 
-    private function applyRecursively(AdCategory $category, ?AdCategory $parent): void
+    private function applyRecursively(AdCategory $category): void
     {
-        $depth = $parent ? $parent->depth + 1 : 0;
-        $path = $parent ? trim($parent->path . '>' . $category->slug, '>') : $category->slug;
+        $parent = $category->parent()->first();
 
-        $category->forceFill([
-            'depth' => $depth,
-            'path' => $path,
-        ])->save();
+        $this->syncClosureRecords($category, $parent);
 
+        $children = $category->children()->orderBy('sort_order')->get();
+
+        foreach ($children as $child) {
+            $this->applyRecursively($child);
+        }
+    }
+
+    private function syncClosureRecords(AdCategory $category, ?AdCategory $parent): void
+    {
         AdCategoryClosure::where('descendant_id', $category->id)->delete();
 
         $ancestorRows = $parent
@@ -49,6 +52,7 @@ class CategoryHierarchyManager
                 'ancestor_id' => $row->ancestor_id,
                 'descendant_id' => $category->id,
                 'depth' => $row->depth + 1,
+                'advertisable_type_id' => $category->advertisable_type_id,
             ];
         })->all();
 
@@ -56,14 +60,9 @@ class CategoryHierarchyManager
             'ancestor_id' => $category->id,
             'descendant_id' => $category->id,
             'depth' => 0,
+            'advertisable_type_id' => $category->advertisable_type_id,
         ];
 
         AdCategoryClosure::insert($records);
-
-        $children = $category->children()->orderBy('sort_order')->get();
-
-        foreach ($children as $child) {
-            $this->applyRecursively($child, $category);
-        }
     }
 }

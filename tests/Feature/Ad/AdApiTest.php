@@ -6,6 +6,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Modules\Ad\Models\Ad;
 use Modules\Ad\Models\AdCar;
 use Modules\Ad\Models\AdCategory;
+use Modules\Ad\Models\AdvertisableType;
 use Modules\Ad\Services\CategoryHierarchyManager;
 use Tests\TestCase;
 use App\Models\User;
@@ -17,21 +18,28 @@ class AdApiTest extends TestCase
     public function test_it_creates_an_ad_with_categories(): void
     {
         $user = User::factory()->create();
-        $car = AdCar::create([
-            'slug' => 'peugeot-206',
+        $type = AdvertisableType::factory()->create([
+            'model_class' => AdCar::class,
         ]);
-
         $category = AdCategory::create([
             'slug' => 'sedan',
             'name' => 'Sedan',
+            'advertisable_type_id' => $type->id,
         ]);
         app(CategoryHierarchyManager::class)->handleCreated($category);
         $category->refresh();
 
         $response = $this->postJson('/api/ads', [
             'user_id' => $user->id,
-            'advertisable_type' => AdCar::class,
-            'advertisable_id' => $car->id,
+            'advertisable' => [
+                'type' => AdCar::class,
+                'attributes' => [
+                    'brand_id' => 1,
+                    'model_id' => 1,
+                    'year' => 2024,
+                    'slug' => 'peugeot-206',
+                ],
+            ],
             'slug' => 'peugeot-206-2024',
             'title' => 'Peugeot 206 2024',
             'description' => 'Brand new condition.',
@@ -65,13 +73,20 @@ class AdApiTest extends TestCase
     public function test_it_updates_ad_and_records_status_and_slug_history(): void
     {
         $user = User::factory()->create();
+        $type = AdvertisableType::factory()->create([
+            'model_class' => AdCar::class,
+        ]);
         $car = AdCar::create([
             'slug' => 'samand',
+            'brand_id' => 1,
+            'model_id' => 1,
+            'year' => 2020,
         ]);
 
         $category = AdCategory::create([
             'slug' => 'hatchback',
             'name' => 'Hatchback',
+            'advertisable_type_id' => $type->id,
         ]);
         app(CategoryHierarchyManager::class)->handleCreated($category);
         $category->refresh();
@@ -80,6 +95,7 @@ class AdApiTest extends TestCase
             'user_id' => $user->id,
             'advertisable_type' => AdCar::class,
             'advertisable_id' => $car->id,
+            'advertisable_type_id' => $type->id,
             'slug' => 'samand-2020',
             'title' => 'Samand 2020',
             'status' => 'draft',
