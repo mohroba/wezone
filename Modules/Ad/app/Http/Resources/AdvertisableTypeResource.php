@@ -26,8 +26,8 @@ class AdvertisableTypeResource extends JsonResource
                     return [
                         'id' => $group->id,
                         'name' => $group->name,
-                        'advertisable_type' => $group->advertisable_type,
-                        'category_id' => $group->category_id,
+                        'advertisable_type_id' => $group->advertisable_type_id,
+                        'advertisable_type' => $group->advertisableType?->model_class,
                         'display_order' => $group->display_order,
                         'created_at' => $group->created_at?->toISOString(),
                         'updated_at' => $group->updated_at?->toISOString(),

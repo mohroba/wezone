@@ -5,6 +5,8 @@ namespace Modules\Ad\Database\Factories;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Ad\Models\Ad;
+use Modules\Ad\Models\AdCar;
+use Modules\Ad\Models\AdvertisableType;
 
 class AdFactory extends Factory
 {
@@ -14,8 +16,11 @@ class AdFactory extends Factory
     {
         return [
             'user_id' => User::factory(),
-            'advertisable_type' => User::class,
-            'advertisable_id' => User::factory(),
+            'advertisable_type_id' => AdvertisableType::factory()->state([
+                'model_class' => AdCar::class,
+            ]),
+            'advertisable_type' => AdCar::class,
+            'advertisable_id' => AdCar::factory(),
             'slug' => $this->faker->unique()->slug(),
             'title' => $this->faker->sentence(6),
             'subtitle' => $this->faker->optional()->sentence(8),

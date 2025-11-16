@@ -27,10 +27,10 @@ class UpdateAdAttributeDefinitionRequest extends FormRequest
         // Define unique rule safely
         $uniqueRule = Rule::unique($table, 'key')
             ->where(function ($query) use ($routeParam) {
-                // If there’s a bound model, use its group_id as default
-                $groupId = $this->input('group_id', $routeParam?->group_id ?? null);
+                // If there’s a bound model, use its attribute_group_id as default
+                $groupId = $this->input('attribute_group_id', $routeParam?->attribute_group_id ?? null);
                 if ($groupId !== null) {
-                    $query->where('group_id', $groupId);
+                    $query->where('attribute_group_id', $groupId);
                 }
                 return $query;
             });
@@ -39,10 +39,10 @@ class UpdateAdAttributeDefinitionRequest extends FormRequest
             $uniqueRule->ignore($definitionId);
         }
 
-        $dataTypes = ['string', 'integer', 'decimal', 'boolean', 'enum', 'json'];
+        $dataTypes = ['string', 'integer', 'decimal', 'boolean', 'enum', 'json', 'date'];
 
         return [
-            'group_id'        => ['nullable', 'integer', 'exists:ad_attribute_groups,id'],
+            'attribute_group_id'        => ['nullable', 'integer', 'exists:ad_attribute_groups,id'],
             'key'             => ['sometimes', 'required', 'string', 'max:255', $uniqueRule],
             'label'           => ['sometimes', 'required', 'string', 'max:255'],
             'help_text'       => ['nullable', 'string'],
@@ -73,7 +73,7 @@ class UpdateAdAttributeDefinitionRequest extends FormRequest
     public function bodyParameters(): array
     {
         return [
-            'group_id' => [
+            'attribute_group_id' => [
                 'description' => 'Identifier of the attribute group this definition belongs to.',
                 'type'        => 'integer',
                 'example'     => 2,

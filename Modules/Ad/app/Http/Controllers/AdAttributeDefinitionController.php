@@ -26,14 +26,14 @@ class AdAttributeDefinitionController extends Controller
      *
      * Retrieve attribute definitions optionally filtered by group.
      *
-     * @queryParam group_id integer Limit results to a specific attribute group. Example: 4
+     * @queryParam attribute_group_id integer Limit results to a specific attribute group. Example: 4
      * @queryParam per_page integer Number of results per page, up to 200. Example: 25
      * @queryParam without_pagination boolean Set to true to return all definitions without pagination. Example: false
      */
     public function index(Request $request): AnonymousResourceCollection
     {
         $query = AdAttributeDefinition::query()
-            ->when($request->filled('group_id'), fn ($q) => $q->where('group_id', $request->input('group_id')))
+            ->when($request->filled('attribute_group_id'), fn ($q) => $q->where('attribute_group_id', $request->input('attribute_group_id')))
             ->orderBy('id');
 
         if ($request->boolean('without_pagination')) {

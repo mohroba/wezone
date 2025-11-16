@@ -12,8 +12,8 @@ class AdAttributeGroupResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'advertisable_type' => $this->advertisable_type,
-            'category_id' => $this->category_id,
+            'advertisable_type_id' => $this->advertisable_type_id,
+            'advertisable_type' => $this->whenLoaded('advertisableType', fn () => $this->advertisableType?->model_class),
             'display_order' => $this->display_order,
             'created_at' => $this->created_at?->toISOString(),
             'updated_at' => $this->updated_at?->toISOString(),

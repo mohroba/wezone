@@ -11,7 +11,7 @@ class AdAttributeDefinitionResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'group_id' => $this->group_id,
+            'attribute_group_id' => $this->attribute_group_id,
             'key' => $this->key,
             'label' => $this->label,
             'help_text' => $this->help_text,

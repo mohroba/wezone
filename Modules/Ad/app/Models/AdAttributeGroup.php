@@ -13,18 +13,17 @@ class AdAttributeGroup extends Model
 
     protected $fillable = [
         'name',
-        'advertisable_type',
-        'category_id',
+        'advertisable_type_id',
         'display_order',
     ];
 
-    public function category(): BelongsTo
+    public function advertisableType(): BelongsTo
     {
-        return $this->belongsTo(AdCategory::class, 'category_id');
+        return $this->belongsTo(AdvertisableType::class, 'advertisable_type_id');
     }
 
     public function definitions(): HasMany
     {
-        return $this->hasMany(AdAttributeDefinition::class, 'group_id');
+        return $this->hasMany(AdAttributeDefinition::class, 'attribute_group_id');
     }
 }

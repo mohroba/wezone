@@ -48,11 +48,6 @@ class AdCategory extends Model
             ->withTimestamps();
     }
 
-    public function attributeGroups(): HasMany
-    {
-        return $this->hasMany(AdAttributeGroup::class, 'category_id');
-    }
-
     public function ancestors(): BelongsToMany
     {
         return $this->belongsToMany(
