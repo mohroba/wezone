@@ -16,13 +16,13 @@ class StoreAdCategoryRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'advertisable_type_id' => ['required', 'integer', 'exists:advertisable_types,id'],
             'parent_id' => ['nullable', 'integer', 'exists:ad_categories,id'],
             'slug' => ['required', 'string', 'max:255', 'alpha_dash', Rule::unique((new AdCategory())->getTable(), 'slug')],
             'name' => ['required', 'string', 'max:255'],
             'name_localized' => ['nullable', 'array'],
             'is_active' => ['boolean'],
             'sort_order' => ['nullable', 'integer'],
-            'filters_schema' => ['nullable', 'array'],
         ];
     }
 
@@ -31,6 +31,23 @@ class StoreAdCategoryRequest extends FormRequest
         $this->merge([
             'is_active' => $this->toBoolean($this->input('is_active')),
         ]);
+    }
+
+    public function withValidator($validator): void
+    {
+        $validator->after(function ($validator): void {
+            $parentId = $this->input('parent_id');
+
+            if (! $parentId) {
+                return;
+            }
+
+            $parent = AdCategory::query()->find($parentId);
+
+            if ($parent && (int) $parent->advertisable_type_id !== (int) $this->input('advertisable_type_id')) {
+                $validator->errors()->add('parent_id', 'Parent category must belong to the same advertisable type.');
+            }
+        });
     }
 
     /**
@@ -42,6 +59,10 @@ class StoreAdCategoryRequest extends FormRequest
             'parent_id' => [
                 'description' => 'Identifier of the parent category.',
                 'example' => 1,
+            ],
+            'advertisable_type_id' => [
+                'description' => 'Identifier of the advertisable type this category belongs to.',
+                'example' => 2,
             ],
             'slug' => [
                 'description' => 'Unique slug for the category.',
@@ -62,10 +83,6 @@ class StoreAdCategoryRequest extends FormRequest
             'sort_order' => [
                 'description' => 'Custom ordering index.',
                 'example' => 5,
-            ],
-            'filters_schema' => [
-                'description' => 'JSON schema describing available filters.',
-                'example' => ['color' => ['type' => 'enum', 'options' => ['red', 'blue']]],
             ],
         ];
     }

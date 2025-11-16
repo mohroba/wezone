@@ -46,8 +46,7 @@ class AdResource extends JsonResource
                         'id' => $category->id,
                         'name' => $category->name,
                         'slug' => $category->slug,
-                        'depth' => $category->depth,
-                        'path' => $category->path,
+                        'advertisable_type_id' => $category->advertisable_type_id,
                         'is_active' => $category->is_active,
                         'pivot' => [
                             'is_primary' => (bool) $category->pivot->is_primary,

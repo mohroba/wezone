@@ -11,14 +11,12 @@ return new class extends Migration
         Schema::create('ad_categories', function (Blueprint $table) {
             $table->id();
             $table->foreignId('parent_id')->nullable()->constrained('ad_categories')->nullOnDelete();
-            $table->unsignedTinyInteger('depth')->default(0);
-            $table->string('path', 1024)->nullable();
+            $table->foreignId('advertisable_type_id')->constrained('advertisable_types')->cascadeOnDelete();
             $table->string('slug')->unique();
             $table->string('name');
             $table->json('name_localized')->nullable();
             $table->boolean('is_active')->default(true);
             $table->unsignedSmallInteger('sort_order')->default(0);
-            $table->json('filters_schema')->nullable();
             $table->timestamps();
 
             $table->index(['parent_id', 'sort_order']);
@@ -28,6 +26,7 @@ return new class extends Migration
             $table->unsignedBigInteger('ancestor_id');
             $table->unsignedBigInteger('descendant_id');
             $table->unsignedTinyInteger('depth');
+            $table->foreignId('advertisable_type_id')->constrained('advertisable_types')->cascadeOnDelete();
 
             $table->primary(['ancestor_id', 'descendant_id']);
 

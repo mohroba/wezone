@@ -35,30 +35,44 @@ class AdCategoryController extends Controller
      * @queryParam parent_id integer Filter categories by parent identifier. Example: 1
      * @queryParam only_active boolean Return only active categories. Example: true
      * @queryParam search string Search by category name or slug. Example: vehicles
+     * @queryParam advertisable_type_id integer Limit results to the given advertisable type. Example: 2
      * @queryParam per_page integer Number of results per page, up to 200. Example: 50
      * @queryParam without_pagination boolean Set to true to receive all categories without pagination. Example: false
      */
     public function index(Request $request): AnonymousResourceCollection
     {
+        $filters = $request->validate([
+            'parent_id' => ['nullable', 'integer', 'exists:ad_categories,id'],
+            'only_active' => ['nullable', 'boolean'],
+            'search' => ['nullable', 'string'],
+            'advertisable_type_id' => ['nullable', 'integer', 'exists:advertisable_types,id'],
+            'per_page' => ['nullable', 'integer', 'min:1', 'max:200'],
+            'without_pagination' => ['nullable', 'boolean'],
+        ]);
+
+        $onlyActive = $request->boolean('only_active');
+        $withoutPagination = $request->boolean('without_pagination');
+
         $query = AdCategory::query()
-            ->when($request->filled('parent_id'), fn ($q) => $q->where('parent_id', $request->input('parent_id')))
-            ->when($request->boolean('only_active'), fn ($q) => $q->where('is_active', true))
-            ->when($request->filled('search'), function ($q) use ($request) {
-                $search = $request->input('search');
+            ->when(isset($filters['parent_id']), fn ($q) => $q->where('parent_id', $filters['parent_id']))
+            ->when($onlyActive, fn ($q) => $q->where('is_active', true))
+            ->when(isset($filters['search']), function ($q) use ($filters) {
+                $search = $filters['search'];
 
                 $q->where(function ($inner) use ($search) {
                     $inner->where('name', 'like', "%{$search}%")
                         ->orWhere('slug', 'like', "%{$search}%");
                 });
             })
+            ->when(isset($filters['advertisable_type_id']), fn ($q) => $q->where('advertisable_type_id', $filters['advertisable_type_id']))
             ->orderBy('sort_order')
             ->orderBy('name');
 
-        if ($request->boolean('without_pagination')) {
+        if ($withoutPagination) {
             return AdCategoryResource::collection($query->get());
         }
 
-        $perPage = (int) min($request->integer('per_page', 50), 200);
+        $perPage = (int) ($filters['per_page'] ?? 50);
 
         return AdCategoryResource::collection(
             $query->paginate($perPage)->appends($request->query())

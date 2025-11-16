@@ -15,6 +15,7 @@ class AdCategoryClosure extends Model
         'ancestor_id',
         'descendant_id',
         'depth',
+        'advertisable_type_id',
     ];
 
     public function ancestor(): BelongsTo

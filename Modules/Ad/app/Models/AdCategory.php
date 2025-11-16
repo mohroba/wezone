@@ -7,28 +7,31 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Modules\Ad\Models\AdvertisableType;
 
 class AdCategory extends Model
 {
     use HasFactory;
 
     protected $fillable = [
+        'advertisable_type_id',
         'parent_id',
-        'depth',
-        'path',
         'slug',
         'name',
         'name_localized',
         'is_active',
         'sort_order',
-        'filters_schema',
     ];
 
     protected $casts = [
         'name_localized' => 'array',
-        'filters_schema' => 'array',
         'is_active' => 'boolean',
     ];
+
+    public function advertisableType(): BelongsTo
+    {
+        return $this->belongsTo(AdvertisableType::class);
+    }
 
     public function parent(): BelongsTo
     {

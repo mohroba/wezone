@@ -16,6 +16,7 @@ use Modules\Ad\Http\Requests\Ad\StoreAdRequest;
 use Modules\Ad\Http\Requests\Ad\UpdateAdRequest;
 use Modules\Ad\Http\Resources\AdResource;
 use Modules\Ad\Models\Ad;
+use Modules\Ad\Models\AdCategory;
 use Modules\Ad\Models\AdvertisableType;
 
 /**
@@ -316,7 +317,37 @@ class AdController extends Controller
 
     private function syncCategories(Ad $ad, array $categories): void
     {
-        $payload = collect($categories)->mapWithKeys(function ($category) {
+        $categoryCollection = collect($categories);
+
+        $categoryIds = $categoryCollection
+            ->pluck('id')
+            ->filter(fn ($id) => $id !== null)
+            ->map(fn ($id) => (int) $id)
+            ->unique()
+            ->values();
+
+        if ($categoryIds->isEmpty()) {
+            $ad->categories()->detach();
+
+            return;
+        }
+
+        $categoryMap = AdCategory::query()
+            ->whereIn('id', $categoryIds)
+            ->get(['id', 'advertisable_type_id'])
+            ->keyBy('id');
+
+        foreach ($categoryIds as $categoryId) {
+            $category = $categoryMap->get($categoryId);
+
+            if (! $category || (int) $category->advertisable_type_id !== (int) $ad->advertisable_type_id) {
+                throw ValidationException::withMessages([
+                    'categories' => ['Selected categories must belong to the same advertisable type as the ad.'],
+                ]);
+            }
+        }
+
+        $payload = $categoryCollection->mapWithKeys(function ($category) {
             $categoryId = (int) data_get($category, 'id');
 
             return [$categoryId => [
@@ -324,12 +355,6 @@ class AdController extends Controller
                 'assigned_by' => data_get($category, 'assigned_by'),
             ]];
         })->all();
-
-        if (empty($payload)) {
-            $ad->categories()->detach();
-
-            return;
-        }
 
         $ad->categories()->sync($payload);
     }

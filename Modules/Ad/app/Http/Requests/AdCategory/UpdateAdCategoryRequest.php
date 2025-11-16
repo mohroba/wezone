@@ -38,7 +38,7 @@ class UpdateAdCategoryRequest extends FormRequest
             'name_localized'   => ['nullable', 'array'],
             'is_active'        => ['boolean'],
             'sort_order'       => ['nullable', 'integer'],
-            'filters_schema'   => ['nullable', 'array'],
+            'advertisable_type_id' => ['sometimes', 'required', 'integer', 'exists:advertisable_types,id'],
         ];
     }
 
@@ -62,22 +62,40 @@ class UpdateAdCategoryRequest extends FormRequest
 
             $parentId = $this->input('parent_id');
 
-            if (! $parentId) {
-                return;
+            if ($parentId) {
+                if ((int) $parentId === (int) $category->id) {
+                    $validator->errors()->add('parent_id', 'A category cannot be its own parent.');
+                    return;
+                }
+
+                $isDescendant = AdCategoryClosure::query()
+                    ->where('ancestor_id', $category->id)
+                    ->where('descendant_id', $parentId)
+                    ->exists();
+
+                if ($isDescendant) {
+                    $validator->errors()->add('parent_id', 'A category cannot be assigned to one of its descendants.');
+                    return;
+                }
+
+                $parent = AdCategory::query()->find($parentId);
+                $targetTypeId = (int) ($this->input('advertisable_type_id') ?? $category->advertisable_type_id);
+
+                if ($parent && (int) $parent->advertisable_type_id !== $targetTypeId) {
+                    $validator->errors()->add('parent_id', 'Parent category must belong to the same advertisable type.');
+                }
             }
 
-            if ((int) $parentId === (int) $category->id) {
-                $validator->errors()->add('parent_id', 'A category cannot be its own parent.');
-                return;
-            }
+            if ($this->has('advertisable_type_id')) {
+                $typeId = (int) $this->input('advertisable_type_id');
 
-            $isDescendant = AdCategoryClosure::query()
-                ->where('ancestor_id', $category->id)
-                ->where('descendant_id', $parentId)
-                ->exists();
+                $hasMismatchedChildren = $category->children()
+                    ->where('advertisable_type_id', '!=', $typeId)
+                    ->exists();
 
-            if ($isDescendant) {
-                $validator->errors()->add('parent_id', 'A category cannot be assigned to one of its descendants.');
+                if ($hasMismatchedChildren) {
+                    $validator->errors()->add('advertisable_type_id', 'Cannot change type while children exist with a different advertisable type.');
+                }
             }
         });
     }
@@ -121,10 +139,10 @@ class UpdateAdCategoryRequest extends FormRequest
                 'type'        => 'integer',
                 'example'     => 5,
             ],
-            'filters_schema' => [
-                'description' => 'JSON schema describing available filters.',
-                'type'        => 'object',
-                'example'     => ['color' => ['type' => 'enum', 'options' => ['red', 'blue']]],
+            'advertisable_type_id' => [
+                'description' => 'Identifier of the advertisable type this category belongs to.',
+                'type'        => 'integer',
+                'example'     => 2,
             ],
         ];
     }
