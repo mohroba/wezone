@@ -15,8 +15,10 @@ class UpdateAdAttributeGroupRequest extends FormRequest
     {
         return [
             'name' => ['sometimes', 'required', 'string', 'max:255'],
-            'advertisable_type_id' => ['nullable', 'integer', 'exists:advertisable_types,id'],
+            'advertisable_type_id' => ['sometimes', 'required', 'integer', 'exists:advertisable_types,id'],
             'display_order' => ['nullable', 'integer', 'min:0'],
+            'category_id' => ['prohibited'],
+            'advertisable_type' => ['prohibited'],
         ];
     }
 

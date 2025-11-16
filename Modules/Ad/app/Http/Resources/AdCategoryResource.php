@@ -12,6 +12,7 @@ class AdCategoryResource extends JsonResource
         return [
             'id' => $this->id,
             'parent_id' => $this->parent_id,
+            'advertisable_type_id' => $this->advertisable_type_id,
             'depth' => $this->depth,
             'path' => $this->path,
             'slug' => $this->slug,

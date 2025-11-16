@@ -11,7 +11,6 @@ use Modules\Ad\Http\Requests\AdAttributeGroup\StoreAdAttributeGroupRequest;
 use Modules\Ad\Http\Requests\AdAttributeGroup\UpdateAdAttributeGroupRequest;
 use Modules\Ad\Http\Resources\AdAttributeGroupResource;
 use Modules\Ad\Models\AdAttributeGroup;
-use Modules\Ad\Models\AdvertisableType;
 
 /**
  * @group Ad Attribute Groups
@@ -25,10 +24,9 @@ class AdAttributeGroupController extends Controller
      *
      * @group Ad Attribute Groups
      *
-     * Retrieve attribute groups filtered by advertisable type or category.
+     * Retrieve attribute groups filtered by advertisable type.
      *
      * @queryParam advertisable_type_id integer Filter by advertisable type ID. Example: 2
-     * @queryParam advertisable_type string Filter by advertisable model class name. Example: Modules\\Ad\\Models\\AdCar
      * @queryParam per_page integer Number of results per page, up to 200. Example: 25
      * @queryParam without_pagination boolean Set to true to return all groups without pagination. Example: false
      */
@@ -36,18 +34,10 @@ class AdAttributeGroupController extends Controller
     {
         $query = AdAttributeGroup::query()
             ->with('advertisableType')
-            ->when($request->filled('advertisable_type_id'), fn ($q) => $q->where('advertisable_type_id', $request->input('advertisable_type_id')))
-            ->when($request->filled('advertisable_type'), function ($q) use ($request) {
-                $typeId = AdvertisableType::query()
-                    ->where('model_class', $request->input('advertisable_type'))
-                    ->value('id');
-
-                if ($typeId) {
-                    $q->where('advertisable_type_id', $typeId);
-                } else {
-                    $q->whereRaw('0 = 1');
-                }
-            })
+            ->when(
+                $request->filled('advertisable_type_id'),
+                fn ($q) => $q->where('advertisable_type_id', $request->integer('advertisable_type_id'))
+            )
             ->orderBy('display_order')
             ->orderBy('id');
 

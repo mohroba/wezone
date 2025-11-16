@@ -3,6 +3,7 @@
 namespace Modules\Ad\Http\Requests\AdAttributeValue;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Validator as ValidatorFacade;
 use Modules\Ad\Models\AdAttributeDefinition;
 use Modules\Ad\Models\AdAttributeValue;
 
@@ -24,7 +25,6 @@ class UpdateAdAttributeValueRequest extends FormRequest
             'value_boolean' => ['nullable', 'boolean'],
             'value_date' => ['nullable', 'date'],
             'value_json' => ['nullable', 'array'],
-            'normalized_value' => ['nullable', 'string', 'max:255'],
         ];
     }
 
@@ -88,16 +88,49 @@ class UpdateAdAttributeValueRequest extends FormRequest
                 'description' => 'Structured data payload for JSON definitions.',
                 'example' => ['features' => ['sunroof', 'heated seats']],
             ],
-            'normalized_value' => [
-                'description' => 'Precomputed normalized representation used for search.',
-                'example' => '1.6',
-            ],
         ];
     }
 
     private function validateValueMatchesDefinition($validator, AdAttributeDefinition $definition): void
     {
-        $valueFields = [
+        $hasPayload = $this->hasAnyValueFields();
+
+        if (! $hasPayload) {
+            return;
+        }
+
+        $expectedField = $this->valueFieldForType($definition->data_type);
+
+        if ($expectedField && ! $this->filled($expectedField)) {
+            $validator->errors()->add($expectedField, 'The provided value does not match the definition type.');
+
+            return;
+        }
+
+        if ($expectedField && $definition->validation_rules) {
+            $valueValidator = ValidatorFacade::make(
+                [$expectedField => $this->input($expectedField)],
+                [$expectedField => $definition->validation_rules]
+            );
+
+            if ($valueValidator->fails()) {
+                foreach ($valueValidator->errors()->all() as $message) {
+                    $validator->errors()->add($expectedField, $message);
+                }
+            }
+        }
+
+        if ($expectedField) {
+            $this->validateAgainstOptionsSchema($validator, $definition, $expectedField);
+        }
+    }
+
+    /**
+     * @return array<int, string>
+     */
+    private function valueFields(): array
+    {
+        return [
             'value_string',
             'value_integer',
             'value_decimal',
@@ -105,35 +138,63 @@ class UpdateAdAttributeValueRequest extends FormRequest
             'value_date',
             'value_json',
         ];
+    }
 
-        $hasValue = false;
+    private function hasAnyValueFields(): bool
+    {
+        return collect($this->valueFields())->contains(fn ($field) => $this->filled($field));
+    }
 
-        foreach ($valueFields as $field) {
-            if ($this->filled($field)) {
-                $hasValue = true;
-                break;
-            }
-        }
+    private function valueFieldForType(string $type): ?string
+    {
+        return match ($type) {
+            'string', 'enum' => 'value_string',
+            'integer' => 'value_integer',
+            'decimal' => 'value_decimal',
+            'boolean' => 'value_boolean',
+            'date' => 'value_date',
+            'json' => 'value_json',
+            default => null,
+        };
+    }
 
-        if (! $hasValue) {
-            $validator->errors()->add('value', 'At least one value field must be provided.');
+    private function validateAgainstOptionsSchema($validator, AdAttributeDefinition $definition, string $field): void
+    {
+        $options = $definition->options;
 
+        if (! is_array($options)) {
             return;
         }
 
-            $expectedField = match ($definition->data_type) {
-                'string' => 'value_string',
-                'integer' => 'value_integer',
-                'decimal' => 'value_decimal',
-                'boolean' => 'value_boolean',
-                'date' => 'value_date',
-                'enum' => 'value_string',
-                'json' => 'value_json',
-                default => null,
-        };
+        if (isset($options['enum']) && is_array($options['enum']) && $options['enum'] !== []) {
+            $value = $this->input($field);
 
-        if ($expectedField && ! $this->filled($expectedField)) {
-            $validator->errors()->add($expectedField, 'The provided value does not match the definition type.');
+            if ($value !== null && ! in_array($value, $options['enum'], true)) {
+                $validator->errors()->add($field, 'The selected value is invalid.');
+            }
+        }
+
+        $numericValue = $this->input($field);
+
+        if (is_numeric($numericValue)) {
+            foreach (['minimum' => '>=', 'exclusiveMinimum' => '>', 'maximum' => '<=', 'exclusiveMaximum' => '<'] as $keyword => $operator) {
+                if (! isset($options[$keyword]) || ! is_numeric($options[$keyword])) {
+                    continue;
+                }
+
+                $passes = match ($operator) {
+                    '>=' => $numericValue >= $options[$keyword],
+                    '>' => $numericValue > $options[$keyword],
+                    '<=' => $numericValue <= $options[$keyword],
+                    '<' => $numericValue < $options[$keyword],
+                };
+
+                if (! $passes) {
+                    $validator->errors()->add($field, 'The provided value does not satisfy the configured constraints.');
+
+                    break;
+                }
+            }
         }
     }
 

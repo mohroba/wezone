@@ -17,6 +17,8 @@ class StoreAdAttributeGroupRequest extends FormRequest
             'name' => ['required', 'string', 'max:255'],
             'advertisable_type_id' => ['required', 'integer', 'exists:advertisable_types,id'],
             'display_order' => ['nullable', 'integer', 'min:0'],
+            'category_id' => ['prohibited'],
+            'advertisable_type' => ['prohibited'],
         ];
     }
 
