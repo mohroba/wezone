@@ -4,10 +4,14 @@ namespace Modules\Ad\Http\Requests\AdAttributeDefinition;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\Validator;
+use Modules\Ad\Http\Requests\AdAttributeDefinition\Concerns\ValidatesDefinitionOptions;
 use Modules\Ad\Models\AdAttributeDefinition;
 
 class UpdateAdAttributeDefinitionRequest extends FormRequest
 {
+    use ValidatesDefinitionOptions;
+
     public function authorize(): bool
     {
         return true;
@@ -42,7 +46,7 @@ class UpdateAdAttributeDefinitionRequest extends FormRequest
         $dataTypes = ['string', 'integer', 'decimal', 'boolean', 'enum', 'json', 'date'];
 
         return [
-            'attribute_group_id'        => ['nullable', 'integer', 'exists:ad_attribute_groups,id'],
+            'attribute_group_id'        => ['sometimes', 'required', 'integer', 'exists:ad_attribute_groups,id'],
             'key'             => ['sometimes', 'required', 'string', 'max:255', $uniqueRule],
             'label'           => ['sometimes', 'required', 'string', 'max:255'],
             'help_text'       => ['nullable', 'string'],
@@ -54,6 +58,11 @@ class UpdateAdAttributeDefinitionRequest extends FormRequest
             'is_searchable'   => ['boolean'],
             'validation_rules'=> ['nullable', 'string'],
         ];
+    }
+
+    public function withValidator($validator): void
+    {
+        $validator->after(fn (Validator $afterValidator) => $this->validateOptionsSchema($afterValidator));
     }
 
     public function prepareForValidation(): void

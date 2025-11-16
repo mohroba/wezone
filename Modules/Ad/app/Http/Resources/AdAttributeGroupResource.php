@@ -3,6 +3,7 @@
 namespace Modules\Ad\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Modules\Ad\Http\Resources\AdAttributeDefinitionResource;
 
 /** @mixin \Modules\Ad\Models\AdAttributeGroup */
 class AdAttributeGroupResource extends JsonResource
@@ -13,8 +14,10 @@ class AdAttributeGroupResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'advertisable_type_id' => $this->advertisable_type_id,
-            'advertisable_type' => $this->whenLoaded('advertisableType', fn () => $this->advertisableType?->model_class),
             'display_order' => $this->display_order,
+            'definitions' => AdAttributeDefinitionResource::collection(
+                $this->whenLoaded('definitions')
+            ),
             'created_at' => $this->created_at?->toISOString(),
             'updated_at' => $this->updated_at?->toISOString(),
         ];
