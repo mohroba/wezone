@@ -6,14 +6,18 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Arr;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
+use Modules\Ad\Http\Requests\Concerns\ValidatesAttributeValueData;
 use Modules\Ad\Models\Ad;
+use Modules\Ad\Models\AdvertisableType as AdvertisableTypeModel;
 use Modules\Ad\Services\Advertisable\AdvertisablePayloadValidator;
-use Modules\Ad\Support\AdvertisableType;
+use Modules\Ad\Support\AdvertisableType as AdvertisableTypeSupport;
 
 class StoreAdRequest extends FormRequest
 {
+    use ValidatesAttributeValueData;
 
     private ?array $advertisablePayload = null;
+    private ?AdvertisableTypeModel $resolvedAdvertisableType = null;
 
     public function authorize(): bool
     {
@@ -26,9 +30,8 @@ class StoreAdRequest extends FormRequest
 
         return [
             'user_id' => ['required', 'exists:users,id'],
+            'advertisable_type_id' => ['required', 'integer', 'exists:advertisable_types,id'],
             'advertisable' => ['required', 'array'],
-            'advertisable.type' => ['required', 'string', Rule::in(AdvertisableType::allowed())],
-            'advertisable.attributes' => ['required', 'array'],
             'slug' => ['required', 'string', 'max:255', 'alpha_dash', Rule::unique((new Ad())->getTable(), 'slug')],
             'title' => ['required', 'string', 'max:255'],
             'subtitle' => ['nullable', 'string', 'max:255'],
@@ -50,10 +53,18 @@ class StoreAdRequest extends FormRequest
             'favorite_count' => ['nullable', 'integer', 'min:0'],
             'featured_until' => ['nullable', 'date'],
             'priority_score' => ['nullable', 'numeric'],
-            'categories' => ['nullable', 'array'],
+            'categories' => ['required', 'array'],
             'categories.*.id' => ['required', 'integer', 'exists:ad_categories,id'],
             'categories.*.is_primary' => ['nullable', 'boolean'],
             'categories.*.assigned_by' => ['nullable', 'integer', 'exists:users,id'],
+            'attribute_values' => ['required', 'array'],
+            'attribute_values.*.definition_id' => ['required', 'integer', 'exists:ad_attribute_definitions,id'],
+            'attribute_values.*.value_string' => ['nullable', 'string'],
+            'attribute_values.*.value_integer' => ['nullable', 'integer'],
+            'attribute_values.*.value_decimal' => ['nullable', 'numeric'],
+            'attribute_values.*.value_boolean' => ['nullable', 'boolean'],
+            'attribute_values.*.value_date' => ['nullable', 'date'],
+            'attribute_values.*.value_json' => ['nullable', 'array'],
         ];
     }
 
@@ -65,10 +76,19 @@ class StoreAdRequest extends FormRequest
 
         $validated = $this->validated();
 
-        return [
-            'type' => Arr::get($validated, 'advertisable.type'),
-            'attributes' => Arr::get($validated, 'advertisable.attributes', []),
-        ];
+        return Arr::get($validated, 'advertisable', []);
+    }
+
+    public function advertisableTypeModel(): AdvertisableTypeModel
+    {
+        if ($this->resolvedAdvertisableType !== null) {
+            return $this->resolvedAdvertisableType;
+        }
+
+        $typeId = (int) ($this->validated()['advertisable_type_id'] ?? $this->input('advertisable_type_id'));
+        $this->resolvedAdvertisableType = AdvertisableTypeModel::query()->findOrFail($typeId);
+
+        return $this->resolvedAdvertisableType;
     }
 
     public function prepareForValidation(): void
@@ -83,6 +103,30 @@ class StoreAdRequest extends FormRequest
             $payload['is_exchangeable'] = $this->toBoolean($this->input('is_exchangeable'));
         }
 
+        if ($this->has('categories') && is_array($this->input('categories'))) {
+            $payload['categories'] = collect($this->input('categories'))
+                ->map(function ($category) {
+                    if (is_array($category) && array_key_exists('is_primary', $category)) {
+                        $category['is_primary'] = $this->toBoolean($category['is_primary']);
+                    }
+
+                    return $category;
+                })
+                ->all();
+        }
+
+        if ($this->has('attribute_values') && is_array($this->input('attribute_values'))) {
+            $payload['attribute_values'] = collect($this->input('attribute_values'))
+                ->map(function ($value) {
+                    if (is_array($value) && array_key_exists('value_boolean', $value)) {
+                        $value['value_boolean'] = $this->toBoolean($value['value_boolean']);
+                    }
+
+                    return $value;
+                })
+                ->all();
+        }
+
         if ($payload !== []) {
             $this->merge($payload);
         }
@@ -91,31 +135,53 @@ class StoreAdRequest extends FormRequest
     public function withValidator($validator): void
     {
         $validator->after(function ($validator): void {
-            $advertisable = $this->input('advertisable');
+            $typeId = $this->input('advertisable_type_id');
 
-            if (is_array($advertisable)) {
-                $type = Arr::get($advertisable, 'type');
-                $attributes = Arr::get($advertisable, 'attributes', []);
+            if (! $typeId) {
+                return;
+            }
 
-                if (AdvertisableType::isAllowed($type)) {
-                    try {
-                        $validatedAttributes = app(AdvertisablePayloadValidator::class)
-                            ->validate($type, is_array($attributes) ? $attributes : []);
+            $type = AdvertisableTypeModel::query()->find($typeId);
 
-                        $this->advertisablePayload = [
-                            'type' => $type,
-                            'attributes' => $validatedAttributes,
-                        ];
-                    } catch (ValidationException $exception) {
-                        foreach ($exception->errors() as $field => $messages) {
-                            foreach ($messages as $message) {
-                                $validator->errors()->add("advertisable.attributes.$field", $message);
-                            }
-                        }
+            if (! $type) {
+                $validator->errors()->add('advertisable_type_id', 'The selected advertisable type is invalid.');
+
+                return;
+            }
+
+            $this->resolvedAdvertisableType = $type;
+            $modelClass = $type->model_class;
+
+            if (! AdvertisableTypeSupport::isAllowed($modelClass)) {
+                $validator->errors()->add('advertisable_type_id', 'The selected advertisable type is not supported.');
+
+                return;
+            }
+
+            $advertisableAttributes = $this->input('advertisable', []);
+
+            if (! is_array($advertisableAttributes)) {
+                $validator->errors()->add('advertisable', 'The advertisable field must be an object.');
+
+                return;
+            }
+
+            try {
+                $this->advertisablePayload = app(AdvertisablePayloadValidator::class)
+                    ->validate($modelClass, $advertisableAttributes);
+            } catch (ValidationException $exception) {
+                foreach ($exception->errors() as $field => $messages) {
+                    foreach ($messages as $message) {
+                        $validator->errors()->add("advertisable.$field", $message);
                     }
                 }
             }
 
+            $attributeValues = $this->input('attribute_values', []);
+
+            if (is_array($attributeValues)) {
+                $this->validateAttributeValuesAgainstType($validator, $attributeValues, (int) $type->getKey());
+            }
         });
     }
 
@@ -129,15 +195,16 @@ class StoreAdRequest extends FormRequest
                 'description' => 'Identifier of the ad owner.',
                 'example' => 42,
             ],
+            'advertisable_type_id' => [
+                'description' => 'Identifier of the advertisable type record.',
+                'example' => 3,
+            ],
             'advertisable' => [
-                'description' => 'Payload describing the advertisable subtype and its attributes.',
+                'description' => 'Attributes for the underlying advertisable subtype.',
                 'example' => [
-                    'type' => 'Modules\\Ad\\Models\\AdCar',
-                    'attributes' => [
-                        'brand_id' => 12,
-                        'model_id' => 30,
-                        'year' => 2023,
-                    ],
+                    'brand_id' => 12,
+                    'model_id' => 30,
+                    'year' => 2023,
                 ],
             ],
             'slug' => [
@@ -204,30 +271,17 @@ class StoreAdRequest extends FormRequest
                 'description' => 'Contact details such as phone or messenger usernames.',
                 'example' => ['phone' => '123456789'],
             ],
-            'view_count' => [
-                'description' => 'Pre-set view counter value, typically managed internally.',
-                'example' => 0,
-            ],
-            'share_count' => [
-                'description' => 'Pre-set share counter value, typically managed internally.',
-                'example' => 0,
-            ],
-            'favorite_count' => [
-                'description' => 'Pre-set favorite counter value, typically managed internally.',
-                'example' => 0,
-            ],
-            'featured_until' => [
-                'description' => 'Datetime until which the ad remains featured.',
-                'example' => '2024-05-15T08:00:00Z',
-            ],
-            'priority_score' => [
-                'description' => 'Numeric score affecting ordering.',
-                'example' => 12.5,
-            ],
             'categories' => [
                 'description' => 'Array of category assignments.',
                 'example' => [
-                    ['id' => 7, 'is_primary' => true, 'assigned_by' => 42],
+                    ['id' => 7, 'is_primary' => true],
+                ],
+            ],
+            'attribute_values' => [
+                'description' => 'Collection of attribute values linked to the ad.',
+                'example' => [
+                    ['definition_id' => 5, 'value_string' => 'Automatic'],
+                    ['definition_id' => 12, 'value_integer' => 2024],
                 ],
             ],
         ];

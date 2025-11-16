@@ -40,20 +40,30 @@ class AdResource extends JsonResource
             'like_count' => $this->like_count,
             'featured_until' => $this->featured_until?->toISOString(),
             'priority_score' => $this->priority_score,
+            'advertisable_type' => $this->whenLoaded('advertisableType', function () {
+                return [
+                    'id' => $this->advertisableType->id,
+                    'key' => $this->advertisableType->key,
+                    'label' => $this->advertisableType->label,
+                    'model_class' => $this->advertisableType->model_class,
+                    'description' => $this->advertisableType->description,
+                ];
+            }),
             'categories' => $this->whenLoaded('categories', function () {
                 return $this->categories->map(function ($category) {
                     return [
                         'id' => $category->id,
                         'name' => $category->name,
                         'slug' => $category->slug,
-                        'advertisable_type_id' => $category->advertisable_type_id,
-                        'is_active' => $category->is_active,
-                        'pivot' => [
-                            'is_primary' => (bool) $category->pivot->is_primary,
-                            'assigned_by' => $category->pivot->assigned_by,
-                        ],
+                        'is_primary' => (bool) $category->pivot->is_primary,
+                        'assigned_by' => $category->pivot->assigned_by,
                     ];
                 });
+            }),
+            'attribute_values' => $this->whenLoaded('attributeValues', function () {
+                return AdAttributeValueResource::collection(
+                    $this->attributeValues->loadMissing('definition')
+                );
             }),
             'advertisable' => $this->whenLoaded('advertisable', function () {
                 return $this->advertisable?->toArray();
