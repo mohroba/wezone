@@ -16,8 +16,9 @@ use Modules\Ad\Http\Requests\Ad\StoreAdRequest;
 use Modules\Ad\Http\Requests\Ad\UpdateAdRequest;
 use Modules\Ad\Http\Resources\AdResource;
 use Modules\Ad\Models\Ad;
+use Modules\Ad\Models\AdAttributeDefinition;
 use Modules\Ad\Models\AdCategory;
-use Modules\Ad\Models\AdvertisableType;
+use Modules\Ad\Services\AdAttributeValuePayloadBuilder;
 
 /**
  * @group Ads
@@ -27,6 +28,10 @@ use Modules\Ad\Models\AdvertisableType;
 class AdController extends Controller
 {
     private const VIEW_TRACK_TTL_MINUTES = 60;
+
+    public function __construct(private readonly AdAttributeValuePayloadBuilder $attributeValuePayloadBuilder)
+    {
+    }
 
     /**
      * List ads
@@ -46,7 +51,7 @@ class AdController extends Controller
     public function index(Request $request): AnonymousResourceCollection
     {
         $query = Ad::query()
-            ->with(['categories', 'advertisable'])
+            ->with(['categories', 'advertisable', 'advertisableType', 'attributeValues.definition'])
             ->when($request->filled('status'), fn ($q) => $q->where('status', $request->input('status')))
             ->when($request->filled('user_id'), fn ($q) => $q->where('user_id', $request->input('user_id')))
             ->when($request->filled('category_id'), function ($q) use ($request) {
@@ -88,29 +93,32 @@ class AdController extends Controller
     public function store(StoreAdRequest $request): JsonResponse
     {
         $payload = collect($request->validated());
-        $advertisablePayload = $request->advertisablePayload();
+        $advertisableAttributes = $request->advertisablePayload();
         $categories = $payload->pull('categories', []);
+        $attributeValues = $payload->pull('attribute_values', []);
         $payload->pull('advertisable');
 
-        $typeId = $this->resolveAdvertisableTypeId($advertisablePayload['type']);
+        $typeModel = $request->advertisableTypeModel();
+        $typeClass = $typeModel->model_class;
 
         /** @var Ad $ad */
-        $ad = DB::transaction(function () use ($payload, $categories, $advertisablePayload, $typeId) {
+        $ad = DB::transaction(function () use ($payload, $categories, $attributeValues, $advertisableAttributes, $typeModel, $typeClass) {
             $advertisableModel = $this->createAdvertisableModel(
-                $advertisablePayload['type'],
-                $advertisablePayload['attributes'],
+                $typeClass,
+                $advertisableAttributes ?? [],
                 $payload->get('slug')
             );
 
-            $payload->put('advertisable_type', $advertisablePayload['type']);
+            $payload->put('advertisable_type', $typeClass);
             $payload->put('advertisable_id', $advertisableModel->getKey());
-            $payload->put('advertisable_type_id', $typeId);
+            $payload->put('advertisable_type_id', $typeModel->getKey());
 
             $ad = Ad::create($payload->toArray());
 
             $this->syncCategories($ad, $categories);
+            $this->syncAttributeValues($ad, $attributeValues);
 
-            return $ad->load(['categories', 'advertisable', 'media']);
+            return $ad->load(['categories', 'advertisable', 'advertisableType', 'attributeValues.definition', 'media']);
         });
 
         return (new AdResource($ad))->response()->setStatusCode(Response::HTTP_CREATED);
@@ -128,6 +136,8 @@ class AdController extends Controller
         $ad->load([
             'categories',
             'advertisable',
+            'advertisableType',
+            'attributeValues.definition',
             'user' => function ($query): void {
                 $query
                     ->with(['profile.media'])
@@ -158,8 +168,9 @@ class AdController extends Controller
     public function update(UpdateAdRequest $request, Ad $ad): AdResource
     {
         $payload = collect($request->validated());
-        $advertisablePayload = $request->advertisablePayload();
+        $advertisableAttributes = $request->advertisablePayload();
         $categories = $payload->pull('categories', null);
+        $attributeValues = $payload->pull('attribute_values', null);
         $statusNote = $payload->pull('status_note');
         $statusMetadata = $payload->pull('status_metadata');
         $payload->pull('advertisable');
@@ -167,24 +178,35 @@ class AdController extends Controller
         $previousStatus = $ad->status;
         $previousSlug = $ad->slug;
 
+        $typeModel = $request->advertisableTypeModel();
+        $typeClass = $typeModel->model_class;
+
         /** @var Ad $ad */
-        $ad = DB::transaction(function () use ($ad, $payload, $categories, $previousStatus, $previousSlug, $statusNote, $statusMetadata, $request, $advertisablePayload) {
+        $ad = DB::transaction(function () use ($ad, $payload, $categories, $attributeValues, $previousStatus, $previousSlug, $statusNote, $statusMetadata, $request, $advertisableAttributes, $typeModel, $typeClass) {
             $targetSlug = $payload->get('slug', $ad->slug);
 
-            if ($advertisablePayload !== null) {
-                $advertisableModel = $this->persistUpdatedAdvertisable($ad, $advertisablePayload, $targetSlug);
-                $payload->put('advertisable_type', $advertisablePayload['type']);
+            if ($advertisableAttributes !== null) {
+                $advertisableModel = $this->persistUpdatedAdvertisable($ad, [
+                    'type' => $typeClass,
+                    'attributes' => $advertisableAttributes,
+                ], $targetSlug);
                 $payload->put('advertisable_id', $advertisableModel->getKey());
-                $payload->put('advertisable_type_id', $this->resolveAdvertisableTypeId($advertisablePayload['type']));
             } elseif ($payload->has('slug') && $ad->advertisable) {
                 $this->ensureAdvertisableSlug($ad->advertisable, $targetSlug);
             }
+
+            $payload->put('advertisable_type', $typeClass);
+            $payload->put('advertisable_type_id', $typeModel->getKey());
 
             $ad->fill($payload->toArray());
             $ad->save();
 
             if ($categories !== null) {
                 $this->syncCategories($ad, $categories);
+            }
+
+            if ($attributeValues !== null) {
+                $this->syncAttributeValues($ad, $attributeValues);
             }
 
             if ($previousSlug !== $ad->slug) {
@@ -204,7 +226,7 @@ class AdController extends Controller
                 ]);
             }
 
-            return $ad->load(['categories', 'advertisable', 'media']);
+            return $ad->load(['categories', 'advertisable', 'advertisableType', 'attributeValues.definition', 'media']);
         });
 
         return new AdResource($ad);
@@ -359,6 +381,54 @@ class AdController extends Controller
         $ad->categories()->sync($payload);
     }
 
+    private function syncAttributeValues(Ad $ad, array $attributeValues): void
+    {
+        $ad->attributeValues()->delete();
+
+        if ($attributeValues === []) {
+            return;
+        }
+
+        $definitionIds = collect($attributeValues)
+            ->pluck('definition_id')
+            ->filter()
+            ->unique()
+            ->values();
+
+        if ($definitionIds->isEmpty()) {
+            return;
+        }
+
+        $definitions = AdAttributeDefinition::query()
+            ->whereIn('id', $definitionIds)
+            ->get()
+            ->keyBy('id');
+
+        $payloads = collect($attributeValues)
+            ->map(function ($value) use ($definitions, $ad) {
+                $definition = $definitions->get(data_get($value, 'definition_id'));
+
+                if (! $definition) {
+                    return null;
+                }
+
+                return $this->attributeValuePayloadBuilder->build(
+                    $definition,
+                    array_merge($value, ['ad_id' => $ad->getKey()]),
+                    includeMissing: true
+                );
+            })
+            ->filter()
+            ->values()
+            ->all();
+
+        if ($payloads === []) {
+            return;
+        }
+
+        $ad->attributeValues()->createMany($payloads);
+    }
+
 
     private function viewTrackerCacheKey(Request $request, Ad $ad): string
     {
@@ -381,16 +451,4 @@ class AdController extends Controller
         return 'guest:' . sha1($ipAddress . '|' . $userAgent);
     }
 
-    private function resolveAdvertisableTypeId(string $modelClass): int
-    {
-        $typeId = AdvertisableType::query()->where('model_class', $modelClass)->value('id');
-
-        if ($typeId === null) {
-            throw ValidationException::withMessages([
-                'advertisable.type' => 'The selected advertisable type is not registered.',
-            ]);
-        }
-
-        return (int) $typeId;
-    }
 }
