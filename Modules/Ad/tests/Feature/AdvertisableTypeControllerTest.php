@@ -88,6 +88,24 @@ class AdvertisableTypeControllerTest extends TestCase
         $this->assertSame('has_pool', data_get($realEstatePayload, 'attribute_groups.0.definitions.0.key'));
     }
 
+    public function test_classes_returns_registered_advertisable_classes(): void
+    {
+        $response = $this->getJson('/api/advertisable-types/classes');
+
+        $response->assertOk();
+        $response->assertJsonCount(3, 'data');
+        $response->assertJsonFragment([
+            'key' => 'car',
+            'label' => 'Car',
+            'model_class' => AdCar::class,
+        ]);
+        $response->assertJsonFragment([
+            'key' => 'job',
+            'label' => 'Job',
+            'model_class' => AdJob::class,
+        ]);
+    }
+
     public function test_show_returns_single_type_payload(): void
     {
         $jobType = AdvertisableType::where('key', 'job')->firstOrFail();

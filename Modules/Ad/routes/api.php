@@ -76,6 +76,7 @@ Route::middleware(['api'])->group(function (): void {
     Route::post('ad-reports', [AdReportController::class, 'store'])->middleware('auth:api');
 
     // --- Advertisable Types ---
+    Route::get('advertisable-types/classes', [AdvertisableTypeController::class, 'classes']);
     Route::get('advertisable-types', [AdvertisableTypeController::class, 'index']);
     Route::post('advertisable-types', [AdvertisableTypeController::class, 'store']);
     Route::post('advertisable-types/{advertisable_type}/update', [AdvertisableTypeController::class, 'update']);

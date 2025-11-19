@@ -42,6 +42,27 @@ class AdvertisableTypeController extends Controller
     }
 
     /**
+     * Retrieve the registered advertisable classes for payload construction.
+     *
+     * @group Ads
+     * @responseField key string Unique key registered for the advertisable type.
+     * @responseField label string Human readable name.
+     * @responseField model_class string Backing model class for advertisable instances.
+     */
+    public function classes(AdvertisableTypeRegistry $registry): JsonResponse
+    {
+        $classes = $registry->all()->map(function (AdvertisableTypeDefinition $definition) {
+            return [
+                'key' => $definition->key(),
+                'label' => $definition->label(),
+                'model_class' => $definition->modelClass(),
+            ];
+        });
+
+        return response()->json(['data' => $classes->values()->all()]);
+    }
+
+    /**
      * Show metadata for an advertisable type.
      *
      * @group Ads
