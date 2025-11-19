@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Arr;
 use Modules\Ad\Http\Requests\AdCategory\StoreAdCategoryRequest;
 use Modules\Ad\Http\Requests\AdCategory\UpdateAdCategoryRequest;
 use Modules\Ad\Http\Resources\AdCategoryResource;
@@ -38,6 +39,7 @@ class AdCategoryController extends Controller
      * @queryParam advertisable_type_id integer Limit results to the given advertisable type. Example: 2
      * @queryParam per_page integer Number of results per page, up to 200. Example: 50
      * @queryParam without_pagination boolean Set to true to receive all categories without pagination. Example: false
+     * @responseField icon_url string|null Public URL to the uploaded icon image, if present.
      */
     public function index(Request $request): AnonymousResourceCollection
     {
@@ -85,14 +87,19 @@ class AdCategoryController extends Controller
      * @group Ad Categories
      *
      * Store a new category and rebuild the hierarchy metadata.
+     *
+     * @contentType multipart/form-data
+     * @bodyParam icon file Icon image representing the category. No-example
+     * @responseField icon_url string|null Public URL to the uploaded icon image, if present.
      */
     public function store(StoreAdCategoryRequest $request): JsonResponse
     {
-        $payload = $request->validated();
+        $payload = Arr::except($request->validated(), ['icon']);
 
         /** @var AdCategory $category */
-        $category = DB::transaction(function () use ($payload) {
+        $category = DB::transaction(function () use ($payload, $request) {
             $category = AdCategory::create($payload);
+            $this->syncIcon($category, $request);
             $this->hierarchyManager->handleCreated($category);
 
             return $category->fresh();
@@ -107,6 +114,8 @@ class AdCategoryController extends Controller
      * @group Ad Categories
      *
      * Retrieve details for the given category record.
+     *
+     * @responseField icon_url string|null Public URL to the uploaded icon image, if present.
      */
     public function show(AdCategory $adCategory): AdCategoryResource
     {
@@ -119,15 +128,20 @@ class AdCategoryController extends Controller
      * @group Ad Categories
      *
      * Apply updates and recompute the category hierarchy when relationships change.
+     *
+     * @contentType multipart/form-data
+     * @bodyParam icon file Icon image representing the category. No-example
+     * @responseField icon_url string|null Public URL to the uploaded icon image, if present.
      */
     public function update(UpdateAdCategoryRequest $request, AdCategory $adCategory): AdCategoryResource
     {
-        $payload = $request->validated();
+        $payload = Arr::except($request->validated(), ['icon']);
 
         /** @var AdCategory $category */
-        $category = DB::transaction(function () use ($adCategory, $payload) {
+        $category = DB::transaction(function () use ($adCategory, $payload, $request) {
             $adCategory->fill($payload);
             $adCategory->save();
+            $this->syncIcon($adCategory, $request);
 
             $this->hierarchyManager->rebuildSubtree($adCategory);
 
@@ -149,5 +163,26 @@ class AdCategoryController extends Controller
         $adCategory->delete();
 
         return response()->noContent();
+    }
+
+    private function syncIcon(AdCategory $category, Request $request): void
+    {
+        if (! $request->hasFile('icon')) {
+            return;
+        }
+
+        $uploadedIcon = $request->file('icon');
+        $mediaName = pathinfo((string) $uploadedIcon->getClientOriginalName(), PATHINFO_FILENAME);
+
+        if ($mediaName === '') {
+            $mediaName = $category->slug ?? 'category-icon';
+        }
+
+        $category->clearMediaCollection(AdCategory::COLLECTION_ICON);
+
+        $category
+            ->addMediaFromRequest('icon')
+            ->usingName($mediaName)
+            ->toMediaCollection(AdCategory::COLLECTION_ICON);
     }
 }
