@@ -77,6 +77,9 @@ Route::middleware(['api'])->group(function (): void {
 
     // --- Advertisable Types ---
     Route::get('advertisable-types', [AdvertisableTypeController::class, 'index']);
+    Route::post('advertisable-types', [AdvertisableTypeController::class, 'store']);
+    Route::post('advertisable-types/{advertisable_type}/update', [AdvertisableTypeController::class, 'update']);
+    Route::post('advertisable-types/{advertisable_type}/delete', [AdvertisableTypeController::class, 'destroy']);
     Route::get('advertisable-types/{key}', [AdvertisableTypeController::class, 'show']);
 });
 
