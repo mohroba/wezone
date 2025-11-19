@@ -4,10 +4,14 @@ namespace Modules\Ad\Http\Requests\AdCategory;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use Modules\Ad\Http\Requests\Concerns\HandlesIconValidation;
 use Modules\Ad\Models\AdCategory;
 
 class StoreAdCategoryRequest extends FormRequest
 {
+
+    use HandlesIconValidation;
+
     public function authorize(): bool
     {
         return true;
@@ -23,7 +27,7 @@ class StoreAdCategoryRequest extends FormRequest
             'name_localized' => ['nullable', 'array'],
             'is_active' => ['boolean'],
             'sort_order' => ['nullable', 'integer'],
-            'icon' => ['nullable', 'image', 'max:2048'],
+            'icon' => self::iconRules(),
         ];
     }
 
@@ -86,7 +90,7 @@ class StoreAdCategoryRequest extends FormRequest
                 'example' => 5,
             ],
             'icon' => [
-                'description' => 'Icon image representing the category (JPEG, PNG, BMP, GIF, SVG, or WebP).',
+                'description' => 'Icon image representing the category (JPEG, PNG, BMP, GIF, SVG, WebP, or ICO).',
                 'type' => 'file',
             ],
         ];
