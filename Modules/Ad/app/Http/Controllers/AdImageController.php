@@ -52,7 +52,7 @@ class AdImageController extends Controller
      *
      * @urlParam ad integer required The ID of the ad receiving the images.
      * @bodyParam images array required Collection of image payloads.
-     * @bodyParam images[].file file required JPEG/PNG/WEBP file (max 5 MB). Example: (binary)
+     * @bodyParam images[].file file required JPEG/PNG/WEBP file (max 5 MB)
      * @bodyParam images[].alt string optional Alternative text for accessibility. Example: Front view of the car
      * @bodyParam images[].caption string optional Short caption shown in galleries. Example: Taken last week
      * @bodyParam images[].display_order integer optional Display order override. Example: 2

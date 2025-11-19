@@ -17,4 +17,14 @@ class ValidatePaymentRequest extends FormRequest
             'payload' => ['nullable', 'array'],
         ];
     }
+
+    public function bodyParameters(): array
+    {
+        return [
+            'payload' => [
+                'description' => 'Optional gateway callback payload forwarded to the validation endpoint.',
+                'example' => ['authority' => 'A0001'],
+            ],
+        ];
+    }
 }

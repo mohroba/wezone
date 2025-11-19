@@ -21,6 +21,27 @@ class UpdateAdImageRequest extends FormRequest
         ];
     }
 
+    /**
+     * @return array<string, array<string, mixed>>
+     */
+    public function bodyParameters(): array
+    {
+        return [
+            'alt' => [
+                'description' => 'Updated alternative text for the image.',
+                'example' => 'Front view of the product from a low angle.',
+            ],
+            'caption' => [
+                'description' => 'Optional caption to describe the image for buyers.',
+                'example' => 'Living room with natural light in the afternoon.',
+            ],
+            'display_order' => [
+                'description' => 'Zero-based order that determines how the image is sorted.',
+                'example' => 0,
+            ],
+        ];
+    }
+
     public function withValidator(Validator $validator): void
     {
         $validator->after(function (Validator $validator): void {

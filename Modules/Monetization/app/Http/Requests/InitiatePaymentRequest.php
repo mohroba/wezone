@@ -17,4 +17,14 @@ class InitiatePaymentRequest extends FormRequest
             'gateway' => ['nullable', 'string'],
         ];
     }
+
+    public function bodyParameters(): array
+    {
+        return [
+            'gateway' => [
+                'description' => 'Optional override for the payment gateway key.',
+                'example' => 'stripe',
+            ],
+        ];
+    }
 }
