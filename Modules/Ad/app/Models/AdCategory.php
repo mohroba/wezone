@@ -8,10 +8,15 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Modules\Ad\Models\AdvertisableType;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-class AdCategory extends Model
+class AdCategory extends Model implements HasMedia
 {
     use HasFactory;
+    use InteractsWithMedia;
+
+    public const COLLECTION_ICON = 'icon';
 
     protected $fillable = [
         'advertisable_type_id',
@@ -69,5 +74,10 @@ class AdCategory extends Model
             'ancestor_id',
             'descendant_id'
         )->withPivot('depth');
+    }
+
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection(self::COLLECTION_ICON)->singleFile();
     }
 }

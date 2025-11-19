@@ -23,6 +23,7 @@ class StoreAdCategoryRequest extends FormRequest
             'name_localized' => ['nullable', 'array'],
             'is_active' => ['boolean'],
             'sort_order' => ['nullable', 'integer'],
+            'icon' => ['nullable', 'image', 'max:2048'],
         ];
     }
 
@@ -83,6 +84,10 @@ class StoreAdCategoryRequest extends FormRequest
             'sort_order' => [
                 'description' => 'Custom ordering index.',
                 'example' => 5,
+            ],
+            'icon' => [
+                'description' => 'Icon image representing the category (JPEG, PNG, BMP, GIF, SVG, or WebP).',
+                'type' => 'file',
             ],
         ];
     }

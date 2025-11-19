@@ -18,6 +18,13 @@ class AdvertisableTypeController extends Controller
      * List supported advertisable types.
      *
      * @group Ads
+     * @responseField id integer Database identifier of the advertisable type.
+     * @responseField key string Unique key registered for the advertisable type.
+     * @responseField label string Human readable name.
+     * @responseField description string|null Description shown to clients.
+     * @responseField model_class string Backing model class for advertisable instances.
+     * @responseField icon_url string|null Public URL of the advertisable type icon.
+     * @responseField attribute_groups array Attribute groups and definitions describing the advertisable payload.
      */
     public function index(AdvertisableTypeRegistry $registry): AnonymousResourceCollection
     {
@@ -30,6 +37,13 @@ class AdvertisableTypeController extends Controller
      * Show metadata for an advertisable type.
      *
      * @group Ads
+     * @responseField id integer Database identifier of the advertisable type.
+     * @responseField key string Unique key registered for the advertisable type.
+     * @responseField label string Human readable name.
+     * @responseField description string|null Description shown to clients.
+     * @responseField model_class string Backing model class for advertisable instances.
+     * @responseField icon_url string|null Public URL of the advertisable type icon.
+     * @responseField attribute_groups array Attribute groups and definitions describing the advertisable payload.
      */
     public function show(string $key, AdvertisableTypeRegistry $registry): AdvertisableTypeResource
     {
@@ -45,19 +59,36 @@ class AdvertisableTypeController extends Controller
     private function buildMetadata(AdvertisableTypeDefinition $definition): AdvertisableTypeMetadata
     {
         $typeModel = AdvertisableType::query()
-            ->where('model_class', $definition->modelClass())
-            ->first();
+            ->firstOrCreate(
+                [
+                    'key' => $definition->key(),
+                    'model_class' => $definition->modelClass(),
+                ],
+                [
+                    'label' => $definition->label(),
+                    'description' => $definition->description(),
+                ],
+            );
+
+        $typeModel->fill([
+            'label' => $definition->label(),
+            'description' => $definition->description(),
+        ]);
+
+        if ($typeModel->isDirty()) {
+            $typeModel->save();
+        }
 
         $groups = AdAttributeGroup::query()
             ->with([
                 'definitions' => fn ($query) => $query->orderBy('id'),
                 'advertisableType',
             ])
-            ->when($typeModel, fn ($query) => $query->where('advertisable_type_id', $typeModel->id), fn ($query) => $query->whereRaw('0 = 1'))
+            ->where('advertisable_type_id', $typeModel->id)
             ->orderBy('display_order')
             ->orderBy('id')
             ->get();
 
-        return new AdvertisableTypeMetadata($definition, $groups);
+        return new AdvertisableTypeMetadata($definition, $groups, $typeModel);
     }
 }

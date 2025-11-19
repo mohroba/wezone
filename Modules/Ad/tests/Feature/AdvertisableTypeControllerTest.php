@@ -75,7 +75,9 @@ class AdvertisableTypeControllerTest extends TestCase
 
         $carPayload = $payload->firstWhere('key', 'car');
         $this->assertNotNull($carPayload);
+        $this->assertSame($carType->id, data_get($carPayload, 'id'));
         $this->assertSame('horsepower', data_get($carPayload, 'attribute_groups.0.definitions.0.key'));
+        $this->assertArrayNotHasKey('base_properties', $carPayload);
 
         $realEstatePayload = $payload->firstWhere('key', 'real_estate');
         $this->assertNotNull($realEstatePayload);
@@ -97,6 +99,8 @@ class AdvertisableTypeControllerTest extends TestCase
         $response->assertOk();
         $response->assertJsonPath('data.key', 'job');
         $response->assertJsonPath('data.model_class', $jobType->model_class);
+        $response->assertJsonPath('data.id', $jobType->id);
+        $response->assertArrayNotHasKey('base_properties', $response->json('data'));
     }
 
     public function test_show_returns_not_found_for_unknown_type(): void

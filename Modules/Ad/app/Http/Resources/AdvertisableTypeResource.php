@@ -16,11 +16,12 @@ class AdvertisableTypeResource extends JsonResource
         $definition = $metadata->definition;
 
         return [
+            'id' => $metadata->typeModel->id,
             'key' => $definition->key(),
             'label' => $definition->label(),
             'description' => $definition->description(),
             'model_class' => $definition->modelClass(),
-            'base_properties' => array_map(static fn ($property) => $property->toArray(), $definition->baseProperties()),
+            'icon_url' => $metadata->typeModel->getFirstMediaUrl($metadata->typeModel::COLLECTION_ICON),
             'attribute_groups' => $metadata->attributeGroups
                 ->map(function ($group) use ($request) {
                     $group->loadMissing('definitions');

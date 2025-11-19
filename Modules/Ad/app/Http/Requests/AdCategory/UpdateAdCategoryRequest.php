@@ -39,6 +39,7 @@ class UpdateAdCategoryRequest extends FormRequest
             'is_active'        => ['boolean'],
             'sort_order'       => ['nullable', 'integer'],
             'advertisable_type_id' => ['sometimes', 'required', 'integer', 'exists:advertisable_types,id'],
+            'icon' => ['sometimes', 'nullable', 'image', 'max:2048'],
         ];
     }
 
@@ -143,6 +144,11 @@ class UpdateAdCategoryRequest extends FormRequest
                 'description' => 'Identifier of the advertisable type this category belongs to.',
                 'type'        => 'integer',
                 'example'     => 2,
+            ],
+            'icon' => [
+                'description' => 'Icon image representing the category (JPEG, PNG, BMP, GIF, SVG, or WebP).',
+                'type'        => 'file',
+                'required'    => false,
             ],
         ];
     }
