@@ -88,8 +88,9 @@ class StoreAdAttributeDefinitionRequest extends FormRequest
                 'example' => 'L',
             ],
             'options' => [
-                'description' => 'Available options or constraints for the attribute.',
-                'example' => ['min' => 1.0, 'max' => 5.0],
+                'description' => 'Available options or constraints for the attribute; pass either a constraint object or an array of enum strings.',
+                'type' => 'array<string>',
+                'example' => ['Red', 'Blue', 'White'],
             ],
             'is_required' => [
                 'description' => 'Whether the attribute must be provided when creating ads.',

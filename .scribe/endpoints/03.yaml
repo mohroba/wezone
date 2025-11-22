@@ -1,0 +1,522 @@
+name: 'Ad Categories'
+description: 'Fetch categories with optional filtering by parent, activation state, or search term.'
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: api/ad-categories
+    metadata:
+      groupName: 'Ad Categories'
+      groupDescription: 'Fetch categories with optional filtering by parent, activation state, or search term.'
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'List ad categories'
+      description: ''
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters:
+      parent_id:
+        name: parent_id
+        description: 'Filter categories by parent identifier.'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      only_active:
+        name: only_active
+        description: 'Return only active categories.'
+        required: false
+        example: true
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      search:
+        name: search
+        description: 'Search by category name or slug.'
+        required: false
+        example: vehicles
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      advertisable_type_id:
+        name: advertisable_type_id
+        description: 'Limit results to the given advertisable type.'
+        required: false
+        example: 2
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      per_page:
+        name: per_page
+        description: 'Number of results per page, up to 200.'
+        required: false
+        example: 50
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      without_pagination:
+        name: without_pagination
+        description: 'Set to true to receive all categories without pagination.'
+        required: false
+        example: false
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanQueryParameters:
+      parent_id: 1
+      only_active: true
+      search: vehicles
+      advertisable_type_id: 2
+      per_page: 50
+      without_pagination: false
+    bodyParameters:
+      parent_id:
+        name: parent_id
+        description: 'The <code>id</code> of an existing record in the ad_categories table.'
+        required: false
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      only_active:
+        name: only_active
+        description: ''
+        required: false
+        example: false
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      search:
+        name: search
+        description: ''
+        required: false
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      advertisable_type_id:
+        name: advertisable_type_id
+        description: 'The <code>id</code> of an existing record in the advertisable_types table.'
+        required: false
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      per_page:
+        name: per_page
+        description: 'Must be at least 1. Must not be greater than 200.'
+        required: false
+        example: 22
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      without_pagination:
+        name: without_pagination
+        description: ''
+        required: false
+        example: true
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+    cleanBodyParameters:
+      parent_id: 16
+      only_active: false
+      search: architecto
+      advertisable_type_id: 16
+      per_page: 22
+      without_pagination: true
+    fileParameters: []
+    responses:
+      -
+        status: 422
+        content: '{"message":"The selected parent id is invalid. (and 1 more error)","errors":{"parent_id":["The selected parent id is invalid."],"advertisable_type_id":["The selected advertisable type id is invalid."]}}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/ad-categories
+    metadata:
+      groupName: 'Ad Categories'
+      groupDescription: 'Store a new category and rebuild the hierarchy metadata.'
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Create a category'
+      description: ''
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      advertisable_type_id:
+        name: advertisable_type_id
+        description: 'Identifier of the advertisable type this category belongs to. The <code>id</code> of an existing record in the advertisable_types table.'
+        required: true
+        example: 2
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      parent_id:
+        name: parent_id
+        description: 'Identifier of the parent category. The <code>id</code> of an existing record in the ad_categories table.'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      slug:
+        name: slug
+        description: 'Unique slug for the category. Must contain only letters, numbers, dashes and underscores. Must not be greater than 255 characters.'
+        required: true
+        example: vehicles
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      name:
+        name: name
+        description: 'Display name of the category. Must not be greater than 255 characters.'
+        required: true
+        example: Vehicles
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      name_localized:
+        name: name_localized
+        description: 'Localized translations for the category name.'
+        required: false
+        example:
+          fa: 'وسایل نقلیه'
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      is_active:
+        name: is_active
+        description: 'Toggle to activate or deactivate the category.'
+        required: false
+        example: false
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      sort_order:
+        name: sort_order
+        description: 'Custom ordering index.'
+        required: false
+        example: 5
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+    cleanBodyParameters:
+      advertisable_type_id: 2
+      parent_id: 1
+      slug: vehicles
+      name: Vehicles
+      name_localized:
+        fa: 'وسایل نقلیه'
+      is_active: false
+      sort_order: 5
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/ad-categories/{ad_category_id}'
+    metadata:
+      groupName: 'Ad Categories'
+      groupDescription: 'Retrieve details for the given category record.'
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Show a category'
+      description: ''
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      ad_category_id:
+        name: ad_category_id
+        description: 'The ID of the ad category.'
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      ad_category_id: architecto
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 404
+        content: |-
+          {
+              "message": "No query results for model [Modules\\Ad\\Models\\AdCategory] architecto"
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: 'api/ad-categories/{ad_category_id}/update'
+    metadata:
+      groupName: 'Ad Categories'
+      groupDescription: 'Apply updates and recompute the category hierarchy when relationships change.'
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Update a category'
+      description: ''
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      ad_category_id:
+        name: ad_category_id
+        description: 'The ID of the ad category.'
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      ad_category_id: architecto
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      parent_id:
+        name: parent_id
+        description: 'Identifier of the parent category. The <code>id</code> of an existing record in the ad_categories table.'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      slug:
+        name: slug
+        description: 'Unique slug for the category. Must contain only letters, numbers, dashes and underscores. Must not be greater than 255 characters.'
+        required: true
+        example: vehicles
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      name:
+        name: name
+        description: 'Display name of the category. Must not be greater than 255 characters.'
+        required: true
+        example: Vehicles
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      name_localized:
+        name: name_localized
+        description: 'Localized translations for the category name.'
+        required: false
+        example:
+          fa: 'وسایل نقلیه'
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      is_active:
+        name: is_active
+        description: 'Toggle to activate or deactivate the category.'
+        required: false
+        example: false
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      sort_order:
+        name: sort_order
+        description: 'Custom ordering index.'
+        required: false
+        example: 5
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      advertisable_type_id:
+        name: advertisable_type_id
+        description: 'Identifier of the advertisable type this category belongs to. The <code>id</code> of an existing record in the advertisable_types table.'
+        required: true
+        example: 2
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      parent_id: 1
+      slug: vehicles
+      name: Vehicles
+      name_localized:
+        fa: 'وسایل نقلیه'
+      is_active: false
+      sort_order: 5
+      advertisable_type_id: 2
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: 'api/ad-categories/{ad_category_id}/delete'
+    metadata:
+      groupName: 'Ad Categories'
+      groupDescription: 'Soft delete the specified category.'
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Delete a category'
+      description: ''
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      ad_category_id:
+        name: ad_category_id
+        description: 'The ID of the ad category.'
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      ad_category_id: architecto
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
