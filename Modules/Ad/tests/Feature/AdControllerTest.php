@@ -68,6 +68,80 @@ class AdControllerTest extends TestCase
         $this->assertSame(15000, (int) $car->mileage);
     }
 
+    public function test_store_requires_exchange_details_when_exchangeable(): void
+    {
+        $user = User::factory()->create();
+        $context = $this->prepareAdvertisableContext(AdCar::class);
+
+        $payload = [
+            'user_id' => $user->id,
+            'advertisable_type_id' => $context['type']->id,
+            'slug' => 'exchange-ready',
+            'title' => 'Ready to exchange',
+            'advertisable' => [
+                'type' => AdCar::class,
+                'attributes' => [
+                    'brand_id' => 5,
+                    'model_id' => 9,
+                    'year' => 2023,
+                    'mileage' => 15000,
+                ],
+            ],
+            'is_exchangeable' => true,
+        ];
+
+        $response = $this->postJson('/api/ads', $payload);
+
+        $response->assertUnprocessable();
+        $response->assertJsonValidationErrors(['extra_amount', 'exchange_description']);
+    }
+
+    public function test_store_persists_exchange_configuration_flags(): void
+    {
+        $user = User::factory()->create();
+        $context = $this->prepareAdvertisableContext(AdCar::class);
+
+        $payload = [
+            'user_id' => $user->id,
+            'advertisable_type_id' => $context['type']->id,
+            'slug' => 'configurable-exchange',
+            'title' => 'Exchange with extras',
+            'advertisable' => [
+                'type' => AdCar::class,
+                'attributes' => [
+                    'brand_id' => 5,
+                    'model_id' => 9,
+                    'year' => 2023,
+                    'mileage' => 15000,
+                ],
+            ],
+            'is_exchangeable' => true,
+            'comment_enable' => false,
+            'phone_enable' => false,
+            'chat_enable' => true,
+            'extra_amount' => 120000,
+            'exchange_description' => 'Newer sedan plus cash.',
+        ];
+
+        $response = $this->postJson('/api/ads', $payload);
+
+        $response->assertCreated();
+        $response->assertJsonPath('data.comment_enable', false);
+        $response->assertJsonPath('data.phone_enable', false);
+        $response->assertJsonPath('data.chat_enable', true);
+        $response->assertJsonPath('data.extra_amount', 120000);
+        $response->assertJsonPath('data.exchange_description', 'Newer sedan plus cash.');
+
+        $this->assertDatabaseHas('ads', [
+            'slug' => 'configurable-exchange',
+            'comment_enable' => false,
+            'phone_enable' => false,
+            'chat_enable' => true,
+            'extra_amount' => 120000,
+            'exchange_description' => 'Newer sedan plus cash.',
+        ]);
+    }
+
     public function test_update_mutates_nested_advertisable_and_synchronises_slug(): void
     {
         $user = User::factory()->create();

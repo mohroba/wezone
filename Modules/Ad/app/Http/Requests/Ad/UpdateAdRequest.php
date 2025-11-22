@@ -54,6 +54,11 @@ class UpdateAdRequest extends FormRequest
             'price_currency' => ['nullable', 'string', 'size:3'],
             'is_negotiable' => ['boolean'],
             'is_exchangeable' => ['boolean'],
+            'comment_enable' => ['nullable', 'boolean'],
+            'phone_enable' => ['nullable', 'boolean'],
+            'chat_enable' => ['nullable', 'boolean'],
+            'extra_amount' => ['required_if:is_exchangeable,true', 'integer', 'min:0'],
+            'exchange_description' => ['required_if:is_exchangeable,true', 'string'],
             'city_id' => ['nullable', 'exists:cities,id'],
             'province_id' => ['nullable', 'exists:provinces,id'],
             'latitude' => ['nullable', 'numeric', 'between:-90,90'],
@@ -114,6 +119,12 @@ class UpdateAdRequest extends FormRequest
 
         if ($this->exists('is_exchangeable')) {
             $payload['is_exchangeable'] = $this->toBoolean($this->input('is_exchangeable'));
+        }
+
+        foreach (['comment_enable', 'phone_enable', 'chat_enable'] as $flag) {
+            if ($this->exists($flag)) {
+                $payload[$flag] = $this->toBoolean($this->input($flag));
+            }
         }
 
         if ($this->has('categories') && is_array($this->input('categories'))) {
