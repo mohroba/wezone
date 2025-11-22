@@ -82,11 +82,14 @@ class SessionController extends Controller
             'network_type',
             'city',
             'country',
-            'metadata',
         ]));
 
         if ($endedAt) {
             $session->ended_at = $endedAt;
+        }
+
+        if (array_key_exists('metadata', $payload)) {
+            $session->metadata = array_merge($session->metadata ?? [], $payload['metadata'] ?? []);
         }
 
         if (array_key_exists('duration_seconds', $payload)) {
