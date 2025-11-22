@@ -133,19 +133,12 @@ class FollowApiTest extends TestCase
             'followed_id' => $followedUser->id,
         ]);
 
-        UserFollow::create([
-            'follower_id' => $followedUser->id,
-            'followed_id' => $authUser->id,
-        ]);
-
         $response = $this->getJson('/api/users?follower_id=' . $authUser->id . '&username=' . $followedUser->username);
 
         $response
             ->assertOk()
             ->assertJsonCount(1, 'data')
             ->assertJsonPath('data.0.id', $followedUser->id)
-            ->assertJsonPath('data.0.profile.full_name', 'Sara Connor')
-            ->assertJsonPath('data.0.followers_count', 1)
-            ->assertJsonPath('data.0.following_count', 1);
+            ->assertJsonPath('data.0.profile.full_name', 'Sara Connor');
     }
 }

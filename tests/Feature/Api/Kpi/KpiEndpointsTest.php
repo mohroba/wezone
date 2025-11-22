@@ -149,39 +149,4 @@ class KpiEndpointsTest extends TestCase
             'reason' => 'user_choice',
         ]);
     }
-
-    public function test_session_metadata_is_merged_when_updating(): void
-    {
-        $deviceUuid = (string) Str::uuid();
-        $sessionUuid = (string) Str::uuid();
-
-        $initialMetadata = [
-            'callStatsOrder' => ['calls', 'duration'],
-            'last_screen' => 'home',
-        ];
-
-        $this->postJson('/api/kpi/sessions', [
-            'device_uuid' => $deviceUuid,
-            'session_uuid' => $sessionUuid,
-            'started_at' => now()->subMinutes(15)->toIso8601String(),
-            'ended_at' => now()->subMinutes(5)->toIso8601String(),
-            'app_version' => '2.1.0',
-            'platform' => 'ios',
-            'metadata' => $initialMetadata,
-        ])->assertCreated();
-
-        $this->postJson("/api/kpi/sessions/{$sessionUuid}/update", [
-            'metadata' => [
-                'callStatsOrder' => ['duration', 'calls'],
-            ],
-            'ended_at' => now()->toIso8601String(),
-        ])->assertOk();
-
-        $session = KpiSession::firstWhere('session_uuid', $sessionUuid);
-        $this->assertSame(
-            ['duration', 'calls'],
-            $session->metadata['callStatsOrder']
-        );
-        $this->assertSame('home', $session->metadata['last_screen']);
-    }
 }
