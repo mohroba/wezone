@@ -6,6 +6,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Http\Response;
 use Modules\Ad\Http\Requests\AdComment\StoreAdCommentRequest;
+use Modules\Ad\Http\Resources\AdCommentThreadResource;
 use Modules\Ad\Http\Resources\AdCommentResource;
 use Modules\Ad\Models\Ad;
 use Modules\Ad\Models\AdComment;
@@ -43,6 +44,66 @@ class AdCommentController
             ->get();
 
         return AdCommentResource::collection($comments);
+    }
+
+    /**
+     * List comments for an ad with nested replies up to a depth of three.
+     *
+     * @group Ads
+     * @subgroup Comments
+     *
+     * @urlParam ad integer required The identifier of the ad whose comments should be listed.
+     *
+     * @response 200 {
+     *   "data": [
+     *     {
+     *       "id": 198,
+     *       "body": "Is this still available?",
+     *       "user": {
+     *         "id": 12,
+     *         "username": "buyer42"
+     *       },
+     *       "replies": [
+     *         {
+     *           "id": 199,
+     *           "body": "Yes, it is!",
+     *           "user": {
+     *             "id": 15,
+     *             "username": "seller01"
+     *           },
+     *           "replies": [
+     *             {
+     *               "id": 200,
+     *               "body": "Great, I'll message you.",
+     *               "user": {
+     *                 "id": 22,
+     *                 "username": "buyer42"
+     *               },
+     *               "replies": []
+     *             }
+     *           ]
+     *         }
+     *       ]
+     *     }
+     *   ]
+     * }
+     */
+    public function threaded(Ad $ad): AnonymousResourceCollection
+    {
+        $maxDepth = 3;
+
+        $comments = $ad->comments()
+            ->root()
+            ->with([
+                'user',
+                'replies.user',
+                'replies.replies.user',
+                'replies.replies.replies.user',
+            ])
+            ->orderBy('created_at')
+            ->get();
+
+        return AdCommentThreadResource::collectionWithDepth($comments, $maxDepth);
     }
 
     /**
