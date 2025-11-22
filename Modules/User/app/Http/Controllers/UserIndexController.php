@@ -23,7 +23,7 @@ class UserIndexController extends Controller
 
         $query = User::query()
             ->with('profile')
-            ->withCount(['followers', 'followings as following_count']);
+            ->withCount(['followers', 'followings']);
 
         if (!empty($validated['follower_id'])) {
             $query->whereHas('followers', function (Builder $relation) use ($validated): void {
