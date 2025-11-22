@@ -162,6 +162,9 @@
                                                     <li class="tocify-item level-2" data-unique="ad-images-GETapi-ads--ad_id--images">
                                 <a href="#ad-images-GETapi-ads--ad_id--images">List ad images</a>
                             </li>
+                                                                                <li class="tocify-item level-2" data-unique="ad-images-POSTapi-ads--ad_id--images">
+                                <a href="#ad-images-POSTapi-ads--ad_id--images">Upload ad images</a>
+                            </li>
                                                                                 <li class="tocify-item level-2" data-unique="ad-images-POSTapi-ads--ad_id--images--media_id--update">
                                 <a href="#ad-images-POSTapi-ads--ad_id--images--media_id--update">Update image metadata</a>
                             </li>
@@ -239,6 +242,9 @@ Discover ads prioritized by promotion and user interests.</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="ads-POSTapi-ads--ad_id--seen">
                                 <a href="#ads-POSTapi-ads--ad_id--seen">Register an ad view</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="ads-GETapi-advertisable-types-classes">
+                                <a href="#ads-GETapi-advertisable-types-classes">Retrieve the registered advertisable classes for payload construction.</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="ads-GETapi-advertisable-types">
                                 <a href="#ads-GETapi-advertisable-types">List supported advertisable types.</a>
@@ -439,6 +445,22 @@ Discover ads prioritized by promotion and user interests.</a>
                             </li>
                                                                         </ul>
                             </ul>
+                    <ul id="tocify-header-others" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="others">
+                    <a href="#others">Others</a>
+                </li>
+                                    <ul id="tocify-subheader-others" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="others-POSTapi-advertisable-types">
+                                <a href="#others-POSTapi-advertisable-types">Create a new advertisable type.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="others-POSTapi-advertisable-types--advertisable_type_id--update">
+                                <a href="#others-POSTapi-advertisable-types--advertisable_type_id--update">Update an existing advertisable type.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="others-POSTapi-advertisable-types--advertisable_type_id--delete">
+                                <a href="#others-POSTapi-advertisable-types--advertisable_type_id--delete">Delete an advertisable type.</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
                     <ul id="tocify-header-settings" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="settings">
                     <a href="#settings">Settings</a>
@@ -498,7 +520,7 @@ Discover ads prioritized by promotion and user interests.</a>
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: November 16, 2025</li>
+        <li>Last updated: November 22, 2025</li>
     </ul>
 </div>
 
@@ -772,10 +794,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"help_text\": \"Specify the displacement in liters.\",
     \"data_type\": \"decimal\",
     \"unit\": \"L\",
-    \"options\": {
-        \"min\": 1,
-        \"max\": 5
-    },
+    \"options\": [
+        \"Red\",
+        \"Blue\",
+        \"White\"
+    ],
     \"is_required\": false,
     \"is_filterable\": false,
     \"is_searchable\": false,
@@ -802,10 +825,11 @@ let body = {
     "help_text": "Specify the displacement in liters.",
     "data_type": "decimal",
     "unit": "L",
-    "options": {
-        "min": 1,
-        "max": 5
-    },
+    "options": [
+        "Red",
+        "Blue",
+        "White"
+    ],
     "is_required": false,
     "is_filterable": false,
     "is_searchable": false,
@@ -980,7 +1004,7 @@ Must be one of:
                value=""
                data-component="body">
     <br>
-<p>Available options or constraints for the attribute.</p>
+<p>Available options or constraints for the attribute; pass either a constraint object or an array of enum strings.</p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>is_required</code></b>&nbsp;&nbsp;
@@ -1233,10 +1257,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"help_text\": \"Specify the displacement in liters.\",
     \"data_type\": \"decimal\",
     \"unit\": \"L\",
-    \"options\": {
-        \"min\": 1,
-        \"max\": 5
-    },
+    \"options\": [
+        \"Red\",
+        \"Blue\",
+        \"White\"
+    ],
     \"is_required\": false,
     \"is_filterable\": false,
     \"is_searchable\": false,
@@ -1263,10 +1288,11 @@ let body = {
     "help_text": "Specify the displacement in liters.",
     "data_type": "decimal",
     "unit": "L",
-    "options": {
-        "min": 1,
-        "max": 5
-    },
+    "options": [
+        "Red",
+        "Blue",
+        "White"
+    ],
     "is_required": false,
     "is_filterable": false,
     "is_searchable": false,
@@ -1453,7 +1479,7 @@ Must be one of:
                value=""
                data-component="body">
     <br>
-<p>Available options or constraints for the attribute.</p>
+<p>Available options or constraints for the attribute; pass either a constraint object or an array of enum strings.</p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>is_required</code></b>&nbsp;&nbsp;
@@ -3641,7 +3667,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Accept: application/json" \
     --data "{
     \"parent_id\": 16,
-    \"only_active\": false,
+    \"only_active\": true,
     \"search\": \"architecto\",
     \"advertisable_type_id\": 16,
     \"per_page\": 22,
@@ -3674,7 +3700,7 @@ const headers = {
 
 let body = {
     "parent_id": 16,
-    "only_active": false,
+    "only_active": true,
     "search": "architecto",
     "advertisable_type_id": 16,
     "per_page": 22,
@@ -3913,7 +3939,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>search</code></b>&nbsp;&nbsp;
@@ -3971,7 +3997,16 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </div>
         </form>
 
-                    <h2 id="ad-categories-POSTapi-ad-categories">Create a category</h2>
+    <h3>Response</h3>
+    <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+    <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>icon_url</code></b>&nbsp;&nbsp;
+<small>string|null</small>&nbsp;
+ &nbsp;
+<br>
+<p>Public URL to the uploaded icon image, if present.</p>
+        </div>
+                        <h2 id="ad-categories-POSTapi-ad-categories">Create a category</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
@@ -4204,9 +4239,29 @@ You can check the Dev Tools console for debugging information.</code></pre>
     <br>
 <p>Custom ordering index. Example: <code>5</code></p>
         </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>icon</code></b>&nbsp;&nbsp;
+<small>file</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="file" style="display: none"
+                              name="icon"                data-endpoint="POSTapi-ad-categories"
+               value=""
+               data-component="body">
+    <br>
+<p>Icon image representing the category.</p>
+        </div>
         </form>
 
-                    <h2 id="ad-categories-GETapi-ad-categories--ad_category_id-">Show a category</h2>
+    <h3>Response</h3>
+    <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+    <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>icon_url</code></b>&nbsp;&nbsp;
+<small>string|null</small>&nbsp;
+ &nbsp;
+<br>
+<p>Public URL to the uploaded icon image, if present.</p>
+        </div>
+                        <h2 id="ad-categories-GETapi-ad-categories--ad_category_id-">Show a category</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
@@ -4356,7 +4411,16 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                     </form>
 
-                    <h2 id="ad-categories-POSTapi-ad-categories--ad_category_id--update">Update a category</h2>
+    <h3>Response</h3>
+    <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+    <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>icon_url</code></b>&nbsp;&nbsp;
+<small>string|null</small>&nbsp;
+ &nbsp;
+<br>
+<p>Public URL to the uploaded icon image, if present.</p>
+        </div>
+                        <h2 id="ad-categories-POSTapi-ad-categories--ad_category_id--update">Update a category</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
@@ -4601,9 +4665,29 @@ You can check the Dev Tools console for debugging information.</code></pre>
     <br>
 <p>Identifier of the advertisable type this category belongs to. The <code>id</code> of an existing record in the advertisable_types table. Example: <code>2</code></p>
         </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>icon</code></b>&nbsp;&nbsp;
+<small>file</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="file" style="display: none"
+                              name="icon"                data-endpoint="POSTapi-ad-categories--ad_category_id--update"
+               value=""
+               data-component="body">
+    <br>
+<p>Icon image representing the category.</p>
+        </div>
         </form>
 
-                    <h2 id="ad-categories-POSTapi-ad-categories--ad_category_id--delete">Delete a category</h2>
+    <h3>Response</h3>
+    <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+    <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>icon_url</code></b>&nbsp;&nbsp;
+<small>string|null</small>&nbsp;
+ &nbsp;
+<br>
+<p>Public URL to the uploaded icon image, if present.</p>
+        </div>
+                        <h2 id="ad-categories-POSTapi-ad-categories--ad_category_id--delete">Delete a category</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
@@ -4936,7 +5020,221 @@ You can check the Dev Tools console for debugging information.</code></pre>
                     </div>
                                     </details>
         </div>
-                        <h2 id="ad-images-POSTapi-ads--ad_id--images--media_id--update">Update image metadata</h2>
+                        <h2 id="ad-images-POSTapi-ads--ad_id--images">Upload ad images</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Attach one or more images to the specified ad.</p>
+
+<span id="example-requests-POSTapi-ads--ad_id--images">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "https://api.wezone.app/api/ads/1/images" \
+    --header "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"images\": [
+        \"architecto\"
+    ]
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://api.wezone.app/api/ads/1/images"
+);
+
+const headers = {
+    "Authorization": "Bearer {YOUR_ACCESS_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "images": [
+        "architecto"
+    ]
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-ads--ad_id--images">
+</span>
+<span id="execution-results-POSTapi-ads--ad_id--images" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-ads--ad_id--images"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-ads--ad_id--images"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-ads--ad_id--images" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-ads--ad_id--images">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-ads--ad_id--images" data-method="POST"
+      data-path="api/ads/{ad_id}/images"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-ads--ad_id--images', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-ads--ad_id--images"
+                    onclick="tryItOut('POSTapi-ads--ad_id--images');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-ads--ad_id--images"
+                    onclick="cancelTryOut('POSTapi-ads--ad_id--images');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-ads--ad_id--images"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/ads/{ad_id}/images</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-ads--ad_id--images"
+               value="Bearer {YOUR_ACCESS_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_ACCESS_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-ads--ad_id--images"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-ads--ad_id--images"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>ad_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="ad_id"                data-endpoint="POSTapi-ads--ad_id--images"
+               value="1"
+               data-component="url">
+    <br>
+<p>The ID of the ad. Example: <code>1</code></p>
+            </div>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>ad</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="ad"                data-endpoint="POSTapi-ads--ad_id--images"
+               value="16"
+               data-component="url">
+    <br>
+<p>The ID of the ad receiving the images. Example: <code>16</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+        <details>
+            <summary style="padding-bottom: 10px;">
+                <b style="line-height: 2;"><code>images</code></b>&nbsp;&nbsp;
+<small>string[]</small>&nbsp;
+ &nbsp;
+<br>
+<p>Collection of image payloads.</p>
+            </summary>
+                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>file</code></b>&nbsp;&nbsp;
+<small>file</small>&nbsp;
+ &nbsp;
+                <input type="file" style="display: none"
+                              name="images.0.file"                data-endpoint="POSTapi-ads--ad_id--images"
+               value=""
+               data-component="body">
+    <br>
+<p>JPEG/PNG/WEBP file (max 5 MB) Example: <code>C:\Users\Mohsen\AppData\Local\Temp\php16BE.tmp</code></p>
+                    </div>
+                                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>alt</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="images.0.alt"                data-endpoint="POSTapi-ads--ad_id--images"
+               value="Front view of the car"
+               data-component="body">
+    <br>
+<p>optional Alternative text for accessibility. Example: <code>Front view of the car</code></p>
+                    </div>
+                                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>caption</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="images.0.caption"                data-endpoint="POSTapi-ads--ad_id--images"
+               value="Taken last week"
+               data-component="body">
+    <br>
+<p>optional Short caption shown in galleries. Example: <code>Taken last week</code></p>
+                    </div>
+                                                                <div style="margin-left: 14px; clear: unset;">
+                        <b style="line-height: 2;"><code>display_order</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="images.0.display_order"                data-endpoint="POSTapi-ads--ad_id--images"
+               value="2"
+               data-component="body">
+    <br>
+<p>optional Display order override. Example: <code>2</code></p>
+                    </div>
+                                    </details>
+        </div>
+        </form>
+
+                    <h2 id="ad-images-POSTapi-ads--ad_id--images--media_id--update">Update image metadata</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
@@ -7262,6 +7560,11 @@ access-control-allow-origin: *
             &quot;price_currency&quot;: &quot;IRR&quot;,
             &quot;is_negotiable&quot;: false,
             &quot;is_exchangeable&quot;: true,
+            &quot;comment_enable&quot;: true,
+            &quot;phone_enable&quot;: true,
+            &quot;chat_enable&quot;: true,
+            &quot;extra_amount&quot;: 0,
+            &quot;exchange_description&quot;: null,
             &quot;city_id&quot;: 10,
             &quot;province_id&quot;: 1,
             &quot;latitude&quot;: &quot;35.6892000&quot;,
@@ -7741,6 +8044,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"price_currency\": \"IRR\",
     \"is_negotiable\": false,
     \"is_exchangeable\": false,
+    \"comment_enable\": false,
+    \"phone_enable\": false,
+    \"chat_enable\": false,
+    \"extra_amount\": 150000,
+    \"exchange_description\": \"Willing to swap for a newer model laptop plus cash.\",
     \"city_id\": 3,
     \"province_id\": 1,
     \"latitude\": 35.6892,
@@ -7751,7 +8059,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"view_count\": 27,
     \"share_count\": 39,
     \"favorite_count\": 84,
-    \"featured_until\": \"2025-11-16T04:45:06\",
+    \"featured_until\": \"2025-11-22T14:17:52\",
     \"priority_score\": 4326.41688,
     \"categories\": [
         {
@@ -7803,6 +8111,11 @@ let body = {
     "price_currency": "IRR",
     "is_negotiable": false,
     "is_exchangeable": false,
+    "comment_enable": false,
+    "phone_enable": false,
+    "chat_enable": false,
+    "extra_amount": 150000,
+    "exchange_description": "Willing to swap for a newer model laptop plus cash.",
     "city_id": 3,
     "province_id": 1,
     "latitude": 35.6892,
@@ -7813,7 +8126,7 @@ let body = {
     "view_count": 27,
     "share_count": 39,
     "favorite_count": 84,
-    "featured_until": "2025-11-16T04:45:06",
+    "featured_until": "2025-11-22T14:17:52",
     "priority_score": 4326.41688,
     "categories": [
         {
@@ -8101,6 +8414,91 @@ Must be one of:
 <p>Indicates if swaps are accepted. Example: <code>false</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>comment_enable</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="POSTapi-ads" style="display: none">
+            <input type="radio" name="comment_enable"
+                   value="true"
+                   data-endpoint="POSTapi-ads"
+                   data-component="body"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="POSTapi-ads" style="display: none">
+            <input type="radio" name="comment_enable"
+                   value="false"
+                   data-endpoint="POSTapi-ads"
+                   data-component="body"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Whether comments are allowed on the ad. Example: <code>false</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>phone_enable</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="POSTapi-ads" style="display: none">
+            <input type="radio" name="phone_enable"
+                   value="true"
+                   data-endpoint="POSTapi-ads"
+                   data-component="body"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="POSTapi-ads" style="display: none">
+            <input type="radio" name="phone_enable"
+                   value="false"
+                   data-endpoint="POSTapi-ads"
+                   data-component="body"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Whether the phone contact option is enabled. Example: <code>false</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>chat_enable</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="POSTapi-ads" style="display: none">
+            <input type="radio" name="chat_enable"
+                   value="true"
+                   data-endpoint="POSTapi-ads"
+                   data-component="body"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="POSTapi-ads" style="display: none">
+            <input type="radio" name="chat_enable"
+                   value="false"
+                   data-endpoint="POSTapi-ads"
+                   data-component="body"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Whether in-app chat is enabled for the ad. Example: <code>false</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>extra_amount</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="extra_amount"                data-endpoint="POSTapi-ads"
+               value="150000"
+               data-component="body">
+    <br>
+<p>Additional amount expected on top of the exchanged item when swaps are accepted. This field is required when <code>is_exchangeable</code> is <code>true</code>. Must be at least 0. Example: <code>150000</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>exchange_description</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="exchange_description"                data-endpoint="POSTapi-ads"
+               value="Willing to swap for a newer model laptop plus cash."
+               data-component="body">
+    <br>
+<p>Details of items that would be accepted in exchange. This field is required when <code>is_exchangeable</code> is <code>true</code>. Example: <code>Willing to swap for a newer model laptop plus cash.</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>city_id</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
@@ -8194,10 +8592,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="featured_until"                data-endpoint="POSTapi-ads"
-               value="2025-11-16T04:45:06"
+               value="2025-11-22T14:17:52"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-11-16T04:45:06</code></p>
+<p>Must be a valid date. Example: <code>2025-11-22T14:17:52</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>priority_score</code></b>&nbsp;&nbsp;
@@ -8215,9 +8613,9 @@ Must be one of:
             <summary style="padding-bottom: 10px;">
                 <b style="line-height: 2;"><code>categories</code></b>&nbsp;&nbsp;
 <small>object[]</small>&nbsp;
- &nbsp;
+<i>optional</i> &nbsp;
 <br>
-<p>Array of category assignments.</p>
+<p>Optional array of category assignments. Can be provided later via the ad update endpoint.</p>
             </summary>
                                                 <div style="margin-left: 14px; clear: unset;">
                         <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
@@ -8269,9 +8667,9 @@ Must be one of:
             <summary style="padding-bottom: 10px;">
                 <b style="line-height: 2;"><code>attribute_values</code></b>&nbsp;&nbsp;
 <small>object[]</small>&nbsp;
- &nbsp;
+<i>optional</i> &nbsp;
 <br>
-<p>Collection of attribute values linked to the ad.</p>
+<p>Optional collection of attribute values linked to the ad. Supply only when these values are known.</p>
             </summary>
                                                 <div style="margin-left: 14px; clear: unset;">
                         <b style="line-height: 2;"><code>definition_id</code></b>&nbsp;&nbsp;
@@ -8336,7 +8734,7 @@ Must be one of:
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
                     </div>
                                                                 <div style="margin-left: 14px; clear: unset;">
                         <b style="line-height: 2;"><code>value_date</code></b>&nbsp;&nbsp;
@@ -8344,10 +8742,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="attribute_values.0.value_date"                data-endpoint="POSTapi-ads"
-               value="2025-11-16T04:45:06"
+               value="2025-11-22T14:17:52"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-11-16T04:45:06</code></p>
+<p>Must be a valid date. Example: <code>2025-11-22T14:17:52</code></p>
                     </div>
                                                                 <div style="margin-left: 14px; clear: unset;">
                         <b style="line-height: 2;"><code>value_json</code></b>&nbsp;&nbsp;
@@ -8544,19 +8942,24 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"title\": \"Peugeot 206 2024\",
     \"subtitle\": \"b\",
     \"description\": \"Eius et animi quos velit et.\",
-    \"status\": \"rejected\",
-    \"published_at\": \"2025-11-16T04:45:06\",
-    \"expires_at\": \"2051-12-10\",
+    \"status\": \"expired\",
+    \"published_at\": \"2025-11-22T14:17:52\",
+    \"expires_at\": \"2051-12-16\",
     \"price_amount\": 16,
     \"price_currency\": \"ngz\",
-    \"is_negotiable\": true,
-    \"is_exchangeable\": false,
-    \"latitude\": -90,
+    \"is_negotiable\": false,
+    \"is_exchangeable\": true,
+    \"comment_enable\": false,
+    \"phone_enable\": false,
+    \"chat_enable\": false,
+    \"extra_amount\": 77,
+    \"exchange_description\": \"architecto\",
+    \"latitude\": -89,
     \"longitude\": -180,
-    \"view_count\": 76,
-    \"share_count\": 60,
-    \"favorite_count\": 42,
-    \"featured_until\": \"2025-11-16T04:45:06\",
+    \"view_count\": 12,
+    \"share_count\": 77,
+    \"favorite_count\": 8,
+    \"featured_until\": \"2025-11-22T14:17:52\",
     \"priority_score\": 4326.41688,
     \"categories\": [
         {
@@ -8602,19 +9005,24 @@ let body = {
     "title": "Peugeot 206 2024",
     "subtitle": "b",
     "description": "Eius et animi quos velit et.",
-    "status": "rejected",
-    "published_at": "2025-11-16T04:45:06",
-    "expires_at": "2051-12-10",
+    "status": "expired",
+    "published_at": "2025-11-22T14:17:52",
+    "expires_at": "2051-12-16",
     "price_amount": 16,
     "price_currency": "ngz",
-    "is_negotiable": true,
-    "is_exchangeable": false,
-    "latitude": -90,
+    "is_negotiable": false,
+    "is_exchangeable": true,
+    "comment_enable": false,
+    "phone_enable": false,
+    "chat_enable": false,
+    "extra_amount": 77,
+    "exchange_description": "architecto",
+    "latitude": -89,
     "longitude": -180,
-    "view_count": 76,
-    "share_count": 60,
-    "favorite_count": 42,
-    "featured_until": "2025-11-16T04:45:06",
+    "view_count": 12,
+    "share_count": 77,
+    "favorite_count": 8,
+    "featured_until": "2025-11-22T14:17:52",
     "priority_score": 4326.41688,
     "categories": [
         {
@@ -8821,10 +9229,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="status"                data-endpoint="POSTapi-ads--ad_id--update"
-               value="rejected"
+               value="expired"
                data-component="body">
     <br>
-<p>Example: <code>rejected</code></p>
+<p>Example: <code>expired</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>draft</code></li> <li><code>pending_review</code></li> <li><code>published</code></li> <li><code>rejected</code></li> <li><code>archived</code></li> <li><code>expired</code></li></ul>
         </div>
@@ -8834,10 +9242,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="published_at"                data-endpoint="POSTapi-ads--ad_id--update"
-               value="2025-11-16T04:45:06"
+               value="2025-11-22T14:17:52"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-11-16T04:45:06</code></p>
+<p>Must be a valid date. Example: <code>2025-11-22T14:17:52</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>expires_at</code></b>&nbsp;&nbsp;
@@ -8845,10 +9253,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="expires_at"                data-endpoint="POSTapi-ads--ad_id--update"
-               value="2051-12-10"
+               value="2051-12-16"
                data-component="body">
     <br>
-<p>Must be a valid date. Must be a date after or equal to <code>published_at</code>. Example: <code>2051-12-10</code></p>
+<p>Must be a valid date. Must be a date after or equal to <code>published_at</code>. Example: <code>2051-12-16</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>price_amount</code></b>&nbsp;&nbsp;
@@ -8891,7 +9299,7 @@ Must be one of:
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>is_exchangeable</code></b>&nbsp;&nbsp;
@@ -8912,7 +9320,92 @@ Must be one of:
             <code>false</code>
         </label>
     <br>
+<p>Example: <code>true</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>comment_enable</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="POSTapi-ads--ad_id--update" style="display: none">
+            <input type="radio" name="comment_enable"
+                   value="true"
+                   data-endpoint="POSTapi-ads--ad_id--update"
+                   data-component="body"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="POSTapi-ads--ad_id--update" style="display: none">
+            <input type="radio" name="comment_enable"
+                   value="false"
+                   data-endpoint="POSTapi-ads--ad_id--update"
+                   data-component="body"             >
+            <code>false</code>
+        </label>
+    <br>
 <p>Example: <code>false</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>phone_enable</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="POSTapi-ads--ad_id--update" style="display: none">
+            <input type="radio" name="phone_enable"
+                   value="true"
+                   data-endpoint="POSTapi-ads--ad_id--update"
+                   data-component="body"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="POSTapi-ads--ad_id--update" style="display: none">
+            <input type="radio" name="phone_enable"
+                   value="false"
+                   data-endpoint="POSTapi-ads--ad_id--update"
+                   data-component="body"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Example: <code>false</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>chat_enable</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="POSTapi-ads--ad_id--update" style="display: none">
+            <input type="radio" name="chat_enable"
+                   value="true"
+                   data-endpoint="POSTapi-ads--ad_id--update"
+                   data-component="body"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="POSTapi-ads--ad_id--update" style="display: none">
+            <input type="radio" name="chat_enable"
+                   value="false"
+                   data-endpoint="POSTapi-ads--ad_id--update"
+                   data-component="body"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Example: <code>false</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>extra_amount</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="extra_amount"                data-endpoint="POSTapi-ads--ad_id--update"
+               value="77"
+               data-component="body">
+    <br>
+<p>This field is required when <code>is_exchangeable</code> is <code>true</code>. Must be at least 0. Example: <code>77</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>exchange_description</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="exchange_description"                data-endpoint="POSTapi-ads--ad_id--update"
+               value="architecto"
+               data-component="body">
+    <br>
+<p>This field is required when <code>is_exchangeable</code> is <code>true</code>. Example: <code>architecto</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>city_id</code></b>&nbsp;&nbsp;
@@ -8942,10 +9435,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="latitude"                data-endpoint="POSTapi-ads--ad_id--update"
-               value="-90"
+               value="-89"
                data-component="body">
     <br>
-<p>Must be between -90 and 90. Example: <code>-90</code></p>
+<p>Must be between -90 and 90. Example: <code>-89</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>longitude</code></b>&nbsp;&nbsp;
@@ -8975,10 +9468,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="view_count"                data-endpoint="POSTapi-ads--ad_id--update"
-               value="76"
+               value="12"
                data-component="body">
     <br>
-<p>Must be at least 0. Example: <code>76</code></p>
+<p>Must be at least 0. Example: <code>12</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>share_count</code></b>&nbsp;&nbsp;
@@ -8986,10 +9479,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="share_count"                data-endpoint="POSTapi-ads--ad_id--update"
-               value="60"
+               value="77"
                data-component="body">
     <br>
-<p>Must be at least 0. Example: <code>60</code></p>
+<p>Must be at least 0. Example: <code>77</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>favorite_count</code></b>&nbsp;&nbsp;
@@ -8997,10 +9490,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="favorite_count"                data-endpoint="POSTapi-ads--ad_id--update"
-               value="42"
+               value="8"
                data-component="body">
     <br>
-<p>Must be at least 0. Example: <code>42</code></p>
+<p>Must be at least 0. Example: <code>8</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>featured_until</code></b>&nbsp;&nbsp;
@@ -9008,10 +9501,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="featured_until"                data-endpoint="POSTapi-ads--ad_id--update"
-               value="2025-11-16T04:45:06"
+               value="2025-11-22T14:17:52"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-11-16T04:45:06</code></p>
+<p>Must be a valid date. Example: <code>2025-11-22T14:17:52</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>priority_score</code></b>&nbsp;&nbsp;
@@ -9063,7 +9556,7 @@ Must be one of:
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
                     </div>
                                                                 <div style="margin-left: 14px; clear: unset;">
                         <b style="line-height: 2;"><code>assigned_by</code></b>&nbsp;&nbsp;
@@ -9158,10 +9651,10 @@ Must be one of:
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="attribute_values.0.value_date"                data-endpoint="POSTapi-ads--ad_id--update"
-               value="2025-11-16T04:45:06"
+               value="2025-11-22T14:17:52"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-11-16T04:45:06</code></p>
+<p>Must be a valid date. Example: <code>2025-11-22T14:17:52</code></p>
                     </div>
                                                                 <div style="margin-left: 14px; clear: unset;">
                         <b style="line-height: 2;"><code>value_json</code></b>&nbsp;&nbsp;
@@ -9502,6 +9995,183 @@ You can check the Dev Tools console for debugging information.</code></pre>
                     </div>
                                     </details>
         </div>
+                        <h2 id="ads-GETapi-advertisable-types-classes">Retrieve the registered advertisable classes for payload construction.</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-GETapi-advertisable-types-classes">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "https://api.wezone.app/api/advertisable-types/classes" \
+    --header "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://api.wezone.app/api/advertisable-types/classes"
+);
+
+const headers = {
+    "Authorization": "Bearer {YOUR_ACCESS_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-advertisable-types-classes">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: [
+        {
+            &quot;key&quot;: &quot;car&quot;,
+            &quot;label&quot;: &quot;Car&quot;,
+            &quot;model_class&quot;: &quot;Modules\\Ad\\Models\\AdCar&quot;
+        },
+        {
+            &quot;key&quot;: &quot;real_estate&quot;,
+            &quot;label&quot;: &quot;Real Estate&quot;,
+            &quot;model_class&quot;: &quot;Modules\\Ad\\Models\\AdRealEstate&quot;
+        },
+        {
+            &quot;key&quot;: &quot;job&quot;,
+            &quot;label&quot;: &quot;Job&quot;,
+            &quot;model_class&quot;: &quot;Modules\\Ad\\Models\\AdJob&quot;
+        }
+    ]
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-advertisable-types-classes" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-advertisable-types-classes"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-advertisable-types-classes"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-advertisable-types-classes" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-advertisable-types-classes">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-advertisable-types-classes" data-method="GET"
+      data-path="api/advertisable-types/classes"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-advertisable-types-classes', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-advertisable-types-classes"
+                    onclick="tryItOut('GETapi-advertisable-types-classes');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-advertisable-types-classes"
+                    onclick="cancelTryOut('GETapi-advertisable-types-classes');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-advertisable-types-classes"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/advertisable-types/classes</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-advertisable-types-classes"
+               value="Bearer {YOUR_ACCESS_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_ACCESS_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-advertisable-types-classes"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-advertisable-types-classes"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+    <h3>Response</h3>
+    <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+    <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>key</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+<br>
+<p>Unique key registered for the advertisable type.</p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>label</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+<br>
+<p>Human readable name.</p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>model_class</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+<br>
+<p>Backing model class for advertisable instances.</p>
+        </div>
                         <h2 id="ads-GETapi-advertisable-types">List supported advertisable types.</h2>
 
 <p>
@@ -9556,469 +10226,30 @@ access-control-allow-origin: *
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
+            &quot;id&quot;: 1,
             &quot;key&quot;: &quot;car&quot;,
             &quot;label&quot;: &quot;Car&quot;,
             &quot;description&quot;: &quot;Passenger vehicles, including sedans, hatchbacks, SUVs, and similar listings.&quot;,
             &quot;model_class&quot;: &quot;Modules\\Ad\\Models\\AdCar&quot;,
-            &quot;base_properties&quot;: [
-                {
-                    &quot;name&quot;: &quot;slug&quot;,
-                    &quot;type&quot;: &quot;string&quot;,
-                    &quot;label&quot;: &quot;Slug&quot;,
-                    &quot;description&quot;: &quot;Unique, URL-friendly identifier for the car listing.&quot;,
-                    &quot;required&quot;: true,
-                    &quot;rules&quot;: [
-                        &quot;string&quot;,
-                        &quot;max:255&quot;
-                    ],
-                    &quot;default&quot;: null,
-                    &quot;options&quot;: null
-                },
-                {
-                    &quot;name&quot;: &quot;brand_id&quot;,
-                    &quot;type&quot;: &quot;integer&quot;,
-                    &quot;label&quot;: &quot;Brand&quot;,
-                    &quot;description&quot;: &quot;Identifier referencing the car manufacturer.&quot;,
-                    &quot;required&quot;: false,
-                    &quot;rules&quot;: null,
-                    &quot;default&quot;: null,
-                    &quot;options&quot;: null
-                },
-                {
-                    &quot;name&quot;: &quot;model_id&quot;,
-                    &quot;type&quot;: &quot;integer&quot;,
-                    &quot;label&quot;: &quot;Model&quot;,
-                    &quot;description&quot;: &quot;Identifier referencing the specific car model or trim.&quot;,
-                    &quot;required&quot;: false,
-                    &quot;rules&quot;: null,
-                    &quot;default&quot;: null,
-                    &quot;options&quot;: null
-                },
-                {
-                    &quot;name&quot;: &quot;year&quot;,
-                    &quot;type&quot;: &quot;integer&quot;,
-                    &quot;label&quot;: &quot;Manufacture Year&quot;,
-                    &quot;description&quot;: &quot;Production year of the vehicle.&quot;,
-                    &quot;required&quot;: false,
-                    &quot;rules&quot;: null,
-                    &quot;default&quot;: null,
-                    &quot;options&quot;: null
-                },
-                {
-                    &quot;name&quot;: &quot;mileage&quot;,
-                    &quot;type&quot;: &quot;integer&quot;,
-                    &quot;label&quot;: &quot;Mileage&quot;,
-                    &quot;description&quot;: &quot;Recorded distance travelled, typically in kilometers.&quot;,
-                    &quot;required&quot;: false,
-                    &quot;rules&quot;: null,
-                    &quot;default&quot;: null,
-                    &quot;options&quot;: null
-                },
-                {
-                    &quot;name&quot;: &quot;fuel_type&quot;,
-                    &quot;type&quot;: &quot;string&quot;,
-                    &quot;label&quot;: &quot;Fuel Type&quot;,
-                    &quot;description&quot;: &quot;Energy source powering the vehicle, such as petrol or electric.&quot;,
-                    &quot;required&quot;: false,
-                    &quot;rules&quot;: null,
-                    &quot;default&quot;: null,
-                    &quot;options&quot;: null
-                },
-                {
-                    &quot;name&quot;: &quot;transmission&quot;,
-                    &quot;type&quot;: &quot;string&quot;,
-                    &quot;label&quot;: &quot;Transmission&quot;,
-                    &quot;description&quot;: &quot;Gearbox type, e.g. automatic or manual.&quot;,
-                    &quot;required&quot;: false,
-                    &quot;rules&quot;: null,
-                    &quot;default&quot;: null,
-                    &quot;options&quot;: null
-                },
-                {
-                    &quot;name&quot;: &quot;body_style&quot;,
-                    &quot;type&quot;: &quot;string&quot;,
-                    &quot;label&quot;: &quot;Body Style&quot;,
-                    &quot;description&quot;: &quot;Vehicle body classification such as sedan or SUV.&quot;,
-                    &quot;required&quot;: false,
-                    &quot;rules&quot;: null,
-                    &quot;default&quot;: null,
-                    &quot;options&quot;: null
-                },
-                {
-                    &quot;name&quot;: &quot;color&quot;,
-                    &quot;type&quot;: &quot;string&quot;,
-                    &quot;label&quot;: &quot;Color&quot;,
-                    &quot;description&quot;: &quot;Exterior colour of the car.&quot;,
-                    &quot;required&quot;: false,
-                    &quot;rules&quot;: null,
-                    &quot;default&quot;: null,
-                    &quot;options&quot;: null
-                },
-                {
-                    &quot;name&quot;: &quot;condition&quot;,
-                    &quot;type&quot;: &quot;string&quot;,
-                    &quot;label&quot;: &quot;Condition&quot;,
-                    &quot;description&quot;: &quot;Overall condition such as new or used.&quot;,
-                    &quot;required&quot;: false,
-                    &quot;rules&quot;: null,
-                    &quot;default&quot;: null,
-                    &quot;options&quot;: null
-                },
-                {
-                    &quot;name&quot;: &quot;ownership_count&quot;,
-                    &quot;type&quot;: &quot;integer&quot;,
-                    &quot;label&quot;: &quot;Previous Owners&quot;,
-                    &quot;description&quot;: &quot;Number of recorded owners for the vehicle.&quot;,
-                    &quot;required&quot;: false,
-                    &quot;rules&quot;: null,
-                    &quot;default&quot;: null,
-                    &quot;options&quot;: null
-                },
-                {
-                    &quot;name&quot;: &quot;vin&quot;,
-                    &quot;type&quot;: &quot;string&quot;,
-                    &quot;label&quot;: &quot;VIN&quot;,
-                    &quot;description&quot;: &quot;Vehicle identification number, if available.&quot;,
-                    &quot;required&quot;: false,
-                    &quot;rules&quot;: null,
-                    &quot;default&quot;: null,
-                    &quot;options&quot;: null
-                },
-                {
-                    &quot;name&quot;: &quot;registration_expiry&quot;,
-                    &quot;type&quot;: &quot;date&quot;,
-                    &quot;label&quot;: &quot;Registration Expiry&quot;,
-                    &quot;description&quot;: &quot;Date when the current registration expires.&quot;,
-                    &quot;required&quot;: false,
-                    &quot;rules&quot;: null,
-                    &quot;default&quot;: null,
-                    &quot;options&quot;: null
-                },
-                {
-                    &quot;name&quot;: &quot;insurance_expiry&quot;,
-                    &quot;type&quot;: &quot;date&quot;,
-                    &quot;label&quot;: &quot;Insurance Expiry&quot;,
-                    &quot;description&quot;: &quot;Date when the current insurance policy expires.&quot;,
-                    &quot;required&quot;: false,
-                    &quot;rules&quot;: null,
-                    &quot;default&quot;: null,
-                    &quot;options&quot;: null
-                }
-            ],
+            &quot;icon_url&quot;: &quot;&quot;,
             &quot;attribute_groups&quot;: []
         },
         {
+            &quot;id&quot;: 2,
             &quot;key&quot;: &quot;real_estate&quot;,
             &quot;label&quot;: &quot;Real Estate&quot;,
             &quot;description&quot;: &quot;Residential or commercial property listings including rentals and sales.&quot;,
             &quot;model_class&quot;: &quot;Modules\\Ad\\Models\\AdRealEstate&quot;,
-            &quot;base_properties&quot;: [
-                {
-                    &quot;name&quot;: &quot;slug&quot;,
-                    &quot;type&quot;: &quot;string&quot;,
-                    &quot;label&quot;: &quot;Slug&quot;,
-                    &quot;description&quot;: &quot;Unique, URL-friendly identifier for the property listing.&quot;,
-                    &quot;required&quot;: true,
-                    &quot;rules&quot;: [
-                        &quot;string&quot;,
-                        &quot;max:255&quot;
-                    ],
-                    &quot;default&quot;: null,
-                    &quot;options&quot;: null
-                },
-                {
-                    &quot;name&quot;: &quot;property_type&quot;,
-                    &quot;type&quot;: &quot;string&quot;,
-                    &quot;label&quot;: &quot;Property Type&quot;,
-                    &quot;description&quot;: &quot;Type of property such as apartment, villa, or office.&quot;,
-                    &quot;required&quot;: false,
-                    &quot;rules&quot;: null,
-                    &quot;default&quot;: null,
-                    &quot;options&quot;: null
-                },
-                {
-                    &quot;name&quot;: &quot;usage_type&quot;,
-                    &quot;type&quot;: &quot;string&quot;,
-                    &quot;label&quot;: &quot;Usage Type&quot;,
-                    &quot;description&quot;: &quot;Intended usage such as residential or commercial.&quot;,
-                    &quot;required&quot;: false,
-                    &quot;rules&quot;: null,
-                    &quot;default&quot;: null,
-                    &quot;options&quot;: null
-                },
-                {
-                    &quot;name&quot;: &quot;area_m2&quot;,
-                    &quot;type&quot;: &quot;decimal&quot;,
-                    &quot;label&quot;: &quot;Building Area&quot;,
-                    &quot;description&quot;: &quot;Covered area of the property in square meters.&quot;,
-                    &quot;required&quot;: false,
-                    &quot;rules&quot;: null,
-                    &quot;default&quot;: null,
-                    &quot;options&quot;: null
-                },
-                {
-                    &quot;name&quot;: &quot;land_area_m2&quot;,
-                    &quot;type&quot;: &quot;decimal&quot;,
-                    &quot;label&quot;: &quot;Land Area&quot;,
-                    &quot;description&quot;: &quot;Total land area in square meters, if applicable.&quot;,
-                    &quot;required&quot;: false,
-                    &quot;rules&quot;: null,
-                    &quot;default&quot;: null,
-                    &quot;options&quot;: null
-                },
-                {
-                    &quot;name&quot;: &quot;bedrooms&quot;,
-                    &quot;type&quot;: &quot;integer&quot;,
-                    &quot;label&quot;: &quot;Bedrooms&quot;,
-                    &quot;description&quot;: &quot;Number of bedrooms.&quot;,
-                    &quot;required&quot;: false,
-                    &quot;rules&quot;: null,
-                    &quot;default&quot;: null,
-                    &quot;options&quot;: null
-                },
-                {
-                    &quot;name&quot;: &quot;bathrooms&quot;,
-                    &quot;type&quot;: &quot;integer&quot;,
-                    &quot;label&quot;: &quot;Bathrooms&quot;,
-                    &quot;description&quot;: &quot;Number of bathrooms.&quot;,
-                    &quot;required&quot;: false,
-                    &quot;rules&quot;: null,
-                    &quot;default&quot;: null,
-                    &quot;options&quot;: null
-                },
-                {
-                    &quot;name&quot;: &quot;parking_spaces&quot;,
-                    &quot;type&quot;: &quot;integer&quot;,
-                    &quot;label&quot;: &quot;Parking Spaces&quot;,
-                    &quot;description&quot;: &quot;Number of available parking spots.&quot;,
-                    &quot;required&quot;: false,
-                    &quot;rules&quot;: null,
-                    &quot;default&quot;: null,
-                    &quot;options&quot;: null
-                },
-                {
-                    &quot;name&quot;: &quot;floor_number&quot;,
-                    &quot;type&quot;: &quot;integer&quot;,
-                    &quot;label&quot;: &quot;Floor Number&quot;,
-                    &quot;description&quot;: &quot;Current floor of the unit.&quot;,
-                    &quot;required&quot;: false,
-                    &quot;rules&quot;: null,
-                    &quot;default&quot;: null,
-                    &quot;options&quot;: null
-                },
-                {
-                    &quot;name&quot;: &quot;total_floors&quot;,
-                    &quot;type&quot;: &quot;integer&quot;,
-                    &quot;label&quot;: &quot;Total Floors&quot;,
-                    &quot;description&quot;: &quot;Total floors in the building or complex.&quot;,
-                    &quot;required&quot;: false,
-                    &quot;rules&quot;: null,
-                    &quot;default&quot;: null,
-                    &quot;options&quot;: null
-                },
-                {
-                    &quot;name&quot;: &quot;year_built&quot;,
-                    &quot;type&quot;: &quot;integer&quot;,
-                    &quot;label&quot;: &quot;Year Built&quot;,
-                    &quot;description&quot;: &quot;Construction completion year.&quot;,
-                    &quot;required&quot;: false,
-                    &quot;rules&quot;: null,
-                    &quot;default&quot;: null,
-                    &quot;options&quot;: null
-                },
-                {
-                    &quot;name&quot;: &quot;document_type&quot;,
-                    &quot;type&quot;: &quot;string&quot;,
-                    &quot;label&quot;: &quot;Document Type&quot;,
-                    &quot;description&quot;: &quot;Legal document type provided for the property.&quot;,
-                    &quot;required&quot;: false,
-                    &quot;rules&quot;: null,
-                    &quot;default&quot;: null,
-                    &quot;options&quot;: null
-                },
-                {
-                    &quot;name&quot;: &quot;has_elevator&quot;,
-                    &quot;type&quot;: &quot;boolean&quot;,
-                    &quot;label&quot;: &quot;Has Elevator&quot;,
-                    &quot;description&quot;: &quot;Indicates if the building is equipped with an elevator.&quot;,
-                    &quot;required&quot;: false,
-                    &quot;rules&quot;: null,
-                    &quot;default&quot;: null,
-                    &quot;options&quot;: null
-                },
-                {
-                    &quot;name&quot;: &quot;has_storage&quot;,
-                    &quot;type&quot;: &quot;boolean&quot;,
-                    &quot;label&quot;: &quot;Has Storage&quot;,
-                    &quot;description&quot;: &quot;Indicates if the property includes a storage room.&quot;,
-                    &quot;required&quot;: false,
-                    &quot;rules&quot;: null,
-                    &quot;default&quot;: null,
-                    &quot;options&quot;: null
-                },
-                {
-                    &quot;name&quot;: &quot;utilities_json&quot;,
-                    &quot;type&quot;: &quot;json&quot;,
-                    &quot;label&quot;: &quot;Utilities&quot;,
-                    &quot;description&quot;: &quot;Structured representation of available utilities.&quot;,
-                    &quot;required&quot;: false,
-                    &quot;rules&quot;: null,
-                    &quot;default&quot;: null,
-                    &quot;options&quot;: null
-                }
-            ],
+            &quot;icon_url&quot;: &quot;&quot;,
             &quot;attribute_groups&quot;: []
         },
         {
+            &quot;id&quot;: 3,
             &quot;key&quot;: &quot;job&quot;,
             &quot;label&quot;: &quot;Job&quot;,
             &quot;description&quot;: &quot;Employment opportunities across industries and experience levels.&quot;,
             &quot;model_class&quot;: &quot;Modules\\Ad\\Models\\AdJob&quot;,
-            &quot;base_properties&quot;: [
-                {
-                    &quot;name&quot;: &quot;slug&quot;,
-                    &quot;type&quot;: &quot;string&quot;,
-                    &quot;label&quot;: &quot;Slug&quot;,
-                    &quot;description&quot;: &quot;Unique, URL-friendly identifier for the job listing.&quot;,
-                    &quot;required&quot;: true,
-                    &quot;rules&quot;: [
-                        &quot;string&quot;,
-                        &quot;max:255&quot;
-                    ],
-                    &quot;default&quot;: null,
-                    &quot;options&quot;: null
-                },
-                {
-                    &quot;name&quot;: &quot;company_name&quot;,
-                    &quot;type&quot;: &quot;string&quot;,
-                    &quot;label&quot;: &quot;Company Name&quot;,
-                    &quot;description&quot;: &quot;Hiring organisation or employer.&quot;,
-                    &quot;required&quot;: false,
-                    &quot;rules&quot;: null,
-                    &quot;default&quot;: null,
-                    &quot;options&quot;: null
-                },
-                {
-                    &quot;name&quot;: &quot;position_title&quot;,
-                    &quot;type&quot;: &quot;string&quot;,
-                    &quot;label&quot;: &quot;Position Title&quot;,
-                    &quot;description&quot;: &quot;Role or job title being advertised.&quot;,
-                    &quot;required&quot;: false,
-                    &quot;rules&quot;: null,
-                    &quot;default&quot;: null,
-                    &quot;options&quot;: null
-                },
-                {
-                    &quot;name&quot;: &quot;industry&quot;,
-                    &quot;type&quot;: &quot;string&quot;,
-                    &quot;label&quot;: &quot;Industry&quot;,
-                    &quot;description&quot;: &quot;Industry classification for the role.&quot;,
-                    &quot;required&quot;: false,
-                    &quot;rules&quot;: null,
-                    &quot;default&quot;: null,
-                    &quot;options&quot;: null
-                },
-                {
-                    &quot;name&quot;: &quot;employment_type&quot;,
-                    &quot;type&quot;: &quot;string&quot;,
-                    &quot;label&quot;: &quot;Employment Type&quot;,
-                    &quot;description&quot;: &quot;Engagement type such as full-time or contract.&quot;,
-                    &quot;required&quot;: false,
-                    &quot;rules&quot;: null,
-                    &quot;default&quot;: null,
-                    &quot;options&quot;: null
-                },
-                {
-                    &quot;name&quot;: &quot;experience_level&quot;,
-                    &quot;type&quot;: &quot;string&quot;,
-                    &quot;label&quot;: &quot;Experience Level&quot;,
-                    &quot;description&quot;: &quot;Required seniority level such as junior or senior.&quot;,
-                    &quot;required&quot;: false,
-                    &quot;rules&quot;: null,
-                    &quot;default&quot;: null,
-                    &quot;options&quot;: null
-                },
-                {
-                    &quot;name&quot;: &quot;education_level&quot;,
-                    &quot;type&quot;: &quot;string&quot;,
-                    &quot;label&quot;: &quot;Education Level&quot;,
-                    &quot;description&quot;: &quot;Preferred education background.&quot;,
-                    &quot;required&quot;: false,
-                    &quot;rules&quot;: null,
-                    &quot;default&quot;: null,
-                    &quot;options&quot;: null
-                },
-                {
-                    &quot;name&quot;: &quot;salary_min&quot;,
-                    &quot;type&quot;: &quot;integer&quot;,
-                    &quot;label&quot;: &quot;Minimum Salary&quot;,
-                    &quot;description&quot;: &quot;Lower bound for the salary range.&quot;,
-                    &quot;required&quot;: false,
-                    &quot;rules&quot;: null,
-                    &quot;default&quot;: null,
-                    &quot;options&quot;: null
-                },
-                {
-                    &quot;name&quot;: &quot;salary_max&quot;,
-                    &quot;type&quot;: &quot;integer&quot;,
-                    &quot;label&quot;: &quot;Maximum Salary&quot;,
-                    &quot;description&quot;: &quot;Upper bound for the salary range.&quot;,
-                    &quot;required&quot;: false,
-                    &quot;rules&quot;: null,
-                    &quot;default&quot;: null,
-                    &quot;options&quot;: null
-                },
-                {
-                    &quot;name&quot;: &quot;currency&quot;,
-                    &quot;type&quot;: &quot;string&quot;,
-                    &quot;label&quot;: &quot;Currency&quot;,
-                    &quot;description&quot;: &quot;Currency code for the salary range.&quot;,
-                    &quot;required&quot;: false,
-                    &quot;rules&quot;: null,
-                    &quot;default&quot;: null,
-                    &quot;options&quot;: null
-                },
-                {
-                    &quot;name&quot;: &quot;salary_type&quot;,
-                    &quot;type&quot;: &quot;string&quot;,
-                    &quot;label&quot;: &quot;Salary Type&quot;,
-                    &quot;description&quot;: &quot;Payment cadence such as monthly or hourly.&quot;,
-                    &quot;required&quot;: false,
-                    &quot;rules&quot;: null,
-                    &quot;default&quot;: null,
-                    &quot;options&quot;: null
-                },
-                {
-                    &quot;name&quot;: &quot;work_schedule&quot;,
-                    &quot;type&quot;: &quot;string&quot;,
-                    &quot;label&quot;: &quot;Work Schedule&quot;,
-                    &quot;description&quot;: &quot;Work hours or shift expectations.&quot;,
-                    &quot;required&quot;: false,
-                    &quot;rules&quot;: null,
-                    &quot;default&quot;: null,
-                    &quot;options&quot;: null
-                },
-                {
-                    &quot;name&quot;: &quot;remote_level&quot;,
-                    &quot;type&quot;: &quot;string&quot;,
-                    &quot;label&quot;: &quot;Remote Level&quot;,
-                    &quot;description&quot;: &quot;Remote work allowance, e.g. onsite or hybrid.&quot;,
-                    &quot;required&quot;: false,
-                    &quot;rules&quot;: null,
-                    &quot;default&quot;: null,
-                    &quot;options&quot;: null
-                },
-                {
-                    &quot;name&quot;: &quot;benefits_json&quot;,
-                    &quot;type&quot;: &quot;json&quot;,
-                    &quot;label&quot;: &quot;Benefits&quot;,
-                    &quot;description&quot;: &quot;Structured list of job benefits or perks.&quot;,
-                    &quot;required&quot;: false,
-                    &quot;rules&quot;: null,
-                    &quot;default&quot;: null,
-                    &quot;options&quot;: null
-                }
-            ],
+            &quot;icon_url&quot;: &quot;&quot;,
             &quot;attribute_groups&quot;: []
         }
     ]
@@ -10107,7 +10338,58 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                         </form>
 
-                    <h2 id="ads-GETapi-advertisable-types--key-">Show metadata for an advertisable type.</h2>
+    <h3>Response</h3>
+    <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+    <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+<br>
+<p>Database identifier of the advertisable type.</p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>key</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+<br>
+<p>Unique key registered for the advertisable type.</p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>label</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+<br>
+<p>Human readable name.</p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
+<small>string|null</small>&nbsp;
+ &nbsp;
+<br>
+<p>Description shown to clients.</p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>model_class</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+<br>
+<p>Backing model class for advertisable instances.</p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>icon_url</code></b>&nbsp;&nbsp;
+<small>string|null</small>&nbsp;
+ &nbsp;
+<br>
+<p>Public URL of the advertisable type icon.</p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>attribute_groups</code></b>&nbsp;&nbsp;
+<small>string[]</small>&nbsp;
+ &nbsp;
+<br>
+<p>Attribute groups and definitions describing the advertisable payload.</p>
+        </div>
+                        <h2 id="ads-GETapi-advertisable-types--key-">Show metadata for an advertisable type.</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
@@ -10257,7 +10539,58 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                     </form>
 
-                                <h2 id="ads-comments">Comments</h2>
+    <h3>Response</h3>
+    <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+    <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+<br>
+<p>Database identifier of the advertisable type.</p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>key</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+<br>
+<p>Unique key registered for the advertisable type.</p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>label</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+<br>
+<p>Human readable name.</p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
+<small>string|null</small>&nbsp;
+ &nbsp;
+<br>
+<p>Description shown to clients.</p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>model_class</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+<br>
+<p>Backing model class for advertisable instances.</p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>icon_url</code></b>&nbsp;&nbsp;
+<small>string|null</small>&nbsp;
+ &nbsp;
+<br>
+<p>Public URL of the advertisable type icon.</p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>attribute_groups</code></b>&nbsp;&nbsp;
+<small>string[]</small>&nbsp;
+ &nbsp;
+<br>
+<p>Attribute groups and definitions describing the advertisable payload.</p>
+        </div>
+                                    <h2 id="ads-comments">Comments</h2>
                                                     <h2 id="ads-GETapi-ads--ad_id--comments">List comments for an ad.</h2>
 
 <p>
@@ -12559,7 +12892,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "national_id="""\
     --form "residence_city_id=10"\
     --form "residence_province_id=2"\
-    --form "profile_image=@C:\Users\Mohsen\AppData\Local\Temp\php82E6.tmp" </code></pre></div>
+    --form "profile_image=@C:\Users\Mohsen\AppData\Local\Temp\php173C.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -12809,7 +13142,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>optional Profile image file (JPEG, PNG, BMP, GIF, SVG, or WebP). Example: <code>C:\Users\Mohsen\AppData\Local\Temp\php82E6.tmp</code></p>
+<p>optional Profile image file (JPEG, PNG, BMP, GIF, SVG, or WebP). Example: <code>C:\Users\Mohsen\AppData\Local\Temp\php173C.tmp</code></p>
         </div>
         </form>
 
@@ -17818,15 +18151,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --get "https://api.wezone.app/api/monetization/payments?status=paid&amp;gateway=payping&amp;ad_id=42&amp;purchase_id=15&amp;per_page=20" \
     --header "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
     --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --data "{
-    \"status\": \"b\",
-    \"gateway\": \"n\",
-    \"ad_id\": 16,
-    \"purchase_id\": 16,
-    \"per_page\": 22
-}"
-</code></pre></div>
+    --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
@@ -17850,18 +18175,9 @@ const headers = {
     "Accept": "application/json",
 };
 
-let body = {
-    "status": "b",
-    "gateway": "n",
-    "ad_id": 16,
-    "purchase_id": 16,
-    "per_page": 22
-};
-
 fetch(url, {
     method: "GET",
     headers,
-    body: JSON.stringify(body),
 }).then(response =&gt; response.json());</code></pre></div>
 
 </span>
@@ -18046,63 +18362,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     <br>
 <p>Results per page (max 100). Example: <code>20</code></p>
             </div>
-                        <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="status"                data-endpoint="GETapi-monetization-payments"
-               value="b"
-               data-component="body">
-    <br>
-<p>Must not be greater than 50 characters. Example: <code>b</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>gateway</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-                              name="gateway"                data-endpoint="GETapi-monetization-payments"
-               value="n"
-               data-component="body">
-    <br>
-<p>Must not be greater than 100 characters. Example: <code>n</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>ad_id</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="ad_id"                data-endpoint="GETapi-monetization-payments"
-               value="16"
-               data-component="body">
-    <br>
-<p>The <code>id</code> of an existing record in the ads table. Example: <code>16</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>purchase_id</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="purchase_id"                data-endpoint="GETapi-monetization-payments"
-               value="16"
-               data-component="body">
-    <br>
-<p>The <code>id</code> of an existing record in the ad_plan_purchases table. Example: <code>16</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>per_page</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="per_page"                data-endpoint="GETapi-monetization-payments"
-               value="22"
-               data-component="body">
-    <br>
-<p>Must be at least 1. Must not be greater than 100. Example: <code>22</code></p>
-        </div>
-        </form>
+                </form>
 
                     <h2 id="monetization-POSTapi-monetization-payments">Create payment</h2>
 
@@ -20043,6 +20303,542 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="url">
     <br>
 <p>The notification identifier. Example: <code>architecto</code></p>
+            </div>
+                    </form>
+
+                <h1 id="others">Others</h1>
+
+    
+
+                                <h2 id="others-POSTapi-advertisable-types">Create a new advertisable type.</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-POSTapi-advertisable-types">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "https://api.wezone.app/api/advertisable-types" \
+    --header "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
+    --header "Content-Type: multipart/form-data" \
+    --header "Accept: application/json" \
+    --form "key=electronics"\
+    --form "label=Electronics"\
+    --form "description=Listings that cover consumer electronics."\
+    --form "model_class=\Modules\Ad\Models\AdCar"\
+    --form "icon=@C:\Users\Mohsen\AppData\Local\Temp\php168C.tmp" </code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://api.wezone.app/api/advertisable-types"
+);
+
+const headers = {
+    "Authorization": "Bearer {YOUR_ACCESS_TOKEN}",
+    "Content-Type": "multipart/form-data",
+    "Accept": "application/json",
+};
+
+const body = new FormData();
+body.append('key', 'electronics');
+body.append('label', 'Electronics');
+body.append('description', 'Listings that cover consumer electronics.');
+body.append('model_class', '\Modules\Ad\Models\AdCar');
+body.append('icon', document.querySelector('input[name="icon"]').files[0]);
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-advertisable-types">
+</span>
+<span id="execution-results-POSTapi-advertisable-types" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-advertisable-types"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-advertisable-types"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-advertisable-types" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-advertisable-types">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-advertisable-types" data-method="POST"
+      data-path="api/advertisable-types"
+      data-authed="1"
+      data-hasfiles="1"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-advertisable-types', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-advertisable-types"
+                    onclick="tryItOut('POSTapi-advertisable-types');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-advertisable-types"
+                    onclick="cancelTryOut('POSTapi-advertisable-types');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-advertisable-types"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/advertisable-types</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-advertisable-types"
+               value="Bearer {YOUR_ACCESS_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_ACCESS_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-advertisable-types"
+               value="multipart/form-data"
+               data-component="header">
+    <br>
+<p>Example: <code>multipart/form-data</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-advertisable-types"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>key</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="key"                data-endpoint="POSTapi-advertisable-types"
+               value="electronics"
+               data-component="body">
+    <br>
+<p>Unique identifier for the advertisable type. Must contain only letters, numbers, dashes and underscores. Must not be greater than 64 characters. Example: <code>electronics</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>label</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="label"                data-endpoint="POSTapi-advertisable-types"
+               value="Electronics"
+               data-component="body">
+    <br>
+<p>Human readable label displayed to users. Must not be greater than 255 characters. Example: <code>Electronics</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="description"                data-endpoint="POSTapi-advertisable-types"
+               value="Listings that cover consumer electronics."
+               data-component="body">
+    <br>
+<p>Optional description for clients. Example: <code>Listings that cover consumer electronics.</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>model_class</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="model_class"                data-endpoint="POSTapi-advertisable-types"
+               value="\Modules\Ad\Models\AdCar"
+               data-component="body">
+    <br>
+<p>Backed advertisable model class (must be supported). Must not be greater than 255 characters. Example: <code>\Modules\Ad\Models\AdCar</code></p>
+Must be one of:
+<ul style="list-style-type: square;"><li><code>Modules\Ad\Models\AdCar</code></li> <li><code>Modules\Ad\Models\AdRealEstate</code></li> <li><code>Modules\Ad\Models\AdJob</code></li></ul>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>icon</code></b>&nbsp;&nbsp;
+<small>file</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="file" style="display: none"
+                              name="icon"                data-endpoint="POSTapi-advertisable-types"
+               value=""
+               data-component="body">
+    <br>
+<p>Optional icon image representing the type. Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\Mohsen\AppData\Local\Temp\php168C.tmp</code></p>
+        </div>
+        </form>
+
+                    <h2 id="others-POSTapi-advertisable-types--advertisable_type_id--update">Update an existing advertisable type.</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-POSTapi-advertisable-types--advertisable_type_id--update">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "https://api.wezone.app/api/advertisable-types/architecto/update" \
+    --header "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
+    --header "Content-Type: multipart/form-data" \
+    --header "Accept: application/json" \
+    --form "key=premium_cars"\
+    --form "label=Premium Cars"\
+    --form "description=High-end car listings only."\
+    --form "model_class=\Modules\Ad\Models\AdRealEstate"\
+    --form "icon=@C:\Users\Mohsen\AppData\Local\Temp\php168D.tmp" </code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://api.wezone.app/api/advertisable-types/architecto/update"
+);
+
+const headers = {
+    "Authorization": "Bearer {YOUR_ACCESS_TOKEN}",
+    "Content-Type": "multipart/form-data",
+    "Accept": "application/json",
+};
+
+const body = new FormData();
+body.append('key', 'premium_cars');
+body.append('label', 'Premium Cars');
+body.append('description', 'High-end car listings only.');
+body.append('model_class', '\Modules\Ad\Models\AdRealEstate');
+body.append('icon', document.querySelector('input[name="icon"]').files[0]);
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-advertisable-types--advertisable_type_id--update">
+</span>
+<span id="execution-results-POSTapi-advertisable-types--advertisable_type_id--update" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-advertisable-types--advertisable_type_id--update"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-advertisable-types--advertisable_type_id--update"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-advertisable-types--advertisable_type_id--update" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-advertisable-types--advertisable_type_id--update">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-advertisable-types--advertisable_type_id--update" data-method="POST"
+      data-path="api/advertisable-types/{advertisable_type_id}/update"
+      data-authed="1"
+      data-hasfiles="1"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-advertisable-types--advertisable_type_id--update', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-advertisable-types--advertisable_type_id--update"
+                    onclick="tryItOut('POSTapi-advertisable-types--advertisable_type_id--update');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-advertisable-types--advertisable_type_id--update"
+                    onclick="cancelTryOut('POSTapi-advertisable-types--advertisable_type_id--update');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-advertisable-types--advertisable_type_id--update"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/advertisable-types/{advertisable_type_id}/update</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-advertisable-types--advertisable_type_id--update"
+               value="Bearer {YOUR_ACCESS_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_ACCESS_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-advertisable-types--advertisable_type_id--update"
+               value="multipart/form-data"
+               data-component="header">
+    <br>
+<p>Example: <code>multipart/form-data</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-advertisable-types--advertisable_type_id--update"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>advertisable_type_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="advertisable_type_id"                data-endpoint="POSTapi-advertisable-types--advertisable_type_id--update"
+               value="architecto"
+               data-component="url">
+    <br>
+<p>The ID of the advertisable type. Example: <code>architecto</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>key</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="key"                data-endpoint="POSTapi-advertisable-types--advertisable_type_id--update"
+               value="premium_cars"
+               data-component="body">
+    <br>
+<p>Unique identifier for the advertisable type. Must contain only letters, numbers, dashes and underscores. Must not be greater than 64 characters. Example: <code>premium_cars</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>label</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="label"                data-endpoint="POSTapi-advertisable-types--advertisable_type_id--update"
+               value="Premium Cars"
+               data-component="body">
+    <br>
+<p>Human readable label displayed to users. Must not be greater than 255 characters. Example: <code>Premium Cars</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+                              name="description"                data-endpoint="POSTapi-advertisable-types--advertisable_type_id--update"
+               value="High-end car listings only."
+               data-component="body">
+    <br>
+<p>Optional description for clients. Example: <code>High-end car listings only.</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>model_class</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="model_class"                data-endpoint="POSTapi-advertisable-types--advertisable_type_id--update"
+               value="\Modules\Ad\Models\AdRealEstate"
+               data-component="body">
+    <br>
+<p>Backed advertisable model class (must be supported). Must not be greater than 255 characters. Example: <code>\Modules\Ad\Models\AdRealEstate</code></p>
+Must be one of:
+<ul style="list-style-type: square;"><li><code>Modules\Ad\Models\AdCar</code></li> <li><code>Modules\Ad\Models\AdRealEstate</code></li> <li><code>Modules\Ad\Models\AdJob</code></li></ul>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>icon</code></b>&nbsp;&nbsp;
+<small>file</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="file" style="display: none"
+                              name="icon"                data-endpoint="POSTapi-advertisable-types--advertisable_type_id--update"
+               value=""
+               data-component="body">
+    <br>
+<p>Optional icon image representing the type. Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\Mohsen\AppData\Local\Temp\php168D.tmp</code></p>
+        </div>
+        </form>
+
+                    <h2 id="others-POSTapi-advertisable-types--advertisable_type_id--delete">Delete an advertisable type.</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-POSTapi-advertisable-types--advertisable_type_id--delete">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "https://api.wezone.app/api/advertisable-types/architecto/delete" \
+    --header "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://api.wezone.app/api/advertisable-types/architecto/delete"
+);
+
+const headers = {
+    "Authorization": "Bearer {YOUR_ACCESS_TOKEN}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-advertisable-types--advertisable_type_id--delete">
+</span>
+<span id="execution-results-POSTapi-advertisable-types--advertisable_type_id--delete" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-advertisable-types--advertisable_type_id--delete"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-advertisable-types--advertisable_type_id--delete"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-advertisable-types--advertisable_type_id--delete" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-advertisable-types--advertisable_type_id--delete">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-advertisable-types--advertisable_type_id--delete" data-method="POST"
+      data-path="api/advertisable-types/{advertisable_type_id}/delete"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-advertisable-types--advertisable_type_id--delete', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-advertisable-types--advertisable_type_id--delete"
+                    onclick="tryItOut('POSTapi-advertisable-types--advertisable_type_id--delete');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-advertisable-types--advertisable_type_id--delete"
+                    onclick="cancelTryOut('POSTapi-advertisable-types--advertisable_type_id--delete');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-advertisable-types--advertisable_type_id--delete"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/advertisable-types/{advertisable_type_id}/delete</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-advertisable-types--advertisable_type_id--delete"
+               value="Bearer {YOUR_ACCESS_TOKEN}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_ACCESS_TOKEN}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-advertisable-types--advertisable_type_id--delete"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-advertisable-types--advertisable_type_id--delete"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>advertisable_type_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="advertisable_type_id"                data-endpoint="POSTapi-advertisable-types--advertisable_type_id--delete"
+               value="architecto"
+               data-component="url">
+    <br>
+<p>The ID of the advertisable type. Example: <code>architecto</code></p>
             </div>
                     </form>
 

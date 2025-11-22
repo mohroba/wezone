@@ -170,11 +170,12 @@ endpoints:
         custom: []
       options:
         name: options
-        description: 'Available options or constraints for the attribute.'
+        description: 'Available options or constraints for the attribute; pass either a constraint object or an array of enum strings.'
         required: false
         example:
-          min: 1.0
-          max: 5.0
+          - Red
+          - Blue
+          - White
         type: object
         enumValues: []
         exampleWasSpecified: false
@@ -228,8 +229,9 @@ endpoints:
       data_type: decimal
       unit: L
       options:
-        min: 1.0
-        max: 5.0
+        - Red
+        - Blue
+        - White
       is_required: false
       is_filterable: false
       is_searchable: false
@@ -406,11 +408,12 @@ endpoints:
         custom: []
       options:
         name: options
-        description: 'Available options or constraints for the attribute.'
+        description: 'Available options or constraints for the attribute; pass either a constraint object or an array of enum strings.'
         required: false
         example:
-          min: 1.0
-          max: 5.0
+          - Red
+          - Blue
+          - White
         type: object
         enumValues: []
         exampleWasSpecified: false
@@ -464,8 +467,9 @@ endpoints:
       data_type: decimal
       unit: L
       options:
-        min: 1.0
-        max: 5.0
+        - Red
+        - Blue
+        - White
       is_required: false
       is_filterable: false
       is_searchable: false

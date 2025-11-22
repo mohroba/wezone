@@ -1,130 +1,16 @@
-name: Users
+name: Settings
 description: ''
 endpoints:
   -
     httpMethods:
-      - POST
-    uri: 'api/users/{user_id}/follow'
-    metadata:
-      groupName: Users
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Follow a user.'
-      description: ''
-      authenticated: true
-      deprecated: false
-      custom: []
-    headers:
-      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      user_id:
-        name: user_id
-        description: 'The ID of the user.'
-        required: true
-        example: 1
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      user:
-        name: user
-        description: 'The ID of the user to follow.'
-        required: true
-        example: 123
-        type: integer
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanUrlParameters:
-      user_id: 1
-      user: 123
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses: []
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - POST
-    uri: 'api/users/{user_id}/unfollow'
-    metadata:
-      groupName: Users
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Unfollow a user.'
-      description: ''
-      authenticated: true
-      deprecated: false
-      custom: []
-    headers:
-      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      user_id:
-        name: user_id
-        description: 'The ID of the user.'
-        required: true
-        example: 1
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      user:
-        name: user
-        description: 'The ID of the user to unfollow.'
-        required: true
-        example: 123
-        type: integer
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanUrlParameters:
-      user_id: 1
-      user: 123
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses: []
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
       - GET
-    uri: 'api/users/{user_id}/followers'
+    uri: api/v1/settings
     metadata:
-      groupName: Users
+      groupName: Settings
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: "List a user's followers."
+      title: 'Display a listing of the resource.'
       description: ''
       authenticated: true
       deprecated: false
@@ -133,54 +19,10 @@ endpoints:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
       Accept: application/json
-    urlParameters:
-      user_id:
-        name: user_id
-        description: 'The ID of the user.'
-        required: true
-        example: 1
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-    cleanUrlParameters:
-      user_id: 1
-    queryParameters:
-      followed_from:
-        name: followed_from
-        description: 'Start date (inclusive) for follow records (YYYY-MM-DD). Must be a valid date.'
-        required: false
-        example: '2025-01-01'
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
-      followed_to:
-        name: followed_to
-        description: 'End date (inclusive). Must be >= followed_from. Must be a valid date. Must be a date after or equal to <code>followed_from</code>.'
-        required: false
-        example: '2025-12-31'
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
-      per_page:
-        name: per_page
-        description: 'Items per page (1–100). Must be at least 1. Must not be greater than 100.'
-        required: false
-        example: 25
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
-    cleanQueryParameters:
-      followed_from: '2025-01-01'
-      followed_to: '2025-12-31'
-      per_page: 25
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
     bodyParameters: []
     cleanBodyParameters: []
     fileParameters: []
@@ -206,13 +48,13 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: 'api/users/{user_id}/block'
+    uri: api/v1/settings
     metadata:
-      groupName: Users
+      groupName: Settings
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Block a user.'
+      title: 'Store a newly created resource in storage.'
       description: ''
       authenticated: true
       deprecated: false
@@ -221,153 +63,14 @@ endpoints:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
       Accept: application/json
-    urlParameters:
-      user_id:
-        name: user_id
-        description: 'The ID of the user.'
-        required: true
-        example: 1
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      user:
-        name: user
-        description: 'The identifier of the user to block.'
-        required: true
-        example: 16
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-    cleanUrlParameters:
-      user_id: 1
-      user: 16
+    urlParameters: []
+    cleanUrlParameters: []
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
     cleanBodyParameters: []
     fileParameters: []
-    responses:
-      -
-        status: 200
-        content: |-
-          {
-            "data": {
-              "id": 42,
-              "username": "blocked-user",
-              "profile": {
-                "first_name": "Blocked",
-                "last_name": "User"
-              }
-            },
-            "meta": {
-              "message": "User already blocked."
-            }
-          }
-        headers: []
-        description: 'User already blocked'
-        custom: []
-      -
-        status: 201
-        content: |-
-          {
-            "data": {
-              "id": 42,
-              "username": "blocked-user",
-              "profile": {
-                "first_name": "Blocked",
-                "last_name": "User"
-              }
-            },
-            "meta": {
-              "message": "User blocked successfully."
-            }
-          }
-        headers: []
-        description: 'User newly blocked'
-        custom: []
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - POST
-    uri: 'api/users/{user_id}/unblock'
-    metadata:
-      groupName: Users
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Unblock a user.'
-      description: ''
-      authenticated: true
-      deprecated: false
-      custom: []
-    headers:
-      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      user_id:
-        name: user_id
-        description: 'The ID of the user.'
-        required: true
-        example: 1
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      user:
-        name: user
-        description: 'The identifier of the user to unblock.'
-        required: true
-        example: 16
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-    cleanUrlParameters:
-      user_id: 1
-      user: 16
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        status: 200
-        content: |-
-          {
-            "meta": {
-              "message": "User unblocked successfully."
-            }
-          }
-        headers: []
-        description: 'User unblocked'
-        custom: []
-      -
-        status: 200
-        content: |-
-          {
-            "meta": {
-              "message": "User was not blocked."
-            }
-          }
-        headers: []
-        description: 'User not previously blocked'
-        custom: []
+    responses: []
     responseFields: []
     auth:
       - headers
@@ -380,13 +83,13 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: api/users/blocks
+    uri: 'api/v1/settings/{id}'
     metadata:
-      groupName: Users
+      groupName: Settings
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'List blocked users for the authenticated account.'
+      title: 'Show the specified resource.'
       description: ''
       authenticated: true
       deprecated: false
@@ -395,146 +98,21 @@ endpoints:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
       Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters:
-      per_page:
-        name: per_page
-        description: 'The number of results per page (1-100).'
-        required: false
-        example: 15
-        type: integer
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: true
-        custom: []
-    cleanQueryParameters:
-      per_page: 15
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        status: 200
-        content: |-
-          {
-            "data": [
-              {
-                "id": 42,
-                "username": "blocked-user",
-                "profile": {
-                  "first_name": "Blocked",
-                  "last_name": "User"
-                },
-                "followers_count": 10,
-                "followings_count": 5
-              }
-            ],
-            "links": {
-              "first": "https://example.com/api/users/blocks?page=1",
-              "last": "https://example.com/api/users/blocks?page=1",
-              "prev": null,
-              "next": null
-            },
-            "meta": {
-              "current_page": 1,
-              "from": 1,
-              "last_page": 1,
-              "path": "https://example.com/api/users/blocks",
-              "per_page": 15,
-              "to": 1,
-              "total": 1
-            }
-          }
-        headers: []
-        description: ''
-        custom: []
-    responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - GET
-    uri: api/users
-    metadata:
-      groupName: Users
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Search users.'
-      description: ''
-      authenticated: true
-      deprecated: false
-      custom: []
-    headers:
-      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters:
-      follower_id:
-        name: follower_id
-        description: 'Filter users followed by this user ID. The <code>id</code> of an existing record in the users table.'
-        required: false
-        example: 42
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
-      email:
-        name: email
-        description: 'Filter by email (partial match allowed in your controller).'
-        required: false
-        example: jane@example.com
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the setting.'
+        required: true
+        example: architecto
         type: string
         enumValues: []
         exampleWasSpecified: false
-        nullable: true
+        nullable: false
         custom: []
-      mobile:
-        name: mobile
-        description: 'Filter by mobile number.'
-        required: false
-        example: '09123456789'
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
-      username:
-        name: username
-        description: 'Filter by username.'
-        required: false
-        example: jane_doe
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
-      per_page:
-        name: per_page
-        description: 'Items per page (1–100). Must be at least 1. Must not be greater than 100.'
-        required: false
-        example: 20
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: true
-        custom: []
-    cleanQueryParameters:
-      follower_id: 42
-      email: jane@example.com
-      mobile: '09123456789'
-      username: jane_doe
-      per_page: 20
+    cleanUrlParameters:
+      id: architecto
+    queryParameters: []
+    cleanQueryParameters: []
     bodyParameters: []
     cleanBodyParameters: []
     fileParameters: []
@@ -548,6 +126,98 @@ endpoints:
           access-control-allow-origin: '*'
         description: null
         custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: 'api/v1/settings/{id}/update'
+    metadata:
+      groupName: Settings
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Update the specified resource in storage.'
+      description: ''
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the setting.'
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: architecto
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: 'api/v1/settings/{id}/delete'
+    metadata:
+      groupName: Settings
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Remove the specified resource from storage.'
+      description: ''
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the setting.'
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: architecto
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
     responseFields: []
     auth:
       - headers

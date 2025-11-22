@@ -779,7 +779,7 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"data":[{"id":1,"user_id":1,"advertisable_type_id":1,"slug":"peugeot-206-2024-sample","title":"Peugeot 206 - Model 2024","subtitle":"Full options, low mileage","description":"Single owner, well maintained, no accidents.","status":"published","published_at":"2025-11-16T00:05:56.000000Z","expires_at":"2025-12-16T00:05:56.000000Z","price_amount":450000000,"price_currency":"IRR","is_negotiable":false,"is_exchangeable":true,"city_id":10,"province_id":1,"latitude":"35.6892000","longitude":"51.3890000","contact_channel":{"phone":"09120000000"},"view_count":0,"share_count":0,"favorite_count":0,"like_count":0,"featured_until":"2025-11-23T00:05:56.000000Z","priority_score":"10.5000","creator":{"id":1,"username":null,"full_name":null,"ads_count":1,"followers_count":0,"profile_image":null},"images":[],"created_at":"2025-11-16T00:05:56.000000Z","updated_at":"2025-11-16T00:05:56.000000Z","deleted_at":null}],"links":{"first":"http:\/\/localhost:8000\/api\/ads\/explore?per_page=20&page=1","last":"http:\/\/localhost:8000\/api\/ads\/explore?per_page=20&page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"http:\/\/localhost:8000\/api\/ads\/explore?per_page=20&page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"path":"http:\/\/localhost:8000\/api\/ads\/explore","per_page":20,"to":1,"total":1}}'
+        content: '{"data":[{"id":1,"user_id":1,"advertisable_type_id":1,"slug":"peugeot-206-2024-sample","title":"Peugeot 206 - Model 2024","subtitle":"Full options, low mileage","description":"Single owner, well maintained, no accidents.","status":"published","published_at":"2025-11-16T00:05:56.000000Z","expires_at":"2025-12-16T00:05:56.000000Z","price_amount":450000000,"price_currency":"IRR","is_negotiable":false,"is_exchangeable":true,"comment_enable":true,"phone_enable":true,"chat_enable":true,"extra_amount":0,"exchange_description":null,"city_id":10,"province_id":1,"latitude":"35.6892000","longitude":"51.3890000","contact_channel":{"phone":"09120000000"},"view_count":0,"share_count":0,"favorite_count":0,"like_count":0,"featured_until":"2025-11-23T00:05:56.000000Z","priority_score":"10.5000","creator":{"id":1,"username":null,"full_name":null,"ads_count":1,"followers_count":0,"profile_image":null},"images":[],"created_at":"2025-11-16T00:05:56.000000Z","updated_at":"2025-11-16T00:05:56.000000Z","deleted_at":null}],"links":{"first":"http:\/\/localhost:8000\/api\/ads\/explore?per_page=20&page=1","last":"http:\/\/localhost:8000\/api\/ads\/explore?per_page=20&page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"http:\/\/localhost:8000\/api\/ads\/explore?per_page=20&page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"path":"http:\/\/localhost:8000\/api\/ads\/explore","per_page":20,"to":1,"total":1}}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -1088,6 +1088,56 @@ endpoints:
         exampleWasSpecified: false
         nullable: false
         custom: []
+      comment_enable:
+        name: comment_enable
+        description: 'Whether comments are allowed on the ad.'
+        required: false
+        example: false
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      phone_enable:
+        name: phone_enable
+        description: 'Whether the phone contact option is enabled.'
+        required: false
+        example: false
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      chat_enable:
+        name: chat_enable
+        description: 'Whether in-app chat is enabled for the ad.'
+        required: false
+        example: false
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      extra_amount:
+        name: extra_amount
+        description: 'Additional amount expected on top of the exchanged item when swaps are accepted. This field is required when <code>is_exchangeable</code> is <code>true</code>. Must be at least 0.'
+        required: false
+        example: 150000
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      exchange_description:
+        name: exchange_description
+        description: 'Details of items that would be accepted in exchange. This field is required when <code>is_exchangeable</code> is <code>true</code>.'
+        required: false
+        example: 'Willing to swap for a newer model laptop plus cash.'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
       city_id:
         name: city_id
         description: 'City identifier for the ad location. The <code>id</code> of an existing record in the cities table.'
@@ -1173,7 +1223,7 @@ endpoints:
         name: featured_until
         description: 'Must be a valid date.'
         required: false
-        example: '2025-11-16T04:45:06'
+        example: '2025-11-22T14:17:52'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1191,8 +1241,8 @@ endpoints:
         custom: []
       categories:
         name: categories
-        description: 'Array of category assignments.'
-        required: true
+        description: 'Optional array of category assignments. Can be provided later via the ad update endpoint.'
+        required: false
         example:
           -
             id: 7
@@ -1204,8 +1254,8 @@ endpoints:
         custom: []
       attribute_values:
         name: attribute_values
-        description: 'Collection of attribute values linked to the ad.'
-        required: true
+        description: 'Optional collection of attribute values linked to the ad. Supply only when these values are known.'
+        required: false
         example:
           -
             definition_id: 5
@@ -1292,7 +1342,7 @@ endpoints:
         name: 'attribute_values[].value_boolean'
         description: ''
         required: false
-        example: true
+        example: false
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -1302,7 +1352,7 @@ endpoints:
         name: 'attribute_values[].value_date'
         description: 'Must be a valid date.'
         required: false
-        example: '2025-11-16T04:45:06'
+        example: '2025-11-22T14:17:52'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1336,6 +1386,11 @@ endpoints:
       price_currency: IRR
       is_negotiable: false
       is_exchangeable: false
+      comment_enable: false
+      phone_enable: false
+      chat_enable: false
+      extra_amount: 150000
+      exchange_description: 'Willing to swap for a newer model laptop plus cash.'
       city_id: 3
       province_id: 1
       latitude: 35.6892
@@ -1345,7 +1400,7 @@ endpoints:
       view_count: 27
       share_count: 39
       favorite_count: 84
-      featured_until: '2025-11-16T04:45:06'
+      featured_until: '2025-11-22T14:17:52'
       priority_score: 4326.41688
       categories:
         -
@@ -1538,7 +1593,7 @@ endpoints:
         name: status
         description: ''
         required: true
-        example: rejected
+        example: expired
         type: string
         enumValues:
           - draft
@@ -1554,7 +1609,7 @@ endpoints:
         name: published_at
         description: 'Must be a valid date.'
         required: false
-        example: '2025-11-16T04:45:06'
+        example: '2025-11-22T14:17:52'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1564,7 +1619,7 @@ endpoints:
         name: expires_at
         description: 'Must be a valid date. Must be a date after or equal to <code>published_at</code>.'
         required: false
-        example: '2051-12-10'
+        example: '2051-12-16'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1594,7 +1649,7 @@ endpoints:
         name: is_negotiable
         description: ''
         required: false
-        example: true
+        example: false
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -1604,8 +1659,58 @@ endpoints:
         name: is_exchangeable
         description: ''
         required: false
+        example: true
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      comment_enable:
+        name: comment_enable
+        description: ''
+        required: false
         example: false
         type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      phone_enable:
+        name: phone_enable
+        description: ''
+        required: false
+        example: false
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      chat_enable:
+        name: chat_enable
+        description: ''
+        required: false
+        example: false
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      extra_amount:
+        name: extra_amount
+        description: 'This field is required when <code>is_exchangeable</code> is <code>true</code>. Must be at least 0.'
+        required: false
+        example: 77
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      exchange_description:
+        name: exchange_description
+        description: 'This field is required when <code>is_exchangeable</code> is <code>true</code>.'
+        required: false
+        example: architecto
+        type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
@@ -1634,7 +1739,7 @@ endpoints:
         name: latitude
         description: 'Must be between -90 and 90.'
         required: false
-        example: -90
+        example: -89
         type: number
         enumValues: []
         exampleWasSpecified: false
@@ -1664,7 +1769,7 @@ endpoints:
         name: view_count
         description: 'Must be at least 0.'
         required: false
-        example: 76
+        example: 12
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -1674,7 +1779,7 @@ endpoints:
         name: share_count
         description: 'Must be at least 0.'
         required: false
-        example: 60
+        example: 77
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -1684,7 +1789,7 @@ endpoints:
         name: favorite_count
         description: 'Must be at least 0.'
         required: false
-        example: 42
+        example: 8
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -1694,7 +1799,7 @@ endpoints:
         name: featured_until
         description: 'Must be a valid date.'
         required: false
-        example: '2025-11-16T04:45:06'
+        example: '2025-11-22T14:17:52'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1773,7 +1878,7 @@ endpoints:
         name: 'categories[].is_primary'
         description: ''
         required: false
-        example: true
+        example: false
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -1843,7 +1948,7 @@ endpoints:
         name: 'attribute_values[].value_date'
         description: 'Must be a valid date.'
         required: false
-        example: '2025-11-16T04:45:06'
+        example: '2025-11-22T14:17:52'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -1870,19 +1975,24 @@ endpoints:
       title: 'Peugeot 206 2024'
       subtitle: b
       description: 'Eius et animi quos velit et.'
-      status: rejected
-      published_at: '2025-11-16T04:45:06'
-      expires_at: '2051-12-10'
+      status: expired
+      published_at: '2025-11-22T14:17:52'
+      expires_at: '2051-12-16'
       price_amount: 16
       price_currency: ngz
-      is_negotiable: true
-      is_exchangeable: false
-      latitude: -90
+      is_negotiable: false
+      is_exchangeable: true
+      comment_enable: false
+      phone_enable: false
+      chat_enable: false
+      extra_amount: 77
+      exchange_description: architecto
+      latitude: -89
       longitude: -180
-      view_count: 76
-      share_count: 60
-      favorite_count: 42
-      featured_until: '2025-11-16T04:45:06'
+      view_count: 12
+      share_count: 77
+      favorite_count: 8
+      featured_until: '2025-11-22T14:17:52'
       priority_score: 4326.41688
       categories:
         -
@@ -2206,6 +2316,80 @@ endpoints:
   -
     httpMethods:
       - GET
+    uri: api/advertisable-types/classes
+    metadata:
+      groupName: Ads
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Retrieve the registered advertisable classes for payload construction.'
+      description: ''
+      authenticated: true
+      deprecated: false
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"data":[{"key":"car","label":"Car","model_class":"Modules\\Ad\\Models\\AdCar"},{"key":"real_estate","label":"Real Estate","model_class":"Modules\\Ad\\Models\\AdRealEstate"},{"key":"job","label":"Job","model_class":"Modules\\Ad\\Models\\AdJob"}]}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields:
+      key:
+        name: key
+        description: 'Unique key registered for the advertisable type.'
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      label:
+        name: label
+        description: 'Human readable name.'
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      model_class:
+        name: model_class
+        description: 'Backing model class for advertisable instances.'
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
     uri: api/advertisable-types
     metadata:
       groupName: Ads
@@ -2231,14 +2415,84 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"data":[{"key":"car","label":"Car","description":"Passenger vehicles, including sedans, hatchbacks, SUVs, and similar listings.","model_class":"Modules\\Ad\\Models\\AdCar","base_properties":[{"name":"slug","type":"string","label":"Slug","description":"Unique, URL-friendly identifier for the car listing.","required":true,"rules":["string","max:255"],"default":null,"options":null},{"name":"brand_id","type":"integer","label":"Brand","description":"Identifier referencing the car manufacturer.","required":false,"rules":null,"default":null,"options":null},{"name":"model_id","type":"integer","label":"Model","description":"Identifier referencing the specific car model or trim.","required":false,"rules":null,"default":null,"options":null},{"name":"year","type":"integer","label":"Manufacture Year","description":"Production year of the vehicle.","required":false,"rules":null,"default":null,"options":null},{"name":"mileage","type":"integer","label":"Mileage","description":"Recorded distance travelled, typically in kilometers.","required":false,"rules":null,"default":null,"options":null},{"name":"fuel_type","type":"string","label":"Fuel Type","description":"Energy source powering the vehicle, such as petrol or electric.","required":false,"rules":null,"default":null,"options":null},{"name":"transmission","type":"string","label":"Transmission","description":"Gearbox type, e.g. automatic or manual.","required":false,"rules":null,"default":null,"options":null},{"name":"body_style","type":"string","label":"Body Style","description":"Vehicle body classification such as sedan or SUV.","required":false,"rules":null,"default":null,"options":null},{"name":"color","type":"string","label":"Color","description":"Exterior colour of the car.","required":false,"rules":null,"default":null,"options":null},{"name":"condition","type":"string","label":"Condition","description":"Overall condition such as new or used.","required":false,"rules":null,"default":null,"options":null},{"name":"ownership_count","type":"integer","label":"Previous Owners","description":"Number of recorded owners for the vehicle.","required":false,"rules":null,"default":null,"options":null},{"name":"vin","type":"string","label":"VIN","description":"Vehicle identification number, if available.","required":false,"rules":null,"default":null,"options":null},{"name":"registration_expiry","type":"date","label":"Registration Expiry","description":"Date when the current registration expires.","required":false,"rules":null,"default":null,"options":null},{"name":"insurance_expiry","type":"date","label":"Insurance Expiry","description":"Date when the current insurance policy expires.","required":false,"rules":null,"default":null,"options":null}],"attribute_groups":[]},{"key":"real_estate","label":"Real Estate","description":"Residential or commercial property listings including rentals and sales.","model_class":"Modules\\Ad\\Models\\AdRealEstate","base_properties":[{"name":"slug","type":"string","label":"Slug","description":"Unique, URL-friendly identifier for the property listing.","required":true,"rules":["string","max:255"],"default":null,"options":null},{"name":"property_type","type":"string","label":"Property Type","description":"Type of property such as apartment, villa, or office.","required":false,"rules":null,"default":null,"options":null},{"name":"usage_type","type":"string","label":"Usage Type","description":"Intended usage such as residential or commercial.","required":false,"rules":null,"default":null,"options":null},{"name":"area_m2","type":"decimal","label":"Building Area","description":"Covered area of the property in square meters.","required":false,"rules":null,"default":null,"options":null},{"name":"land_area_m2","type":"decimal","label":"Land Area","description":"Total land area in square meters, if applicable.","required":false,"rules":null,"default":null,"options":null},{"name":"bedrooms","type":"integer","label":"Bedrooms","description":"Number of bedrooms.","required":false,"rules":null,"default":null,"options":null},{"name":"bathrooms","type":"integer","label":"Bathrooms","description":"Number of bathrooms.","required":false,"rules":null,"default":null,"options":null},{"name":"parking_spaces","type":"integer","label":"Parking Spaces","description":"Number of available parking spots.","required":false,"rules":null,"default":null,"options":null},{"name":"floor_number","type":"integer","label":"Floor Number","description":"Current floor of the unit.","required":false,"rules":null,"default":null,"options":null},{"name":"total_floors","type":"integer","label":"Total Floors","description":"Total floors in the building or complex.","required":false,"rules":null,"default":null,"options":null},{"name":"year_built","type":"integer","label":"Year Built","description":"Construction completion year.","required":false,"rules":null,"default":null,"options":null},{"name":"document_type","type":"string","label":"Document Type","description":"Legal document type provided for the property.","required":false,"rules":null,"default":null,"options":null},{"name":"has_elevator","type":"boolean","label":"Has Elevator","description":"Indicates if the building is equipped with an elevator.","required":false,"rules":null,"default":null,"options":null},{"name":"has_storage","type":"boolean","label":"Has Storage","description":"Indicates if the property includes a storage room.","required":false,"rules":null,"default":null,"options":null},{"name":"utilities_json","type":"json","label":"Utilities","description":"Structured representation of available utilities.","required":false,"rules":null,"default":null,"options":null}],"attribute_groups":[]},{"key":"job","label":"Job","description":"Employment opportunities across industries and experience levels.","model_class":"Modules\\Ad\\Models\\AdJob","base_properties":[{"name":"slug","type":"string","label":"Slug","description":"Unique, URL-friendly identifier for the job listing.","required":true,"rules":["string","max:255"],"default":null,"options":null},{"name":"company_name","type":"string","label":"Company Name","description":"Hiring organisation or employer.","required":false,"rules":null,"default":null,"options":null},{"name":"position_title","type":"string","label":"Position Title","description":"Role or job title being advertised.","required":false,"rules":null,"default":null,"options":null},{"name":"industry","type":"string","label":"Industry","description":"Industry classification for the role.","required":false,"rules":null,"default":null,"options":null},{"name":"employment_type","type":"string","label":"Employment Type","description":"Engagement type such as full-time or contract.","required":false,"rules":null,"default":null,"options":null},{"name":"experience_level","type":"string","label":"Experience Level","description":"Required seniority level such as junior or senior.","required":false,"rules":null,"default":null,"options":null},{"name":"education_level","type":"string","label":"Education Level","description":"Preferred education background.","required":false,"rules":null,"default":null,"options":null},{"name":"salary_min","type":"integer","label":"Minimum Salary","description":"Lower bound for the salary range.","required":false,"rules":null,"default":null,"options":null},{"name":"salary_max","type":"integer","label":"Maximum Salary","description":"Upper bound for the salary range.","required":false,"rules":null,"default":null,"options":null},{"name":"currency","type":"string","label":"Currency","description":"Currency code for the salary range.","required":false,"rules":null,"default":null,"options":null},{"name":"salary_type","type":"string","label":"Salary Type","description":"Payment cadence such as monthly or hourly.","required":false,"rules":null,"default":null,"options":null},{"name":"work_schedule","type":"string","label":"Work Schedule","description":"Work hours or shift expectations.","required":false,"rules":null,"default":null,"options":null},{"name":"remote_level","type":"string","label":"Remote Level","description":"Remote work allowance, e.g. onsite or hybrid.","required":false,"rules":null,"default":null,"options":null},{"name":"benefits_json","type":"json","label":"Benefits","description":"Structured list of job benefits or perks.","required":false,"rules":null,"default":null,"options":null}],"attribute_groups":[]}]}'
+        content: '{"data":[{"id":1,"key":"car","label":"Car","description":"Passenger vehicles, including sedans, hatchbacks, SUVs, and similar listings.","model_class":"Modules\\Ad\\Models\\AdCar","icon_url":"","attribute_groups":[]},{"id":2,"key":"real_estate","label":"Real Estate","description":"Residential or commercial property listings including rentals and sales.","model_class":"Modules\\Ad\\Models\\AdRealEstate","icon_url":"","attribute_groups":[]},{"id":3,"key":"job","label":"Job","description":"Employment opportunities across industries and experience levels.","model_class":"Modules\\Ad\\Models\\AdJob","icon_url":"","attribute_groups":[]}]}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
           access-control-allow-origin: '*'
         description: null
         custom: []
-    responseFields: []
+    responseFields:
+      id:
+        name: id
+        description: 'Database identifier of the advertisable type.'
+        required: false
+        example: null
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      key:
+        name: key
+        description: 'Unique key registered for the advertisable type.'
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      label:
+        name: label
+        description: 'Human readable name.'
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      description:
+        name: description
+        description: 'Description shown to clients.'
+        required: false
+        example: null
+        type: string|null
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      model_class:
+        name: model_class
+        description: 'Backing model class for advertisable instances.'
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      icon_url:
+        name: icon_url
+        description: 'Public URL of the advertisable type icon.'
+        required: false
+        example: null
+        type: string|null
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      attribute_groups:
+        name: attribute_groups
+        description: 'Attribute groups and definitions describing the advertisable payload.'
+        required: false
+        example: null
+        type: 'string[]'
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
     auth:
       - headers
       - Authorization
@@ -2296,7 +2550,77 @@ endpoints:
           access-control-allow-origin: '*'
         description: null
         custom: []
-    responseFields: []
+    responseFields:
+      id:
+        name: id
+        description: 'Database identifier of the advertisable type.'
+        required: false
+        example: null
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      key:
+        name: key
+        description: 'Unique key registered for the advertisable type.'
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      label:
+        name: label
+        description: 'Human readable name.'
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      description:
+        name: description
+        description: 'Description shown to clients.'
+        required: false
+        example: null
+        type: string|null
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      model_class:
+        name: model_class
+        description: 'Backing model class for advertisable instances.'
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      icon_url:
+        name: icon_url
+        description: 'Public URL of the advertisable type icon.'
+        required: false
+        example: null
+        type: string|null
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      attribute_groups:
+        name: attribute_groups
+        description: 'Attribute groups and definitions describing the advertisable payload.'
+        required: false
+        example: null
+        type: 'string[]'
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
     auth:
       - headers
       - Authorization

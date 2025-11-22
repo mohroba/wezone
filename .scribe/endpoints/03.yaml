@@ -104,7 +104,7 @@ endpoints:
         name: only_active
         description: ''
         required: false
-        example: false
+        example: true
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -152,7 +152,7 @@ endpoints:
         custom: []
     cleanBodyParameters:
       parent_id: 16
-      only_active: false
+      only_active: true
       search: architecto
       advertisable_type_id: 16
       per_page: 22
@@ -168,7 +168,17 @@ endpoints:
           access-control-allow-origin: '*'
         description: null
         custom: []
-    responseFields: []
+    responseFields:
+      icon_url:
+        name: icon_url
+        description: 'Public URL to the uploaded icon image, if present.'
+        required: false
+        example: null
+        type: string|null
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
     auth:
       - headers
       - Authorization
@@ -271,6 +281,16 @@ endpoints:
         exampleWasSpecified: false
         nullable: true
         custom: []
+      icon:
+        name: icon
+        description: 'Icon image representing the category.'
+        required: false
+        example: null
+        type: file
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
     cleanBodyParameters:
       advertisable_type_id: 2
       parent_id: 1
@@ -282,7 +302,17 @@ endpoints:
       sort_order: 5
     fileParameters: []
     responses: []
-    responseFields: []
+    responseFields:
+      icon_url:
+        name: icon_url
+        description: 'Public URL to the uploaded icon image, if present.'
+        required: false
+        example: null
+        type: string|null
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
     auth:
       - headers
       - Authorization
@@ -340,7 +370,17 @@ endpoints:
           access-control-allow-origin: '*'
         description: null
         custom: []
-    responseFields: []
+    responseFields:
+      icon_url:
+        name: icon_url
+        description: 'Public URL to the uploaded icon image, if present.'
+        required: false
+        example: null
+        type: string|null
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
     auth:
       - headers
       - Authorization
@@ -454,6 +494,16 @@ endpoints:
         exampleWasSpecified: false
         nullable: false
         custom: []
+      icon:
+        name: icon
+        description: 'Icon image representing the category.'
+        required: false
+        example: null
+        type: file
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
     cleanBodyParameters:
       parent_id: 1
       slug: vehicles
@@ -465,7 +515,17 @@ endpoints:
       advertisable_type_id: 2
     fileParameters: []
     responses: []
-    responseFields: []
+    responseFields:
+      icon_url:
+        name: icon_url
+        description: 'Public URL to the uploaded icon image, if present.'
+        required: false
+        example: null
+        type: string|null
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
     auth:
       - headers
       - Authorization
