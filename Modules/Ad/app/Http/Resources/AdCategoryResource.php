@@ -3,6 +3,7 @@
 namespace Modules\Ad\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Modules\Ad\Models\AdCategory;
 
 /** @mixin \Modules\Ad\Models\AdCategory */
 class AdCategoryResource extends JsonResource
@@ -18,6 +19,7 @@ class AdCategoryResource extends JsonResource
             'name_localized' => $this->name_localized,
             'is_active' => $this->is_active,
             'sort_order' => $this->sort_order,
+            'icon_url' => $this->getFirstMediaUrl(AdCategory::COLLECTION_ICON),
             'created_at' => $this->created_at?->toISOString(),
             'updated_at' => $this->updated_at?->toISOString(),
         ];

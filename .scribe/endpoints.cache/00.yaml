@@ -125,7 +125,7 @@ endpoints:
         name: country_id
         description: 'The ID of the country.'
         required: true
-        example: 1
+        example: 16
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -142,7 +142,7 @@ endpoints:
         nullable: false
         custom: []
     cleanUrlParameters:
-      country_id: 1
+      country_id: 16
       country: 1
     queryParameters: []
     cleanQueryParameters: []
@@ -290,7 +290,7 @@ endpoints:
         name: province_id
         description: 'The ID of the province.'
         required: true
-        example: 1
+        example: 16
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -307,7 +307,7 @@ endpoints:
         nullable: false
         custom: []
     cleanUrlParameters:
-      province_id: 1
+      province_id: 16
       province: 2
     queryParameters: []
     cleanQueryParameters: []
@@ -356,7 +356,7 @@ endpoints:
         name: province_id
         description: 'The ID of the province.'
         required: true
-        example: 1
+        example: 16
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -373,7 +373,7 @@ endpoints:
         nullable: false
         custom: []
     cleanUrlParameters:
-      province_id: 1
+      province_id: 16
       province: 2
     queryParameters:
       per_page:
@@ -565,7 +565,7 @@ endpoints:
         name: city_id
         description: 'The ID of the city.'
         required: true
-        example: 1
+        example: 16
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -582,7 +582,7 @@ endpoints:
         nullable: false
         custom: []
     cleanUrlParameters:
-      city_id: 1
+      city_id: 16
       city: 10
     queryParameters: []
     cleanQueryParameters: []

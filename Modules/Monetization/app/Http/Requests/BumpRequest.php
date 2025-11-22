@@ -15,4 +15,9 @@ class BumpRequest extends FormRequest
     {
         return [];
     }
+
+    public function bodyParameters(): array
+    {
+        return [];
+    }
 }

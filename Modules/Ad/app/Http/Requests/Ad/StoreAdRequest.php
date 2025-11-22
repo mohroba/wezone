@@ -53,11 +53,11 @@ class StoreAdRequest extends FormRequest
             'favorite_count' => ['nullable', 'integer', 'min:0'],
             'featured_until' => ['nullable', 'date'],
             'priority_score' => ['nullable', 'numeric'],
-            'categories' => ['required', 'array'],
+            'categories' => ['sometimes', 'array'],
             'categories.*.id' => ['required', 'integer', 'exists:ad_categories,id'],
             'categories.*.is_primary' => ['nullable', 'boolean'],
             'categories.*.assigned_by' => ['nullable', 'integer', 'exists:users,id'],
-            'attribute_values' => ['required', 'array'],
+            'attribute_values' => ['sometimes', 'array'],
             'attribute_values.*.definition_id' => ['required', 'integer', 'exists:ad_attribute_definitions,id'],
             'attribute_values.*.value_string' => ['nullable', 'string'],
             'attribute_values.*.value_integer' => ['nullable', 'integer'],
@@ -272,13 +272,13 @@ class StoreAdRequest extends FormRequest
                 'example' => ['phone' => '123456789'],
             ],
             'categories' => [
-                'description' => 'Array of category assignments.',
+                'description' => 'Optional array of category assignments. Can be provided later via the ad update endpoint.',
                 'example' => [
                     ['id' => 7, 'is_primary' => true],
                 ],
             ],
             'attribute_values' => [
-                'description' => 'Collection of attribute values linked to the ad.',
+                'description' => 'Optional collection of attribute values linked to the ad. Supply only when these values are known.',
                 'example' => [
                     ['definition_id' => 5, 'value_string' => 'Automatic'],
                     ['definition_id' => 12, 'value_integer' => 2024],

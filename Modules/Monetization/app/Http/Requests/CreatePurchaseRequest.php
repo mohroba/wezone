@@ -21,4 +21,31 @@ class CreatePurchaseRequest extends FormRequest
             'pay_with_wallet' => ['sometimes', 'boolean'],
         ];
     }
+
+    public function bodyParameters(): array
+    {
+        return [
+            'ad_id' => [
+                'description' => 'Identifier of the ad to promote.',
+                'example' => 41,
+                'required' => true,
+            ],
+            'plan_id' => [
+                'description' => 'Optional identifier of the plan being purchased.',
+                'example' => 5,
+            ],
+            'plan_slug' => [
+                'description' => 'Optional slug alternative to `plan_id`.',
+                'example' => 'premium-weekly',
+            ],
+            'gateway' => [
+                'description' => 'Preferred payment gateway key.',
+                'example' => 'payping',
+            ],
+            'pay_with_wallet' => [
+                'description' => 'Whether to charge the wallet balance immediately.',
+                'example' => false,
+            ],
+        ];
+    }
 }

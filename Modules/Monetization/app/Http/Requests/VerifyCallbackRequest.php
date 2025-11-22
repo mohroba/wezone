@@ -18,4 +18,20 @@ class VerifyCallbackRequest extends FormRequest
             'payload' => ['required', 'array'],
         ];
     }
+
+    public function bodyParameters(): array
+    {
+        return [
+            'gateway' => [
+                'description' => 'Payment gateway key associated with the callback.',
+                'example' => 'payping',
+                'required' => true,
+            ],
+            'payload' => [
+                'description' => 'Raw callback payload forwarded from the gateway.',
+                'example' => ['status' => 'paid'],
+                'required' => true,
+            ],
+        ];
+    }
 }
