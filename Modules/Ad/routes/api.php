@@ -42,6 +42,7 @@ Route::middleware(['api'])->group(function (): void {
 
     // --- Ad Comments ---
     Route::get('ads/{ad}/comments', [AdCommentController::class, 'index']);
+    Route::get('ads/{ad}/comments/threaded', [AdCommentController::class, 'threaded']);
     Route::post('ads/{ad}/comments', [AdCommentController::class, 'store'])->middleware('auth:api');
 
     // --- Ad Categories ---
