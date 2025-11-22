@@ -47,6 +47,11 @@ class Ad extends Model implements HasMedia
         'price_currency',
         'is_negotiable',
         'is_exchangeable',
+        'comment_enable',
+        'phone_enable',
+        'chat_enable',
+        'extra_amount',
+        'exchange_description',
         'city_id',
         'province_id',
         'latitude',
@@ -67,6 +72,10 @@ class Ad extends Model implements HasMedia
         'contact_channel' => 'array',
         'is_negotiable' => 'boolean',
         'is_exchangeable' => 'boolean',
+        'comment_enable' => 'boolean',
+        'phone_enable' => 'boolean',
+        'chat_enable' => 'boolean',
+        'extra_amount' => 'integer',
     ];
 
     // 🔹 Relationships
