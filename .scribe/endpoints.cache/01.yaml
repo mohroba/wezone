@@ -4,10 +4,12 @@ name: KPI
 description: ''
 endpoints:
   -
+    custom: []
     httpMethods:
       - POST
     uri: api/kpi/devices/register
     metadata:
+      custom: []
       groupName: KPI
       groupDescription: ''
       subgroup: ''
@@ -16,7 +18,6 @@ endpoints:
       description: ''
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
@@ -27,6 +28,7 @@ endpoints:
     cleanQueryParameters: []
     bodyParameters:
       device_uuid:
+        custom: []
         name: device_uuid
         description: 'Unique identifier for the device in UUID format. Must be a valid UUID.'
         required: true
@@ -35,8 +37,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       platform:
+        custom: []
         name: platform
         description: 'The operating system running on the device. Must not be greater than 50 characters.'
         required: true
@@ -45,8 +48,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       app_version:
+        custom: []
         name: app_version
         description: 'Semantic version of the application installed on the device. Must not be greater than 50 characters.'
         required: true
@@ -55,8 +59,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       os_version:
+        custom: []
         name: os_version
         description: 'Version of the operating system. Must not be greater than 100 characters.'
         required: false
@@ -65,8 +70,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       device_model:
+        custom: []
         name: device_model
         description: 'Human readable model name of the device. Must not be greater than 150 characters.'
         required: false
@@ -75,8 +81,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       device_manufacturer:
+        custom: []
         name: device_manufacturer
         description: 'Manufacturer of the device hardware. Must not be greater than 150 characters.'
         required: false
@@ -85,8 +92,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       locale:
+        custom: []
         name: locale
         description: 'IETF language tag representing the device locale. Must not be greater than 10 characters.'
         required: false
@@ -95,8 +103,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       timezone:
+        custom: []
         name: timezone
         description: 'IANA timezone identifier reported by the device. Must not be greater than 60 characters.'
         required: false
@@ -105,8 +114,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       push_token:
+        custom: []
         name: push_token
         description: 'Token used for sending push notifications to the device. Must not be greater than 255 characters.'
         required: false
@@ -115,8 +125,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       first_seen_at:
+        custom: []
         name: first_seen_at
         description: 'Timestamp when the device was first seen. Must be a valid date.'
         required: false
@@ -125,8 +136,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       last_seen_at:
+        custom: []
         name: last_seen_at
         description: 'Timestamp of the most recent device interaction. Must be a valid date.'
         required: false
@@ -135,8 +147,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       last_heartbeat_at:
+        custom: []
         name: last_heartbeat_at
         description: 'Timestamp of the latest heartbeat received from the device. Must be a valid date.'
         required: false
@@ -145,8 +158,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       extra:
+        custom: []
         name: extra
         description: 'Additional key-value metadata captured during registration.'
         required: false
@@ -157,7 +171,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
     cleanBodyParameters:
       device_uuid: 550e8400-e29b-41d4-a716-446655440000
       platform: ios
@@ -184,12 +198,13 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - POST
     uri: api/kpi/devices/heartbeat
     metadata:
+      custom: []
       groupName: KPI
       groupDescription: ''
       subgroup: ''
@@ -198,7 +213,6 @@ endpoints:
       description: ''
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
@@ -209,6 +223,7 @@ endpoints:
     cleanQueryParameters: []
     bodyParameters:
       device_uuid:
+        custom: []
         name: device_uuid
         description: 'Unique identifier for the device sending the heartbeat. Must be a valid UUID.'
         required: true
@@ -217,8 +232,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       last_seen_at:
+        custom: []
         name: last_seen_at
         description: 'Timestamp when the device last interacted with the platform. Must be a valid date.'
         required: false
@@ -227,8 +243,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       last_heartbeat_at:
+        custom: []
         name: last_heartbeat_at
         description: 'Timestamp for the most recent heartbeat event. Must be a valid date.'
         required: false
@@ -237,8 +254,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       app_version:
+        custom: []
         name: app_version
         description: 'Current application version running on the device. Must not be greater than 50 characters.'
         required: false
@@ -247,8 +265,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       platform:
+        custom: []
         name: platform
         description: 'Operating system of the device. Must not be greater than 50 characters.'
         required: false
@@ -257,8 +276,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       os_version:
+        custom: []
         name: os_version
         description: 'Version string of the device operating system. Must not be greater than 100 characters.'
         required: false
@@ -267,8 +287,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       extra:
+        custom: []
         name: extra
         description: 'Additional metadata provided by the client.'
         required: false
@@ -279,7 +300,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
     cleanBodyParameters:
       device_uuid: 550e8400-e29b-41d4-a716-446655440000
       last_seen_at: '2024-04-03T11:59:00Z'
@@ -300,12 +321,13 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - POST
     uri: api/kpi/installations
     metadata:
+      custom: []
       groupName: KPI
       groupDescription: ''
       subgroup: ''
@@ -314,7 +336,6 @@ endpoints:
       description: ''
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
@@ -325,6 +346,7 @@ endpoints:
     cleanQueryParameters: []
     bodyParameters:
       device_uuid:
+        custom: []
         name: device_uuid
         description: 'Unique identifier for the device that installed the app. Must be a valid UUID.'
         required: true
@@ -333,8 +355,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       installed_at:
+        custom: []
         name: installed_at
         description: 'Timestamp when the installation occurred. Must be a valid date.'
         required: false
@@ -343,8 +366,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       app_version:
+        custom: []
         name: app_version
         description: 'Version of the app that was installed. Must not be greater than 50 characters.'
         required: true
@@ -353,8 +377,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       platform:
+        custom: []
         name: platform
         description: 'Operating system of the device. Must not be greater than 50 characters.'
         required: true
@@ -363,8 +388,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       os_version:
+        custom: []
         name: os_version
         description: 'Version string of the device operating system. Must not be greater than 100 characters.'
         required: false
@@ -373,8 +399,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       device_model:
+        custom: []
         name: device_model
         description: 'Marketing name of the device model. Must not be greater than 150 characters.'
         required: false
@@ -383,8 +410,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       device_manufacturer:
+        custom: []
         name: device_manufacturer
         description: 'Hardware manufacturer of the device. Must not be greater than 150 characters.'
         required: false
@@ -393,8 +421,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       locale:
+        custom: []
         name: locale
         description: 'Locale configured on the device. Must not be greater than 10 characters.'
         required: false
@@ -403,8 +432,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       timezone:
+        custom: []
         name: timezone
         description: 'Time zone reported by the device. Must not be greater than 60 characters.'
         required: false
@@ -413,8 +443,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       push_token:
+        custom: []
         name: push_token
         description: 'Token to send push notifications to the device. Must not be greater than 255 characters.'
         required: false
@@ -423,8 +454,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       install_source:
+        custom: []
         name: install_source
         description: 'Identifier for the store or campaign that initiated the install. Must not be greater than 100 characters.'
         required: false
@@ -433,8 +465,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       campaign:
+        custom: []
         name: campaign
         description: 'Marketing campaign identifier associated with the install. Must not be greater than 100 characters.'
         required: false
@@ -443,8 +476,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       is_reinstall:
+        custom: []
         name: is_reinstall
         description: 'Whether the install is a reinstall event.'
         required: false
@@ -453,8 +487,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       metadata:
+        custom: []
         name: metadata
         description: 'Structured metadata recorded for the install.'
         required: false
@@ -464,8 +499,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       extra:
+        custom: []
         name: extra
         description: 'Additional data sent by the client.'
         required: false
@@ -475,8 +511,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       user_id:
+        custom: []
         name: user_id
         description: 'Identifier of the authenticated user associated with the device, when available. The <code>id</code> of an existing record in the users table.'
         required: false
@@ -485,7 +522,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
     cleanBodyParameters:
       device_uuid: 550e8400-e29b-41d4-a716-446655440000
       installed_at: '2024-04-01T09:15:00Z'
@@ -515,12 +552,13 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - POST
     uri: api/kpi/uninstallations
     metadata:
+      custom: []
       groupName: KPI
       groupDescription: ''
       subgroup: ''
@@ -529,7 +567,6 @@ endpoints:
       description: ''
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
@@ -540,6 +577,7 @@ endpoints:
     cleanQueryParameters: []
     bodyParameters:
       device_uuid:
+        custom: []
         name: device_uuid
         description: 'Unique identifier for the device that uninstalled the app. Must be a valid UUID.'
         required: true
@@ -548,8 +586,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       uninstalled_at:
+        custom: []
         name: uninstalled_at
         description: 'Timestamp when the uninstall event occurred. Must be a valid date.'
         required: false
@@ -558,8 +597,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       app_version:
+        custom: []
         name: app_version
         description: 'Application version that was uninstalled. Must not be greater than 50 characters.'
         required: false
@@ -568,8 +608,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       platform:
+        custom: []
         name: platform
         description: 'Operating system of the device. Must not be greater than 50 characters.'
         required: false
@@ -578,8 +619,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       reason:
+        custom: []
         name: reason
         description: 'Optional reason provided for the uninstall. Must not be greater than 255 characters.'
         required: false
@@ -588,8 +630,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       report_source:
+        custom: []
         name: report_source
         description: 'Source that reported the uninstall event. Must not be greater than 100 characters.'
         required: false
@@ -598,8 +641,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       metadata:
+        custom: []
         name: metadata
         description: 'Structured metadata for additional analytics.'
         required: false
@@ -609,8 +653,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       user_id:
+        custom: []
         name: user_id
         description: 'Identifier of the authenticated user, if available. The <code>id</code> of an existing record in the users table.'
         required: false
@@ -619,7 +664,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
     cleanBodyParameters:
       device_uuid: 550e8400-e29b-41d4-a716-446655440000
       uninstalled_at: '2024-04-05T17:20:00Z'
@@ -640,12 +685,13 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - POST
     uri: api/kpi/sessions
     metadata:
+      custom: []
       groupName: KPI
       groupDescription: ''
       subgroup: ''
@@ -654,7 +700,6 @@ endpoints:
       description: ''
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
@@ -665,6 +710,7 @@ endpoints:
     cleanQueryParameters: []
     bodyParameters:
       device_uuid:
+        custom: []
         name: device_uuid
         description: 'Unique identifier for the device that generated the session. Must be a valid UUID.'
         required: true
@@ -673,8 +719,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       session_uuid:
+        custom: []
         name: session_uuid
         description: 'Unique identifier for the tracked session. Must be a valid UUID.'
         required: true
@@ -683,8 +730,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       started_at:
+        custom: []
         name: started_at
         description: 'Timestamp indicating when the session started. Must be a valid date.'
         required: true
@@ -693,8 +741,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       ended_at:
+        custom: []
         name: ended_at
         description: 'Timestamp indicating when the session ended, if finished. Must be a valid date. Must be a date after or equal to <code>started_at</code>.'
         required: false
@@ -703,8 +752,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       duration_seconds:
+        custom: []
         name: duration_seconds
         description: 'Total session duration in seconds, when already computed. Must be at least 0.'
         required: false
@@ -713,8 +763,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       app_version:
+        custom: []
         name: app_version
         description: 'Version of the app used during the session. Must not be greater than 50 characters.'
         required: true
@@ -723,8 +774,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       platform:
+        custom: []
         name: platform
         description: 'Operating system of the device. Must not be greater than 50 characters.'
         required: false
@@ -733,8 +785,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       os_version:
+        custom: []
         name: os_version
         description: 'Version of the operating system. Must not be greater than 100 characters.'
         required: false
@@ -743,8 +796,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       network_type:
+        custom: []
         name: network_type
         description: 'Network connection type observed during the session. Must not be greater than 50 characters.'
         required: false
@@ -753,8 +807,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       city:
+        custom: []
         name: city
         description: 'City resolved for the session location, if available. Must not be greater than 150 characters.'
         required: false
@@ -763,8 +818,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       country:
+        custom: []
         name: country
         description: 'Country resolved for the session location, if available. Must not be greater than 150 characters.'
         required: false
@@ -773,8 +829,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       metadata:
+        custom: []
         name: metadata
         description: 'Additional metadata captured for the session.'
         required: false
@@ -784,8 +841,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       user_id:
+        custom: []
         name: user_id
         description: 'Identifier of the authenticated user linked to the session. The <code>id</code> of an existing record in the users table.'
         required: false
@@ -794,7 +852,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
     cleanBodyParameters:
       device_uuid: 550e8400-e29b-41d4-a716-446655440000
       session_uuid: 3f2504e0-4f89-11d3-9a0c-0305e82c3301
@@ -820,12 +878,13 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - POST
     uri: 'api/kpi/sessions/{session_session_uuid}/update'
     metadata:
+      custom: []
       groupName: KPI
       groupDescription: ''
       subgroup: ''
@@ -834,13 +893,13 @@ endpoints:
       description: ''
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
       session_session_uuid:
+        custom: []
         name: session_session_uuid
         description: ''
         required: true
@@ -849,13 +908,14 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
     cleanUrlParameters:
       session_session_uuid: 6ff8f7f6-1eb3-3525-be4a-3932c805afed
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
       ended_at:
+        custom: []
         name: ended_at
         description: 'Timestamp when the session concluded. Must be a valid date.'
         required: false
@@ -864,8 +924,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       duration_seconds:
+        custom: []
         name: duration_seconds
         description: 'Updated total duration of the session in seconds. Must be at least 0.'
         required: false
@@ -874,8 +935,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       app_version:
+        custom: []
         name: app_version
         description: 'Updated app version associated with the session. Must not be greater than 50 characters.'
         required: false
@@ -884,8 +946,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       platform:
+        custom: []
         name: platform
         description: 'Operating system of the device. Must not be greater than 50 characters.'
         required: false
@@ -894,8 +957,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       os_version:
+        custom: []
         name: os_version
         description: 'Updated operating system version. Must not be greater than 100 characters.'
         required: false
@@ -904,8 +968,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       network_type:
+        custom: []
         name: network_type
         description: 'Network connection type detected at the end of the session. Must not be greater than 50 characters.'
         required: false
@@ -914,8 +979,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       city:
+        custom: []
         name: city
         description: 'Updated city for the session, if applicable. Must not be greater than 150 characters.'
         required: false
@@ -924,8 +990,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       country:
+        custom: []
         name: country
         description: 'Updated country for the session, if applicable. Must not be greater than 150 characters.'
         required: false
@@ -934,8 +1001,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       metadata:
+        custom: []
         name: metadata
         description: 'Additional metadata merged into the session record.'
         required: false
@@ -945,8 +1013,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       user_id:
+        custom: []
         name: user_id
         description: 'Identifier of the authenticated user associated with the session. The <code>id</code> of an existing record in the users table.'
         required: false
@@ -955,7 +1024,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
     cleanBodyParameters:
       ended_at: '2024-04-05T10:25:00Z'
       duration_seconds: 1520
@@ -978,12 +1047,13 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - POST
     uri: api/kpi/events
     metadata:
+      custom: []
       groupName: KPI
       groupDescription: ''
       subgroup: ''
@@ -992,7 +1062,6 @@ endpoints:
       description: ''
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
@@ -1003,6 +1072,7 @@ endpoints:
     cleanQueryParameters: []
     bodyParameters:
       device_uuid:
+        custom: []
         name: device_uuid
         description: 'Unique identifier for the device emitting the events. Must be a valid UUID.'
         required: true
@@ -1011,8 +1081,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       session_uuid:
+        custom: []
         name: session_uuid
         description: 'Identifier of the session that captured the events. Must be a valid UUID.'
         required: false
@@ -1021,8 +1092,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       platform:
+        custom: []
         name: platform
         description: 'Operating system of the device. Must not be greater than 50 characters.'
         required: false
@@ -1031,8 +1103,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       user_id:
+        custom: []
         name: user_id
         description: 'Identifier of the authenticated user emitting the events. The <code>id</code> of an existing record in the users table.'
         required: false
@@ -1041,8 +1114,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       events:
+        custom: []
         name: events
         description: 'Collection of analytics events to record. Must have at least 1 items.'
         required: true
@@ -1061,8 +1135,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       'events[].event_uuid':
+        custom: []
         name: 'events[].event_uuid'
         description: 'Client-generated identifier for the individual event. Must be a valid UUID.'
         required: false
@@ -1071,8 +1146,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       'events[].event_key':
+        custom: []
         name: 'events[].event_key'
         description: 'Key representing the type of event. Must not be greater than 100 characters.'
         required: true
@@ -1081,8 +1157,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       'events[].event_name':
+        custom: []
         name: 'events[].event_name'
         description: 'Human-readable name of the event. Must not be greater than 255 characters.'
         required: false
@@ -1091,8 +1168,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       'events[].event_category':
+        custom: []
         name: 'events[].event_category'
         description: 'Category grouping for the event. Must not be greater than 100 characters.'
         required: false
@@ -1101,8 +1179,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       'events[].event_value':
+        custom: []
         name: 'events[].event_value'
         description: 'Numeric value associated with the event.'
         required: false
@@ -1111,8 +1190,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       'events[].occurred_at':
+        custom: []
         name: 'events[].occurred_at'
         description: 'Timestamp indicating when the event happened. Must be a valid date.'
         required: false
@@ -1121,8 +1201,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       'events[].metadata':
+        custom: []
         name: 'events[].metadata'
         description: 'Arbitrary metadata for the event payload.'
         required: false
@@ -1133,7 +1214,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
     cleanBodyParameters:
       device_uuid: 550e8400-e29b-41d4-a716-446655440000
       session_uuid: 3f2504e0-4f89-11d3-9a0c-0305e82c3301
@@ -1160,4 +1241,3 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []

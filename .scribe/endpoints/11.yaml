@@ -2,10 +2,12 @@ name: Monetization
 description: 'Retrieve the list of plans that can currently be purchased. Plans marked as inactive are excluded.'
 endpoints:
   -
+    custom: []
     httpMethods:
       - GET
     uri: api/monetization/plans
     metadata:
+      custom: []
       groupName: Monetization
       groupDescription: 'Retrieve the list of plans that can currently be purchased. Plans marked as inactive are excluded.'
       subgroup: ''
@@ -14,7 +16,6 @@ endpoints:
       description: ''
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
@@ -28,6 +29,7 @@ endpoints:
     fileParameters: []
     responses:
       -
+        custom: []
         status: 401
         content: '{"message":"Unauthenticated."}'
         headers:
@@ -35,9 +37,9 @@ endpoints:
           content-type: application/json
           access-control-allow-origin: '*'
         description: null
-        custom: []
     responseFields:
       'data[].id':
+        custom: []
         name: 'data[].id'
         description: 'Unique identifier of the plan.'
         required: false
@@ -46,8 +48,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       'data[].name':
+        custom: []
         name: 'data[].name'
         description: 'Display name for the plan.'
         required: false
@@ -56,8 +59,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       'data[].price':
+        custom: []
         name: 'data[].price'
         description: 'Cost of the plan in the configured currency.'
         required: false
@@ -66,7 +70,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
     auth:
       - headers
       - Authorization
@@ -74,12 +78,13 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - POST
     uri: api/monetization/purchases
     metadata:
+      custom: []
       groupName: Monetization
       groupDescription: |-
         Start a new purchase for an ad promotion plan. Depending on the payload, the purchase may be automatically paid with the
@@ -90,7 +95,6 @@ endpoints:
       description: ''
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
@@ -101,6 +105,7 @@ endpoints:
     cleanQueryParameters: []
     bodyParameters:
       ad_id:
+        custom: []
         name: ad_id
         description: 'Identifier of the ad to promote.'
         required: true
@@ -109,8 +114,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       plan_id:
+        custom: []
         name: plan_id
         description: 'Optional plan identifier when selecting directly by ID.'
         required: false
@@ -119,8 +125,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
       plan_slug:
+        custom: []
         name: plan_slug
         description: 'Optional plan slug alternative to `plan_id`.'
         required: false
@@ -129,8 +136,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
       gateway:
+        custom: []
         name: gateway
         description: 'Preferred payment gateway key.'
         required: false
@@ -139,8 +147,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
       pay_with_wallet:
+        custom: []
         name: pay_with_wallet
         description: 'Whether to use the wallet balance immediately.'
         required: false
@@ -149,7 +158,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
     cleanBodyParameters:
       ad_id: 41
       plan_id: 5
@@ -160,6 +169,7 @@ endpoints:
     responses: []
     responseFields:
       data.id:
+        custom: []
         name: data.id
         description: 'Unique identifier of the created purchase.'
         required: false
@@ -168,8 +178,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       payment:
+        custom: []
         name: payment
         description: 'Included when the wallet covers the full purchase amount.'
         required: false
@@ -178,7 +189,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
     auth:
       - headers
       - Authorization
@@ -186,12 +197,13 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - GET
     uri: 'api/monetization/purchases/{id}'
     metadata:
+      custom: []
       groupName: Monetization
       groupDescription: ''
       subgroup: ''
@@ -200,13 +212,13 @@ endpoints:
       description: ''
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
       id:
+        custom: []
         name: id
         description: 'The ID of the purchase.'
         required: true
@@ -215,8 +227,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       purchase:
+        custom: []
         name: purchase
         description: 'The purchase identifier.'
         required: true
@@ -225,7 +238,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
     cleanUrlParameters:
       id: 16
       purchase: 16
@@ -236,6 +249,7 @@ endpoints:
     fileParameters: []
     responses:
       -
+        custom: []
         status: 401
         content: '{"message":"Unauthenticated."}'
         headers:
@@ -243,7 +257,6 @@ endpoints:
           content-type: application/json
           access-control-allow-origin: '*'
         description: null
-        custom: []
     responseFields: []
     auth:
       - headers
@@ -252,12 +265,13 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - POST
     uri: 'api/monetization/purchases/{purchase_id}/bump'
     metadata:
+      custom: []
       groupName: Monetization
       groupDescription: 'Refresh the ad associated with the purchase to the top of listings when supported by the plan.'
       subgroup: ''
@@ -266,13 +280,13 @@ endpoints:
       description: ''
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
       purchase_id:
+        custom: []
         name: purchase_id
         description: 'The ID of the purchase.'
         required: true
@@ -281,8 +295,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       purchase:
+        custom: []
         name: purchase
         description: 'The purchase identifier.'
         required: true
@@ -291,7 +306,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
     cleanUrlParameters:
       purchase_id: 16
       purchase: 16
@@ -302,6 +317,7 @@ endpoints:
     fileParameters: []
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -333,7 +349,6 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
     responseFields: []
     auth:
       - headers
@@ -342,12 +357,13 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - GET
     uri: api/monetization/payments
     metadata:
+      custom: []
       groupName: Monetization
       groupDescription: "Fetch a paginated list of the authenticated user's payments."
       subgroup: ''
@@ -356,7 +372,6 @@ endpoints:
       description: ''
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
@@ -365,6 +380,7 @@ endpoints:
     cleanUrlParameters: []
     queryParameters:
       status:
+        custom: []
         name: status
         description: 'Filter by payment status.'
         required: false
@@ -373,8 +389,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
       gateway:
+        custom: []
         name: gateway
         description: 'Filter by gateway key.'
         required: false
@@ -383,8 +400,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
       ad_id:
+        custom: []
         name: ad_id
         description: 'Limit to payments linked to the specified ad.'
         required: false
@@ -393,8 +411,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
       purchase_id:
+        custom: []
         name: purchase_id
         description: 'Limit to payments for a specific purchase.'
         required: false
@@ -403,8 +422,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
       per_page:
+        custom: []
         name: per_page
         description: 'Results per page (max 100).'
         required: false
@@ -413,7 +433,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
     cleanQueryParameters:
       status: paid
       gateway: payping
@@ -425,6 +445,7 @@ endpoints:
     fileParameters: []
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -465,7 +486,6 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
     responseFields: []
     auth:
       - headers
@@ -474,12 +494,13 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - POST
     uri: api/monetization/payments
     metadata:
+      custom: []
       groupName: Monetization
       groupDescription: 'Initialize a new payment for an existing ad plan purchase.'
       subgroup: ''
@@ -488,7 +509,6 @@ endpoints:
       description: ''
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
@@ -499,6 +519,7 @@ endpoints:
     cleanQueryParameters: []
     bodyParameters:
       purchase_id:
+        custom: []
         name: purchase_id
         description: 'Identifier of the ad plan purchase to pay for.'
         required: true
@@ -507,8 +528,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       gateway:
+        custom: []
         name: gateway
         description: 'optional Override the payment gateway key.'
         required: false
@@ -517,13 +539,14 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
     cleanBodyParameters:
       purchase_id: 10
       gateway: zarinpal
     fileParameters: []
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -541,9 +564,9 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
     responseFields:
       data.redirect_url:
+        custom: []
         name: data.redirect_url
         description: 'Gateway redirection URL when available.'
         required: false
@@ -552,7 +575,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
     auth:
       - headers
       - Authorization
@@ -560,12 +583,13 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - POST
     uri: 'api/monetization/purchases/{purchase_id}/payments/initiate'
     metadata:
+      custom: []
       groupName: Monetization
       groupDescription: ''
       subgroup: ''
@@ -574,13 +598,13 @@ endpoints:
       description: ''
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
       purchase_id:
+        custom: []
         name: purchase_id
         description: 'The ID of the purchase.'
         required: true
@@ -589,8 +613,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       purchase:
+        custom: []
         name: purchase
         description: 'The purchase identifier.'
         required: true
@@ -599,7 +624,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
     cleanUrlParameters:
       purchase_id: 16
       purchase: 16
@@ -607,6 +632,7 @@ endpoints:
     cleanQueryParameters: []
     bodyParameters:
       gateway:
+        custom: []
         name: gateway
         description: 'optional Override the payment gateway key.'
         required: false
@@ -615,12 +641,13 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
     cleanBodyParameters:
       gateway: stripe
     fileParameters: []
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -638,9 +665,9 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
     responseFields:
       data.redirect_url:
+        custom: []
         name: data.redirect_url
         description: 'Gateway redirection URL when available.'
         required: false
@@ -649,7 +676,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
     auth:
       - headers
       - Authorization
@@ -657,12 +684,13 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - POST
     uri: 'api/monetization/payments/{payment_id}/validate'
     metadata:
+      custom: []
       groupName: Monetization
       groupDescription: 'Manually trigger validation for a payment after returning from the gateway.'
       subgroup: ''
@@ -671,13 +699,13 @@ endpoints:
       description: ''
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
       payment_id:
+        custom: []
         name: payment_id
         description: 'The ID of the payment.'
         required: true
@@ -686,13 +714,14 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
     cleanUrlParameters:
       payment_id: 16
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
       payload:
+        custom: []
         name: payload
         description: 'optional Gateway callback payload.'
         required: false
@@ -702,13 +731,14 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
     cleanBodyParameters:
       payload:
         authority: A0001
     fileParameters: []
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -726,7 +756,6 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
     responseFields: []
     auth:
       - headers
@@ -735,12 +764,13 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - POST
     uri: api/monetization/payments/verify
     metadata:
+      custom: []
       groupName: Monetization
       groupDescription: 'Process an asynchronous callback received directly from the payment gateway.'
       subgroup: ''
@@ -749,7 +779,6 @@ endpoints:
       description: ''
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
@@ -760,6 +789,7 @@ endpoints:
     cleanQueryParameters: []
     bodyParameters:
       gateway:
+        custom: []
         name: gateway
         description: 'Payment gateway key for the callback.'
         required: true
@@ -768,8 +798,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       payload:
+        custom: []
         name: payload
         description: 'Raw callback payload forwarded from the gateway.'
         required: true
@@ -779,7 +810,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
     cleanBodyParameters:
       gateway: payping
       payload:
@@ -787,6 +818,7 @@ endpoints:
     fileParameters: []
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -804,7 +836,6 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
     responseFields: []
     auth:
       - headers
@@ -813,12 +844,13 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - GET
     uri: 'api/monetization/ads/{ad_id}/payments'
     metadata:
+      custom: []
       groupName: Monetization
       groupDescription: 'Retrieve payments associated with a specific ad owned by the authenticated user.'
       subgroup: ''
@@ -827,13 +859,13 @@ endpoints:
       description: ''
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
       ad_id:
+        custom: []
         name: ad_id
         description: 'The ID of the ad.'
         required: true
@@ -842,8 +874,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       ad:
+        custom: []
         name: ad
         description: 'The ad identifier.'
         required: true
@@ -852,12 +885,13 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
     cleanUrlParameters:
       ad_id: 1
       ad: 16
     queryParameters:
       per_page:
+        custom: []
         name: per_page
         description: 'Results per page (max 100).'
         required: false
@@ -866,7 +900,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
     cleanQueryParameters:
       per_page: 15
     bodyParameters: []
@@ -874,6 +908,7 @@ endpoints:
     fileParameters: []
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -909,7 +944,6 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
     responseFields: []
     auth:
       - headers
@@ -918,12 +952,13 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - GET
     uri: api/monetization/wallet
     metadata:
+      custom: []
       groupName: Monetization
       groupDescription: 'Retrieve the current wallet balance for the authenticated user. A wallet will be created automatically when missing.'
       subgroup: ''
@@ -932,7 +967,6 @@ endpoints:
       description: ''
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
@@ -946,6 +980,7 @@ endpoints:
     fileParameters: []
     responses:
       -
+        custom: []
         status: 401
         content: '{"message":"Unauthenticated."}'
         headers:
@@ -953,9 +988,9 @@ endpoints:
           content-type: application/json
           access-control-allow-origin: '*'
         description: null
-        custom: []
     responseFields:
       data.id:
+        custom: []
         name: data.id
         description: 'Wallet identifier.'
         required: false
@@ -964,8 +999,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       data.balance:
+        custom: []
         name: data.balance
         description: 'Current available balance.'
         required: false
@@ -974,8 +1010,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       data.currency:
+        custom: []
         name: data.currency
         description: 'ISO currency code of the wallet.'
         required: false
@@ -984,7 +1021,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
     auth:
       - headers
       - Authorization
@@ -992,12 +1029,13 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - POST
     uri: api/monetization/wallet/top-up
     metadata:
+      custom: []
       groupName: Monetization
       groupDescription: 'Increase the wallet balance using an offline credit. Amount is applied immediately.'
       subgroup: ''
@@ -1006,7 +1044,6 @@ endpoints:
       description: ''
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
@@ -1017,6 +1054,7 @@ endpoints:
     cleanQueryParameters: []
     bodyParameters:
       amount:
+        custom: []
         name: amount
         description: 'Amount to deposit.'
         required: true
@@ -1025,8 +1063,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       currency:
+        custom: []
         name: currency
         description: 'ISO 4217 currency code.'
         required: true
@@ -1035,7 +1074,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
     cleanBodyParameters:
       amount: 50000.0
       currency: IRR
@@ -1049,4 +1088,3 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []

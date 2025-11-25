@@ -4,10 +4,12 @@ name: 'Ad Attribute Values'
 description: 'Retrieve attribute values filtered by definition or advertisable linkage.'
 endpoints:
   -
+    custom: []
     httpMethods:
       - GET
     uri: api/ad-attribute-values
     metadata:
+      custom: []
       groupName: 'Ad Attribute Values'
       groupDescription: 'Retrieve attribute values filtered by definition or advertisable linkage.'
       subgroup: ''
@@ -16,7 +18,6 @@ endpoints:
       description: ''
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
@@ -25,6 +26,7 @@ endpoints:
     cleanUrlParameters: []
     queryParameters:
       definition_id:
+        custom: []
         name: definition_id
         description: 'Filter by attribute definition.'
         required: false
@@ -33,8 +35,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       ad_id:
+        custom: []
         name: ad_id
         description: 'Filter by the owning ad identifier.'
         required: false
@@ -43,8 +46,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       per_page:
+        custom: []
         name: per_page
         description: 'Number of results per page, up to 200.'
         required: false
@@ -53,8 +57,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       without_pagination:
+        custom: []
         name: without_pagination
         description: 'Set to true to return all values without pagination.'
         required: false
@@ -63,7 +68,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
     cleanQueryParameters:
       definition_id: 12
       ad_id: 34
@@ -74,6 +79,7 @@ endpoints:
     fileParameters: []
     responses:
       -
+        custom: []
         status: 200
         content: '{"data":[],"links":{"first":"http:\/\/localhost:8000\/api\/ad-attribute-values?definition_id=12&ad_id=34&per_page=25&without_pagination=0&page=1","last":"http:\/\/localhost:8000\/api\/ad-attribute-values?definition_id=12&ad_id=34&per_page=25&without_pagination=0&page=1","prev":null,"next":null},"meta":{"current_page":1,"from":null,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"http:\/\/localhost:8000\/api\/ad-attribute-values?definition_id=12&ad_id=34&per_page=25&without_pagination=0&page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"path":"http:\/\/localhost:8000\/api\/ad-attribute-values","per_page":25,"to":null,"total":0}}'
         headers:
@@ -81,7 +87,6 @@ endpoints:
           content-type: application/json
           access-control-allow-origin: '*'
         description: null
-        custom: []
     responseFields: []
     auth:
       - headers
@@ -90,12 +95,13 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - POST
     uri: api/ad-attribute-values
     metadata:
+      custom: []
       groupName: 'Ad Attribute Values'
       groupDescription: 'Persist a new attribute value for an advertisable model.'
       subgroup: ''
@@ -104,7 +110,6 @@ endpoints:
       description: ''
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
@@ -115,6 +120,7 @@ endpoints:
     cleanQueryParameters: []
     bodyParameters:
       definition_id:
+        custom: []
         name: definition_id
         description: 'Identifier of the attribute definition being populated. The <code>id</code> of an existing record in the ad_attribute_definitions table.'
         required: true
@@ -123,8 +129,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       ad_id:
+        custom: []
         name: ad_id
         description: 'Identifier of the ad record this value belongs to. The <code>id</code> of an existing record in the ads table.'
         required: true
@@ -133,8 +140,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       value_string:
+        custom: []
         name: value_string
         description: 'String value when the definition expects textual data.'
         required: false
@@ -143,8 +151,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       value_integer:
+        custom: []
         name: value_integer
         description: 'Integer value when the definition expects whole numbers.'
         required: false
@@ -153,8 +162,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       value_decimal:
+        custom: []
         name: value_decimal
         description: 'Decimal value when the definition expects numeric data.'
         required: false
@@ -163,8 +173,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       value_boolean:
+        custom: []
         name: value_boolean
         description: 'Boolean value when the definition expects true or false.'
         required: false
@@ -173,8 +184,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       value_date:
+        custom: []
         name: value_date
         description: 'Date value when the definition expects a calendar date. Must be a valid date.'
         required: false
@@ -183,8 +195,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       value_json:
+        custom: []
         name: value_json
         description: 'Structured data payload for JSON definitions.'
         required: false
@@ -196,7 +209,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
     cleanBodyParameters:
       definition_id: 4
       ad_id: 15
@@ -219,12 +232,13 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - GET
     uri: 'api/ad-attribute-values/{ad_attribute_value_id}'
     metadata:
+      custom: []
       groupName: 'Ad Attribute Values'
       groupDescription: 'Retrieve an attribute value with its definition metadata.'
       subgroup: ''
@@ -233,13 +247,13 @@ endpoints:
       description: ''
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
       ad_attribute_value_id:
+        custom: []
         name: ad_attribute_value_id
         description: 'The ID of the ad attribute value.'
         required: true
@@ -248,7 +262,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
     cleanUrlParameters:
       ad_attribute_value_id: architecto
     queryParameters: []
@@ -258,6 +272,7 @@ endpoints:
     fileParameters: []
     responses:
       -
+        custom: []
         status: 404
         content: |-
           {
@@ -268,7 +283,6 @@ endpoints:
           content-type: application/json
           access-control-allow-origin: '*'
         description: null
-        custom: []
     responseFields: []
     auth:
       - headers
@@ -277,12 +291,13 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - POST
     uri: 'api/ad-attribute-values/{ad_attribute_value_id}/update'
     metadata:
+      custom: []
       groupName: 'Ad Attribute Values'
       groupDescription: 'Apply updates to an existing attribute value.'
       subgroup: ''
@@ -291,13 +306,13 @@ endpoints:
       description: ''
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
       ad_attribute_value_id:
+        custom: []
         name: ad_attribute_value_id
         description: 'The ID of the ad attribute value.'
         required: true
@@ -306,33 +321,36 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
     cleanUrlParameters:
       ad_attribute_value_id: architecto
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
       definition_id:
+        custom: []
         name: definition_id
         description: 'Identifier of the attribute definition being populated. The <code>id</code> of an existing record in the ad_attribute_definitions table.'
-        required: true
+        required: false
         example: 4
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       ad_id:
+        custom: []
         name: ad_id
         description: 'Identifier of the ad record this value belongs to. The <code>id</code> of an existing record in the ads table.'
-        required: true
+        required: false
         example: 15
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       value_string:
+        custom: []
         name: value_string
         description: 'String value when the definition expects textual data.'
         required: false
@@ -341,8 +359,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       value_integer:
+        custom: []
         name: value_integer
         description: 'Integer value when the definition expects whole numbers.'
         required: false
@@ -351,8 +370,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       value_decimal:
+        custom: []
         name: value_decimal
         description: 'Decimal value when the definition expects numeric data.'
         required: false
@@ -361,8 +381,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       value_boolean:
+        custom: []
         name: value_boolean
         description: 'Boolean value when the definition expects true or false.'
         required: false
@@ -371,8 +392,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       value_date:
+        custom: []
         name: value_date
         description: 'Date value when the definition expects a calendar date. Must be a valid date.'
         required: false
@@ -381,8 +403,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       value_json:
+        custom: []
         name: value_json
         description: 'Structured data payload for JSON definitions.'
         required: false
@@ -394,7 +417,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
     cleanBodyParameters:
       definition_id: 4
       ad_id: 15
@@ -417,12 +440,13 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - POST
     uri: 'api/ad-attribute-values/{ad_attribute_value_id}/delete'
     metadata:
+      custom: []
       groupName: 'Ad Attribute Values'
       groupDescription: 'Remove the specified attribute value record.'
       subgroup: ''
@@ -431,13 +455,13 @@ endpoints:
       description: ''
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
       ad_attribute_value_id:
+        custom: []
         name: ad_attribute_value_id
         description: 'The ID of the ad attribute value.'
         required: true
@@ -446,7 +470,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
     cleanUrlParameters:
       ad_attribute_value_id: architecto
     queryParameters: []
@@ -463,4 +487,3 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []

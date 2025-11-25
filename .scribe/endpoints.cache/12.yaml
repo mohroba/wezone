@@ -4,10 +4,12 @@ name: Notifications
 description: ''
 endpoints:
   -
+    custom: []
     httpMethods:
       - GET
     uri: api/v1/notifications
     metadata:
+      custom: []
       groupName: Notifications
       groupDescription: ''
       subgroup: ''
@@ -18,7 +20,6 @@ endpoints:
         notifications are returned.
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
@@ -27,6 +28,7 @@ endpoints:
     cleanUrlParameters: []
     queryParameters:
       per_page:
+        custom: []
         name: per_page
         description: 'The number of notifications to return per page (1-100).'
         required: false
@@ -35,8 +37,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       page:
+        custom: []
         name: page
         description: 'The current pagination page.'
         required: false
@@ -45,8 +48,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       include_read:
+        custom: []
         name: include_read
         description: 'Include notifications that have already been read.'
         required: false
@@ -55,7 +59,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
     cleanQueryParameters:
       per_page: 20
       page: 2
@@ -65,6 +69,7 @@ endpoints:
     fileParameters: []
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -99,7 +104,6 @@ endpoints:
           }
         headers: []
         description: 'Unread notifications'
-        custom: []
     responseFields: []
     auth:
       - headers
@@ -108,12 +112,13 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - POST
     uri: api/v1/notifications/read
     metadata:
+      custom: []
       groupName: Notifications
       groupDescription: ''
       subgroup: ''
@@ -122,7 +127,6 @@ endpoints:
       description: ''
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
@@ -136,6 +140,7 @@ endpoints:
     fileParameters: []
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -143,7 +148,6 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
     responseFields: []
     auth:
       - headers
@@ -152,12 +156,13 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - POST
     uri: 'api/v1/notifications/{notification_id}/read'
     metadata:
+      custom: []
       groupName: Notifications
       groupDescription: ''
       subgroup: ''
@@ -166,13 +171,13 @@ endpoints:
       description: ''
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
       notification_id:
+        custom: []
         name: notification_id
         description: 'The ID of the notification.'
         required: true
@@ -181,8 +186,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       notification:
+        custom: []
         name: notification
         description: 'The notification identifier.'
         required: true
@@ -191,7 +197,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
     cleanUrlParameters:
       notification_id: architecto
       notification: architecto
@@ -202,6 +208,7 @@ endpoints:
     fileParameters: []
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -210,7 +217,6 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
     responseFields: []
     auth:
       - headers
@@ -219,12 +225,13 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - POST
     uri: 'api/v1/notifications/{notification_id}/acknowledge'
     metadata:
+      custom: []
       groupName: Notifications
       groupDescription: ''
       subgroup: ''
@@ -235,13 +242,13 @@ endpoints:
         timestamp (for example, when dismissing announcements).
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
       notification_id:
+        custom: []
         name: notification_id
         description: 'The ID of the notification.'
         required: true
@@ -250,8 +257,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       notification:
+        custom: []
         name: notification
         description: 'The notification identifier.'
         required: true
@@ -260,7 +268,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
     cleanUrlParameters:
       notification_id: architecto
       notification: architecto
@@ -271,6 +279,7 @@ endpoints:
     fileParameters: []
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -279,7 +288,6 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
     responseFields: []
     auth:
       - headers
@@ -288,4 +296,3 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []

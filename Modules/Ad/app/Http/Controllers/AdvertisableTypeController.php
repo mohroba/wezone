@@ -87,6 +87,8 @@ class AdvertisableTypeController extends Controller
 
     /**
      * Create a new advertisable type.
+     *
+     * @contentType multipart/form-data
      */
     public function store(StoreAdvertisableTypeRequest $request): JsonResponse
     {
@@ -107,6 +109,8 @@ class AdvertisableTypeController extends Controller
 
     /**
      * Update an existing advertisable type.
+     *
+     * @contentType multipart/form-data
      */
     public function update(UpdateAdvertisableTypeRequest $request, AdvertisableType $advertisableType): AdvertisableTypeModelResource
     {

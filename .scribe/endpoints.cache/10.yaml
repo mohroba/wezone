@@ -4,10 +4,12 @@ name: Auth
 description: ''
 endpoints:
   -
+    custom: []
     httpMethods:
       - POST
     uri: api/auth/otp/send
     metadata:
+      custom: []
       groupName: Auth
       groupDescription: ''
       subgroup: ''
@@ -16,7 +18,6 @@ endpoints:
       description: ''
       authenticated: false
       deprecated: false
-      custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
@@ -26,6 +27,7 @@ endpoints:
     cleanQueryParameters: []
     bodyParameters:
       mobile:
+        custom: []
         name: mobile
         description: 'The mobile number to send the OTP to. Must contain 10 to 15 digits.'
         required: true
@@ -34,12 +36,13 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
     cleanBodyParameters:
       mobile: '"989123456789"'
     fileParameters: []
     responses:
       -
+        custom: []
         status: 201
         content: |-
           {
@@ -52,8 +55,8 @@ endpoints:
           }
         headers: []
         description: 'OTP created'
-        custom: []
       -
+        custom: []
         status: 429
         content: |-
           {
@@ -66,18 +69,18 @@ endpoints:
           }
         headers: []
         description: 'Too many attempts'
-        custom: []
     responseFields: []
     auth: []
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - POST
     uri: api/auth/otp/verify
     metadata:
+      custom: []
       groupName: Auth
       groupDescription: ''
       subgroup: ''
@@ -86,7 +89,6 @@ endpoints:
       description: ''
       authenticated: false
       deprecated: false
-      custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
@@ -96,6 +98,7 @@ endpoints:
     cleanQueryParameters: []
     bodyParameters:
       mobile:
+        custom: []
         name: mobile
         description: 'The mobile number the OTP was sent to. Must contain 10 to 15 digits.'
         required: true
@@ -104,8 +107,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       otp:
+        custom: []
         name: otp
         description: 'The six-digit one-time password received by the user.'
         required: true
@@ -114,8 +118,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       username:
+        custom: []
         name: username
         description: 'optional A unique username to assign to the user.'
         required: false
@@ -124,8 +129,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
       email:
+        custom: []
         name: email
         description: 'optional An email address to associate with the user.'
         required: false
@@ -134,8 +140,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
       first_name:
+        custom: []
         name: first_name
         description: "optional User's given name."
         required: false
@@ -144,8 +151,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
       last_name:
+        custom: []
         name: last_name
         description: "optional User's family name."
         required: false
@@ -154,8 +162,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
       birth_date:
+        custom: []
         name: birth_date
         description: 'optional Date of birth in Y-m-d format.'
         required: false
@@ -164,8 +173,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
       national_id:
+        custom: []
         name: national_id
         description: 'optional National identification number.'
         required: false
@@ -174,8 +184,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
       residence_city_id:
+        custom: []
         name: residence_city_id
         description: 'optional Identifier of the city where the user resides.'
         required: false
@@ -184,8 +195,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
       residence_province_id:
+        custom: []
         name: residence_province_id
         description: 'optional Identifier of the province where the user resides.'
         required: false
@@ -194,7 +206,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
     cleanBodyParameters:
       mobile: '"989123456789"'
       otp: '"123456"'
@@ -209,6 +221,7 @@ endpoints:
     fileParameters: []
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -257,8 +270,8 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
       -
+        custom: []
         status: 422
         content: |-
           {
@@ -269,18 +282,18 @@ endpoints:
           }
         headers: []
         description: 'Invalid OTP'
-        custom: []
     responseFields: []
     auth: []
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - GET
     uri: api/auth/profile
     metadata:
+      custom: []
       groupName: Auth
       groupDescription: ''
       subgroup: ''
@@ -289,7 +302,6 @@ endpoints:
       description: ''
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
@@ -303,6 +315,7 @@ endpoints:
     fileParameters: []
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -346,7 +359,6 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
     responseFields: []
     auth:
       - headers
@@ -355,12 +367,13 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - POST
     uri: api/auth/profile
     metadata:
+      custom: []
       groupName: Auth
       groupDescription: ''
       subgroup: ''
@@ -369,7 +382,6 @@ endpoints:
       description: ''
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: multipart/form-data
@@ -380,6 +392,7 @@ endpoints:
     cleanQueryParameters: []
     bodyParameters:
       first_name:
+        custom: []
         name: first_name
         description: "optional User's given name."
         required: false
@@ -388,8 +401,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
       last_name:
+        custom: []
         name: last_name
         description: "optional User's family name."
         required: false
@@ -398,8 +412,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
       birth_date:
+        custom: []
         name: birth_date
         description: 'optional Date of birth in Y-m-d format.'
         required: false
@@ -408,8 +423,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
       national_id:
+        custom: []
         name: national_id
         description: 'optional National identification number.'
         required: false
@@ -418,8 +434,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
       residence_city_id:
+        custom: []
         name: residence_city_id
         description: 'optional Identifier of the city where the user resides.'
         required: false
@@ -428,8 +445,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
       residence_province_id:
+        custom: []
         name: residence_province_id
         description: 'optional Identifier of the province where the user resides.'
         required: false
@@ -438,8 +456,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
       profile_image:
+        custom: []
         name: profile_image
         description: 'optional Profile image file (JPEG, PNG, BMP, GIF, SVG, or WebP).'
         required: false
@@ -448,7 +467,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
     cleanBodyParameters:
       first_name: '""'
       last_name: '""'
@@ -460,6 +479,7 @@ endpoints:
       profile_image: null
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -503,8 +523,8 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
       -
+        custom: []
         status: 422
         content: |-
           {
@@ -519,7 +539,6 @@ endpoints:
           }
         headers: []
         description: 'Validation error'
-        custom: []
     responseFields: []
     auth:
       - headers
@@ -528,12 +547,13 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - GET
     uri: api/auth/user
     metadata:
+      custom: []
       groupName: Auth
       groupDescription: ''
       subgroup: ''
@@ -542,7 +562,6 @@ endpoints:
       description: ''
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
@@ -556,6 +575,7 @@ endpoints:
     fileParameters: []
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -579,7 +599,6 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
     responseFields: []
     auth:
       - headers
@@ -588,12 +607,13 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - POST
     uri: api/auth/user
     metadata:
+      custom: []
       groupName: Auth
       groupDescription: ''
       subgroup: ''
@@ -602,7 +622,6 @@ endpoints:
       description: ''
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
@@ -613,6 +632,7 @@ endpoints:
     cleanQueryParameters: []
     bodyParameters:
       username:
+        custom: []
         name: username
         description: 'optional A unique username between 1 and 191 characters.'
         required: false
@@ -621,8 +641,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
       email:
+        custom: []
         name: email
         description: 'optional A unique, valid email address.'
         required: false
@@ -631,13 +652,14 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
     cleanBodyParameters:
       username: '""'
       email: '""'
     fileParameters: []
     responses:
       -
+        custom: []
         status: 200
         content: |-
           {
@@ -661,8 +683,8 @@ endpoints:
           }
         headers: []
         description: ''
-        custom: []
       -
+        custom: []
         status: 422
         content: |-
           {
@@ -677,7 +699,6 @@ endpoints:
           }
         headers: []
         description: 'Validation error'
-        custom: []
     responseFields: []
     auth:
       - headers
@@ -686,4 +707,3 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []

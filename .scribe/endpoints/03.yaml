@@ -2,10 +2,12 @@ name: 'Ad Categories'
 description: 'Fetch categories with optional filtering by parent, activation state, or search term.'
 endpoints:
   -
+    custom: []
     httpMethods:
       - GET
     uri: api/ad-categories
     metadata:
+      custom: []
       groupName: 'Ad Categories'
       groupDescription: 'Fetch categories with optional filtering by parent, activation state, or search term.'
       subgroup: ''
@@ -14,7 +16,6 @@ endpoints:
       description: ''
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
@@ -23,6 +24,7 @@ endpoints:
     cleanUrlParameters: []
     queryParameters:
       parent_id:
+        custom: []
         name: parent_id
         description: 'Filter categories by parent identifier.'
         required: false
@@ -31,8 +33,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       only_active:
+        custom: []
         name: only_active
         description: 'Return only active categories.'
         required: false
@@ -41,8 +44,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       search:
+        custom: []
         name: search
         description: 'Search by category name or slug.'
         required: false
@@ -51,8 +55,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       advertisable_type_id:
+        custom: []
         name: advertisable_type_id
         description: 'Limit results to the given advertisable type.'
         required: false
@@ -61,8 +66,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       per_page:
+        custom: []
         name: per_page
         description: 'Number of results per page, up to 200.'
         required: false
@@ -71,8 +77,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       without_pagination:
+        custom: []
         name: without_pagination
         description: 'Set to true to receive all categories without pagination.'
         required: false
@@ -81,7 +88,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
     cleanQueryParameters:
       parent_id: 1
       only_active: true
@@ -91,6 +98,7 @@ endpoints:
       without_pagination: false
     bodyParameters:
       parent_id:
+        custom: []
         name: parent_id
         description: 'The <code>id</code> of an existing record in the ad_categories table.'
         required: false
@@ -99,8 +107,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       only_active:
+        custom: []
         name: only_active
         description: ''
         required: false
@@ -109,8 +118,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       search:
+        custom: []
         name: search
         description: ''
         required: false
@@ -119,8 +129,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       advertisable_type_id:
+        custom: []
         name: advertisable_type_id
         description: 'The <code>id</code> of an existing record in the advertisable_types table.'
         required: false
@@ -129,8 +140,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       per_page:
+        custom: []
         name: per_page
         description: 'Must be at least 1. Must not be greater than 200.'
         required: false
@@ -139,8 +151,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       without_pagination:
+        custom: []
         name: without_pagination
         description: ''
         required: false
@@ -149,7 +162,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
     cleanBodyParameters:
       parent_id: 16
       only_active: true
@@ -160,6 +173,7 @@ endpoints:
     fileParameters: []
     responses:
       -
+        custom: []
         status: 422
         content: '{"message":"The selected parent id is invalid. (and 1 more error)","errors":{"parent_id":["The selected parent id is invalid."],"advertisable_type_id":["The selected advertisable type id is invalid."]}}'
         headers:
@@ -167,9 +181,9 @@ endpoints:
           content-type: application/json
           access-control-allow-origin: '*'
         description: null
-        custom: []
     responseFields:
       icon_url:
+        custom: []
         name: icon_url
         description: 'Public URL to the uploaded icon image, if present.'
         required: false
@@ -178,7 +192,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
     auth:
       - headers
       - Authorization
@@ -186,12 +200,13 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - POST
     uri: api/ad-categories
     metadata:
+      custom: []
       groupName: 'Ad Categories'
       groupDescription: 'Store a new category and rebuild the hierarchy metadata.'
       subgroup: ''
@@ -200,7 +215,6 @@ endpoints:
       description: ''
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
@@ -211,6 +225,7 @@ endpoints:
     cleanQueryParameters: []
     bodyParameters:
       advertisable_type_id:
+        custom: []
         name: advertisable_type_id
         description: 'Identifier of the advertisable type this category belongs to. The <code>id</code> of an existing record in the advertisable_types table.'
         required: true
@@ -219,8 +234,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       parent_id:
+        custom: []
         name: parent_id
         description: 'Identifier of the parent category. The <code>id</code> of an existing record in the ad_categories table.'
         required: false
@@ -229,8 +245,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       slug:
+        custom: []
         name: slug
         description: 'Unique slug for the category. Must contain only letters, numbers, dashes and underscores. Must not be greater than 255 characters.'
         required: true
@@ -239,8 +256,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       name:
+        custom: []
         name: name
         description: 'Display name of the category. Must not be greater than 255 characters.'
         required: true
@@ -249,8 +267,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       name_localized:
+        custom: []
         name: name_localized
         description: 'Localized translations for the category name.'
         required: false
@@ -260,8 +279,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       is_active:
+        custom: []
         name: is_active
         description: 'Toggle to activate or deactivate the category.'
         required: false
@@ -270,8 +290,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       sort_order:
+        custom: []
         name: sort_order
         description: 'Custom ordering index.'
         required: false
@@ -280,8 +301,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       icon:
+        custom: []
         name: icon
         description: 'Icon image representing the category.'
         required: false
@@ -290,7 +312,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
     cleanBodyParameters:
       advertisable_type_id: 2
       parent_id: 1
@@ -304,6 +326,7 @@ endpoints:
     responses: []
     responseFields:
       icon_url:
+        custom: []
         name: icon_url
         description: 'Public URL to the uploaded icon image, if present.'
         required: false
@@ -312,7 +335,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
     auth:
       - headers
       - Authorization
@@ -320,12 +343,13 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - GET
     uri: 'api/ad-categories/{ad_category_id}'
     metadata:
+      custom: []
       groupName: 'Ad Categories'
       groupDescription: 'Retrieve details for the given category record.'
       subgroup: ''
@@ -334,13 +358,13 @@ endpoints:
       description: ''
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
       ad_category_id:
+        custom: []
         name: ad_category_id
         description: 'The ID of the ad category.'
         required: true
@@ -349,7 +373,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
     cleanUrlParameters:
       ad_category_id: architecto
     queryParameters: []
@@ -359,6 +383,7 @@ endpoints:
     fileParameters: []
     responses:
       -
+        custom: []
         status: 404
         content: |-
           {
@@ -369,9 +394,9 @@ endpoints:
           content-type: application/json
           access-control-allow-origin: '*'
         description: null
-        custom: []
     responseFields:
       icon_url:
+        custom: []
         name: icon_url
         description: 'Public URL to the uploaded icon image, if present.'
         required: false
@@ -380,7 +405,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
     auth:
       - headers
       - Authorization
@@ -388,12 +413,13 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - POST
     uri: 'api/ad-categories/{ad_category_id}/update'
     metadata:
+      custom: []
       groupName: 'Ad Categories'
       groupDescription: 'Apply updates and recompute the category hierarchy when relationships change.'
       subgroup: ''
@@ -402,13 +428,13 @@ endpoints:
       description: ''
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
       ad_category_id:
+        custom: []
         name: ad_category_id
         description: 'The ID of the ad category.'
         required: true
@@ -417,13 +443,14 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
     cleanUrlParameters:
       ad_category_id: architecto
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
       parent_id:
+        custom: []
         name: parent_id
         description: 'Identifier of the parent category. The <code>id</code> of an existing record in the ad_categories table.'
         required: false
@@ -432,28 +459,31 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       slug:
+        custom: []
         name: slug
         description: 'Unique slug for the category. Must contain only letters, numbers, dashes and underscores. Must not be greater than 255 characters.'
-        required: true
+        required: false
         example: vehicles
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       name:
+        custom: []
         name: name
         description: 'Display name of the category. Must not be greater than 255 characters.'
-        required: true
+        required: false
         example: Vehicles
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       name_localized:
+        custom: []
         name: name_localized
         description: 'Localized translations for the category name.'
         required: false
@@ -463,8 +493,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       is_active:
+        custom: []
         name: is_active
         description: 'Toggle to activate or deactivate the category.'
         required: false
@@ -473,8 +504,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       sort_order:
+        custom: []
         name: sort_order
         description: 'Custom ordering index.'
         required: false
@@ -483,18 +515,20 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       advertisable_type_id:
+        custom: []
         name: advertisable_type_id
         description: 'Identifier of the advertisable type this category belongs to. The <code>id</code> of an existing record in the advertisable_types table.'
-        required: true
+        required: false
         example: 2
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       icon:
+        custom: []
         name: icon
         description: 'Icon image representing the category.'
         required: false
@@ -503,7 +537,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
     cleanBodyParameters:
       parent_id: 1
       slug: vehicles
@@ -517,6 +551,7 @@ endpoints:
     responses: []
     responseFields:
       icon_url:
+        custom: []
         name: icon_url
         description: 'Public URL to the uploaded icon image, if present.'
         required: false
@@ -525,7 +560,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
     auth:
       - headers
       - Authorization
@@ -533,12 +568,13 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - POST
     uri: 'api/ad-categories/{ad_category_id}/delete'
     metadata:
+      custom: []
       groupName: 'Ad Categories'
       groupDescription: 'Soft delete the specified category.'
       subgroup: ''
@@ -547,13 +583,13 @@ endpoints:
       description: ''
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
       ad_category_id:
+        custom: []
         name: ad_category_id
         description: 'The ID of the ad category.'
         required: true
@@ -562,7 +598,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
     cleanUrlParameters:
       ad_category_id: architecto
     queryParameters: []
@@ -579,4 +615,3 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []

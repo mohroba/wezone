@@ -2,10 +2,12 @@ name: 'Ads Review'
 description: ''
 endpoints:
   -
+    custom: []
     httpMethods:
       - POST
     uri: api/ad-reports
     metadata:
+      custom: []
       groupName: 'Ads Review'
       groupDescription: ''
       subgroup: ''
@@ -14,7 +16,6 @@ endpoints:
       description: ''
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
@@ -25,6 +26,7 @@ endpoints:
     cleanQueryParameters: []
     bodyParameters:
       ad_id:
+        custom: []
         name: ad_id
         description: 'Identifier of the ad being reported. The <code>id</code> of an existing record in the ads table.'
         required: true
@@ -33,8 +35,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       reason_code:
+        custom: []
         name: reason_code
         description: 'Machine-readable code representing the report reason. Must not be greater than 255 characters.'
         required: true
@@ -43,8 +46,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       description:
+        custom: []
         name: description
         description: 'Free-form explanation provided by the reporter. Must not be greater than 2000 characters.'
         required: false
@@ -53,8 +57,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       metadata:
+        custom: []
         name: metadata
         description: 'Additional context supplied with the report.'
         required: false
@@ -64,7 +69,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
     cleanBodyParameters:
       ad_id: 512
       reason_code: spam
@@ -81,12 +86,13 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - GET
     uri: api/ad-reports
     metadata:
+      custom: []
       groupName: 'Ads Review'
       groupDescription: ''
       subgroup: ''
@@ -95,7 +101,6 @@ endpoints:
       description: ''
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
@@ -104,6 +109,7 @@ endpoints:
     cleanUrlParameters: []
     queryParameters:
       status:
+        custom: []
         name: status
         description: 'Filter reports by their current status.'
         required: false
@@ -116,8 +122,9 @@ endpoints:
           - dismissed
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       ad_id:
+        custom: []
         name: ad_id
         description: 'Limit results to reports targeting a specific ad. The <code>id</code> of an existing record in the ads table.'
         required: false
@@ -126,8 +133,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       reported_by:
+        custom: []
         name: reported_by
         description: 'Filter by the identifier of the reporting user. The <code>id</code> of an existing record in the users table.'
         required: false
@@ -136,8 +144,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       handled_by:
+        custom: []
         name: handled_by
         description: 'Filter by the identifier of the moderator handling the report. The <code>id</code> of an existing record in the users table.'
         required: false
@@ -146,8 +155,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       reason_code:
+        custom: []
         name: reason_code
         description: 'Filter by the report reason code. Must not be greater than 255 characters.'
         required: false
@@ -156,8 +166,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       from:
+        custom: []
         name: from
         description: 'Limit reports to those created on or after this ISO 8601 date. Must be a valid date.'
         required: false
@@ -166,8 +177,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       to:
+        custom: []
         name: to
         description: 'Limit reports to those created on or before this ISO 8601 date. Must be a valid date. Must be a date after or equal to <code>from</code>.'
         required: false
@@ -176,8 +188,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       search:
+        custom: []
         name: search
         description: 'Free-text search across report content and related ad data. Must not be greater than 500 characters.'
         required: false
@@ -186,8 +199,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       per_page:
+        custom: []
         name: per_page
         description: 'Number of results to return per page when paginating. Must be at least 1. Must not be greater than 100.'
         required: false
@@ -196,8 +210,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       without_pagination:
+        custom: []
         name: without_pagination
         description: 'When true, returns all results without pagination.'
         required: false
@@ -206,7 +221,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
     cleanQueryParameters:
       status: pending
       ad_id: 512
@@ -223,6 +238,7 @@ endpoints:
     fileParameters: []
     responses:
       -
+        custom: []
         status: 401
         content: '{"message":"Unauthenticated."}'
         headers:
@@ -230,7 +246,6 @@ endpoints:
           content-type: application/json
           access-control-allow-origin: '*'
         description: null
-        custom: []
     responseFields: []
     auth:
       - headers
@@ -239,12 +254,13 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - GET
     uri: 'api/ad-reports/{id}'
     metadata:
+      custom: []
       groupName: 'Ads Review'
       groupDescription: ''
       subgroup: ''
@@ -253,13 +269,13 @@ endpoints:
       description: ''
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
       id:
+        custom: []
         name: id
         description: 'The ID of the ad report.'
         required: true
@@ -268,7 +284,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
     cleanUrlParameters:
       id: 16
     queryParameters: []
@@ -278,6 +294,7 @@ endpoints:
     fileParameters: []
     responses:
       -
+        custom: []
         status: 401
         content: '{"message":"Unauthenticated."}'
         headers:
@@ -285,7 +302,6 @@ endpoints:
           content-type: application/json
           access-control-allow-origin: '*'
         description: null
-        custom: []
     responseFields: []
     auth:
       - headers
@@ -294,12 +310,13 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - POST
     uri: 'api/ad-reports/{id}/update'
     metadata:
+      custom: []
       groupName: 'Ads Review'
       groupDescription: ''
       subgroup: ''
@@ -308,13 +325,13 @@ endpoints:
       description: ''
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
       id:
+        custom: []
         name: id
         description: 'The ID of the ad report.'
         required: true
@@ -323,16 +340,17 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
     cleanUrlParameters:
       id: 16
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
       status:
+        custom: []
         name: status
         description: 'New status to assign to the report.'
-        required: true
+        required: false
         example: in_review
         type: string
         enumValues:
@@ -342,8 +360,9 @@ endpoints:
           - dismissed
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       resolution_notes:
+        custom: []
         name: resolution_notes
         description: 'Notes explaining the actions taken on the report. Must not be greater than 2000 characters.'
         required: false
@@ -352,8 +371,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       metadata:
+        custom: []
         name: metadata
         description: 'Supplementary metadata maintained by moderators.'
         required: false
@@ -363,7 +383,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
     cleanBodyParameters:
       status: in_review
       resolution_notes: 'Contacted the seller for clarification.'
@@ -379,12 +399,13 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - POST
     uri: 'api/ad-reports/{id}/delete'
     metadata:
+      custom: []
       groupName: 'Ads Review'
       groupDescription: ''
       subgroup: ''
@@ -393,13 +414,13 @@ endpoints:
       description: ''
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
       id:
+        custom: []
         name: id
         description: 'The ID of the ad report.'
         required: true
@@ -408,7 +429,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
     cleanUrlParameters:
       id: 16
     queryParameters: []
@@ -425,12 +446,13 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - POST
     uri: 'api/ad-reports/{ad_report_id}/resolve'
     metadata:
+      custom: []
       groupName: 'Ads Review'
       groupDescription: ''
       subgroup: ''
@@ -439,13 +461,13 @@ endpoints:
       description: ''
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
       ad_report_id:
+        custom: []
         name: ad_report_id
         description: 'The ID of the ad report.'
         required: true
@@ -454,13 +476,14 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
     cleanUrlParameters:
       ad_report_id: architecto
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
       resolution_notes:
+        custom: []
         name: resolution_notes
         description: 'Notes shared with the report to explain the resolution. Must not be greater than 2000 characters.'
         required: false
@@ -469,8 +492,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       metadata:
+        custom: []
         name: metadata
         description: 'Additional metadata recorded during report handling.'
         required: false
@@ -480,7 +504,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
     cleanBodyParameters:
       resolution_notes: 'Listing was reviewed and found to comply with guidelines.'
       metadata:
@@ -495,12 +519,13 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - POST
     uri: 'api/ad-reports/{ad_report_id}/dismiss'
     metadata:
+      custom: []
       groupName: 'Ads Review'
       groupDescription: ''
       subgroup: ''
@@ -509,13 +534,13 @@ endpoints:
       description: ''
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
       ad_report_id:
+        custom: []
         name: ad_report_id
         description: 'The ID of the ad report.'
         required: true
@@ -524,13 +549,14 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
     cleanUrlParameters:
       ad_report_id: architecto
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
       resolution_notes:
+        custom: []
         name: resolution_notes
         description: 'Notes shared with the report to explain the resolution. Must not be greater than 2000 characters.'
         required: false
@@ -539,8 +565,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       metadata:
+        custom: []
         name: metadata
         description: 'Additional metadata recorded during report handling.'
         required: false
@@ -550,7 +577,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
     cleanBodyParameters:
       resolution_notes: 'Listing was reviewed and found to comply with guidelines.'
       metadata:
@@ -565,4 +592,3 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []

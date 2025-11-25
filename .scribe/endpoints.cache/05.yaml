@@ -4,10 +4,12 @@ name: 'Ad Attribute Definitions'
 description: 'Retrieve attribute definitions optionally filtered by group.'
 endpoints:
   -
+    custom: []
     httpMethods:
       - GET
     uri: api/ad-attribute-definitions
     metadata:
+      custom: []
       groupName: 'Ad Attribute Definitions'
       groupDescription: 'Retrieve attribute definitions optionally filtered by group.'
       subgroup: ''
@@ -16,7 +18,6 @@ endpoints:
       description: ''
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
@@ -25,6 +26,7 @@ endpoints:
     cleanUrlParameters: []
     queryParameters:
       attribute_group_id:
+        custom: []
         name: attribute_group_id
         description: 'Limit results to a specific attribute group.'
         required: false
@@ -33,8 +35,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       per_page:
+        custom: []
         name: per_page
         description: 'Number of results per page, up to 200.'
         required: false
@@ -43,8 +46,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       without_pagination:
+        custom: []
         name: without_pagination
         description: 'Set to true to return all definitions without pagination.'
         required: false
@@ -53,7 +57,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
     cleanQueryParameters:
       attribute_group_id: 4
       per_page: 25
@@ -63,6 +67,7 @@ endpoints:
     fileParameters: []
     responses:
       -
+        custom: []
         status: 200
         content: '{"data":[],"links":{"first":"http:\/\/localhost:8000\/api\/ad-attribute-definitions?attribute_group_id=4&per_page=25&without_pagination=0&page=1","last":"http:\/\/localhost:8000\/api\/ad-attribute-definitions?attribute_group_id=4&per_page=25&without_pagination=0&page=1","prev":null,"next":null},"meta":{"current_page":1,"from":null,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"http:\/\/localhost:8000\/api\/ad-attribute-definitions?attribute_group_id=4&per_page=25&without_pagination=0&page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"path":"http:\/\/localhost:8000\/api\/ad-attribute-definitions","per_page":25,"to":null,"total":0}}'
         headers:
@@ -70,7 +75,6 @@ endpoints:
           content-type: application/json
           access-control-allow-origin: '*'
         description: null
-        custom: []
     responseFields: []
     auth:
       - headers
@@ -79,12 +83,13 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - POST
     uri: api/ad-attribute-definitions
     metadata:
+      custom: []
       groupName: 'Ad Attribute Definitions'
       groupDescription: 'Persist a new attribute definition for dynamic ad data.'
       subgroup: ''
@@ -93,7 +98,6 @@ endpoints:
       description: ''
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
@@ -104,6 +108,7 @@ endpoints:
     cleanQueryParameters: []
     bodyParameters:
       attribute_group_id:
+        custom: []
         name: attribute_group_id
         description: 'Identifier of the attribute group this definition belongs to. The <code>id</code> of an existing record in the ad_attribute_groups table.'
         required: true
@@ -112,8 +117,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       key:
+        custom: []
         name: key
         description: 'Unique machine-friendly key for the attribute. Must not be greater than 255 characters.'
         required: true
@@ -122,8 +128,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       label:
+        custom: []
         name: label
         description: 'Human readable label for the attribute. Must not be greater than 255 characters.'
         required: true
@@ -132,8 +139,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       help_text:
+        custom: []
         name: help_text
         description: 'Helper text to guide form inputs.'
         required: false
@@ -142,8 +150,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       data_type:
+        custom: []
         name: data_type
         description: 'Datatype expected for the attribute value.'
         required: true
@@ -159,8 +168,9 @@ endpoints:
           - date
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       unit:
+        custom: []
         name: unit
         description: 'Unit displayed next to the value. Must not be greater than 255 characters.'
         required: false
@@ -169,8 +179,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       options:
+        custom: []
         name: options
         description: 'Available options or constraints for the attribute; pass either a constraint object or an array of enum strings.'
         required: false
@@ -182,8 +193,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       is_required:
+        custom: []
         name: is_required
         description: 'Whether the attribute must be provided when creating ads.'
         required: false
@@ -192,8 +204,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       is_filterable:
+        custom: []
         name: is_filterable
         description: 'Whether the attribute can be used as a filter in listings.'
         required: false
@@ -202,8 +215,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       is_searchable:
+        custom: []
         name: is_searchable
         description: 'Whether the attribute contributes to search indexes.'
         required: false
@@ -212,8 +226,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       validation_rules:
+        custom: []
         name: validation_rules
         description: 'Laravel validation rules applied to the attribute value.'
         required: false
@@ -222,7 +237,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
     cleanBodyParameters:
       attribute_group_id: 2
       key: engine_volume
@@ -248,12 +263,13 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - GET
     uri: 'api/ad-attribute-definitions/{ad_attribute_definition_id}'
     metadata:
+      custom: []
       groupName: 'Ad Attribute Definitions'
       groupDescription: 'Retrieve a single attribute definition with metadata.'
       subgroup: ''
@@ -262,13 +278,13 @@ endpoints:
       description: ''
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
       ad_attribute_definition_id:
+        custom: []
         name: ad_attribute_definition_id
         description: 'The ID of the ad attribute definition.'
         required: true
@@ -277,7 +293,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
     cleanUrlParameters:
       ad_attribute_definition_id: architecto
     queryParameters: []
@@ -287,6 +303,7 @@ endpoints:
     fileParameters: []
     responses:
       -
+        custom: []
         status: 404
         content: |-
           {
@@ -297,7 +314,6 @@ endpoints:
           content-type: application/json
           access-control-allow-origin: '*'
         description: null
-        custom: []
     responseFields: []
     auth:
       - headers
@@ -306,12 +322,13 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - POST
     uri: 'api/ad-attribute-definitions/{ad_attribute_definition_id}/update'
     metadata:
+      custom: []
       groupName: 'Ad Attribute Definitions'
       groupDescription: 'Apply changes to an existing attribute definition.'
       subgroup: ''
@@ -320,13 +337,13 @@ endpoints:
       description: ''
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
       ad_attribute_definition_id:
+        custom: []
         name: ad_attribute_definition_id
         description: 'The ID of the ad attribute definition.'
         required: true
@@ -335,43 +352,47 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
     cleanUrlParameters:
       ad_attribute_definition_id: architecto
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
       attribute_group_id:
+        custom: []
         name: attribute_group_id
         description: 'Identifier of the attribute group this definition belongs to. The <code>id</code> of an existing record in the ad_attribute_groups table.'
-        required: true
+        required: false
         example: 2
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       key:
+        custom: []
         name: key
         description: 'Unique machine-friendly key for the attribute. Must not be greater than 255 characters.'
-        required: true
+        required: false
         example: engine_volume
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       label:
+        custom: []
         name: label
         description: 'Human readable label for the attribute. Must not be greater than 255 characters.'
-        required: true
+        required: false
         example: 'Engine volume'
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       help_text:
+        custom: []
         name: help_text
         description: 'Helper text to guide form inputs.'
         required: false
@@ -380,11 +401,12 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       data_type:
+        custom: []
         name: data_type
         description: 'Datatype expected for the attribute value.'
-        required: true
+        required: false
         example: decimal
         type: string
         enumValues:
@@ -397,8 +419,9 @@ endpoints:
           - date
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       unit:
+        custom: []
         name: unit
         description: 'Unit displayed next to the value. Must not be greater than 255 characters.'
         required: false
@@ -407,8 +430,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       options:
+        custom: []
         name: options
         description: 'Available options or constraints for the attribute; pass either a constraint object or an array of enum strings.'
         required: false
@@ -420,8 +444,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       is_required:
+        custom: []
         name: is_required
         description: 'Whether the attribute must be provided when creating ads.'
         required: false
@@ -430,8 +455,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       is_filterable:
+        custom: []
         name: is_filterable
         description: 'Whether the attribute can be used as a filter in listings.'
         required: false
@@ -440,8 +466,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       is_searchable:
+        custom: []
         name: is_searchable
         description: 'Whether the attribute contributes to search indexes.'
         required: false
@@ -450,8 +477,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       validation_rules:
+        custom: []
         name: validation_rules
         description: 'Laravel validation rules applied to the attribute value.'
         required: false
@@ -460,7 +488,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
     cleanBodyParameters:
       attribute_group_id: 2
       key: engine_volume
@@ -486,12 +514,13 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - POST
     uri: 'api/ad-attribute-definitions/{ad_attribute_definition_id}/delete'
     metadata:
+      custom: []
       groupName: 'Ad Attribute Definitions'
       groupDescription: 'Remove the specified attribute definition.'
       subgroup: ''
@@ -500,13 +529,13 @@ endpoints:
       description: ''
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
       ad_attribute_definition_id:
+        custom: []
         name: ad_attribute_definition_id
         description: 'The ID of the ad attribute definition.'
         required: true
@@ -515,7 +544,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
     cleanUrlParameters:
       ad_attribute_definition_id: architecto
     queryParameters: []
@@ -532,4 +561,3 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []

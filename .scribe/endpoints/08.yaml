@@ -2,10 +2,12 @@ name: Others
 description: ''
 endpoints:
   -
+    custom: []
     httpMethods:
       - POST
     uri: api/advertisable-types
     metadata:
+      custom: []
       groupName: Others
       groupDescription: ''
       subgroup: ''
@@ -14,7 +16,6 @@ endpoints:
       description: ''
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: multipart/form-data
@@ -25,6 +26,7 @@ endpoints:
     cleanQueryParameters: []
     bodyParameters:
       key:
+        custom: []
         name: key
         description: 'Unique identifier for the advertisable type. Must contain only letters, numbers, dashes and underscores. Must not be greater than 64 characters.'
         required: true
@@ -33,8 +35,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       label:
+        custom: []
         name: label
         description: 'Human readable label displayed to users. Must not be greater than 255 characters.'
         required: true
@@ -43,8 +46,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       description:
+        custom: []
         name: description
         description: 'Optional description for clients.'
         required: false
@@ -53,8 +57,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       model_class:
+        custom: []
         name: model_class
         description: 'Backed advertisable model class (must be supported). Must not be greater than 255 characters.'
         required: true
@@ -66,17 +71,18 @@ endpoints:
           - Modules\Ad\Models\AdJob
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       icon:
+        custom: []
         name: icon
-        description: 'Optional icon image representing the type. Must be an image. Must not be greater than 2048 kilobytes.'
+        description: 'Optional icon image representing the type (JPEG, PNG, WebP, or GIF; max 5 MB). Must be a file. Must not be greater than 5120 kilobytes.'
         required: false
         example: null
         type: file
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
     cleanBodyParameters:
       key: electronics
       label: Electronics
@@ -93,12 +99,13 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - POST
     uri: 'api/advertisable-types/{advertisable_type_id}/update'
     metadata:
+      custom: []
       groupName: Others
       groupDescription: ''
       subgroup: ''
@@ -107,13 +114,13 @@ endpoints:
       description: ''
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: multipart/form-data
       Accept: application/json
     urlParameters:
       advertisable_type_id:
+        custom: []
         name: advertisable_type_id
         description: 'The ID of the advertisable type.'
         required: true
@@ -122,33 +129,36 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
     cleanUrlParameters:
       advertisable_type_id: architecto
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
       key:
+        custom: []
         name: key
         description: 'Unique identifier for the advertisable type. Must contain only letters, numbers, dashes and underscores. Must not be greater than 64 characters.'
-        required: true
+        required: false
         example: premium_cars
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       label:
+        custom: []
         name: label
         description: 'Human readable label displayed to users. Must not be greater than 255 characters.'
-        required: true
+        required: false
         example: 'Premium Cars'
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       description:
+        custom: []
         name: description
         description: 'Optional description for clients.'
         required: false
@@ -157,11 +167,12 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
       model_class:
+        custom: []
         name: model_class
         description: 'Backed advertisable model class (must be supported). Must not be greater than 255 characters.'
-        required: true
+        required: false
         example: \Modules\Ad\Models\AdRealEstate
         type: string
         enumValues:
@@ -170,17 +181,18 @@ endpoints:
           - Modules\Ad\Models\AdJob
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       icon:
+        custom: []
         name: icon
-        description: 'Optional icon image representing the type. Must be an image. Must not be greater than 2048 kilobytes.'
+        description: 'Optional icon image representing the type (JPEG, PNG, WebP, or GIF; max 5 MB). Must be a file. Must not be greater than 5120 kilobytes.'
         required: false
         example: null
         type: file
         enumValues: []
         exampleWasSpecified: false
         nullable: true
-        custom: []
+        deprecated: false
     cleanBodyParameters:
       key: premium_cars
       label: 'Premium Cars'
@@ -197,12 +209,13 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - POST
     uri: 'api/advertisable-types/{advertisable_type_id}/delete'
     metadata:
+      custom: []
       groupName: Others
       groupDescription: ''
       subgroup: ''
@@ -211,13 +224,13 @@ endpoints:
       description: ''
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
       advertisable_type_id:
+        custom: []
         name: advertisable_type_id
         description: 'The ID of the advertisable type.'
         required: true
@@ -226,7 +239,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
     cleanUrlParameters:
       advertisable_type_id: architecto
     queryParameters: []
@@ -243,4 +256,3 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []

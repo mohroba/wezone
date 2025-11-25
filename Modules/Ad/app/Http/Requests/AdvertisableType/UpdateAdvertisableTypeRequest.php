@@ -38,7 +38,13 @@ class UpdateAdvertisableTypeRequest extends FormRequest
                 'max:255',
                 Rule::in(AdvertisableTypeSupport::allowed()),
             ],
-            'icon' => ['nullable', 'image', 'max:2048'],
+            'icon' => [
+                'nullable',
+                'file',
+                'mimes:jpg,jpeg,png,webp,gif',
+                'mimetypes:image/jpeg,image/png,image/webp,image/gif',
+                'max:5120',
+            ],
         ];
     }
 
@@ -65,7 +71,7 @@ class UpdateAdvertisableTypeRequest extends FormRequest
                 'example' => '\\Modules\\Ad\\Models\\AdRealEstate',
             ],
             'icon' => [
-                'description' => 'Optional icon image representing the type.',
+                'description' => 'Optional icon image representing the type (JPEG, PNG, WebP, or GIF; max 5 MB).',
                 'type' => 'file',
             ],
         ];

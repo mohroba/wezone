@@ -23,7 +23,13 @@ class StoreAdCategoryRequest extends FormRequest
             'name_localized' => ['nullable', 'array'],
             'is_active' => ['boolean'],
             'sort_order' => ['nullable', 'integer'],
-            'icon' => ['nullable', 'max:2048'],
+            'icon' => [
+                'nullable',
+                'file',
+                'mimes:jpg,jpeg,png,webp,gif',
+                'mimetypes:image/jpeg,image/png,image/webp,image/gif',
+                'max:5120',
+            ],
         ];
     }
 
@@ -86,7 +92,7 @@ class StoreAdCategoryRequest extends FormRequest
                 'example' => 5,
             ],
             'icon' => [
-                'description' => 'Icon image representing the category (JPEG, PNG, BMP, GIF, SVG, or WebP).',
+                'description' => 'Icon image representing the category (JPEG, PNG, WebP, or GIF; max 5 MB).',
                 'type' => 'file',
             ],
         ];

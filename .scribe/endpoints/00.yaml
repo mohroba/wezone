@@ -2,10 +2,12 @@ name: Geography
 description: ''
 endpoints:
   -
+    custom: []
     httpMethods:
       - GET
     uri: api/geography/countries
     metadata:
+      custom: []
       groupName: Geography
       groupDescription: ''
       subgroup: ''
@@ -14,7 +16,6 @@ endpoints:
       description: 'Returns a paginated list of countries.'
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
@@ -23,6 +24,7 @@ endpoints:
     cleanUrlParameters: []
     queryParameters:
       id:
+        custom: []
         name: id
         description: 'optional Filter by country ID.'
         required: false
@@ -31,8 +33,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
       name:
+        custom: []
         name: name
         description: 'optional Filter by country name (fa/en, partial match).'
         required: false
@@ -41,8 +44,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
       name_en:
+        custom: []
         name: name_en
         description: 'optional Filter by English name (partial match).'
         required: false
@@ -51,8 +55,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
       capital_city:
+        custom: []
         name: capital_city
         description: 'optional Filter by capital city ID.'
         required: false
@@ -61,8 +66,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
       per_page:
+        custom: []
         name: per_page
         description: 'optional Results per page (1-100). Defaults to 50.'
         required: false
@@ -71,7 +77,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
     cleanQueryParameters:
       id: 1
       name: '""'
@@ -83,6 +89,7 @@ endpoints:
     fileParameters: []
     responses:
       -
+        custom: []
         status: 401
         content: '{"message":"Unauthenticated."}'
         headers:
@@ -90,7 +97,6 @@ endpoints:
           content-type: application/json
           access-control-allow-origin: '*'
         description: null
-        custom: []
     responseFields: []
     auth:
       - headers
@@ -99,12 +105,13 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - GET
     uri: 'api/geography/countries/{country_id}'
     metadata:
+      custom: []
       groupName: Geography
       groupDescription: ''
       subgroup: ''
@@ -113,13 +120,13 @@ endpoints:
       description: 'Return details for a single country, including its capital and provinces.'
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
       country_id:
+        custom: []
         name: country_id
         description: 'The ID of the country.'
         required: true
@@ -128,8 +135,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       country:
+        custom: []
         name: country
         description: 'The ID of the country.'
         required: true
@@ -138,7 +146,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
     cleanUrlParameters:
       country_id: 1
       country: 1
@@ -149,6 +157,7 @@ endpoints:
     fileParameters: []
     responses:
       -
+        custom: []
         status: 401
         content: '{"message":"Unauthenticated."}'
         headers:
@@ -156,7 +165,6 @@ endpoints:
           content-type: application/json
           access-control-allow-origin: '*'
         description: null
-        custom: []
     responseFields: []
     auth:
       - headers
@@ -165,12 +173,13 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - GET
     uri: api/geography/provinces
     metadata:
+      custom: []
       groupName: Geography
       groupDescription: ''
       subgroup: ''
@@ -179,7 +188,6 @@ endpoints:
       description: 'Returns a paginated list of provinces.'
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
@@ -188,6 +196,7 @@ endpoints:
     cleanUrlParameters: []
     queryParameters:
       id:
+        custom: []
         name: id
         description: 'optional Filter by province ID.'
         required: false
@@ -196,8 +205,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
       name:
+        custom: []
         name: name
         description: 'optional Filter by province name (fa/en, partial match).'
         required: false
@@ -206,8 +216,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
       name_en:
+        custom: []
         name: name_en
         description: 'optional Filter by English name (partial match).'
         required: false
@@ -216,8 +227,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
       country_id:
+        custom: []
         name: country_id
         description: 'optional Filter by country ID.'
         required: false
@@ -226,8 +238,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
       per_page:
+        custom: []
         name: per_page
         description: 'optional Results per page (1-100). Defaults to 50.'
         required: false
@@ -236,7 +249,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
     cleanQueryParameters:
       id: 2
       name: '""'
@@ -248,6 +261,7 @@ endpoints:
     fileParameters: []
     responses:
       -
+        custom: []
         status: 401
         content: '{"message":"Unauthenticated."}'
         headers:
@@ -255,7 +269,6 @@ endpoints:
           content-type: application/json
           access-control-allow-origin: '*'
         description: null
-        custom: []
     responseFields: []
     auth:
       - headers
@@ -264,12 +277,13 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - GET
     uri: 'api/geography/provinces/{province_id}'
     metadata:
+      custom: []
       groupName: Geography
       groupDescription: ''
       subgroup: ''
@@ -278,13 +292,13 @@ endpoints:
       description: 'Return details for a single province, including its country and cities.'
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
       province_id:
+        custom: []
         name: province_id
         description: 'The ID of the province.'
         required: true
@@ -293,8 +307,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       province:
+        custom: []
         name: province
         description: 'The ID of the province.'
         required: true
@@ -303,7 +318,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
     cleanUrlParameters:
       province_id: 1
       province: 2
@@ -314,6 +329,7 @@ endpoints:
     fileParameters: []
     responses:
       -
+        custom: []
         status: 401
         content: '{"message":"Unauthenticated."}'
         headers:
@@ -321,7 +337,6 @@ endpoints:
           content-type: application/json
           access-control-allow-origin: '*'
         description: null
-        custom: []
     responseFields: []
     auth:
       - headers
@@ -330,12 +345,13 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - GET
     uri: 'api/geography/provinces/{province_id}/cities'
     metadata:
+      custom: []
       groupName: Geography
       groupDescription: ''
       subgroup: ''
@@ -344,13 +360,13 @@ endpoints:
       description: 'Returns the cities that belong to the given province.'
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
       province_id:
+        custom: []
         name: province_id
         description: 'The ID of the province.'
         required: true
@@ -359,8 +375,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       province:
+        custom: []
         name: province
         description: 'The ID of the province.'
         required: true
@@ -369,12 +386,13 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
     cleanUrlParameters:
       province_id: 1
       province: 2
     queryParameters:
       per_page:
+        custom: []
         name: per_page
         description: 'optional Results per page (1-100). Defaults to 50.'
         required: false
@@ -383,7 +401,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
     cleanQueryParameters:
       per_page: 25
     bodyParameters: []
@@ -391,6 +409,7 @@ endpoints:
     fileParameters: []
     responses:
       -
+        custom: []
         status: 401
         content: '{"message":"Unauthenticated."}'
         headers:
@@ -398,7 +417,6 @@ endpoints:
           content-type: application/json
           access-control-allow-origin: '*'
         description: null
-        custom: []
     responseFields: []
     auth:
       - headers
@@ -407,12 +425,13 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - GET
     uri: api/geography/cities
     metadata:
+      custom: []
       groupName: Geography
       groupDescription: ''
       subgroup: ''
@@ -421,7 +440,6 @@ endpoints:
       description: 'Returns a paginated list of cities.'
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
@@ -430,6 +448,7 @@ endpoints:
     cleanUrlParameters: []
     queryParameters:
       id:
+        custom: []
         name: id
         description: 'optional Filter by city ID.'
         required: false
@@ -438,8 +457,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
       name:
+        custom: []
         name: name
         description: 'optional Filter by city name (fa/en, partial match).'
         required: false
@@ -448,8 +468,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
       name_en:
+        custom: []
         name: name_en
         description: 'optional Filter by English name (partial match).'
         required: false
@@ -458,8 +479,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
       province_id:
+        custom: []
         name: province_id
         description: 'optional Filter by province ID.'
         required: false
@@ -468,8 +490,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
       country_id:
+        custom: []
         name: country_id
         description: 'optional Filter by country ID.'
         required: false
@@ -478,8 +501,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
       latitude:
+        custom: []
         name: latitude
         description: 'optional Filter by exact latitude.'
         required: false
@@ -488,8 +512,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
       longitude:
+        custom: []
         name: longitude
         description: 'optional Filter by exact longitude.'
         required: false
@@ -498,8 +523,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
       per_page:
+        custom: []
         name: per_page
         description: 'optional Results per page (1-100). Defaults to 50.'
         required: false
@@ -508,7 +534,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
     cleanQueryParameters:
       id: 10
       name: '""'
@@ -523,6 +549,7 @@ endpoints:
     fileParameters: []
     responses:
       -
+        custom: []
         status: 401
         content: '{"message":"Unauthenticated."}'
         headers:
@@ -530,7 +557,6 @@ endpoints:
           content-type: application/json
           access-control-allow-origin: '*'
         description: null
-        custom: []
     responseFields: []
     auth:
       - headers
@@ -539,12 +565,13 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - GET
     uri: 'api/geography/cities/{city_id}'
     metadata:
+      custom: []
       groupName: Geography
       groupDescription: ''
       subgroup: ''
@@ -553,13 +580,13 @@ endpoints:
       description: 'Return details for a single city, including its province and country.'
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
       city_id:
+        custom: []
         name: city_id
         description: 'The ID of the city.'
         required: true
@@ -568,8 +595,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       city:
+        custom: []
         name: city
         description: 'The ID of the city.'
         required: true
@@ -578,7 +606,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
     cleanUrlParameters:
       city_id: 1
       city: 10
@@ -589,6 +617,7 @@ endpoints:
     fileParameters: []
     responses:
       -
+        custom: []
         status: 401
         content: '{"message":"Unauthenticated."}'
         headers:
@@ -596,7 +625,6 @@ endpoints:
           content-type: application/json
           access-control-allow-origin: '*'
         description: null
-        custom: []
     responseFields: []
     auth:
       - headers
@@ -605,12 +633,13 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - GET
     uri: api/geography/locations/lookup
     metadata:
+      custom: []
       groupName: Geography
       groupDescription: ''
       subgroup: ''
@@ -619,7 +648,6 @@ endpoints:
       description: 'Finds nearby cities and provinces around the given coordinates.'
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
@@ -628,6 +656,7 @@ endpoints:
     cleanUrlParameters: []
     queryParameters:
       latitude:
+        custom: []
         name: latitude
         description: 'Latitude in degrees (-90 to 90).'
         required: true
@@ -636,8 +665,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       longitude:
+        custom: []
         name: longitude
         description: 'Longitude in degrees (-180 to 180).'
         required: true
@@ -646,8 +676,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       radius_km:
+        custom: []
         name: radius_km
         description: 'optional Search radius in kilometers (0-1000). Defaults to 50.'
         required: false
@@ -656,8 +687,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
       city_limit:
+        custom: []
         name: city_limit
         description: 'optional Maximum number of cities to return (1-100). Defaults to 10.'
         required: false
@@ -666,8 +698,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
       province_limit:
+        custom: []
         name: province_limit
         description: 'optional Maximum number of provinces to return (1-100). Defaults to 10.'
         required: false
@@ -676,7 +709,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
     cleanQueryParameters:
       latitude: 35.6892
       longitude: 51.389
@@ -688,6 +721,7 @@ endpoints:
     fileParameters: []
     responses:
       -
+        custom: []
         status: 401
         content: '{"message":"Unauthenticated."}'
         headers:
@@ -695,7 +729,6 @@ endpoints:
           content-type: application/json
           access-control-allow-origin: '*'
         description: null
-        custom: []
     responseFields: []
     auth:
       - headers
@@ -704,12 +737,13 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - GET
     uri: api/geography/locations/user-city
     metadata:
+      custom: []
       groupName: Geography
       groupDescription: ''
       subgroup: ''
@@ -718,7 +752,6 @@ endpoints:
       description: 'Finds the nearest city to the given coordinates, within the maximum distance.'
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
@@ -727,6 +760,7 @@ endpoints:
     cleanUrlParameters: []
     queryParameters:
       latitude:
+        custom: []
         name: latitude
         description: 'Latitude in degrees (-90 to 90).'
         required: true
@@ -735,8 +769,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       longitude:
+        custom: []
         name: longitude
         description: 'Longitude in degrees (-180 to 180).'
         required: true
@@ -745,8 +780,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       max_distance_km:
+        custom: []
         name: max_distance_km
         description: 'optional Maximum distance in kilometers (0-1000). Defaults to 50.'
         required: false
@@ -755,7 +791,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
     cleanQueryParameters:
       latitude: 35.7
       longitude: 51.4
@@ -765,6 +801,7 @@ endpoints:
     fileParameters: []
     responses:
       -
+        custom: []
         status: 401
         content: '{"message":"Unauthenticated."}'
         headers:
@@ -772,7 +809,6 @@ endpoints:
           content-type: application/json
           access-control-allow-origin: '*'
         description: null
-        custom: []
     responseFields: []
     auth:
       - headers
@@ -781,12 +817,13 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - GET
     uri: api/geography/locations/nearby-cities
     metadata:
+      custom: []
       groupName: Geography
       groupDescription: ''
       subgroup: ''
@@ -795,7 +832,6 @@ endpoints:
       description: 'Returns cities near the given coordinates, ordered by distance.'
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
@@ -804,6 +840,7 @@ endpoints:
     cleanUrlParameters: []
     queryParameters:
       latitude:
+        custom: []
         name: latitude
         description: 'Latitude in degrees (-90 to 90).'
         required: true
@@ -812,8 +849,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       longitude:
+        custom: []
         name: longitude
         description: 'Longitude in degrees (-180 to 180).'
         required: true
@@ -822,8 +860,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       radius_km:
+        custom: []
         name: radius_km
         description: 'optional Search radius in kilometers (0-1000). Defaults to 50.'
         required: false
@@ -832,8 +871,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
       limit:
+        custom: []
         name: limit
         description: 'optional Maximum number of cities to return (1-100). Defaults to 10.'
         required: false
@@ -842,7 +882,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
     cleanQueryParameters:
       latitude: 35.6892
       longitude: 51.389
@@ -853,6 +893,7 @@ endpoints:
     fileParameters: []
     responses:
       -
+        custom: []
         status: 401
         content: '{"message":"Unauthenticated."}'
         headers:
@@ -860,7 +901,6 @@ endpoints:
           content-type: application/json
           access-control-allow-origin: '*'
         description: null
-        custom: []
     responseFields: []
     auth:
       - headers
@@ -869,4 +909,3 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []

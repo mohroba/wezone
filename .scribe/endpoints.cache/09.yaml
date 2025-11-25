@@ -4,10 +4,12 @@ name: 'Ad Images'
 description: ''
 endpoints:
   -
+    custom: []
     httpMethods:
       - GET
     uri: 'api/ads/{ad_id}/images'
     metadata:
+      custom: []
       groupName: 'Ad Images'
       groupDescription: ''
       subgroup: ''
@@ -16,13 +18,13 @@ endpoints:
       description: 'Retrieve every media item currently attached to the specified ad.'
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
       ad_id:
+        custom: []
         name: ad_id
         description: 'The ID of the ad.'
         required: true
@@ -31,8 +33,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       ad:
+        custom: []
         name: ad
         description: 'The ID of the ad whose images should be listed.'
         required: true
@@ -41,7 +44,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
     cleanUrlParameters:
       ad_id: 1
       ad: 16
@@ -52,6 +55,7 @@ endpoints:
     fileParameters: []
     responses:
       -
+        custom: []
         status: 401
         content: '{"message":"Unauthenticated."}'
         headers:
@@ -59,9 +63,9 @@ endpoints:
           content-type: application/json
           access-control-allow-origin: '*'
         description: null
-        custom: []
     responseFields:
       'data[].id':
+        custom: []
         name: 'data[].id'
         description: 'Media identifier.'
         required: false
@@ -70,8 +74,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       'data[].url':
+        custom: []
         name: 'data[].url'
         description: 'Original image URL.'
         required: false
@@ -80,8 +85,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       'data[].thumb_url':
+        custom: []
         name: 'data[].thumb_url'
         description: 'Thumbnail URL.'
         required: false
@@ -90,7 +96,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
     auth:
       - headers
       - Authorization
@@ -98,12 +104,13 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - POST
     uri: 'api/ads/{ad_id}/images'
     metadata:
+      custom: []
       groupName: 'Ad Images'
       groupDescription: ''
       subgroup: ''
@@ -112,13 +119,13 @@ endpoints:
       description: 'Attach one or more images to the specified ad.'
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
       ad_id:
+        custom: []
         name: ad_id
         description: 'The ID of the ad.'
         required: true
@@ -127,45 +134,53 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       ad:
+        custom: []
         name: ad
         description: 'The ID of the ad receiving the images.'
         required: true
-        example: 16
+        example: 5
         type: integer
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
     cleanUrlParameters:
       ad_id: 1
-      ad: 16
+      ad: 5
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
       images:
+        custom: []
         name: images
         description: 'Collection of image payloads.'
         required: true
         example:
-          - architecto
-        type: 'string[]'
+          -
+            file: '[binary image file]'
+            alt: 'Front view of the car'
+            caption: 'Taken last week'
+            display_order: 2
+        type: 'object[]'
         enumValues: []
-        exampleWasSpecified: false
+        exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       'images[].file':
+        custom: []
         name: 'images[].file'
-        description: 'JPEG/PNG/WEBP file (max 5 MB)'
+        description: 'JPEG/PNG/WEBP/GIF image file (max 5 MB).'
         required: true
         example: null
         type: file
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       'images[].alt':
+        custom: []
         name: 'images[].alt'
         description: 'optional Alternative text for accessibility.'
         required: false
@@ -174,8 +189,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
       'images[].caption':
+        custom: []
         name: 'images[].caption'
         description: 'optional Short caption shown in galleries.'
         required: false
@@ -184,8 +200,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
       'images[].display_order':
+        custom: []
         name: 'images[].display_order'
         description: 'optional Display order override.'
         required: false
@@ -194,10 +211,14 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
     cleanBodyParameters:
       images:
-        - architecto
+        -
+          file: '[binary image file]'
+          alt: 'Front view of the car'
+          caption: 'Taken last week'
+          display_order: 2
     fileParameters: []
     responses: []
     responseFields: []
@@ -208,12 +229,13 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - POST
     uri: 'api/ads/{ad_id}/images/{media_id}/update'
     metadata:
+      custom: []
       groupName: 'Ad Images'
       groupDescription: ''
       subgroup: ''
@@ -222,13 +244,13 @@ endpoints:
       description: 'Modify the caption, alt text, or display order for an ad image.'
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
       ad_id:
+        custom: []
         name: ad_id
         description: 'The ID of the ad.'
         required: true
@@ -237,8 +259,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       media_id:
+        custom: []
         name: media_id
         description: 'The ID of the media.'
         required: true
@@ -247,8 +270,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       ad:
+        custom: []
         name: ad
         description: 'The ID of the parent ad.'
         required: true
@@ -257,8 +281,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       media:
+        custom: []
         name: media
         description: 'The media identifier returned from uploads.'
         required: true
@@ -267,7 +292,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
     cleanUrlParameters:
       ad_id: 1
       media_id: 3
@@ -277,6 +302,7 @@ endpoints:
     cleanQueryParameters: []
     bodyParameters:
       alt:
+        custom: []
         name: alt
         description: 'optional Alternative text (max 150 chars).'
         required: false
@@ -285,8 +311,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
       caption:
+        custom: []
         name: caption
         description: 'optional Caption displayed under the asset.'
         required: false
@@ -295,8 +322,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
       display_order:
+        custom: []
         name: display_order
         description: 'optional New numeric position.'
         required: false
@@ -305,7 +333,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: true
-        custom: []
+        deprecated: false
     cleanBodyParameters:
       alt: 'Interior photo'
       caption: 'Dashboard close-up'
@@ -320,12 +348,13 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - DELETE
     uri: 'api/ads/{ad_id}/images/{media_id}'
     metadata:
+      custom: []
       groupName: 'Ad Images'
       groupDescription: ''
       subgroup: ''
@@ -334,13 +363,13 @@ endpoints:
       description: 'Remove a single media item from the specified ad.'
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
       ad_id:
+        custom: []
         name: ad_id
         description: 'The ID of the ad.'
         required: true
@@ -349,8 +378,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       media_id:
+        custom: []
         name: media_id
         description: 'The ID of the media.'
         required: true
@@ -359,8 +389,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       ad:
+        custom: []
         name: ad
         description: 'The ID of the parent ad.'
         required: true
@@ -369,8 +400,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       media:
+        custom: []
         name: media
         description: 'The media identifier.'
         required: true
@@ -379,7 +411,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
     cleanUrlParameters:
       ad_id: 1
       media_id: 3
@@ -399,12 +431,13 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []
   -
+    custom: []
     httpMethods:
       - POST
     uri: 'api/ads/{ad_id}/images/reorder'
     metadata:
+      custom: []
       groupName: 'Ad Images'
       groupDescription: ''
       subgroup: ''
@@ -413,13 +446,13 @@ endpoints:
       description: 'Update the display order of multiple images in one request.'
       authenticated: true
       deprecated: false
-      custom: []
     headers:
       Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
       ad_id:
+        custom: []
         name: ad_id
         description: 'The ID of the ad.'
         required: true
@@ -428,8 +461,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       ad:
+        custom: []
         name: ad
         description: 'The ID of the parent ad.'
         required: true
@@ -438,7 +472,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
     cleanUrlParameters:
       ad_id: 1
       ad: 16
@@ -446,6 +480,7 @@ endpoints:
     cleanQueryParameters: []
     bodyParameters:
       order:
+        custom: []
         name: order
         description: 'New ordering instructions.'
         required: true
@@ -455,8 +490,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: false
         nullable: false
-        custom: []
+        deprecated: false
       'order[].media_id':
+        custom: []
         name: 'order[].media_id'
         description: 'Media identifier to update.'
         required: true
@@ -465,8 +501,9 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
       'order[].display_order':
+        custom: []
         name: 'order[].display_order'
         description: 'Position to assign.'
         required: true
@@ -475,7 +512,7 @@ endpoints:
         enumValues: []
         exampleWasSpecified: true
         nullable: false
-        custom: []
+        deprecated: false
     cleanBodyParameters:
       order:
         - architecto
@@ -489,4 +526,3 @@ endpoints:
     controller: null
     method: null
     route: null
-    custom: []
