@@ -9,7 +9,6 @@ use Modules\Ad\Models\AdCategoryClosure;
 
 class UpdateAdCategoryRequest extends FormRequest
 {
-
     public function authorize(): bool
     {
         return true;
@@ -40,7 +39,14 @@ class UpdateAdCategoryRequest extends FormRequest
             'is_active'        => ['boolean'],
             'sort_order'       => ['nullable', 'integer'],
             'advertisable_type_id' => ['sometimes', 'required', 'integer', 'exists:advertisable_types,id'],
-            'icon' => ['sometimes', 'nullable', 'image', 'max:2048'],
+            'icon' => [
+                'sometimes',
+                'nullable',
+                'file',
+                'mimes:jpg,jpeg,png,webp,gif',
+                'mimetypes:image/jpeg,image/png,image/webp,image/gif',
+                'max:5120',
+            ],
         ];
     }
 
@@ -147,7 +153,7 @@ class UpdateAdCategoryRequest extends FormRequest
                 'example'     => 2,
             ],
             'icon' => [
-                'description' => 'Icon image representing the category (JPEG, PNG, BMP, GIF, SVG, or WebP).',
+                'description' => 'Icon image representing the category (JPEG, PNG, WebP, or GIF; max 5 MB).',
                 'type'        => 'file',
                 'required'    => false,
             ],

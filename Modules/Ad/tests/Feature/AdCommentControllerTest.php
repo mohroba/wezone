@@ -118,4 +118,59 @@ class AdCommentControllerTest extends TestCase
             ->assertJsonPath('data.0.replies.0.body', 'Yes, feel free to make an offer.')
             ->assertJsonPath('data.0.replies.0.user.id', $responder->id);
     }
+
+    public function test_can_list_threaded_comments_with_depth_limit(): void
+    {
+        $ad = Ad::factory()->create();
+        $author = User::factory()->create();
+        $replyAuthor = User::factory()->create();
+
+        $rootComment = AdComment::factory()
+            ->for($ad, 'ad')
+            ->for($author, 'user')
+            ->create([
+                'body' => 'Root level comment.',
+            ]);
+
+        $firstReply = AdComment::factory()
+            ->for($ad, 'ad')
+            ->for($replyAuthor, 'user')
+            ->create([
+                'parent_id' => $rootComment->id,
+                'body' => 'First reply.',
+            ]);
+
+        $secondReply = AdComment::factory()
+            ->for($ad, 'ad')
+            ->for($replyAuthor, 'user')
+            ->create([
+                'parent_id' => $firstReply->id,
+                'body' => 'Second reply.',
+            ]);
+
+        $thirdReply = AdComment::factory()
+            ->for($ad, 'ad')
+            ->for($replyAuthor, 'user')
+            ->create([
+                'parent_id' => $secondReply->id,
+                'body' => 'Third reply.',
+            ]);
+
+        AdComment::factory()
+            ->for($ad, 'ad')
+            ->for($replyAuthor, 'user')
+            ->create([
+                'parent_id' => $thirdReply->id,
+                'body' => 'Fourth reply should be truncated.',
+            ]);
+
+        $response = $this->getJson("/api/ads/{$ad->id}/comments/threaded");
+
+        $response
+            ->assertOk()
+            ->assertJsonPath('data.0.replies.0.body', 'First reply.')
+            ->assertJsonPath('data.0.replies.0.replies.0.body', 'Second reply.')
+            ->assertJsonPath('data.0.replies.0.replies.0.replies.0.body', 'Third reply.')
+            ->assertJsonMissing(['body' => 'Fourth reply should be truncated.']);
+    }
 }

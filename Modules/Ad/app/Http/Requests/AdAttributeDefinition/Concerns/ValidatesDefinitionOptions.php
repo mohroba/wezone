@@ -15,10 +15,20 @@ trait ValidatesDefinitionOptions
             return;
         }
 
-        if (! is_array($options) || array_is_list($options)) {
-            $validator->errors()->add('options', 'The options field must be a JSON object.');
+        if (! is_array($options)) {
+            $validator->errors()->add('options', 'The options field must be a JSON array or object.');
 
             return;
+        }
+
+        $isList = array_is_list($options);
+        if ($isList) {
+            foreach ($options as $index => $enumValue) {
+                if (! is_string($enumValue)) {
+                    $validator->errors()->add("options.$index", 'Each option must be a string.');
+                    return;
+                }
+            }
         }
 
         if (isset($options['enum']) && (! is_array($options['enum']) || $options['enum'] === [])) {
@@ -47,9 +57,28 @@ trait ValidatesDefinitionOptions
             }
         }
 
-        if ($this->resolveDefinitionDataType() === 'enum' && empty($options['enum'])) {
-            $validator->errors()->add('options.enum', 'Enum definitions must include an enum array.');
+        if ($this->resolveDefinitionDataType() === 'enum') {
+            if ($isList) {
+                if ($options === []) {
+                    $validator->errors()->add('options.enum', 'Enum definitions must include an enum array.');
+                }
+            } elseif ($this->enumValuesFromDefinitionOptions($options) === null) {
+                $validator->errors()->add('options.enum', 'Enum definitions must include an enum array.');
+            }
         }
+    }
+
+    protected function enumValuesFromDefinitionOptions(array $options): ?array
+    {
+        if (array_is_list($options)) {
+            return $options;
+        }
+
+        if (isset($options['enum']) && is_array($options['enum'])) {
+            return $options['enum'];
+        }
+
+        return null;
     }
 
     protected function resolveDefinitionDataType(): ?string

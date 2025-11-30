@@ -20,7 +20,13 @@ class ProfileUpdateRequest extends FormRequest
             'national_id' => ['nullable', 'string', 'max:191'],
             'residence_city_id' => ['nullable', 'integer', 'min:1'],
             'residence_province_id' => ['nullable', 'integer', 'min:1'],
-            'profile_image' => ['nullable', 'image', 'max:5120'],
+            'profile_image' => [
+                'nullable',
+                'file',
+                'mimes:jpg,jpeg,png,webp,gif',
+                'mimetypes:image/jpeg,image/png,image/webp,image/gif',
+                'max:5120',
+            ],
         ];
     }
 
@@ -33,7 +39,7 @@ class ProfileUpdateRequest extends FormRequest
             'national_id'           => ['description' => 'National ID.', 'example' => '1234567890'],
             'residence_city_id'     => ['description' => 'City ID of residence.', 'example' => 101],
             'residence_province_id' => ['description' => 'Province ID of residence.', 'example' => 23],
-            'profile_image'         => ['description' => 'Profile image file (max 5MB).', 'example' => null],
+            'profile_image'         => ['description' => 'Profile image file (JPEG, PNG, WebP, or GIF; max 5MB).', 'example' => null],
         ];
     }
 

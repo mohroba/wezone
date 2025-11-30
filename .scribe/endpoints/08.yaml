@@ -1,0 +1,258 @@
+name: Others
+description: ''
+endpoints:
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: api/advertisable-types
+    metadata:
+      custom: []
+      groupName: Others
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Create a new advertisable type.'
+      description: ''
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Content-Type: multipart/form-data
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      key:
+        custom: []
+        name: key
+        description: 'Unique identifier for the advertisable type. Must contain only letters, numbers, dashes and underscores. Must not be greater than 64 characters.'
+        required: true
+        example: electronics
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      label:
+        custom: []
+        name: label
+        description: 'Human readable label displayed to users. Must not be greater than 255 characters.'
+        required: true
+        example: Electronics
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      description:
+        custom: []
+        name: description
+        description: 'Optional description for clients.'
+        required: false
+        example: 'Listings that cover consumer electronics.'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      model_class:
+        custom: []
+        name: model_class
+        description: 'Backed advertisable model class (must be supported). Must not be greater than 255 characters.'
+        required: true
+        example: \Modules\Ad\Models\AdCar
+        type: string
+        enumValues:
+          - Modules\Ad\Models\AdCar
+          - Modules\Ad\Models\AdRealEstate
+          - Modules\Ad\Models\AdJob
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      icon:
+        custom: []
+        name: icon
+        description: 'Optional icon image representing the type (JPEG, PNG, WebP, or GIF; max 5 MB). Must be a file. Must not be greater than 5120 kilobytes.'
+        required: false
+        example: null
+        type: file
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+    cleanBodyParameters:
+      key: electronics
+      label: Electronics
+      description: 'Listings that cover consumer electronics.'
+      model_class: \Modules\Ad\Models\AdCar
+    fileParameters:
+      icon: null
+    responses: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: 'api/advertisable-types/{advertisable_type_id}/update'
+    metadata:
+      custom: []
+      groupName: Others
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Update an existing advertisable type.'
+      description: ''
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Content-Type: multipart/form-data
+      Accept: application/json
+    urlParameters:
+      advertisable_type_id:
+        custom: []
+        name: advertisable_type_id
+        description: 'The ID of the advertisable type.'
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      advertisable_type_id: architecto
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      key:
+        custom: []
+        name: key
+        description: 'Unique identifier for the advertisable type. Must contain only letters, numbers, dashes and underscores. Must not be greater than 64 characters.'
+        required: false
+        example: premium_cars
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      label:
+        custom: []
+        name: label
+        description: 'Human readable label displayed to users. Must not be greater than 255 characters.'
+        required: false
+        example: 'Premium Cars'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      description:
+        custom: []
+        name: description
+        description: 'Optional description for clients.'
+        required: false
+        example: 'High-end car listings only.'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      model_class:
+        custom: []
+        name: model_class
+        description: 'Backed advertisable model class (must be supported). Must not be greater than 255 characters.'
+        required: false
+        example: \Modules\Ad\Models\AdRealEstate
+        type: string
+        enumValues:
+          - Modules\Ad\Models\AdCar
+          - Modules\Ad\Models\AdRealEstate
+          - Modules\Ad\Models\AdJob
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      icon:
+        custom: []
+        name: icon
+        description: 'Optional icon image representing the type (JPEG, PNG, WebP, or GIF; max 5 MB). Must be a file. Must not be greater than 5120 kilobytes.'
+        required: false
+        example: null
+        type: file
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+    cleanBodyParameters:
+      key: premium_cars
+      label: 'Premium Cars'
+      description: 'High-end car listings only.'
+      model_class: \Modules\Ad\Models\AdRealEstate
+    fileParameters:
+      icon: null
+    responses: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: 'api/advertisable-types/{advertisable_type_id}/delete'
+    metadata:
+      custom: []
+      groupName: Others
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Delete an advertisable type.'
+      description: ''
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      advertisable_type_id:
+        custom: []
+        name: advertisable_type_id
+        description: 'The ID of the advertisable type.'
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      advertisable_type_id: architecto
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null

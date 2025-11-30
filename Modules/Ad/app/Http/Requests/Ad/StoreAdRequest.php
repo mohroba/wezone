@@ -43,6 +43,11 @@ class StoreAdRequest extends FormRequest
             'price_currency' => ['nullable', 'string', 'size:3'],
             'is_negotiable' => ['boolean'],
             'is_exchangeable' => ['boolean'],
+            'comment_enable' => ['nullable', 'boolean'],
+            'phone_enable' => ['nullable', 'boolean'],
+            'chat_enable' => ['nullable', 'boolean'],
+            'extra_amount' => ['required_if:is_exchangeable,true', 'integer', 'min:0'],
+            'exchange_description' => ['required_if:is_exchangeable,true', 'string'],
             'city_id' => ['nullable', 'exists:cities,id'],
             'province_id' => ['nullable', 'exists:provinces,id'],
             'latitude' => ['nullable', 'numeric', 'between:-90,90'],
@@ -101,6 +106,12 @@ class StoreAdRequest extends FormRequest
 
         if ($this->exists('is_exchangeable')) {
             $payload['is_exchangeable'] = $this->toBoolean($this->input('is_exchangeable'));
+        }
+
+        foreach (['comment_enable', 'phone_enable', 'chat_enable'] as $flag) {
+            if ($this->exists($flag)) {
+                $payload[$flag] = $this->toBoolean($this->input($flag));
+            }
         }
 
         if ($this->has('categories') && is_array($this->input('categories'))) {
@@ -250,6 +261,26 @@ class StoreAdRequest extends FormRequest
             'is_exchangeable' => [
                 'description' => 'Indicates if swaps are accepted.',
                 'example' => false,
+            ],
+            'comment_enable' => [
+                'description' => 'Whether comments are allowed on the ad.',
+                'example' => true,
+            ],
+            'phone_enable' => [
+                'description' => 'Whether the phone contact option is enabled.',
+                'example' => true,
+            ],
+            'chat_enable' => [
+                'description' => 'Whether in-app chat is enabled for the ad.',
+                'example' => true,
+            ],
+            'extra_amount' => [
+                'description' => 'Additional amount expected on top of the exchanged item when swaps are accepted.',
+                'example' => 150000,
+            ],
+            'exchange_description' => [
+                'description' => 'Details of items that would be accepted in exchange.',
+                'example' => 'Willing to swap for a newer model laptop plus cash.',
             ],
             'city_id' => [
                 'description' => 'City identifier for the ad location.',

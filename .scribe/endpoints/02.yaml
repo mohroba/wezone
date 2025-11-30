@@ -1,0 +1,3048 @@
+name: Ads
+description: 'Retrieve a filtered or paginated list of ads.'
+endpoints:
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: api/ads/conversations
+    metadata:
+      custom: []
+      groupName: Ads
+      groupDescription: ''
+      subgroup: Conversations
+      subgroupDescription: ''
+      title: 'List conversations for the authenticated user.'
+      description: ''
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters:
+      per_page:
+        custom: []
+        name: per_page
+        description: 'Limit the number of conversations per page (1-100).'
+        required: false
+        example: 20
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      ad_id:
+        custom: []
+        name: ad_id
+        description: 'Filter conversations for a specific ad.'
+        required: false
+        example: 42
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      advertisable_type:
+        custom: []
+        name: advertisable_type
+        description: "Filter by the ad's advertisable type."
+        required: false
+        example: '"Modules\\Classifieds\\Models\\Listing"'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      advertisable_id:
+        custom: []
+        name: advertisable_id
+        description: 'Filter by the advertisable identifier.'
+        required: false
+        example: 993
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      created_from:
+        custom: []
+        name: created_from
+        description: 'Return conversations created on or after this ISO-8601 date.'
+        required: false
+        example: '2025-01-01T00:00:00Z'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      created_to:
+        custom: []
+        name: created_to
+        description: 'Return conversations created on or before this ISO-8601 date.'
+        required: false
+        example: '2025-01-31T23:59:59Z'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      updated_from:
+        custom: []
+        name: updated_from
+        description: 'Return conversations updated on or after this ISO-8601 date.'
+        required: false
+        example: '2025-02-01T00:00:00Z'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      updated_to:
+        custom: []
+        name: updated_to
+        description: 'Return conversations updated on or before this ISO-8601 date.'
+        required: false
+        example: '2025-02-28T23:59:59Z'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+    cleanQueryParameters:
+      per_page: 20
+      ad_id: 42
+      advertisable_type: '"Modules\\Classifieds\\Models\\Listing"'
+      advertisable_id: 993
+      created_from: '2025-01-01T00:00:00Z'
+      created_to: '2025-01-31T23:59:59Z'
+      updated_from: '2025-02-01T00:00:00Z'
+      updated_to: '2025-02-28T23:59:59Z'
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: |-
+          {
+            "data": [
+              {
+                "id": 56,
+                "ad": {
+                  "id": 84,
+                  "title": "Vintage bicycle"
+                },
+                "latest_message": {
+                  "id": 120,
+                  "body": "Thanks for the update!",
+                  "sender": {
+                    "id": 7,
+                    "username": "seller42"
+                  }
+                }
+              }
+            ],
+            "links": {
+              "first": "https://example.com/api/ads/conversations?page=1",
+              "last": "https://example.com/api/ads/conversations?page=1",
+              "prev": null,
+              "next": null
+            },
+            "meta": {
+              "current_page": 1,
+              "from": 1,
+              "last_page": 1,
+              "path": "https://example.com/api/ads/conversations",
+              "per_page": 20,
+              "to": 1,
+              "total": 1
+            }
+          }
+        headers: []
+        description: ''
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: 'api/ads/{ad_id}/conversations'
+    metadata:
+      custom: []
+      groupName: Ads
+      groupDescription: ''
+      subgroup: Conversations
+      subgroupDescription: ''
+      title: 'Start a conversation about an ad.'
+      description: 'Creates a conversation (or reopens an existing one) and sends the first message.'
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      ad_id:
+        custom: []
+        name: ad_id
+        description: 'The ID of the ad.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      ad:
+        custom: []
+        name: ad
+        description: 'The identifier of the ad to discuss.'
+        required: true
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      ad_id: 1
+      ad: 16
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      recipient_id:
+        custom: []
+        name: recipient_id
+        description: 'Identifier of the user receiving the first message. Defaults to the ad owner when omitted. The <code>id</code> of an existing record in the users table.'
+        required: false
+        example: 128
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      message_type:
+        custom: []
+        name: message_type
+        description: 'Type of the initial message payload. One of text, image, audio, video, or location. Defaults to text.'
+        required: true
+        example: text
+        type: string
+        enumValues:
+          - text
+          - image
+          - audio
+          - video
+          - location
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      message:
+        custom: []
+        name: message
+        description: 'Initial message to send to the conversation participant. Required when message_type is text. This field is required when <code>message_type</code> is <code>text</code>. Must not be greater than 2000 characters.'
+        required: false
+        example: 'Hi! Is this item still available?'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      attachment:
+        custom: []
+        name: attachment
+        description: 'Binary attachment when sending image, audio, or video messages.'
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      location:
+        custom: []
+        name: location
+        description: 'Latitude and longitude payload when sending a location message.'
+        required: false
+        example:
+          latitude: 51.5072
+          longitude: -0.1276
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      location.latitude:
+        custom: []
+        name: location.latitude
+        description: 'Must be between -90 and 90.'
+        required: false
+        example: 51.5072
+        type: number
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      location.longitude:
+        custom: []
+        name: location.longitude
+        description: 'Must be between -180 and 180.'
+        required: false
+        example: -0.1276
+        type: number
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanBodyParameters:
+      recipient_id: 128
+      message_type: text
+      message: 'Hi! Is this item still available?'
+      location:
+        latitude: 51.5072
+        longitude: -0.1276
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 201
+        content: |-
+          {
+            "data": {
+              "id": 57,
+              "ad": {
+                "id": 84,
+                "title": "Vintage bicycle"
+              },
+              "latest_message": {
+                "body": "Is this still available?",
+                "sender": {
+                  "id": 15,
+                  "username": "buyer42"
+                }
+              }
+            }
+          }
+        headers: []
+        description: ''
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: 'api/ads/conversations/{conversation_id}/delete'
+    metadata:
+      custom: []
+      groupName: Ads
+      groupDescription: ''
+      subgroup: Conversations
+      subgroupDescription: ''
+      title: 'Hide a conversation for the authenticated user.'
+      description: ''
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      conversation_id:
+        custom: []
+        name: conversation_id
+        description: 'The ID of the conversation.'
+        required: true
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      conversation:
+        custom: []
+        name: conversation
+        description: 'The identifier of the conversation to hide.'
+        required: true
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      conversation_id: 16
+      conversation: 16
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: |-
+          {
+            "meta": {
+              "message": "Conversation hidden successfully."
+            }
+          }
+        headers: []
+        description: ''
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: 'api/ads/conversations/{conversation_id}/messages'
+    metadata:
+      custom: []
+      groupName: Ads
+      groupDescription: ''
+      subgroup: Conversations
+      subgroupDescription: ''
+      title: 'List messages in a conversation.'
+      description: ''
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      conversation_id:
+        custom: []
+        name: conversation_id
+        description: 'The ID of the conversation.'
+        required: true
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      conversation:
+        custom: []
+        name: conversation
+        description: 'The identifier of the conversation to fetch.'
+        required: true
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      conversation_id: 16
+      conversation: 16
+    queryParameters:
+      per_page:
+        custom: []
+        name: per_page
+        description: 'Limit the number of messages per page (1-200).'
+        required: false
+        example: 50
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+    cleanQueryParameters:
+      per_page: 50
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: |-
+          {
+            "data": [
+              {
+                "id": 120,
+                "body": "Can you share more details?",
+                "sender": {
+                  "id": 15,
+                  "username": "buyer42"
+                }
+              }
+            ]
+          }
+        headers: []
+        description: ''
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: 'api/ads/conversations/{conversation_id}/messages'
+    metadata:
+      custom: []
+      groupName: Ads
+      groupDescription: ''
+      subgroup: Conversations
+      subgroupDescription: ''
+      title: 'Send a message within a conversation.'
+      description: ''
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      conversation_id:
+        custom: []
+        name: conversation_id
+        description: 'The ID of the conversation.'
+        required: true
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      conversation:
+        custom: []
+        name: conversation
+        description: 'The identifier of the conversation to send the message to.'
+        required: true
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      conversation_id: 16
+      conversation: 16
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      message_type:
+        custom: []
+        name: message_type
+        description: 'Type of the message payload. One of text, image, audio, video, or location. Defaults to text.'
+        required: true
+        example: text
+        type: string
+        enumValues:
+          - text
+          - image
+          - audio
+          - video
+          - location
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      message:
+        custom: []
+        name: message
+        description: 'Message body to send to the conversation participant. Required when message_type is text. This field is required when <code>message_type</code> is <code>text</code>. Must not be greater than 2000 characters.'
+        required: false
+        example: 'Can you share more photos of the product?'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      attachment:
+        custom: []
+        name: attachment
+        description: 'Binary attachment when sending image, audio, or video messages.'
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      location:
+        custom: []
+        name: location
+        description: 'Latitude and longitude payload when sending a location message.'
+        required: false
+        example:
+          latitude: 40.7128
+          longitude: -74.006
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      location.latitude:
+        custom: []
+        name: location.latitude
+        description: 'Must be between -90 and 90.'
+        required: false
+        example: 40.7128
+        type: number
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      location.longitude:
+        custom: []
+        name: location.longitude
+        description: 'Must be between -180 and 180.'
+        required: false
+        example: -74.006
+        type: number
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanBodyParameters:
+      message_type: text
+      message: 'Can you share more photos of the product?'
+      location:
+        latitude: 40.7128
+        longitude: -74.006
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 201
+        content: |-
+          {
+            "data": {
+              "id": 121,
+              "body": "Here are the photos you requested.",
+              "sender": {
+                "id": 7,
+                "username": "seller42"
+              }
+            }
+          }
+        headers: []
+        description: ''
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: api/ads/bookmarks
+    metadata:
+      custom: []
+      groupName: Ads
+      groupDescription: ''
+      subgroup: Engagement
+      subgroupDescription: ''
+      title: 'List bookmarked ads for the authenticated user.'
+      description: ''
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters:
+      per_page:
+        custom: []
+        name: per_page
+        description: 'The number of bookmarks per page when paginating (1-100).'
+        required: false
+        example: 20
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      without_pagination:
+        custom: []
+        name: without_pagination
+        description: 'Return all bookmarks without pagination.'
+        required: false
+        example: true
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+    cleanQueryParameters:
+      per_page: 20
+      without_pagination: true
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: |-
+          {
+            "data": [
+              {
+                "id": 15,
+                "ad_id": 84,
+                "ad": {
+                  "id": 84,
+                  "title": "Vintage bicycle"
+                }
+              }
+            ],
+            "links": {
+              "first": "https://example.com/api/ads/bookmarks?page=1",
+              "last": "https://example.com/api/ads/bookmarks?page=1",
+              "prev": null,
+              "next": null
+            },
+            "meta": {
+              "current_page": 1,
+              "from": 1,
+              "last_page": 1,
+              "path": "https://example.com/api/ads/bookmarks",
+              "per_page": 20,
+              "to": 1,
+              "total": 1
+            }
+          }
+        headers: []
+        description: Paginated
+      -
+        custom: []
+        status: 200
+        content: |-
+          {
+            "data": [
+              {
+                "id": 15,
+                "ad_id": 84,
+                "ad": {
+                  "id": 84,
+                  "title": "Vintage bicycle"
+                }
+              }
+            ]
+          }
+        headers: []
+        description: 'Without pagination'
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: api/ads/explore
+    metadata:
+      custom: []
+      groupName: Ads
+      groupDescription: ''
+      subgroup: |-
+        Explore
+
+        Discover ads prioritized by promotion and user interests.
+      subgroupDescription: ''
+      title: 'Explore ads'
+      description: |-
+        Retrieve a prioritized feed of ads combining promoted listings and
+        recommendations based on the authenticated user's interactions.
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters:
+      per_page:
+        custom: []
+        name: per_page
+        description: 'Number of results per page, up to 50.'
+        required: false
+        example: 20
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+    cleanQueryParameters:
+      per_page: 20
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"data":[{"id":1,"user_id":1,"advertisable_type_id":1,"slug":"peugeot-206-2024-sample","title":"Peugeot 206 - Model 2024","subtitle":"Full options, low mileage","description":"Single owner, well maintained, no accidents.","status":"published","published_at":"2025-11-16T00:05:56.000000Z","expires_at":"2025-12-16T00:05:56.000000Z","price_amount":450000000,"price_currency":"IRR","is_negotiable":false,"is_exchangeable":true,"comment_enable":true,"phone_enable":true,"chat_enable":true,"extra_amount":0,"exchange_description":null,"city_id":10,"province_id":1,"latitude":"35.6892000","longitude":"51.3890000","contact_channel":{"phone":"09120000000"},"view_count":0,"share_count":0,"favorite_count":0,"like_count":0,"featured_until":"2025-11-23T00:05:56.000000Z","priority_score":"10.5000","creator":{"id":1,"username":null,"full_name":null,"ads_count":1,"followers_count":0,"profile_image":null},"images":[],"created_at":"2025-11-16T00:05:56.000000Z","updated_at":"2025-11-16T00:05:56.000000Z","deleted_at":null}],"links":{"first":"http:\/\/localhost:8000\/api\/ads\/explore?per_page=20&page=1","last":"http:\/\/localhost:8000\/api\/ads\/explore?per_page=20&page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"http:\/\/localhost:8000\/api\/ads\/explore?per_page=20&page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"path":"http:\/\/localhost:8000\/api\/ads\/explore","per_page":20,"to":1,"total":1}}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: api/ads
+    metadata:
+      custom: []
+      groupName: Ads
+      groupDescription: 'Retrieve a filtered or paginated list of ads.'
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'List ads'
+      description: ''
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters:
+      status:
+        custom: []
+        name: status
+        description: 'Filter by lifecycle status.'
+        required: false
+        example: published
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      user_id:
+        custom: []
+        name: user_id
+        description: 'Filter by owner user ID.'
+        required: false
+        example: 12
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      category_id:
+        custom: []
+        name: category_id
+        description: 'Limit to ads attached to the provided category.'
+        required: false
+        example: 5
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      search:
+        custom: []
+        name: search
+        description: 'Search within title and description text.'
+        required: false
+        example: sedan
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      only_published:
+        custom: []
+        name: only_published
+        description: 'Return only published records when true.'
+        required: false
+        example: true
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      per_page:
+        custom: []
+        name: per_page
+        description: 'Number of results per page, up to 100.'
+        required: false
+        example: 25
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      without_pagination:
+        custom: []
+        name: without_pagination
+        description: 'Set to true to return all records without pagination.'
+        required: false
+        example: false
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+    cleanQueryParameters:
+      status: published
+      user_id: 12
+      category_id: 5
+      search: sedan
+      only_published: true
+      per_page: 25
+      without_pagination: false
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"data":[],"links":{"first":"http:\/\/localhost:8000\/api\/ads?status=published&user_id=12&category_id=5&search=sedan&only_published=1&per_page=25&without_pagination=0&page=1","last":"http:\/\/localhost:8000\/api\/ads?status=published&user_id=12&category_id=5&search=sedan&only_published=1&per_page=25&without_pagination=0&page=1","prev":null,"next":null},"meta":{"current_page":1,"from":null,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","page":null,"active":false},{"url":"http:\/\/localhost:8000\/api\/ads?status=published&user_id=12&category_id=5&search=sedan&only_published=1&per_page=25&without_pagination=0&page=1","label":"1","page":1,"active":true},{"url":null,"label":"Next &raquo;","page":null,"active":false}],"path":"http:\/\/localhost:8000\/api\/ads","per_page":25,"to":null,"total":0}}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: api/ads
+    metadata:
+      custom: []
+      groupName: Ads
+      groupDescription: 'Store a new ad and attach optional category assignments.'
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Create an ad'
+      description: ''
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      user_id:
+        custom: []
+        name: user_id
+        description: 'Identifier of the ad owner. The <code>id</code> of an existing record in the users table.'
+        required: true
+        example: 42
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      advertisable_type_id:
+        custom: []
+        name: advertisable_type_id
+        description: 'Identifier of the advertisable type record. The <code>id</code> of an existing record in the advertisable_types table.'
+        required: true
+        example: 3
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      advertisable:
+        custom: []
+        name: advertisable
+        description: 'Attributes for the underlying advertisable subtype.'
+        required: true
+        example:
+          brand_id: 12
+          model_id: 30
+          year: 2023
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      slug:
+        custom: []
+        name: slug
+        description: 'Unique slug for the ad. Must contain only letters, numbers, dashes and underscores. Must not be greater than 255 characters.'
+        required: true
+        example: peugeot-206-2024
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      title:
+        custom: []
+        name: title
+        description: 'Headline displayed for the ad. Must not be greater than 255 characters.'
+        required: true
+        example: 'Peugeot 206 2024'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      subtitle:
+        custom: []
+        name: subtitle
+        description: 'Optional subtitle or tagline. Must not be greater than 255 characters.'
+        required: false
+        example: 'Full options, low mileage'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      description:
+        custom: []
+        name: description
+        description: 'Rich description of the listing.'
+        required: false
+        example: 'One owner, regularly serviced, ready to drive.'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      status:
+        custom: []
+        name: status
+        description: 'Lifecycle status for moderation.'
+        required: false
+        example: draft
+        type: string
+        enumValues:
+          - draft
+          - pending_review
+          - published
+          - rejected
+          - archived
+          - expired
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      published_at:
+        custom: []
+        name: published_at
+        description: 'Publication datetime in ISO 8601 format. Must be a valid date.'
+        required: false
+        example: '2024-05-01T08:00:00Z'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      expires_at:
+        custom: []
+        name: expires_at
+        description: 'Optional expiration datetime in ISO 8601 format. Must be a valid date. Must be a date after or equal to <code>published_at</code>.'
+        required: false
+        example: '2024-06-01T08:00:00Z'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      price_amount:
+        custom: []
+        name: price_amount
+        description: 'Price stored in the smallest currency unit.'
+        required: false
+        example: 450000000
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      price_currency:
+        custom: []
+        name: price_currency
+        description: 'Three-letter ISO currency code. Must be 3 characters.'
+        required: false
+        example: IRR
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      is_negotiable:
+        custom: []
+        name: is_negotiable
+        description: 'Indicates if the price can be negotiated.'
+        required: false
+        example: false
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      is_exchangeable:
+        custom: []
+        name: is_exchangeable
+        description: 'Indicates if swaps are accepted.'
+        required: false
+        example: false
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      comment_enable:
+        custom: []
+        name: comment_enable
+        description: 'Whether comments are allowed on the ad.'
+        required: false
+        example: false
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      phone_enable:
+        custom: []
+        name: phone_enable
+        description: 'Whether the phone contact option is enabled.'
+        required: false
+        example: false
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      chat_enable:
+        custom: []
+        name: chat_enable
+        description: 'Whether in-app chat is enabled for the ad.'
+        required: false
+        example: false
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      extra_amount:
+        custom: []
+        name: extra_amount
+        description: 'Additional amount expected on top of the exchanged item when swaps are accepted. This field is required when <code>is_exchangeable</code> is <code>true</code>. Must be at least 0.'
+        required: false
+        example: 150000
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      exchange_description:
+        custom: []
+        name: exchange_description
+        description: 'Details of items that would be accepted in exchange. This field is required when <code>is_exchangeable</code> is <code>true</code>.'
+        required: false
+        example: 'Willing to swap for a newer model laptop plus cash.'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      city_id:
+        custom: []
+        name: city_id
+        description: 'City identifier for the ad location. The <code>id</code> of an existing record in the cities table.'
+        required: false
+        example: 3
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      province_id:
+        custom: []
+        name: province_id
+        description: 'Province identifier for the ad location. The <code>id</code> of an existing record in the provinces table.'
+        required: false
+        example: 1
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      latitude:
+        custom: []
+        name: latitude
+        description: 'Latitude coordinate of the listing. Must be between -90 and 90.'
+        required: false
+        example: 35.6892
+        type: number
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      longitude:
+        custom: []
+        name: longitude
+        description: 'Longitude coordinate of the listing. Must be between -180 and 180.'
+        required: false
+        example: 51.389
+        type: number
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      contact_channel:
+        custom: []
+        name: contact_channel
+        description: 'Contact details such as phone or messenger usernames.'
+        required: false
+        example:
+          phone: '123456789'
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      view_count:
+        custom: []
+        name: view_count
+        description: 'Must be at least 0.'
+        required: false
+        example: 27
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      share_count:
+        custom: []
+        name: share_count
+        description: 'Must be at least 0.'
+        required: false
+        example: 39
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      favorite_count:
+        custom: []
+        name: favorite_count
+        description: 'Must be at least 0.'
+        required: false
+        example: 84
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      featured_until:
+        custom: []
+        name: featured_until
+        description: 'Must be a valid date.'
+        required: false
+        example: '2025-11-25T04:45:09'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      priority_score:
+        custom: []
+        name: priority_score
+        description: ''
+        required: false
+        example: 4326.41688
+        type: number
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      categories:
+        custom: []
+        name: categories
+        description: 'Optional array of category assignments. Can be provided later via the ad update endpoint.'
+        required: false
+        example:
+          -
+            id: 7
+            is_primary: true
+        type: 'object[]'
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      attribute_values:
+        custom: []
+        name: attribute_values
+        description: 'Optional collection of attribute values linked to the ad. Supply only when these values are known.'
+        required: false
+        example:
+          -
+            definition_id: 5
+            value_string: Automatic
+          -
+            definition_id: 12
+            value_integer: 2024
+        type: 'object[]'
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'categories[].id':
+        custom: []
+        name: 'categories[].id'
+        description: 'The <code>id</code> of an existing record in the ad_categories table.'
+        required: true
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'categories[].is_primary':
+        custom: []
+        name: 'categories[].is_primary'
+        description: ''
+        required: false
+        example: false
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'categories[].assigned_by':
+        custom: []
+        name: 'categories[].assigned_by'
+        description: 'The <code>id</code> of an existing record in the users table.'
+        required: false
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'attribute_values[].definition_id':
+        custom: []
+        name: 'attribute_values[].definition_id'
+        description: 'The <code>id</code> of an existing record in the ad_attribute_definitions table.'
+        required: true
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'attribute_values[].value_string':
+        custom: []
+        name: 'attribute_values[].value_string'
+        description: ''
+        required: false
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'attribute_values[].value_integer':
+        custom: []
+        name: 'attribute_values[].value_integer'
+        description: ''
+        required: false
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'attribute_values[].value_decimal':
+        custom: []
+        name: 'attribute_values[].value_decimal'
+        description: ''
+        required: false
+        example: 4326.41688
+        type: number
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'attribute_values[].value_boolean':
+        custom: []
+        name: 'attribute_values[].value_boolean'
+        description: ''
+        required: false
+        example: true
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'attribute_values[].value_date':
+        custom: []
+        name: 'attribute_values[].value_date'
+        description: 'Must be a valid date.'
+        required: false
+        example: '2025-11-25T04:45:09'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'attribute_values[].value_json':
+        custom: []
+        name: 'attribute_values[].value_json'
+        description: ''
+        required: false
+        example: null
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+    cleanBodyParameters:
+      user_id: 42
+      advertisable_type_id: 3
+      advertisable:
+        brand_id: 12
+        model_id: 30
+        year: 2023
+      slug: peugeot-206-2024
+      title: 'Peugeot 206 2024'
+      subtitle: 'Full options, low mileage'
+      description: 'One owner, regularly serviced, ready to drive.'
+      status: draft
+      published_at: '2024-05-01T08:00:00Z'
+      expires_at: '2024-06-01T08:00:00Z'
+      price_amount: 450000000
+      price_currency: IRR
+      is_negotiable: false
+      is_exchangeable: false
+      comment_enable: false
+      phone_enable: false
+      chat_enable: false
+      extra_amount: 150000
+      exchange_description: 'Willing to swap for a newer model laptop plus cash.'
+      city_id: 3
+      province_id: 1
+      latitude: 35.6892
+      longitude: 51.389
+      contact_channel:
+        phone: '123456789'
+      view_count: 27
+      share_count: 39
+      favorite_count: 84
+      featured_until: '2025-11-25T04:45:09'
+      priority_score: 4326.41688
+      categories:
+        -
+          id: 7
+          is_primary: true
+      attribute_values:
+        -
+          definition_id: 5
+          value_string: Automatic
+        -
+          definition_id: 12
+          value_integer: 2024
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: 'api/ads/{ad_id}'
+    metadata:
+      custom: []
+      groupName: Ads
+      groupDescription: 'Retrieve the complete information for a single ad.'
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Show ad details'
+      description: ''
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      ad_id:
+        custom: []
+        name: ad_id
+        description: 'The ID of the ad.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      ad_id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 500
+        content: |-
+          {
+              "message": "Server Error"
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: 'api/ads/{ad_id}/update'
+    metadata:
+      custom: []
+      groupName: Ads
+      groupDescription: 'Apply updates to an existing ad, optionally recording status and slug history.'
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Update an ad'
+      description: ''
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      ad_id:
+        custom: []
+        name: ad_id
+        description: 'The ID of the ad.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      ad_id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      user_id:
+        custom: []
+        name: user_id
+        description: 'Identifier of the ad owner. The <code>id</code> of an existing record in the users table.'
+        required: false
+        example: 42
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      advertisable_type_id:
+        custom: []
+        name: advertisable_type_id
+        description: 'Identifier of the advertisable type record. The <code>id</code> of an existing record in the advertisable_types table.'
+        required: true
+        example: 3
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      advertisable:
+        custom: []
+        name: advertisable
+        description: 'Attributes for the underlying advertisable subtype.'
+        required: true
+        example:
+          brand_id: 12
+          model_id: 30
+          year: 2023
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      slug:
+        custom: []
+        name: slug
+        description: 'Unique slug for the ad. Must contain only letters, numbers, dashes and underscores. Must not be greater than 255 characters.'
+        required: false
+        example: peugeot-206-2024
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      title:
+        custom: []
+        name: title
+        description: 'Headline displayed for the ad. Must not be greater than 255 characters.'
+        required: false
+        example: 'Peugeot 206 2024'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      subtitle:
+        custom: []
+        name: subtitle
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: b
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      description:
+        custom: []
+        name: description
+        description: ''
+        required: false
+        example: 'Eius et animi quos velit et.'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      status:
+        custom: []
+        name: status
+        description: ''
+        required: false
+        example: pending_review
+        type: string
+        enumValues:
+          - draft
+          - pending_review
+          - published
+          - rejected
+          - archived
+          - expired
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      published_at:
+        custom: []
+        name: published_at
+        description: 'Must be a valid date.'
+        required: false
+        example: '2025-11-25T04:45:09'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      expires_at:
+        custom: []
+        name: expires_at
+        description: 'Must be a valid date. Must be a date after or equal to <code>published_at</code>.'
+        required: false
+        example: '2051-12-19'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      price_amount:
+        custom: []
+        name: price_amount
+        description: ''
+        required: false
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      price_currency:
+        custom: []
+        name: price_currency
+        description: 'Must be 3 characters.'
+        required: false
+        example: ngz
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      is_negotiable:
+        custom: []
+        name: is_negotiable
+        description: ''
+        required: false
+        example: false
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      is_exchangeable:
+        custom: []
+        name: is_exchangeable
+        description: ''
+        required: false
+        example: true
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      comment_enable:
+        custom: []
+        name: comment_enable
+        description: ''
+        required: false
+        example: false
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      phone_enable:
+        custom: []
+        name: phone_enable
+        description: ''
+        required: false
+        example: false
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      chat_enable:
+        custom: []
+        name: chat_enable
+        description: ''
+        required: false
+        example: true
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      extra_amount:
+        custom: []
+        name: extra_amount
+        description: 'This field is required when <code>is_exchangeable</code> is <code>true</code>. Must be at least 0.'
+        required: false
+        example: 77
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      exchange_description:
+        custom: []
+        name: exchange_description
+        description: 'This field is required when <code>is_exchangeable</code> is <code>true</code>.'
+        required: false
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      city_id:
+        custom: []
+        name: city_id
+        description: 'The <code>id</code> of an existing record in the cities table.'
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      province_id:
+        custom: []
+        name: province_id
+        description: 'The <code>id</code> of an existing record in the provinces table.'
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      latitude:
+        custom: []
+        name: latitude
+        description: 'Must be between -90 and 90.'
+        required: false
+        example: -89
+        type: number
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      longitude:
+        custom: []
+        name: longitude
+        description: 'Must be between -180 and 180.'
+        required: false
+        example: -180
+        type: number
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      contact_channel:
+        custom: []
+        name: contact_channel
+        description: ''
+        required: false
+        example: null
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      view_count:
+        custom: []
+        name: view_count
+        description: 'Must be at least 0.'
+        required: false
+        example: 12
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      share_count:
+        custom: []
+        name: share_count
+        description: 'Must be at least 0.'
+        required: false
+        example: 77
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      favorite_count:
+        custom: []
+        name: favorite_count
+        description: 'Must be at least 0.'
+        required: false
+        example: 8
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      featured_until:
+        custom: []
+        name: featured_until
+        description: 'Must be a valid date.'
+        required: false
+        example: '2025-11-25T04:45:09'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      priority_score:
+        custom: []
+        name: priority_score
+        description: ''
+        required: false
+        example: 4326.41688
+        type: number
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      categories:
+        custom: []
+        name: categories
+        description: 'Array of category assignments.'
+        required: true
+        example:
+          -
+            id: 7
+            is_primary: true
+        type: 'object[]'
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      attribute_values:
+        custom: []
+        name: attribute_values
+        description: 'Collection of attribute values linked to the ad.'
+        required: true
+        example:
+          -
+            definition_id: 5
+            value_string: Automatic
+          -
+            definition_id: 12
+            value_integer: 2024
+        type: 'object[]'
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      status_note:
+        custom: []
+        name: status_note
+        description: ''
+        required: false
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      status_metadata:
+        custom: []
+        name: status_metadata
+        description: ''
+        required: false
+        example: null
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'categories[].id':
+        custom: []
+        name: 'categories[].id'
+        description: 'The <code>id</code> of an existing record in the ad_categories table.'
+        required: true
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'categories[].is_primary':
+        custom: []
+        name: 'categories[].is_primary'
+        description: ''
+        required: false
+        example: false
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'categories[].assigned_by':
+        custom: []
+        name: 'categories[].assigned_by'
+        description: 'The <code>id</code> of an existing record in the users table.'
+        required: false
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'attribute_values[].definition_id':
+        custom: []
+        name: 'attribute_values[].definition_id'
+        description: 'The <code>id</code> of an existing record in the ad_attribute_definitions table.'
+        required: true
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      'attribute_values[].value_string':
+        custom: []
+        name: 'attribute_values[].value_string'
+        description: ''
+        required: false
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'attribute_values[].value_integer':
+        custom: []
+        name: 'attribute_values[].value_integer'
+        description: ''
+        required: false
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'attribute_values[].value_decimal':
+        custom: []
+        name: 'attribute_values[].value_decimal'
+        description: ''
+        required: false
+        example: 4326.41688
+        type: number
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'attribute_values[].value_boolean':
+        custom: []
+        name: 'attribute_values[].value_boolean'
+        description: ''
+        required: false
+        example: false
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'attribute_values[].value_date':
+        custom: []
+        name: 'attribute_values[].value_date'
+        description: 'Must be a valid date.'
+        required: false
+        example: '2025-11-25T04:45:09'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+      'attribute_values[].value_json':
+        custom: []
+        name: 'attribute_values[].value_json'
+        description: ''
+        required: false
+        example: null
+        type: object
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+    cleanBodyParameters:
+      user_id: 42
+      advertisable_type_id: 3
+      advertisable:
+        brand_id: 12
+        model_id: 30
+        year: 2023
+      slug: peugeot-206-2024
+      title: 'Peugeot 206 2024'
+      subtitle: b
+      description: 'Eius et animi quos velit et.'
+      status: pending_review
+      published_at: '2025-11-25T04:45:09'
+      expires_at: '2051-12-19'
+      price_amount: 16
+      price_currency: ngz
+      is_negotiable: false
+      is_exchangeable: true
+      comment_enable: false
+      phone_enable: false
+      chat_enable: true
+      extra_amount: 77
+      exchange_description: architecto
+      latitude: -89
+      longitude: -180
+      view_count: 12
+      share_count: 77
+      favorite_count: 8
+      featured_until: '2025-11-25T04:45:09'
+      priority_score: 4326.41688
+      categories:
+        -
+          id: 7
+          is_primary: true
+      attribute_values:
+        -
+          definition_id: 5
+          value_string: Automatic
+        -
+          definition_id: 12
+          value_integer: 2024
+      status_note: architecto
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: 'api/ads/{ad_id}/delete'
+    metadata:
+      custom: []
+      groupName: Ads
+      groupDescription: 'Soft delete the specified ad.'
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Delete an ad'
+      description: ''
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      ad_id:
+        custom: []
+        name: ad_id
+        description: 'The ID of the ad.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      ad_id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: 'api/ads/{ad_id}/seen'
+    metadata:
+      custom: []
+      groupName: Ads
+      groupDescription: |-
+        Safely record a view for the specified ad. Repeated requests from the same viewer
+        within a short time window are ignored to avoid double counting.
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Register an ad view'
+      description: ''
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      ad_id:
+        custom: []
+        name: ad_id
+        description: 'The ID of the ad.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      ad_id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields:
+      data.id:
+        custom: []
+        name: data.id
+        description: 'The ad identifier.'
+        required: false
+        example: null
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      data.view_count:
+        custom: []
+        name: data.view_count
+        description: 'The updated total number of views.'
+        required: false
+        example: null
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      data.incremented:
+        custom: []
+        name: data.incremented
+        description: 'Indicates whether the counter increased.'
+        required: false
+        example: null
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: 'api/ads/{ad_id}/comments'
+    metadata:
+      custom: []
+      groupName: Ads
+      groupDescription: ''
+      subgroup: Comments
+      subgroupDescription: ''
+      title: 'List comments for an ad.'
+      description: ''
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      ad_id:
+        custom: []
+        name: ad_id
+        description: 'The ID of the ad.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      ad:
+        custom: []
+        name: ad
+        description: 'The identifier of the ad whose comments should be listed.'
+        required: true
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      ad_id: 1
+      ad: 16
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: |-
+          {
+            "data": [
+              {
+                "id": 198,
+                "body": "Is this still available?",
+                "user": {
+                  "id": 12,
+                  "username": "buyer42"
+                },
+                "replies": []
+              }
+            ]
+          }
+        headers: []
+        description: ''
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: 'api/ads/{ad_id}/comments/threaded'
+    metadata:
+      custom: []
+      groupName: Ads
+      groupDescription: ''
+      subgroup: Comments
+      subgroupDescription: ''
+      title: 'List comments for an ad with nested replies up to a depth of three.'
+      description: ''
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      ad_id:
+        custom: []
+        name: ad_id
+        description: 'The ID of the ad.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      ad:
+        custom: []
+        name: ad
+        description: 'The identifier of the ad whose comments should be listed.'
+        required: true
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      ad_id: 1
+      ad: 16
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: |-
+          {
+            "data": [
+              {
+                "id": 198,
+                "body": "Is this still available?",
+                "user": {
+                  "id": 12,
+                  "username": "buyer42"
+                },
+                "replies": [
+                  {
+                    "id": 199,
+                    "body": "Yes, it is!",
+                    "user": {
+                      "id": 15,
+                      "username": "seller01"
+                    },
+                    "replies": [
+                      {
+                        "id": 200,
+                        "body": "Great, I'll message you.",
+                        "user": {
+                          "id": 22,
+                          "username": "buyer42"
+                        },
+                        "replies": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        headers: []
+        description: ''
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: 'api/ads/{ad_id}/comments'
+    metadata:
+      custom: []
+      groupName: Ads
+      groupDescription: ''
+      subgroup: Comments
+      subgroupDescription: ''
+      title: 'Create a comment on an ad.'
+      description: ''
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      ad_id:
+        custom: []
+        name: ad_id
+        description: 'The ID of the ad.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      ad:
+        custom: []
+        name: ad
+        description: 'The identifier of the ad to comment on.'
+        required: true
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      ad_id: 1
+      ad: 16
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      body:
+        custom: []
+        name: body
+        description: 'The message to publish as a comment.'
+        required: true
+        example: '"Can you share more pictures?"'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      parent_id:
+        custom: []
+        name: parent_id
+        description: 'The parent comment identifier when replying to another comment.'
+        required: false
+        example: 197
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        deprecated: false
+    cleanBodyParameters:
+      body: '"Can you share more pictures?"'
+      parent_id: 197
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 201
+        content: |-
+          {
+            "data": {
+              "id": 199,
+              "body": "Can you share more pictures?",
+              "user": {
+                "id": 15,
+                "username": "interested-buyer"
+              },
+              "replies": []
+            }
+          }
+        headers: []
+        description: ''
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: api/advertisable-types/classes
+    metadata:
+      custom: []
+      groupName: Ads
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Retrieve the registered advertisable classes for payload construction.'
+      description: ''
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"data":[{"key":"car","label":"Car","model_class":"Modules\\Ad\\Models\\AdCar"},{"key":"real_estate","label":"Real Estate","model_class":"Modules\\Ad\\Models\\AdRealEstate"},{"key":"job","label":"Job","model_class":"Modules\\Ad\\Models\\AdJob"}]}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+    responseFields:
+      key:
+        custom: []
+        name: key
+        description: 'Unique key registered for the advertisable type.'
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      label:
+        custom: []
+        name: label
+        description: 'Human readable name.'
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      model_class:
+        custom: []
+        name: model_class
+        description: 'Backing model class for advertisable instances.'
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: api/advertisable-types
+    metadata:
+      custom: []
+      groupName: Ads
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'List supported advertisable types.'
+      description: ''
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"data":[{"id":1,"key":"car","label":"Car","description":"Passenger vehicles, including sedans, hatchbacks, SUVs, and similar listings.","model_class":"Modules\\Ad\\Models\\AdCar","icon_url":"","attribute_groups":[]},{"id":2,"key":"real_estate","label":"Real Estate","description":"Residential or commercial property listings including rentals and sales.","model_class":"Modules\\Ad\\Models\\AdRealEstate","icon_url":"","attribute_groups":[]},{"id":3,"key":"job","label":"Job","description":"Employment opportunities across industries and experience levels.","model_class":"Modules\\Ad\\Models\\AdJob","icon_url":"","attribute_groups":[]}]}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+    responseFields:
+      id:
+        custom: []
+        name: id
+        description: 'Database identifier of the advertisable type.'
+        required: false
+        example: null
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      key:
+        custom: []
+        name: key
+        description: 'Unique key registered for the advertisable type.'
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      label:
+        custom: []
+        name: label
+        description: 'Human readable name.'
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      description:
+        custom: []
+        name: description
+        description: 'Description shown to clients.'
+        required: false
+        example: null
+        type: string|null
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      model_class:
+        custom: []
+        name: model_class
+        description: 'Backing model class for advertisable instances.'
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      icon_url:
+        custom: []
+        name: icon_url
+        description: 'Public URL of the advertisable type icon.'
+        required: false
+        example: null
+        type: string|null
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      attribute_groups:
+        custom: []
+        name: attribute_groups
+        description: 'Attribute groups and definitions describing the advertisable payload.'
+        required: false
+        example: null
+        type: 'string[]'
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: 'api/advertisable-types/{key}'
+    metadata:
+      custom: []
+      groupName: Ads
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Show metadata for an advertisable type.'
+      description: ''
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      key:
+        custom: []
+        name: key
+        description: ''
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      key: architecto
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 404
+        content: |-
+          {
+              "message": "Advertisable type not found."
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+    responseFields:
+      id:
+        custom: []
+        name: id
+        description: 'Database identifier of the advertisable type.'
+        required: false
+        example: null
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      key:
+        custom: []
+        name: key
+        description: 'Unique key registered for the advertisable type.'
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      label:
+        custom: []
+        name: label
+        description: 'Human readable name.'
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      description:
+        custom: []
+        name: description
+        description: 'Description shown to clients.'
+        required: false
+        example: null
+        type: string|null
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      model_class:
+        custom: []
+        name: model_class
+        description: 'Backing model class for advertisable instances.'
+        required: false
+        example: null
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      icon_url:
+        custom: []
+        name: icon_url
+        description: 'Public URL of the advertisable type icon.'
+        required: false
+        example: null
+        type: string|null
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      attribute_groups:
+        custom: []
+        name: attribute_groups
+        description: 'Attribute groups and definitions describing the advertisable payload.'
+        required: false
+        example: null
+        type: 'string[]'
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: 'api/ads/{ad_id}/bookmark'
+    metadata:
+      custom: []
+      groupName: Ads
+      groupDescription: ''
+      subgroup: Engagement
+      subgroupDescription: ''
+      title: 'Toggle the bookmark state for an ad.'
+      description: ''
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      ad_id:
+        custom: []
+        name: ad_id
+        description: 'The ID of the ad.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      ad:
+        custom: []
+        name: ad
+        description: 'The identifier of the ad to bookmark or un-bookmark.'
+        required: true
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      ad_id: 1
+      ad: 16
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: |-
+          {
+            "data": {
+              "favorited": true,
+              "favorite_count": 12
+            }
+          }
+        headers: []
+        description: Bookmarked
+      -
+        custom: []
+        status: 200
+        content: |-
+          {
+            "data": {
+              "favorited": false,
+              "favorite_count": 11
+            }
+          }
+        headers: []
+        description: 'Removed from bookmarks'
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: 'api/ads/{ad_id}/like'
+    metadata:
+      custom: []
+      groupName: Ads
+      groupDescription: ''
+      subgroup: Engagement
+      subgroupDescription: ''
+      title: 'Toggle the like state for an ad.'
+      description: ''
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer {YOUR_ACCESS_TOKEN}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      ad_id:
+        custom: []
+        name: ad_id
+        description: 'The ID of the ad.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      ad:
+        custom: []
+        name: ad
+        description: 'The identifier of the ad to like or unlike.'
+        required: true
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      ad_id: 1
+      ad: 16
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: |-
+          {
+            "data": {
+              "liked": true,
+              "like_count": 34
+            }
+          }
+        headers: []
+        description: Liked
+      -
+        custom: []
+        status: 200
+        content: |-
+          {
+            "data": {
+              "liked": false,
+              "like_count": 33
+            }
+          }
+        headers: []
+        description: Unliked
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null

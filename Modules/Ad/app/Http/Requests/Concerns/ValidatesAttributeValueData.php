@@ -154,10 +154,11 @@ trait ValidatesAttributeValueData
             return;
         }
 
-        if (isset($options['enum']) && is_array($options['enum']) && $options['enum'] !== []) {
+        $enumValues = $this->enumValuesFromAttributeOptions($options);
+        if ($enumValues !== null && $enumValues !== []) {
             $fieldValue = Arr::get($value, $field);
 
-            if ($fieldValue !== null && ! in_array($fieldValue, $options['enum'], true)) {
+            if ($fieldValue !== null && ! in_array($fieldValue, $enumValues, true)) {
                 $validator->errors()->add("$path.$field", 'The selected value is invalid.');
                 return;
             }
@@ -186,5 +187,18 @@ trait ValidatesAttributeValueData
                 break;
             }
         }
+    }
+
+    protected function enumValuesFromAttributeOptions(array $options): ?array
+    {
+        if (array_is_list($options)) {
+            return $options;
+        }
+
+        if (isset($options['enum']) && is_array($options['enum'])) {
+            return $options['enum'];
+        }
+
+        return null;
     }
 }

@@ -42,6 +42,7 @@ Route::middleware(['api'])->group(function (): void {
 
     // --- Ad Comments ---
     Route::get('ads/{ad}/comments', [AdCommentController::class, 'index']);
+    Route::get('ads/{ad}/comments/threaded', [AdCommentController::class, 'threaded']);
     Route::post('ads/{ad}/comments', [AdCommentController::class, 'store'])->middleware('auth:api');
 
     // --- Ad Categories ---
@@ -76,7 +77,11 @@ Route::middleware(['api'])->group(function (): void {
     Route::post('ad-reports', [AdReportController::class, 'store'])->middleware('auth:api');
 
     // --- Advertisable Types ---
+    Route::get('advertisable-types/classes', [AdvertisableTypeController::class, 'classes']);
     Route::get('advertisable-types', [AdvertisableTypeController::class, 'index']);
+    Route::post('advertisable-types', [AdvertisableTypeController::class, 'store']);
+    Route::post('advertisable-types/{advertisable_type}/update', [AdvertisableTypeController::class, 'update']);
+    Route::post('advertisable-types/{advertisable_type}/delete', [AdvertisableTypeController::class, 'destroy']);
     Route::get('advertisable-types/{key}', [AdvertisableTypeController::class, 'show']);
 });
 

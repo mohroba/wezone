@@ -111,7 +111,12 @@ trait HasMessagePayload
     protected function attachmentValidationRules(): array
     {
         return match ($this->messageType()) {
-            'image' => ['image', 'max:5120'],
+            'image' => [
+                'file',
+                'mimes:jpg,jpeg,png,webp,gif',
+                'mimetypes:image/jpeg,image/png,image/webp,image/gif',
+                'max:5120',
+            ],
             'audio' => ['file', 'mimetypes:audio/mpeg,audio/ogg,audio/wav,audio/mp4,audio/aac,audio/webm', 'max:20480'],
             'video' => ['file', 'mimetypes:video/mp4,video/quicktime,video/x-msvideo,video/x-ms-wmv,video/webm', 'max:51200'],
             default => ['nullable'],

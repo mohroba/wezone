@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Arr;
 use Modules\Ad\Http\Requests\AdImage\ReorderAdImagesRequest;
 use Modules\Ad\Http\Requests\AdImage\UpdateAdImageRequest;
 use Modules\Ad\Http\Requests\AdImage\UploadAdImagesRequest;
@@ -50,18 +51,21 @@ class AdImageController extends Controller
      * @group Ad Images
      * @authenticated
      *
-     * @urlParam ad integer required The ID of the ad receiving the images.
-     * @bodyParam images array required Collection of image payloads.
-     * @bodyParam images[].file file required JPEG/PNG/WEBP file (max 5 MB)
-     * @bodyParam images[].alt string optional Alternative text for accessibility. Example: Front view of the car
-     * @bodyParam images[].caption string optional Short caption shown in galleries. Example: Taken last week
-     * @bodyParam images[].display_order integer optional Display order override. Example: 2
+     * @contentType multipart/form-data
+     * @urlParam ad integer required The ID of the ad receiving the images. Example: 5
+     *
+     * @bodyParam file file required JPEG/PNG/WEBP/GIF image file (max 5 MB).
+     * @bodyParam alt string optional Alternative text for accessibility. Example: Front view of the car
+     * @bodyParam caption string optional Short caption shown in galleries. Example: Taken last week
+     * @bodyParam display_order integer optional Display order override. Example: 2
      */
     public function store(UploadAdImagesRequest $request, Ad $ad): JsonResponse
     {
         $this->authorizeAdAccess($request, $ad);
 
-        $images = $this->imageManager->upload($ad, $request->validated('images', []));
+        $images = $this->imageManager->upload($ad, [
+            Arr::only($request->validated(), ['file', 'alt', 'caption', 'display_order']),
+        ]);
 
         return AdImageResource::collection($images)
             ->additional(['meta' => ['message' => 'Images uploaded successfully.']])
