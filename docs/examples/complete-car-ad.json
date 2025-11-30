@@ -1,0 +1,542 @@
+{
+    "advertisable_type": {
+        "id": 3,
+        "key": "car",
+        "label": "خودرو",
+        "description": "آگهی خودروهای سواری شامل سدان، هاچ‌بک و شاسی‌بلند با تمرکز روی اطلاعات فنی و وضعیت فروش.",
+        "attribute_groups": [
+            {
+                "id": 101,
+                "name": "مشخصات فنی",
+                "advertisable_type_id": 3,
+                "display_order": 1,
+                "definitions": [
+                    {
+                        "id": 201,
+                        "attribute_group_id": 101,
+                        "key": "horsepower",
+                        "label": "قدرت موتور",
+                        "help_text": "قدرت خروجی موتور بر حسب اسب‌بخار.",
+                        "data_type": "integer",
+                        "unit": "hp",
+                        "options": null,
+                        "is_required": true,
+                        "is_filterable": true,
+                        "is_searchable": true,
+                        "validation_rules": "integer|min:50|max:1200",
+                        "created_at": "2025-01-14T08:10:00Z",
+                        "updated_at": "2025-01-14T08:10:00Z"
+                    },
+                    {
+                        "id": 202,
+                        "attribute_group_id": 101,
+                        "key": "torque",
+                        "label": "گشتاور",
+                        "help_text": "گشتاور تولیدی موتور بر حسب نیوتن‌متر.",
+                        "data_type": "integer",
+                        "unit": "Nm",
+                        "options": null,
+                        "is_required": false,
+                        "is_filterable": true,
+                        "is_searchable": false,
+                        "validation_rules": "integer|min:100|max:1000",
+                        "created_at": "2025-01-14T08:12:00Z",
+                        "updated_at": "2025-01-14T08:12:00Z"
+                    },
+                    {
+                        "id": 203,
+                        "attribute_group_id": 101,
+                        "key": "engine_displacement",
+                        "label": "حجم موتور",
+                        "help_text": "حجم موتور بر حسب لیتر.",
+                        "data_type": "decimal",
+                        "unit": "L",
+                        "options": null,
+                        "is_required": false,
+                        "is_filterable": true,
+                        "is_searchable": false,
+                        "validation_rules": "numeric|min:0.6|max:6.0",
+                        "created_at": "2025-01-14T08:14:00Z",
+                        "updated_at": "2025-01-14T08:14:00Z"
+                    },
+                    {
+                        "id": 204,
+                        "attribute_group_id": 101,
+                        "key": "fuel_type",
+                        "label": "نوع سوخت",
+                        "help_text": "سوخت مصرفی خودرو.",
+                        "data_type": "string",
+                        "unit": null,
+                        "options": [
+                            "بنزینی",
+                            "دیزل",
+                            "دوگانه‌سوز",
+                            "برقی",
+                            "هیبریدی"
+                        ],
+                        "is_required": true,
+                        "is_filterable": true,
+                        "is_searchable": true,
+                        "validation_rules": "string|in:بنزینی,دیزل,دوگانه‌سوز,برقی,هیبریدی",
+                        "created_at": "2025-01-14T08:16:00Z",
+                        "updated_at": "2025-01-14T08:16:00Z"
+                    },
+                    {
+                        "id": 205,
+                        "attribute_group_id": 101,
+                        "key": "transmission",
+                        "label": "سیستم انتقال قدرت",
+                        "help_text": "نوع گیربکس نصب‌شده روی خودرو.",
+                        "data_type": "string",
+                        "unit": null,
+                        "options": [
+                            "اتوماتیک",
+                            "دستی",
+                            "دوکلاچه",
+                            "CVT"
+                        ],
+                        "is_required": true,
+                        "is_filterable": true,
+                        "is_searchable": true,
+                        "validation_rules": "string|in:اتوماتیک,دستی,دوکلاچه,CVT",
+                        "created_at": "2025-01-14T08:18:00Z",
+                        "updated_at": "2025-01-14T08:18:00Z"
+                    },
+                    {
+                        "id": 206,
+                        "attribute_group_id": 101,
+                        "key": "body_style",
+                        "label": "فرم بدنه",
+                        "help_text": "طبقه‌بندی بدنه مانند سدان یا SUV.",
+                        "data_type": "string",
+                        "unit": null,
+                        "options": [
+                            "سدان",
+                            "هاچ‌بک",
+                            "شاسی‌بلند",
+                            "کوپه"
+                        ],
+                        "is_required": true,
+                        "is_filterable": true,
+                        "is_searchable": true,
+                        "validation_rules": "string|in:سدان,هاچ‌بک,شاسی‌بلند,کوپه",
+                        "created_at": "2025-01-14T08:20:00Z",
+                        "updated_at": "2025-01-14T08:20:00Z"
+                    },
+                    {
+                        "id": 207,
+                        "attribute_group_id": 101,
+                        "key": "drivetrain",
+                        "label": "سیستم انتقال نیرو",
+                        "help_text": "دیفرانسیل عقب، جلو یا چهارچرخ متحرک.",
+                        "data_type": "string",
+                        "unit": null,
+                        "options": [
+                            "دیفرانسیل عقب",
+                            "دیفرانسیل جلو",
+                            "چهارچرخ متحرک"
+                        ],
+                        "is_required": false,
+                        "is_filterable": false,
+                        "is_searchable": false,
+                        "validation_rules": "string|in:دیفرانسیل عقب,دیفرانسیل جلو,چهارچرخ متحرک",
+                        "created_at": "2025-01-14T08:22:00Z",
+                        "updated_at": "2025-01-14T08:22:00Z"
+                    }
+                ]
+            },
+            {
+                "id": 102,
+                "name": "وضعیت و تاریخچه",
+                "advertisable_type_id": 3,
+                "display_order": 2,
+                "definitions": [
+                    {
+                        "id": 301,
+                        "attribute_group_id": 102,
+                        "key": "service_mileage",
+                        "label": "کیلومتر هنگام آخرین سرویس",
+                        "help_text": "شاخصی برای آخرین مراجعه خدمت دوره‌ای.",
+                        "data_type": "integer",
+                        "unit": "کیلومتر",
+                        "options": null,
+                        "is_required": false,
+                        "is_filterable": true,
+                        "is_searchable": false,
+                        "validation_rules": "integer|min:0",
+                        "created_at": "2025-01-14T08:25:00Z",
+                        "updated_at": "2025-01-14T08:25:00Z"
+                    },
+                    {
+                        "id": 302,
+                        "attribute_group_id": 102,
+                        "key": "condition",
+                        "label": "وضعیت کلی",
+                        "help_text": "نو، کارکرده یا بازسازی‌شده.",
+                        "data_type": "string",
+                        "unit": null,
+                        "options": [
+                            "نو",
+                            "کارکرده",
+                            "بازسازی‌شده"
+                        ],
+                        "is_required": true,
+                        "is_filterable": true,
+                        "is_searchable": true,
+                        "validation_rules": "string|in:نو,کارکرده,بازسازی‌شده",
+                        "created_at": "2025-01-14T08:27:00Z",
+                        "updated_at": "2025-01-14T08:27:00Z"
+                    },
+                    {
+                        "id": 303,
+                        "attribute_group_id": 102,
+                        "key": "ownership_count",
+                        "label": "تعداد مالک‌های قبلی",
+                        "help_text": "تعداد افراد یا شرکت‌هایی که خودرو را پیش از این ثبت کرده‌اند.",
+                        "data_type": "integer",
+                        "unit": "مالک",
+                        "options": null,
+                        "is_required": true,
+                        "is_filterable": false,
+                        "is_searchable": false,
+                        "validation_rules": "integer|min:0",
+                        "created_at": "2025-01-14T08:29:00Z",
+                        "updated_at": "2025-01-14T08:29:00Z"
+                    },
+                    {
+                        "id": 304,
+                        "attribute_group_id": 102,
+                        "key": "accident_history",
+                        "label": "سوابق سانحه",
+                        "help_text": "آیا خودرو تصادف قابل‌توجهی داشته است؟",
+                        "data_type": "boolean",
+                        "unit": null,
+                        "options": null,
+                        "is_required": false,
+                        "is_filterable": true,
+                        "is_searchable": false,
+                        "validation_rules": "boolean",
+                        "created_at": "2025-01-14T08:31:00Z",
+                        "updated_at": "2025-01-14T08:31:00Z"
+                    },
+                    {
+                        "id": 305,
+                        "attribute_group_id": 102,
+                        "key": "service_history",
+                        "label": "تاریخچه سرویس",
+                        "help_text": "آیا تمام سرویس‌ها نزد نمایندگی انجام شده‌اند؟",
+                        "data_type": "boolean",
+                        "unit": null,
+                        "options": null,
+                        "is_required": false,
+                        "is_filterable": false,
+                        "is_searchable": false,
+                        "validation_rules": "boolean",
+                        "created_at": "2025-01-14T08:33:00Z",
+                        "updated_at": "2025-01-14T08:33:00Z"
+                    },
+                    {
+                        "id": 306,
+                        "attribute_group_id": 102,
+                        "key": "last_service_date",
+                        "label": "تاریخ آخرین سرویس",
+                        "help_text": "آخرین تاریخ مراجعه برای نگهداری دوره‌ای.",
+                        "data_type": "date",
+                        "unit": null,
+                        "options": null,
+                        "is_required": false,
+                        "is_filterable": false,
+                        "is_searchable": false,
+                        "validation_rules": "date",
+                        "created_at": "2025-01-14T08:35:00Z",
+                        "updated_at": "2025-01-14T08:35:00Z"
+                    },
+                    {
+                        "id": 307,
+                        "attribute_group_id": 102,
+                        "key": "next_service_due",
+                        "label": "تاریخ سرویس بعدی",
+                        "help_text": "اگر زمان سرویس بعدی برنامه‌ریزی شده، آن را بنویسید.",
+                        "data_type": "date",
+                        "unit": null,
+                        "options": null,
+                        "is_required": false,
+                        "is_filterable": false,
+                        "is_searchable": false,
+                        "validation_rules": "date",
+                        "created_at": "2025-01-14T08:37:00Z",
+                        "updated_at": "2025-01-14T08:37:00Z"
+                    },
+                    {
+                        "id": 308,
+                        "attribute_group_id": 102,
+                        "key": "has_active_warranty",
+                        "label": "گارانتی فعال",
+                        "help_text": "آیا خودرو هنوز زیر پوشش گارانتی رسمی است؟",
+                        "data_type": "boolean",
+                        "unit": null,
+                        "options": null,
+                        "is_required": false,
+                        "is_filterable": true,
+                        "is_searchable": false,
+                        "validation_rules": "boolean",
+                        "created_at": "2025-01-14T08:39:00Z",
+                        "updated_at": "2025-01-14T08:39:00Z"
+                    },
+                    {
+                        "id": 309,
+                        "attribute_group_id": 102,
+                        "key": "warranty_provider",
+                        "label": "ارائه‌دهنده گارانتی",
+                        "help_text": "نام شرکتی که پوشش گارانتی را تضمین می‌کند.",
+                        "data_type": "string",
+                        "unit": null,
+                        "options": null,
+                        "is_required": false,
+                        "is_filterable": false,
+                        "is_searchable": false,
+                        "validation_rules": "string|max:255",
+                        "created_at": "2025-01-14T08:41:00Z",
+                        "updated_at": "2025-01-14T08:41:00Z"
+                    }
+                ]
+            },
+            {
+                "id": 103,
+                "name": "امکانات اختصاصی",
+                "advertisable_type_id": 3,
+                "display_order": 3,
+                "definitions": [
+                    {
+                        "id": 401,
+                        "attribute_group_id": 103,
+                        "key": "safety_features",
+                        "label": "ویژگی‌های ایمنی",
+                        "help_text": "تمام امکانات و تجهیزات ایمنی نصب‌شده روی خودرو.",
+                        "data_type": "json",
+                        "unit": null,
+                        "options": null,
+                        "is_required": false,
+                        "is_filterable": false,
+                        "is_searchable": false,
+                        "validation_rules": "array",
+                        "created_at": "2025-01-14T08:44:00Z",
+                        "updated_at": "2025-01-14T08:44:00Z"
+                    },
+                    {
+                        "id": 402,
+                        "attribute_group_id": 103,
+                        "key": "comfort_features",
+                        "label": "امکانات رفاهی",
+                        "help_text": "امکاناتی مانند صندلی برقی یا سیستم تهویه دوگانه.",
+                        "data_type": "json",
+                        "unit": null,
+                        "options": null,
+                        "is_required": false,
+                        "is_filterable": false,
+                        "is_searchable": false,
+                        "validation_rules": "array",
+                        "created_at": "2025-01-14T08:46:00Z",
+                        "updated_at": "2025-01-14T08:46:00Z"
+                    },
+                    {
+                        "id": 403,
+                        "attribute_group_id": 103,
+                        "key": "trim_material",
+                        "label": "جنس روکش داخلی",
+                        "help_text": "مواد به‌کار رفته در صندلی‌ها و پانل‌های داخلی.",
+                        "data_type": "string",
+                        "unit": null,
+                        "options": [
+                            "چرم",
+                            "پارچه",
+                            "چرم مصنوعی"
+                        ],
+                        "is_required": false,
+                        "is_filterable": false,
+                        "is_searchable": false,
+                        "validation_rules": "string|max:255",
+                        "created_at": "2025-01-14T08:48:00Z",
+                        "updated_at": "2025-01-14T08:48:00Z"
+                    }
+                ]
+            }
+        ]
+    },
+    "ad": {
+        "user_id": 582,
+        "advertisable_type_id": 3,
+        "advertisable": {
+            "slug": "bmw-530i-2021-tehran",
+            "brand_id": 12,
+            "model_id": 58,
+            "year": 2021,
+            "mileage": 42600,
+            "fuel_type": "بنزینی",
+            "transmission": "اتوماتیک",
+            "body_style": "سدان",
+            "color": "سفید یخی",
+            "condition": "کارکرده",
+            "ownership_count": 1,
+            "vin": "WBA5A7C53LJ123456",
+            "registration_expiry": "2025-11-25",
+            "insurance_expiry": "2025-06-02"
+        },
+        "slug": "bmw-530i-2021-tehran",
+        "title": "بی‌ام‌و ۵۳۰i مدل ۲۰۲۱ با سرویس نمایندگی",
+        "subtitle": "تک‌مالک، کارکرد کم، چرم رسمی",
+        "description": "بی‌ام‌و ۵۳۰i با رنگ سفید یخی، همه سرویس‌ها در نمایندگی BMW انجام شده و آماده انتقال سند. خودرو در تهران / پاسداران نگهداری شده و فاقد تصادف جدی است.",
+        "status": "pending_review",
+        "published_at": "2025-01-20T08:00:00Z",
+        "expires_at": "2025-02-20T08:00:00Z",
+        "price_amount": 4890000000,
+        "price_currency": "IRR",
+        "is_negotiable": true,
+        "is_exchangeable": false,
+        "city_id": 5,
+        "province_id": 2,
+        "latitude": 35.7934,
+        "longitude": 51.4205,
+        "contact_channel": {
+            "phone": "09121234567",
+            "telegram": "@TehranAutoTrade",
+            "whatsapp": "+989121234567"
+        },
+        "view_count": 12,
+        "share_count": 5,
+        "favorite_count": 68,
+        "featured_until": "2025-03-10T00:00:00Z",
+        "priority_score": 9865.42,
+        "categories": [
+            {
+                "id": 7,
+                "is_primary": true
+            },
+            {
+                "id": 21,
+                "is_primary": false
+            }
+        ],
+        "attribute_values": [
+            {
+                "definition_id": 201,
+                "value_integer": 258
+            },
+            {
+                "definition_id": 202,
+                "value_integer": 400
+            },
+            {
+                "definition_id": 203,
+                "value_decimal": 3.0
+            },
+            {
+                "definition_id": 204,
+                "value_string": "بنزینی"
+            },
+            {
+                "definition_id": 205,
+                "value_string": "اتوماتیک"
+            },
+            {
+                "definition_id": 206,
+                "value_string": "سدان"
+            },
+            {
+                "definition_id": 207,
+                "value_string": "دیفرانسیل عقب"
+            },
+            {
+                "definition_id": 301,
+                "value_integer": 42050
+            },
+            {
+                "definition_id": 302,
+                "value_string": "کارکرده"
+            },
+            {
+                "definition_id": 303,
+                "value_integer": 1
+            },
+            {
+                "definition_id": 304,
+                "value_boolean": false
+            },
+            {
+                "definition_id": 305,
+                "value_boolean": true
+            },
+            {
+                "definition_id": 306,
+                "value_date": "2024-11-05"
+            },
+            {
+                "definition_id": 307,
+                "value_date": "2025-11-05"
+            },
+            {
+                "definition_id": 308,
+                "value_boolean": true
+            },
+            {
+                "definition_id": 309,
+                "value_string": "گارانتی پارس خودرو تا پایان اردیبهشت ۱۴۰۴"
+            },
+            {
+                "definition_id": 401,
+                "value_json": [
+                    "سیستم کنترل پایداری (DSC)",
+                    "ترمز ABS و BA",
+                    "کیسه هوای جلو، جانبی و پرده‌ای"
+                ]
+            },
+            {
+                "definition_id": 402,
+                "value_json": [
+                    "کروز کنترل تطبیقی",
+                    "جک برقی صندوق عقب",
+                    "سیستم تهویه دو منطقه‌ای"
+                ]
+            },
+            {
+                "definition_id": 403,
+                "value_string": "چرم کرم رسمی"
+            }
+        ],
+        "images": [
+            {
+                "file": "bmw-530i-front.webp",
+                "alt": "نمای جلوی بی‌ام‌و ۵۳۰i سفید در نور روز",
+                "caption": "نمای جلوی خودرو با دیلایت روشن و بامپر استاندارد",
+                "display_order": 0
+            },
+            {
+                "file": "bmw-530i-interior.webp",
+                "alt": "داخل کابین بی‌ام‌و ۵۳۰i با صندلی چرم کرم",
+                "caption": "صندلی‌های چرمی همراه با روکش یک‌دست و کنسول جلو",
+                "display_order": 1
+            },
+            {
+                "file": "bmw-530i-engine.webp",
+                "alt": "نمای موتور ۳ لیتری توربو بی‌ام‌و",
+                "caption": "موتور تعمیر رسمی، بدون نشتی و با کاور محافظ",
+                "display_order": 2
+            }
+        ]
+    },
+    "simplified_creation": {
+        "description": "مثالی از payloadی که برای ایجاد اولیه تنها حداقل اطلاعات لازم را ارسال می‌کند تا بتوان بعداً جزئیات را به روز کرد.",
+        "payload": {
+            "user_id": 582,
+            "advertisable_type_id": 3,
+            "advertisable": {
+                "brand_id": 12,
+                "model_id": 58,
+                "year": 2021
+            },
+            "slug": "bmw-530i-2021-tehran",
+            "title": "بی‌ام‌و ۵۳۰i مدل ۲۰۲۱ با سرویس نمایندگی",
+            "status": "draft"
+        }
+    }
+}
