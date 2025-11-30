@@ -18,6 +18,9 @@ class PlanResource extends JsonResource
             'currency' => $this->currency,
             'duration_days' => $this->duration_days,
             'features' => $this->features,
+            'price_overrides' => $this->price_overrides,
+            'price_override_rules' => $this->whenLoaded('priceOverrides'),
+            'bump_cooldown_minutes' => $this->bump_cooldown_minutes,
         ];
     }
 }
