@@ -4,6 +4,7 @@ namespace Modules\Ad\Http\Requests\Ad;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
 use Modules\Ad\Http\Requests\Concerns\ValidatesAttributeValueData;
@@ -29,11 +30,11 @@ class StoreAdRequest extends FormRequest
         $statusValues = ['draft', 'pending_review', 'published', 'rejected', 'archived', 'expired'];
 
         return [
-            'user_id' => ['required', 'exists:users,id'],
+            'user_id' => ['sometimes', 'integer', 'exists:users,id'],
             'advertisable_type_id' => ['required', 'integer', 'exists:advertisable_types,id'],
-            'advertisable' => ['required', 'array'],
-            'slug' => ['required', 'string', 'max:255', 'alpha_dash', Rule::unique((new Ad())->getTable(), 'slug')],
-            'title' => ['required', 'string', 'max:255'],
+            'advertisable' => ['nullable', 'array'],
+            'slug' => ['nullable', 'string', 'max:255', 'alpha_dash', Rule::unique((new Ad())->getTable(), 'slug')],
+            'title' => ['nullable', 'string', 'max:255'],
             'subtitle' => ['nullable', 'string', 'max:255'],
             'description' => ['nullable', 'string'],
             'status' => ['nullable', 'string', Rule::in($statusValues)],
@@ -62,7 +63,7 @@ class StoreAdRequest extends FormRequest
             'categories.*.id' => ['required', 'integer', 'exists:ad_categories,id'],
             'categories.*.is_primary' => ['nullable', 'boolean'],
             'categories.*.assigned_by' => ['nullable', 'integer', 'exists:users,id'],
-            'attribute_values' => ['sometimes', 'array'],
+            'attribute_values' => ['nullable', 'array'],
             'attribute_values.*.definition_id' => ['required', 'integer', 'exists:ad_attribute_definitions,id'],
             'attribute_values.*.value_string' => ['nullable', 'string'],
             'attribute_values.*.value_integer' => ['nullable', 'integer'],
@@ -80,8 +81,9 @@ class StoreAdRequest extends FormRequest
         }
 
         $validated = $this->validated();
+        $advertisable = Arr::get($validated, 'advertisable');
 
-        return Arr::get($validated, 'advertisable', []);
+        return is_array($advertisable) ? $advertisable : [];
     }
 
     public function advertisableTypeModel(): AdvertisableTypeModel
@@ -99,6 +101,24 @@ class StoreAdRequest extends FormRequest
     public function prepareForValidation(): void
     {
         $payload = [];
+
+        if (! $this->filled('user_id') && $this->user()) {
+            $payload['user_id'] = $this->user()->getKey();
+        }
+
+        if (! $this->filled('status')) {
+            $payload['status'] = 'draft';
+        }
+
+        $title = $this->input('title');
+        if (! $title) {
+            $payload['title'] = 'Draft';
+            $title = 'Draft';
+        }
+
+        if (! $this->filled('slug')) {
+            $payload['slug'] = Str::uuid()->toString();
+        }
 
         if ($this->exists('is_negotiable')) {
             $payload['is_negotiable'] = $this->toBoolean($this->input('is_negotiable'));
@@ -171,6 +191,10 @@ class StoreAdRequest extends FormRequest
 
             $advertisableAttributes = $this->input('advertisable', []);
 
+            if ($advertisableAttributes === null || $advertisableAttributes === []) {
+                return;
+            }
+
             if (! is_array($advertisableAttributes)) {
                 $validator->errors()->add('advertisable', 'The advertisable field must be an object.');
 
@@ -190,7 +214,7 @@ class StoreAdRequest extends FormRequest
 
             $attributeValues = $this->input('attribute_values', []);
 
-            if (is_array($attributeValues)) {
+            if (is_array($attributeValues) && $attributeValues !== []) {
                 $this->validateAttributeValuesAgainstType($validator, $attributeValues, (int) $type->getKey());
             }
         });
@@ -203,7 +227,7 @@ class StoreAdRequest extends FormRequest
     {
         return [
             'user_id' => [
-                'description' => 'Identifier of the ad owner.',
+                'description' => 'Identifier of the ad owner. Defaults to the authenticated user when omitted.',
                 'example' => 42,
             ],
             'advertisable_type_id' => [
@@ -211,7 +235,7 @@ class StoreAdRequest extends FormRequest
                 'example' => 3,
             ],
             'advertisable' => [
-                'description' => 'Attributes for the underlying advertisable subtype.',
+                'description' => 'Attributes for the underlying advertisable subtype. Optional when creating a draft.',
                 'example' => [
                     'brand_id' => 12,
                     'model_id' => 30,
@@ -219,11 +243,11 @@ class StoreAdRequest extends FormRequest
                 ],
             ],
             'slug' => [
-                'description' => 'Unique slug for the ad.',
+                'description' => 'Unique slug for the ad. Auto-generated when omitted.',
                 'example' => 'peugeot-206-2024',
             ],
             'title' => [
-                'description' => 'Headline displayed for the ad.',
+                'description' => 'Headline displayed for the ad. Defaults to a generic draft title when omitted.',
                 'example' => 'Peugeot 206 2024',
             ],
             'subtitle' => [
@@ -235,7 +259,7 @@ class StoreAdRequest extends FormRequest
                 'example' => 'One owner, regularly serviced, ready to drive.',
             ],
             'status' => [
-                'description' => 'Lifecycle status for moderation.',
+                'description' => 'Lifecycle status for moderation. Defaults to draft when omitted.',
                 'example' => 'draft',
             ],
             'published_at' => [

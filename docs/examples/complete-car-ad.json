@@ -529,11 +529,6 @@
         "payload": {
             "user_id": 582,
             "advertisable_type_id": 3,
-            "advertisable": {
-                "brand_id": 12,
-                "model_id": 58,
-                "year": 2021
-            },
             "slug": "bmw-530i-2021-tehran",
             "title": "بی‌ام‌و ۵۳۰i مدل ۲۰۲۱ با سرویس نمایندگی",
             "status": "draft"

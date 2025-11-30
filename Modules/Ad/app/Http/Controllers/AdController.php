@@ -18,6 +18,7 @@ use Modules\Ad\Http\Resources\AdResource;
 use Modules\Ad\Models\Ad;
 use Modules\Ad\Models\AdAttributeDefinition;
 use Modules\Ad\Models\AdCategory;
+use Modules\Ad\Models\AdJob;
 use Modules\Ad\Services\AdAttributeValuePayloadBuilder;
 
 /**
@@ -281,7 +282,11 @@ class AdController extends Controller
     {
         /** @var Model $model */
         $model = new $type();
-        $payload = $this->applySlugToAttributes($attributes, $slug, $model);
+        $payload = $this->applySlugToAttributes(
+            $this->applyDefaultAdvertisableAttributes($type, $attributes),
+            $slug,
+            $model
+        );
 
         $model->fill($payload);
         $model->save();
@@ -307,7 +312,11 @@ class AdController extends Controller
 
     private function updateAdvertisableModel(Model $model, array $attributes, ?string $slug): Model
     {
-        $payload = $this->applySlugToAttributes($attributes, $slug, $model);
+        $payload = $this->applySlugToAttributes(
+            $this->applyDefaultAdvertisableAttributes(get_class($model), $attributes),
+            $slug,
+            $model
+        );
 
         $model->fill($payload);
         $model->save();
@@ -332,6 +341,23 @@ class AdController extends Controller
     {
         if (! array_key_exists('slug', $attributes) || empty($attributes['slug'])) {
             $attributes['slug'] = $slug ?? (string) $model->getAttribute('slug') ?: Str::uuid()->toString();
+        }
+
+        return $attributes;
+    }
+
+    /**
+     * Provide minimal defaults so draft advertisables can be created without full payload.
+     *
+     * @param array<string, mixed> $attributes
+     * @return array<string, mixed>
+     */
+    private function applyDefaultAdvertisableAttributes(string $type, array $attributes): array
+    {
+        // For job adverts, required fields must be non-null in the DB.
+        if ($type === AdJob::class) {
+            $attributes['company_name'] = $attributes['company_name'] ?? 'Draft company';
+            $attributes['position_title'] = $attributes['position_title'] ?? 'Draft position';
         }
 
         return $attributes;
