@@ -12,6 +12,7 @@ class EloquentPlanRepository implements PlanRepository
     public function listActive(): Collection
     {
         return Plan::query()
+            ->with('priceOverrides')
             ->where('active', true)
             ->orderBy('order_column')
             ->get();
@@ -19,17 +20,17 @@ class EloquentPlanRepository implements PlanRepository
 
     public function paginate(int $perPage = 15): LengthAwarePaginator
     {
-        return Plan::query()->orderBy('order_column')->paginate($perPage);
+        return Plan::query()->with('priceOverrides')->orderBy('order_column')->paginate($perPage);
     }
 
     public function findById(int $id): ?Plan
     {
-        return Plan::query()->find($id);
+        return Plan::query()->with('priceOverrides')->find($id);
     }
 
     public function findBySlug(string $slug): ?Plan
     {
-        return Plan::query()->where('slug', $slug)->first();
+        return Plan::query()->with('priceOverrides')->where('slug', $slug)->first();
     }
 
     public function create(array $attributes): Plan

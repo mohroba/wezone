@@ -22,8 +22,10 @@ class PlanFactory extends Factory
             'currency' => 'IRR',
             'duration_days' => 7,
             'features' => ['highlight' => true],
+            'price_overrides' => [],
             'active' => true,
             'order_column' => 1,
+            'bump_cooldown_minutes' => null,
         ];
     }
 }
