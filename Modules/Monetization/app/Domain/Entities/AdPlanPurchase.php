@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
 use Modules\Ad\Models\Ad;
+use Modules\Monetization\Domain\Entities\PlanPriceOverride;
 
 /**
  * @property int $id
@@ -24,6 +25,11 @@ use Modules\Ad\Models\Ad;
  * @property array|null $meta
  * @property string|null $correlation_id
  * @property string|null $idempotency_key
+ * @property float|null $list_price
+ * @property float|null $discounted_price
+ * @property int|null $price_rule_id
+ * @property string|null $discount_code
+ * @property int|null $bump_cooldown_minutes
  * @property Carbon|null $starts_at
  * @property Carbon|null $ends_at
  */
@@ -36,15 +42,20 @@ class AdPlanPurchase extends Model
         'plan_id',
         'user_id',
         'amount',
+        'list_price',
+        'discounted_price',
         'currency',
         'starts_at',
         'ends_at',
+        'price_rule_id',
+        'discount_code',
         'payment_status',
         'payment_gateway',
         'meta',
         'correlation_id',
         'idempotency_key',
         'bump_allowance',
+        'bump_cooldown_minutes',
     ];
 
     protected $casts = [
@@ -52,11 +63,19 @@ class AdPlanPurchase extends Model
         'starts_at' => 'datetime',
         'ends_at' => 'datetime',
         'amount' => 'float',
+        'list_price' => 'float',
+        'discounted_price' => 'float',
+        'bump_cooldown_minutes' => 'int',
     ];
 
     public function plan(): BelongsTo
     {
         return $this->belongsTo(Plan::class);
+    }
+
+    public function priceRule(): BelongsTo
+    {
+        return $this->belongsTo(PlanPriceOverride::class, 'price_rule_id');
     }
 
     public function ad(): BelongsTo

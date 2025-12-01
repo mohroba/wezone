@@ -3,6 +3,8 @@
 namespace Tests;
 
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
+use Illuminate\Support\Facades\File;
+use Laravel\Passport\Passport;
 
 abstract class TestCase extends BaseTestCase
 {
@@ -39,5 +41,43 @@ abstract class TestCase extends BaseTestCase
 
             self::$passportKeysGenerated = true;
         }
+    }
+
+    protected function beforeRefreshingDatabase()
+    {
+        Passport::ignoreMigrations();
+        $duplicateOauthMigrations = collect(File::files(database_path('migrations')))
+            ->filter(fn ($file) => str_contains($file->getFilename(), 'create_oauth_') && ! str_contains($file->getFilename(), '2025_09_25_'))
+            ->map(fn ($file) => pathinfo($file->getFilename(), PATHINFO_FILENAME))
+            ->all();
+
+        $mysqlSpecificMigrations = [
+            '2025_11_15_224903_refactor_advertisable_architecture',
+        ];
+
+        \Illuminate\Database\Migrations\Migrator::withoutMigrations(array_merge(
+            $duplicateOauthMigrations,
+            $mysqlSpecificMigrations,
+        ));
+    }
+
+    protected function migrateFreshUsing()
+    {
+        $baseMigrations = collect(File::files(database_path('migrations')))
+            ->reject(fn ($file) => str_contains($file->getFilename(), 'create_oauth_'))
+            ->map->getPathname()
+            ->values()
+            ->all();
+
+        return [
+            '--path' => array_merge(
+                $baseMigrations,
+                [
+                    module_path('Ad', 'database/migrations'),
+                    module_path('Monetization', 'database/migrations'),
+                ]
+            ),
+            '--realpath' => true,
+        ];
     }
 }

@@ -5,6 +5,7 @@ namespace Modules\Monetization\Domain\Entities;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Modules\Ad\Models\AdvertisableType;
 use Modules\Monetization\Database\Factories\PlanPriceOverrideFactory;
 
 class PlanPriceOverride extends Model
@@ -39,6 +40,11 @@ class PlanPriceOverride extends Model
     public function plan(): BelongsTo
     {
         return $this->belongsTo(Plan::class);
+    }
+
+    public function advertisableType(): BelongsTo
+    {
+        return $this->belongsTo(AdvertisableType::class);
     }
 
     protected static function newFactory(): PlanPriceOverrideFactory

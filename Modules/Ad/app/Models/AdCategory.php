@@ -3,6 +3,7 @@
 namespace Modules\Ad\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -79,5 +80,10 @@ class AdCategory extends Model implements HasMedia
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection(self::COLLECTION_ICON)->singleFile();
+    }
+
+    protected static function newFactory(): Factory
+    {
+        return \Modules\Ad\Database\Factories\AdCategoryFactory::new();
     }
 }

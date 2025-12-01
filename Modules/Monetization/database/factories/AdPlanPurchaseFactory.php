@@ -24,6 +24,8 @@ class AdPlanPurchaseFactory extends Factory
             'plan_id' => Plan::factory(),
             'user_id' => $userFactory,
             'amount' => $this->faker->randomFloat(2, 10, 5000),
+            'list_price' => $this->faker->randomFloat(2, 10, 5000),
+            'discounted_price' => $this->faker->randomFloat(2, 10, 5000),
             'currency' => 'IRR',
             'starts_at' => $this->faker->dateTimeBetween('-1 day', 'now'),
             'ends_at' => $this->faker->dateTimeBetween('now', '+30 days'),
@@ -33,6 +35,7 @@ class AdPlanPurchaseFactory extends Factory
             'correlation_id' => $this->faker->uuid(),
             'idempotency_key' => null,
             'bump_allowance' => 0,
+            'bump_cooldown_minutes' => null,
         ];
     }
 }

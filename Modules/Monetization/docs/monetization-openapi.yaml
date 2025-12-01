@@ -36,6 +36,27 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Purchase'
+  /discount-codes/validate:
+    post:
+      summary: Validate a discount code for a plan
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ValidateDiscountCodePayload'
+      responses:
+        '200':
+          description: Discount code is applicable
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/ValidatedDiscount'
+        '422':
+          description: Discount code is not applicable
 components:
   schemas:
     Plan:
@@ -66,10 +87,20 @@ components:
           type: integer
         amount:
           type: number
+        list_price:
+          type: number
+        discounted_price:
+          type: number
         currency:
           type: string
         payment_status:
           type: string
+        price_rule_id:
+          type: integer
+        discount_code:
+          type: string
+        bump_cooldown_minutes:
+          type: integer
     CreatePurchasePayload:
       type: object
       properties:
@@ -77,7 +108,49 @@ components:
           type: integer
         plan_slug:
           type: string
+        plan_id:
+          type: integer
+        advertisable_type_id:
+          type: integer
+        ad_category_id:
+          type: integer
+        discount_code:
+          type: string
         pay_with_wallet:
           type: boolean
       required:
         - ad_id
+        - advertisable_type_id
+    ValidateDiscountCodePayload:
+      type: object
+      properties:
+        plan_slug:
+          type: string
+        plan_id:
+          type: integer
+        advertisable_type_id:
+          type: integer
+        ad_category_id:
+          type: integer
+        discount_code:
+          type: string
+      required:
+        - discount_code
+        - advertisable_type_id
+    ValidatedDiscount:
+      type: object
+      properties:
+        list_price:
+          type: number
+          format: float
+        discounted_price:
+          type: number
+          format: float
+        currency:
+          type: string
+        price_rule_id:
+          type: integer
+        discount_code:
+          type: string
+        discount_applied:
+          type: boolean
