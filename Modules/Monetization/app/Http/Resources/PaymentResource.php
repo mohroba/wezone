@@ -21,6 +21,7 @@ class PaymentResource extends JsonResource
             'ref_id' => $this->ref_id,
             'tracking_code' => $this->tracking_code,
             'paid_at' => optional($this->paid_at)->toIso8601String(),
+            'meta' => $this->meta,
             'redirect_url' => $redirectUrl,
         ];
     }

@@ -31,6 +31,7 @@ class PaymentFactory extends Factory
             'tracking_code' => null,
             'request_payload' => [],
             'response_payload' => [],
+            'meta' => [],
             'paid_at' => null,
             'failed_at' => null,
             'refunded_at' => null,

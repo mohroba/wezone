@@ -100,6 +100,11 @@ class AdPlanPurchase extends Model
         );
     }
 
+    public function effectiveAmount(): float
+    {
+        return (float) ($this->discounted_price ?? $this->amount ?? $this->list_price ?? 0);
+    }
+
     protected static function newFactory(): Factory
     {
         return \Modules\Monetization\Database\Factories\AdPlanPurchaseFactory::new();

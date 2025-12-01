@@ -32,6 +32,7 @@ class Payment extends Model
         'tracking_code',
         'request_payload',
         'response_payload',
+        'meta',
         'paid_at',
         'failed_at',
         'refunded_at',
@@ -43,10 +44,18 @@ class Payment extends Model
         'amount' => 'float',
         'request_payload' => 'array',
         'response_payload' => 'array',
+        'meta' => 'array',
         'paid_at' => 'datetime',
         'failed_at' => 'datetime',
         'refunded_at' => 'datetime',
     ];
+
+    protected function meta(): Attribute
+    {
+        return Attribute::make(
+            get: fn (?array $value) => $value ?? [],
+        );
+    }
 
     public function payable(): MorphTo
     {

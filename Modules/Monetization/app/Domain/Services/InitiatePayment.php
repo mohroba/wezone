@@ -8,6 +8,7 @@ use Modules\Monetization\Domain\Contracts\Repositories\PlanRepository;
 use Modules\Monetization\Domain\Contracts\Repositories\PurchaseRepository;
 use Modules\Monetization\Domain\DTO\GatewayInitiationData;
 use Modules\Monetization\Domain\DTO\InitiatePaymentDTO;
+use Modules\Monetization\Domain\Entities\AdPlanPurchase;
 use Modules\Monetization\Domain\Entities\Payment;
 use Modules\Monetization\Domain\Events\PaymentInitiated;
 use Modules\Monetization\Domain\ValueObjects\Money;
@@ -55,12 +56,13 @@ class InitiatePayment
                 'user_id' => $dto->userId,
                 'payable_type' => $purchase::class,
                 'payable_id' => $purchase->getKey(),
-                'amount' => $purchase->amount,
+                'amount' => $purchase->effectiveAmount(),
                 'currency' => $purchase->currency,
                 'gateway' => $gateway->getName(),
                 'status' => 'pending',
                 'correlation_id' => $dto->correlationId,
                 'idempotency_key' => $dto->idempotencyKey,
+                'meta' => $this->buildPaymentMeta($purchase),
             ]);
 
             $purchase->payment_status = 'pending';
@@ -70,7 +72,7 @@ class InitiatePayment
             $result = $gateway->initiate(new GatewayInitiationData(
                 purchase: $purchase,
                 plan: $plan,
-                money: Money::fromFloat($purchase->amount, $purchase->currency),
+                money: Money::fromFloat($payment->amount, $purchase->currency),
                 callbackUrl: Config::get('monetization.gateways.'.$gateway->getName().'.callback_url'),
             ));
 
@@ -78,5 +80,19 @@ class InitiatePayment
 
             return $result;
         });
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    private function buildPaymentMeta(AdPlanPurchase $purchase): array
+    {
+        $pricing = $purchase->meta['pricing'] ?? [];
+
+        return array_filter([
+            'pricing' => $pricing ?: null,
+            'discount_redemption' => $purchase->meta['discount_redemption'] ?? null,
+            'charged_amount' => $purchase->effectiveAmount(),
+        ], static fn ($value) => $value !== null);
     }
 }
