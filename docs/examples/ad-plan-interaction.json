@@ -1,0 +1,150 @@
+{
+  "id": 412,
+  "title": "آپارتمان ۲ خوابه نوساز در سعادت‌آباد",
+  "status": "published",
+  "price_amount": 9200000000,
+  "price_currency": "IRR",
+  "advertisable_type_id": 8,
+  "city_id": 1,
+  "province_id": 1,
+  "categories": [
+    {
+      "id": 120,
+      "name": "مسکونی",
+      "slug": "residential",
+      "is_primary": true,
+      "assigned_by": "system"
+    },
+    {
+      "id": 131,
+      "name": "آپارتمان",
+      "slug": "apartment",
+      "is_primary": false,
+      "assigned_by": "owner"
+    }
+  ],
+  "attribute_values": [
+    {
+      "definition_id": 2601,
+      "key": "bedrooms",
+      "label": "تعداد خواب",
+      "value_integer": 2
+    },
+    {
+      "definition_id": 2602,
+      "key": "area",
+      "label": "متراژ",
+      "value_integer": 95
+    },
+    {
+      "definition_id": 2603,
+      "key": "floor",
+      "label": "طبقه",
+      "value_integer": 4
+    }
+  ],
+  "images": [
+    {
+      "file": "living-room.webp",
+      "alt": "نشیمن با نورگیر جنوبی",
+      "display_order": 0
+    },
+    {
+      "file": "kitchen.webp",
+      "alt": "آشپزخانه جزیره",
+      "display_order": 1
+    }
+  ],
+  "monetization": {
+    "active_promotions_count": 2,
+    "purchases": [
+      {
+        "id": 901,
+        "ad_id": 412,
+        "plan": {
+          "id": 15,
+          "name": "motemayez",
+          "slug": "motemayez",
+          "description": "پررنگ‌تر شدن آگهی به مدت ۷ روز",
+          "price": 190000,
+          "currency": "IRR",
+          "duration_days": 7,
+          "features": {
+            "highlight": true,
+            "badge": "ویژه",
+            "bump": false
+          },
+          "bump_cooldown_minutes": 0
+        },
+        "amount": 190000,
+        "currency": "IRR",
+        "payment_status": "active",
+        "payment_gateway": "payping",
+        "starts_at": "2025-03-02T07:45:00Z",
+        "ends_at": "2025-03-09T07:45:00Z",
+        "meta": {
+          "pay_with_wallet": false,
+          "correlation_id": "02dc2f9b-b8ae-4f0d-8e4f-1d6d1eeae9f0"
+        },
+        "payments": [
+          {
+            "id": 1444,
+            "amount": 190000,
+            "currency": "IRR",
+            "gateway": "payping",
+            "status": "paid",
+            "ref_id": "PP-845900",
+            "paid_at": "2025-03-02T07:46:15Z",
+            "tracking_code": "PP-845900",
+            "redirect_url": null
+          }
+        ]
+      },
+      {
+        "id": 902,
+        "ad_id": 412,
+        "plan": {
+          "id": 18,
+          "name": "nardeban",
+          "slug": "nardeban",
+          "description": "۳ بامپ خودکار در ۴۸ ساعت",
+          "price": 240000,
+          "currency": "IRR",
+          "duration_days": 2,
+          "features": {
+            "highlight": false,
+            "badge": null,
+            "bump": true,
+            "bump_allowance": 3
+          },
+          "bump_cooldown_minutes": 240
+        },
+        "amount": 240000,
+        "currency": "IRR",
+        "payment_status": "active",
+        "payment_gateway": "payping",
+        "starts_at": "2025-03-02T07:45:00Z",
+        "ends_at": "2025-03-04T07:45:00Z",
+        "meta": {
+          "pay_with_wallet": false,
+          "auto_bumps_applied": [
+            "2025-03-02T07:47:00Z"
+          ]
+        },
+        "payments": [
+          {
+            "id": 1444,
+            "amount": 430000,
+            "currency": "IRR",
+            "gateway": "payping",
+            "status": "paid",
+            "ref_id": "PP-845900",
+            "paid_at": "2025-03-02T07:46:15Z",
+            "tracking_code": "PP-845900",
+            "redirect_url": null
+          }
+        ]
+      }
+    ]
+  }
+}

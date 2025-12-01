@@ -37,7 +37,12 @@ class AdExploreController extends Controller
         $query = Ad::query()
             ->select('ads.*')
             ->where('status', 'published')
-            ->with(['media'])
+            ->with([
+                'media',
+                'planPurchases' => fn ($relation) => $relation
+                    ->with('plan')
+                    ->latest(),
+            ])
             ->with(['user' => function ($relation): void {
                 $relation
                     ->with(['profile.media'])
