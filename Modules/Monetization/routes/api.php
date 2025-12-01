@@ -11,6 +11,7 @@ Route::middleware(['auth:api'])->prefix('monetization')->group(function (): void
     Route::get('plans', [PlanController::class, 'index'])->name('monetization.plans.index');
 
     Route::post('purchases', [PurchaseController::class, 'store'])->name('monetization.purchases.store');
+    Route::post('purchases/bulk', [PurchaseController::class, 'storeMany'])->name('monetization.purchases.storeMany');
     Route::get('purchases/{purchase}', [PurchaseController::class, 'show'])->name('monetization.purchases.show');
     Route::post('purchases/{purchase}/bump', [PurchaseController::class, 'bump'])->name('monetization.purchases.bump');
 
