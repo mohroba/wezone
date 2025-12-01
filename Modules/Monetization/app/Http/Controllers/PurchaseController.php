@@ -7,8 +7,10 @@ use Modules\Monetization\Domain\DTO\CreatePurchaseDTO;
 use Modules\Monetization\Domain\Entities\AdPlanPurchase;
 use Modules\Monetization\Domain\Services\ApplyBump;
 use Modules\Monetization\Domain\Services\CreatePurchase;
+use Modules\Monetization\Domain\Services\CreateMultiplePurchases;
 use Modules\Monetization\Domain\Services\PayWithWallet;
 use Modules\Monetization\Http\Requests\BumpRequest;
+use Modules\Monetization\Http\Requests\BulkCreatePurchaseRequest;
 use Modules\Monetization\Http\Requests\CreatePurchaseRequest;
 use Modules\Monetization\Http\Resources\PaymentResource;
 use Modules\Monetization\Http\Resources\PurchaseResource;
@@ -26,6 +28,7 @@ class PurchaseController
 {
     public function __construct(
         private readonly CreatePurchase $createPurchase,
+        private readonly CreateMultiplePurchases $createMultiplePurchases,
         private readonly PurchaseRepository $purchaseRepository,
         private readonly PayWithWallet $payWithWallet,
         private readonly ApplyBump $applyBump,
@@ -81,6 +84,41 @@ class PurchaseController
         }
 
         return new PurchaseResource($purchase->load('plan'));
+    }
+
+    /**
+     * Create multiple ad plan purchases
+     *
+     * @group Monetization
+     *
+     * Start multiple purchases for an ad in a single request. Each plan payload can optionally use the wallet immediately.
+     *
+     * @responseField data array List of created purchases.
+     * @responseField payments array|null Wallet payments executed for eligible purchases.
+     */
+    public function storeMany(BulkCreatePurchaseRequest $request): JsonResponse
+    {
+        $correlationId = $request->header('X-Correlation-Id') ?? Str::uuid()->toString();
+        $idempotencyKey = $request->header('X-Idempotency-Key');
+
+        $result = $this->createMultiplePurchases->handle(
+            adId: $request->integer('ad_id'),
+            advertisableTypeId: $request->integer('advertisable_type_id'),
+            adCategoryId: $request->has('ad_category_id') ? $request->integer('ad_category_id') : null,
+            userId: $request->user()->getKey(),
+            baseCorrelationId: $correlationId,
+            baseIdempotencyKey: $idempotencyKey,
+            planPayloads: $request->input('plans', []),
+        );
+
+        return PurchaseResource::collection($result['purchases'])
+            ->additional([
+                'payments' => $result['payments']->isNotEmpty()
+                    ? PaymentResource::collection($result['payments'])
+                    : [],
+            ])
+            ->response()
+            ->setStatusCode(Response::HTTP_CREATED);
     }
 
     /**
