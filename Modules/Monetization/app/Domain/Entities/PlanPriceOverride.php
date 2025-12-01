@@ -5,8 +5,11 @@ namespace Modules\Monetization\Domain\Entities;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Modules\Ad\Models\AdvertisableType;
 use Modules\Monetization\Database\Factories\PlanPriceOverrideFactory;
+use Modules\Monetization\Domain\Entities\DiscountCode;
+use Modules\Monetization\Domain\Entities\DiscountRedemption;
 
 class PlanPriceOverride extends Model
 {
@@ -24,6 +27,7 @@ class PlanPriceOverride extends Model
         'discount_ends_at',
         'usage_cap',
         'usage_count',
+        'is_stackable',
         'metadata',
     ];
 
@@ -34,6 +38,7 @@ class PlanPriceOverride extends Model
         'discount_ends_at' => 'datetime',
         'usage_cap' => 'int',
         'usage_count' => 'int',
+        'is_stackable' => 'bool',
         'metadata' => 'array',
     ];
 
@@ -45,6 +50,16 @@ class PlanPriceOverride extends Model
     public function advertisableType(): BelongsTo
     {
         return $this->belongsTo(AdvertisableType::class);
+    }
+
+    public function discountCodes(): HasMany
+    {
+        return $this->hasMany(DiscountCode::class, 'plan_price_override_id');
+    }
+
+    public function redemptions(): HasMany
+    {
+        return $this->hasMany(DiscountRedemption::class, 'plan_price_override_id');
     }
 
     protected static function newFactory(): PlanPriceOverrideFactory

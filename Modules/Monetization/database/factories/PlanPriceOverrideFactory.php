@@ -28,6 +28,7 @@ class PlanPriceOverrideFactory extends Factory
             'discount_ends_at' => now()->addDays(5),
             'usage_cap' => 100,
             'usage_count' => 0,
+            'is_stackable' => false,
             'metadata' => ['notes' => $this->faker->sentence()],
         ];
     }

@@ -7,6 +7,20 @@ use Illuminate\Support\ServiceProvider;
 use Nwidart\Modules\Traits\PathNamespace;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
+use Modules\Monetization\Domain\Contracts\Repositories\PlanRepository;
+use Modules\Monetization\Domain\Contracts\Repositories\PurchaseRepository;
+use Modules\Monetization\Domain\Contracts\Repositories\PaymentRepository;
+use Modules\Monetization\Domain\Contracts\Repositories\WalletRepository;
+use Modules\Monetization\Domain\Contracts\Repositories\PlanPriceRuleRepository;
+use Modules\Monetization\Domain\Contracts\Repositories\DiscountCodeRepository;
+use Modules\Monetization\Domain\Contracts\Repositories\DiscountRedemptionRepository;
+use Modules\Monetization\Domain\Repositories\EloquentPlanRepository;
+use Modules\Monetization\Domain\Repositories\EloquentPurchaseRepository;
+use Modules\Monetization\Domain\Repositories\EloquentPaymentRepository;
+use Modules\Monetization\Domain\Repositories\EloquentWalletRepository;
+use Modules\Monetization\Domain\Repositories\EloquentPlanPriceRuleRepository;
+use Modules\Monetization\Domain\Repositories\EloquentDiscountCodeRepository;
+use Modules\Monetization\Domain\Repositories\EloquentDiscountRedemptionRepository;
 
 class MonetizationServiceProvider extends ServiceProvider
 {
@@ -36,6 +50,18 @@ class MonetizationServiceProvider extends ServiceProvider
     {
         $this->app->register(EventServiceProvider::class);
         $this->app->register(RouteServiceProvider::class);
+        $this->registerBindings();
+    }
+
+    private function registerBindings(): void
+    {
+        $this->app->bind(PlanRepository::class, EloquentPlanRepository::class);
+        $this->app->bind(PurchaseRepository::class, EloquentPurchaseRepository::class);
+        $this->app->bind(PaymentRepository::class, EloquentPaymentRepository::class);
+        $this->app->bind(WalletRepository::class, EloquentWalletRepository::class);
+        $this->app->bind(PlanPriceRuleRepository::class, EloquentPlanPriceRuleRepository::class);
+        $this->app->bind(DiscountCodeRepository::class, EloquentDiscountCodeRepository::class);
+        $this->app->bind(DiscountRedemptionRepository::class, EloquentDiscountRedemptionRepository::class);
     }
 
     /**

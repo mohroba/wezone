@@ -6,6 +6,9 @@ use Modules\Monetization\Http\Controllers\DiscountCodeController;
 use Modules\Monetization\Http\Controllers\PlanController;
 use Modules\Monetization\Http\Controllers\PurchaseController;
 use Modules\Monetization\Http\Controllers\WalletController;
+use Modules\Monetization\Http\Controllers\Admin\PlanPriceRuleController;
+use Modules\Monetization\Http\Controllers\Admin\DiscountCodeAdminController;
+use Modules\Monetization\Http\Controllers\Admin\DiscountRedemptionReportController;
 
 Route::middleware(['auth:api'])->prefix('monetization')->group(function (): void {
     Route::get('plans', [PlanController::class, 'index'])->name('monetization.plans.index');
@@ -26,4 +29,20 @@ Route::middleware(['auth:api'])->prefix('monetization')->group(function (): void
 
     Route::get('wallet', [WalletController::class, 'show'])->name('monetization.wallet.show');
     Route::post('wallet/top-up', [WalletController::class, 'topUp'])->name('monetization.wallet.top-up');
+});
+
+Route::middleware(['auth:api'])->prefix('monetization/admin')->group(function (): void {
+    Route::get('plans/{plan}/price-rules', [PlanPriceRuleController::class, 'index']);
+    Route::post('plans/{plan}/price-rules', [PlanPriceRuleController::class, 'store']);
+    Route::get('price-rules/{priceRule}', [PlanPriceRuleController::class, 'show']);
+    Route::put('price-rules/{priceRule}', [PlanPriceRuleController::class, 'update']);
+    Route::delete('price-rules/{priceRule}', [PlanPriceRuleController::class, 'destroy']);
+
+    Route::get('price-rules/{priceRule}/discount-codes', [DiscountCodeAdminController::class, 'index']);
+    Route::post('price-rules/{priceRule}/discount-codes', [DiscountCodeAdminController::class, 'store']);
+    Route::get('discount-codes/{discountCode}', [DiscountCodeAdminController::class, 'show']);
+    Route::put('discount-codes/{discountCode}', [DiscountCodeAdminController::class, 'update']);
+    Route::delete('discount-codes/{discountCode}', [DiscountCodeAdminController::class, 'destroy']);
+
+    Route::get('discount-redemptions', [DiscountRedemptionReportController::class, 'index']);
 });
