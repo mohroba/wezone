@@ -8,6 +8,7 @@ use Modules\Monetization\Domain\Entities\AdPlanPurchase;
 use Modules\Monetization\Domain\Services\ApplyBump;
 use Modules\Monetization\Domain\Services\CreatePurchase;
 use Modules\Monetization\Domain\Services\CreateMultiplePurchases;
+use Modules\Monetization\Domain\Services\InitiateAggregatedPayment;
 use Modules\Monetization\Domain\Services\PayWithWallet;
 use Modules\Monetization\Http\Requests\BumpRequest;
 use Modules\Monetization\Http\Requests\BulkCreatePurchaseRequest;
@@ -32,6 +33,7 @@ class PurchaseController
         private readonly PurchaseRepository $purchaseRepository,
         private readonly PayWithWallet $payWithWallet,
         private readonly ApplyBump $applyBump,
+        private readonly InitiateAggregatedPayment $initiateAggregatedPayment,
     ) {
     }
 
@@ -111,6 +113,24 @@ class PurchaseController
             planPayloads: $request->input('plans', []),
         );
 
+        $pendingGatewayPurchases = $result['purchases']->filter(function (AdPlanPurchase $purchase) {
+            return $purchase->payment_status === 'draft' && ! ($purchase->meta['pay_with_wallet'] ?? false);
+        });
+
+        if ($pendingGatewayPurchases->isNotEmpty()) {
+            $gateway = $this->resolveBulkGateway($request->input('plans', []));
+
+            $payment = $this->initiateAggregatedPayment->handle(
+                purchases: $pendingGatewayPurchases,
+                userId: $request->user()->getKey(),
+                gateway: $gateway,
+                idempotencyKey: $idempotencyKey,
+                correlationId: $correlationId,
+            );
+
+            $result['payments']->push($payment);
+        }
+
         return PurchaseResource::collection($result['purchases'])
             ->additional([
                 'payments' => $result['payments']->isNotEmpty()
@@ -174,5 +194,30 @@ class PurchaseController
         $updated = ($this->applyBump)($purchase);
 
         return new PurchaseResource($updated->load('plan'));
+    }
+
+    private function resolveBulkGateway(array $planPayloads): string
+    {
+        $requestedGateways = collect($planPayloads)
+            ->pluck('gateway')
+            ->filter()
+            ->unique()
+            ->values();
+
+        if ($requestedGateways->count() > 1) {
+            abort(Response::HTTP_UNPROCESSABLE_ENTITY, 'All plans in a bulk purchase must use the same gateway.');
+        }
+
+        if ($requestedGateways->isNotEmpty()) {
+            return (string) $requestedGateways->first();
+        }
+
+        $default = config('monetization.default_gateway');
+
+        if (! $default) {
+            abort(Response::HTTP_UNPROCESSABLE_ENTITY, 'No payment gateway provided for bulk purchase.');
+        }
+
+        return (string) $default;
     }
 }

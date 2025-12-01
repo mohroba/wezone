@@ -52,7 +52,15 @@ class AdController extends Controller
     public function index(Request $request): AnonymousResourceCollection
     {
         $query = Ad::query()
-            ->with(['categories', 'advertisable', 'advertisableType', 'attributeValues.definition'])
+            ->with([
+                'categories',
+                'advertisable',
+                'advertisableType',
+                'attributeValues.definition',
+                'planPurchases' => fn ($relation) => $relation
+                    ->with('plan')
+                    ->latest(),
+            ])
             ->when($request->filled('status'), fn ($q) => $q->where('status', $request->input('status')))
             ->when($request->filled('user_id'), fn ($q) => $q->where('user_id', $request->input('user_id')))
             ->when($request->filled('category_id'), function ($q) use ($request) {
