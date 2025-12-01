@@ -6,6 +6,7 @@ use Modules\Monetization\Domain\Contracts\Repositories\PurchaseRepository;
 use Modules\Monetization\Domain\Entities\AdPlanPurchase;
 use Illuminate\Support\Carbon;
 use InvalidArgumentException;
+use Illuminate\Support\Arr;
 
 class ApplyBump
 {
@@ -23,10 +24,10 @@ class ApplyBump
             throw new InvalidArgumentException('No bump allowance remaining.');
         }
 
-        $cooldown = config('monetization.features.bump.cooldown_minutes');
+        $cooldown = $this->resolveCooldownMinutes($purchase);
         $lastBumpedAt = $purchase->meta['last_bumped_at'] ?? null;
         if ($lastBumpedAt && Carbon::parse($lastBumpedAt)->diffInMinutes(now()) < $cooldown) {
-            throw new InvalidArgumentException('Bump cooldown has not elapsed.');
+            throw new InvalidArgumentException("Bump cooldown of {$cooldown} minutes has not elapsed.");
         }
 
         $meta = $purchase->meta;
@@ -36,5 +37,17 @@ class ApplyBump
             'bump_allowance' => $purchase->bump_allowance - 1,
             'meta' => $meta,
         ]);
+    }
+
+    private function resolveCooldownMinutes(AdPlanPurchase $purchase): int
+    {
+        $plan = $purchase->relationLoaded('plan') ? $purchase->plan : $purchase->plan()->first();
+
+        return (int) (
+            $purchase->bump_cooldown_minutes
+            ?? $plan?->bump_cooldown_minutes
+            ?? Arr::get($plan?->features, 'bump.cooldown_minutes')
+            ?? config('monetization.features.bump.cooldown_minutes')
+        );
     }
 }

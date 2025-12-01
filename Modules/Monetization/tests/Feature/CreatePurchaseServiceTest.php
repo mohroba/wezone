@@ -83,4 +83,49 @@ class CreatePurchaseServiceTest extends TestCase
         $this->assertSame(4500, $purchase->meta['pricing']['discounted_price']);
         $this->assertSame(1, $override->fresh()->usage_count);
     }
+
+    public function test_purchase_uses_plan_feature_cooldown_when_no_direct_value(): void
+    {
+        $plan = Plan::factory()->create([
+            'price' => 2500,
+            'currency' => 'IRR',
+            'bump_cooldown_minutes' => null,
+            'features' => [
+                'bump' => [
+                    'allowance' => 2,
+                    'cooldown_minutes' => 75,
+                ],
+            ],
+        ]);
+
+        $advertisableType = AdvertisableTypeFactory::new()->create();
+        $category = AdCategory::factory()->for($advertisableType, 'advertisableType')->create();
+        $user = User::factory()->create();
+        $ad = AdFactory::new()->for($user)->state([
+            'advertisable_type_id' => $advertisableType->id,
+        ])->create();
+
+        $service = new CreatePurchase(
+            planRepository: new EloquentPlanRepository(),
+            purchaseRepository: new EloquentPurchaseRepository(),
+            pricingService: new PurchasePricingService(),
+        );
+
+        $purchase = $service(new CreatePurchaseDTO(
+            adId: $ad->id,
+            planId: $plan->id,
+            planSlug: null,
+            userId: $user->id,
+            gateway: 'payping',
+            correlationId: Str::uuid()->toString(),
+            idempotencyKey: Str::uuid()->toString(),
+            advertisableTypeId: $advertisableType->id,
+            adCategoryId: $category->id,
+            discountCode: null,
+            payWithWallet: false,
+        ));
+
+        $this->assertSame(75, $purchase->bump_cooldown_minutes);
+        $this->assertSame(2, $purchase->bump_allowance);
+    }
 }

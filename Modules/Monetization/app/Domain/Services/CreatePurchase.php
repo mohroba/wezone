@@ -65,7 +65,9 @@ class CreatePurchase
                     ],
                 ],
                 'bump_allowance' => (int) ($plan->features['bump']['allowance'] ?? 0),
-                'bump_cooldown_minutes' => $plan->bump_cooldown_minutes,
+                'bump_cooldown_minutes' => $plan->bump_cooldown_minutes
+                    ?? $plan->features['bump']['cooldown_minutes']
+                    ?? null,
             ]);
 
             if ($pricing->priceRule && $pricing->discountApplied && $pricing->priceRule->usage_cap !== null) {
