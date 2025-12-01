@@ -44,6 +44,9 @@ class PurchaseController
      * @bodyParam plan_id int Optional plan identifier when selecting directly by ID. Example: 5
      * @bodyParam plan_slug string Optional plan slug alternative to `plan_id`. Example: premium-weekly
      * @bodyParam gateway string Preferred payment gateway key. Example: payping
+     * @bodyParam advertisable_type_id int required Identifies the advertisable type for contextual pricing. Example: 2
+     * @bodyParam ad_category_id int Optional category used to target price rules. Example: 14
+     * @bodyParam discount_code string Optional discount code to unlock contextual promotions. Example: SPRING24
      * @bodyParam pay_with_wallet boolean Whether to use the wallet balance immediately. Example: false
      *
      * @responseField data.id integer Unique identifier of the created purchase.
@@ -62,6 +65,9 @@ class PurchaseController
             gateway: $request->input('gateway'),
             correlationId: $correlationId,
             idempotencyKey: $idempotencyKey,
+            advertisableTypeId: $request->integer('advertisable_type_id'),
+            adCategoryId: $request->has('ad_category_id') ? $request->integer('ad_category_id') : null,
+            discountCode: $request->input('discount_code'),
             payWithWallet: (bool) $request->boolean('pay_with_wallet'),
         ));
 

@@ -9,6 +9,10 @@ return new class extends Migration
 {
     public function up(): void
     {
+        if (DB::getDriverName() === 'sqlite') {
+            return;
+        }
+
         $this->upgradeAttributeGroups();
         $this->upgradeDefinitions();
         $this->upgradeValues();
@@ -16,6 +20,10 @@ return new class extends Migration
 
     public function down(): void
     {
+        if (DB::getDriverName() === 'sqlite') {
+            return;
+        }
+
         $this->downgradeValues();
         $this->downgradeDefinitions();
         $this->downgradeGroups();

@@ -9,6 +9,10 @@ return new class extends Migration
 {
     public function up(): void
     {
+        if (DB::getDriverName() === 'sqlite') {
+            return;
+        }
+
         Schema::table('ad_categories', function (Blueprint $table) {
             if (! Schema::hasColumn('ad_categories', 'advertisable_type_id')) {
                 $table->foreignId('advertisable_type_id')
@@ -75,6 +79,10 @@ return new class extends Migration
 
     public function down(): void
     {
+        if (DB::getDriverName() === 'sqlite') {
+            return;
+        }
+
         Schema::table('ad_category_closure', function (Blueprint $table) {
             if (Schema::hasColumn('ad_category_closure', 'advertisable_type_id')) {
                 $table->dropConstrainedForeignId('advertisable_type_id');

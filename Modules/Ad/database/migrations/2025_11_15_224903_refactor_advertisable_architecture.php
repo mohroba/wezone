@@ -9,6 +9,10 @@ return new class extends Migration
 {
     public function up(): void
     {
+        if (DB::getDriverName() === 'sqlite') {
+            return;
+        }
+
         /*
         |--------------------------------------------------------------------------
         | 1) ads – Add advertisable_type_id and populate (safe)
@@ -303,6 +307,10 @@ return new class extends Migration
     */
     public function down(): void
     {
+        if (DB::getDriverName() === 'sqlite') {
+            return;
+        }
+
         Schema::table('ad_category_closure', function (Blueprint $table) {
             if (Schema::hasColumn('ad_category_closure', 'advertisable_type_id')) {
                 $table->dropConstrainedForeignId('advertisable_type_id');
@@ -404,6 +412,10 @@ return new class extends Migration
 
     private function indexExists(string $table, string $name): bool
     {
+        if (DB::getDriverName() === 'sqlite') {
+            return false;
+        }
+
         return !empty(DB::select(
             "SHOW INDEX FROM `{$table}` WHERE Key_name = ?", [$name]
         ));
@@ -411,6 +423,10 @@ return new class extends Migration
 
     private function foreignKeyExists(string $table, string $fk): bool
     {
+        if (DB::getDriverName() === 'sqlite') {
+            return false;
+        }
+
         return !empty(DB::select(
             "SELECT CONSTRAINT_NAME
              FROM information_schema.TABLE_CONSTRAINTS

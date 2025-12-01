@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Modules\Monetization\Http\Controllers\PaymentController;
+use Modules\Monetization\Http\Controllers\DiscountCodeController;
 use Modules\Monetization\Http\Controllers\PlanController;
 use Modules\Monetization\Http\Controllers\PurchaseController;
 use Modules\Monetization\Http\Controllers\WalletController;
@@ -19,6 +20,9 @@ Route::middleware(['auth:api'])->prefix('monetization')->group(function (): void
     Route::post('payments/{payment}/validate', [PaymentController::class, 'validatePayment'])->name('monetization.payments.validate');
     Route::post('payments/verify', [PaymentController::class, 'verify'])->name('monetization.payments.verify');
     Route::get('ads/{ad}/payments', [PaymentController::class, 'adPayments'])->name('monetization.ads.payments');
+
+    Route::post('discount-codes/validate', [DiscountCodeController::class, 'validateCode'])
+        ->name('monetization.discount-codes.validate');
 
     Route::get('wallet', [WalletController::class, 'show'])->name('monetization.wallet.show');
     Route::post('wallet/top-up', [WalletController::class, 'topUp'])->name('monetization.wallet.top-up');
