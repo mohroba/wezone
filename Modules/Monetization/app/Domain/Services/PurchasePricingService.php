@@ -33,12 +33,14 @@ class PurchasePricingService
             $userId,
         );
 
+        $appliedDiscountCode = $discountApplied ? $discountCode : null;
+
         return new PurchasePrice(
             listPrice: $listPrice,
             discountedPrice: $discountedPrice,
             currency: $currency,
             priceRule: $priceRule,
-            discountCode: $discountCode,
+            discountCode: $appliedDiscountCode,
             discountApplied: $discountApplied,
         );
     }

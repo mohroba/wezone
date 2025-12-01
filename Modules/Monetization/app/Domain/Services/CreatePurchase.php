@@ -63,6 +63,20 @@ class CreatePurchase
                         'discount_code' => $pricing->discountCode,
                         'discount_applied' => $pricing->discountApplied,
                     ],
+                    'discount_redemption' => $pricing->discountApplied ? [
+                        'price_rule_id' => $pricing->priceRule?->getKey(),
+                        'discount_code' => $pricing->discountCode,
+                        'list_price' => $pricing->listPrice,
+                        'discounted_price' => $pricing->discountedPrice,
+                        'user_id' => $dto->userId,
+                        'applied_at' => now()->toIso8601String(),
+                        'usage_cap' => $pricing->priceRule?->usage_cap,
+                        'usage_count' => $pricing->priceRule?->usage_count,
+                        'discount_window' => [
+                            'starts_at' => $pricing->priceRule?->discount_starts_at?->toIso8601String(),
+                            'ends_at' => $pricing->priceRule?->discount_ends_at?->toIso8601String(),
+                        ],
+                    ] : null,
                 ],
                 'bump_allowance' => (int) ($plan->features['bump']['allowance'] ?? 0),
                 'bump_cooldown_minutes' => $plan->bump_cooldown_minutes

@@ -80,4 +80,67 @@ class ValidateDiscountCodeTest extends TestCase
         $response->assertStatus(422);
         $response->assertJsonMissingPath('data');
     }
+
+    public function test_discount_code_is_rejected_outside_usage_window(): void
+    {
+        $user = User::factory()->create();
+        Passport::actingAs($user);
+
+        $advertisableType = AdvertisableTypeFactory::new()->create();
+        $plan = Plan::factory()->create(['price' => 9000, 'currency' => 'IRR']);
+
+        PlanPriceOverride::factory()
+            ->for($plan, 'plan')
+            ->for($advertisableType, 'advertisableType')
+            ->state([
+                'override_price' => 9000,
+                'discount_type' => 'percent',
+                'discount_value' => 10,
+                'discount_starts_at' => now()->addDay(),
+                'metadata' => ['discount_codes' => ['FUTURE10']],
+            ])
+            ->create();
+
+        $response = $this->postJson(route('monetization.discount-codes.validate'), [
+            'plan_id' => $plan->id,
+            'advertisable_type_id' => $advertisableType->id,
+            'discount_code' => 'FUTURE10',
+        ]);
+
+        $response->assertStatus(422);
+        $response->assertJsonMissingPath('data');
+    }
+
+    public function test_discount_code_requires_matching_category_context(): void
+    {
+        $user = User::factory()->create();
+        Passport::actingAs($user);
+
+        $advertisableType = AdvertisableTypeFactory::new()->create();
+        $matchedCategory = AdCategory::factory()->for($advertisableType, 'advertisableType')->create();
+        $otherCategory = AdCategory::factory()->for($advertisableType, 'advertisableType')->create();
+        $plan = Plan::factory()->create(['price' => 12000, 'currency' => 'IRR']);
+
+        PlanPriceOverride::factory()
+            ->for($plan, 'plan')
+            ->for($advertisableType, 'advertisableType')
+            ->state([
+                'ad_category_id' => $matchedCategory->id,
+                'override_price' => 12000,
+                'discount_type' => 'percent',
+                'discount_value' => 15,
+                'metadata' => ['discount_codes' => ['CAT15']],
+            ])
+            ->create();
+
+        $response = $this->postJson(route('monetization.discount-codes.validate'), [
+            'plan_id' => $plan->id,
+            'advertisable_type_id' => $advertisableType->id,
+            'ad_category_id' => $otherCategory->id,
+            'discount_code' => 'CAT15',
+        ]);
+
+        $response->assertStatus(422);
+        $response->assertJsonMissingPath('data');
+    }
 }
