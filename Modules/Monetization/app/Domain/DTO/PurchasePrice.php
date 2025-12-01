@@ -3,6 +3,7 @@
 namespace Modules\Monetization\Domain\DTO;
 
 use Modules\Monetization\Domain\Entities\PlanPriceOverride;
+use Modules\Monetization\Domain\Entities\DiscountCode;
 
 final class PurchasePrice
 {
@@ -12,6 +13,7 @@ final class PurchasePrice
         public readonly string $currency,
         public readonly ?PlanPriceOverride $priceRule,
         public readonly ?string $discountCode,
+        public readonly ?DiscountCode $discountCodeEntity,
         public readonly bool $discountApplied,
     ) {
     }

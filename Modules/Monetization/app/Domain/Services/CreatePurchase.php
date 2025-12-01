@@ -8,6 +8,7 @@ use Modules\Monetization\Domain\DTO\CreatePurchaseDTO;
 use Modules\Monetization\Domain\Entities\AdPlanPurchase;
 use Modules\Monetization\Domain\Events\PlanSelected;
 use Modules\Monetization\Domain\Services\PurchasePricingService;
+use Modules\Monetization\Domain\Services\DiscountRedemptionService;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Event;
 use InvalidArgumentException;
@@ -18,6 +19,7 @@ class CreatePurchase
         private readonly PlanRepository $planRepository,
         private readonly PurchaseRepository $purchaseRepository,
         private readonly PurchasePricingService $pricingService,
+        private readonly DiscountRedemptionService $discountRedemptionService,
     ) {
     }
 
@@ -43,6 +45,7 @@ class CreatePurchase
                 'ad_id' => $dto->adId,
                 'plan_id' => $plan->getKey(),
                 'price_rule_id' => $pricing->priceRule?->getKey(),
+                'discount_code_id' => $pricing->discountCodeEntity?->getKey(),
                 'user_id' => $dto->userId,
                 'amount' => $pricing->discountedPrice,
                 'list_price' => $pricing->listPrice,
@@ -65,6 +68,7 @@ class CreatePurchase
                     ],
                     'discount_redemption' => $pricing->discountApplied ? [
                         'price_rule_id' => $pricing->priceRule?->getKey(),
+                        'discount_code_id' => $pricing->discountCodeEntity?->getKey(),
                         'discount_code' => $pricing->discountCode,
                         'list_price' => $pricing->listPrice,
                         'discounted_price' => $pricing->discountedPrice,
@@ -84,8 +88,14 @@ class CreatePurchase
                     ?? null,
             ]);
 
-            if ($pricing->priceRule && $pricing->discountApplied && $pricing->priceRule->usage_cap !== null) {
-                $pricing->priceRule->increment('usage_count');
+            if ($pricing->priceRule && $pricing->discountApplied) {
+                $this->discountRedemptionService->reserveAndLog(
+                    $pricing->priceRule,
+                    $pricing->discountCodeEntity,
+                    $purchase,
+                    $pricing,
+                    $dto->userId,
+                );
             }
 
             Event::dispatch(new PlanSelected($purchase));

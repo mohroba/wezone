@@ -9,6 +9,9 @@ use Modules\Ad\Database\Factories\AdvertisableTypeFactory;
 use Modules\Ad\Models\AdCategory;
 use Modules\Monetization\Domain\Entities\Plan;
 use Modules\Monetization\Domain\Entities\PlanPriceOverride;
+use Modules\Monetization\Domain\Entities\DiscountCode;
+use Modules\Monetization\Domain\Entities\AdPlanPurchase;
+use Modules\Monetization\Domain\Entities\DiscountRedemption;
 use Tests\TestCase;
 
 class ValidateDiscountCodeTest extends TestCase
@@ -36,6 +39,12 @@ class ValidateDiscountCodeTest extends TestCase
             ])
             ->create();
 
+        DiscountCode::factory()
+            ->for($plan, 'plan')
+            ->for($override, 'priceRule')
+            ->state(['code' => 'LOYALTY20'])
+            ->create();
+
         $response = $this->postJson(route('monetization.discount-codes.validate'), [
             'plan_id' => $plan->id,
             'advertisable_type_id' => $advertisableType->id,
@@ -57,7 +66,7 @@ class ValidateDiscountCodeTest extends TestCase
         $advertisableType = AdvertisableTypeFactory::new()->create();
         $plan = Plan::factory()->create(['price' => 15000, 'currency' => 'IRR']);
 
-        PlanPriceOverride::factory()
+        $restrictedRule = PlanPriceOverride::factory()
             ->for($plan, 'plan')
             ->for($advertisableType, 'advertisableType')
             ->state([
@@ -69,6 +78,12 @@ class ValidateDiscountCodeTest extends TestCase
                     'eligible_user_ids' => [999],
                 ],
             ])
+            ->create();
+
+        DiscountCode::factory()
+            ->for($plan, 'plan')
+            ->for($restrictedRule, 'priceRule')
+            ->state(['code' => 'VIPONLY'])
             ->create();
 
         $response = $this->postJson(route('monetization.discount-codes.validate'), [
@@ -89,7 +104,7 @@ class ValidateDiscountCodeTest extends TestCase
         $advertisableType = AdvertisableTypeFactory::new()->create();
         $plan = Plan::factory()->create(['price' => 9000, 'currency' => 'IRR']);
 
-        PlanPriceOverride::factory()
+        $futureRule = PlanPriceOverride::factory()
             ->for($plan, 'plan')
             ->for($advertisableType, 'advertisableType')
             ->state([
@@ -98,6 +113,15 @@ class ValidateDiscountCodeTest extends TestCase
                 'discount_value' => 10,
                 'discount_starts_at' => now()->addDay(),
                 'metadata' => ['discount_codes' => ['FUTURE10']],
+            ])
+            ->create();
+
+        DiscountCode::factory()
+            ->for($plan, 'plan')
+            ->for($futureRule, 'priceRule')
+            ->state([
+                'code' => 'FUTURE10',
+                'starts_at' => now()->addDay(),
             ])
             ->create();
 
@@ -121,7 +145,7 @@ class ValidateDiscountCodeTest extends TestCase
         $otherCategory = AdCategory::factory()->for($advertisableType, 'advertisableType')->create();
         $plan = Plan::factory()->create(['price' => 12000, 'currency' => 'IRR']);
 
-        PlanPriceOverride::factory()
+        $categoryRule = PlanPriceOverride::factory()
             ->for($plan, 'plan')
             ->for($advertisableType, 'advertisableType')
             ->state([
@@ -133,11 +157,62 @@ class ValidateDiscountCodeTest extends TestCase
             ])
             ->create();
 
+        DiscountCode::factory()
+            ->for($plan, 'plan')
+            ->for($categoryRule, 'priceRule')
+            ->state(['code' => 'CAT15'])
+            ->create();
+
         $response = $this->postJson(route('monetization.discount-codes.validate'), [
             'plan_id' => $plan->id,
             'advertisable_type_id' => $advertisableType->id,
             'ad_category_id' => $otherCategory->id,
             'discount_code' => 'CAT15',
+        ]);
+
+        $response->assertStatus(422);
+        $response->assertJsonMissingPath('data');
+    }
+
+    public function test_discount_code_respects_per_user_cap(): void
+    {
+        $user = User::factory()->create();
+        Passport::actingAs($user);
+
+        $advertisableType = AdvertisableTypeFactory::new()->create();
+        $plan = Plan::factory()->create(['price' => 5000, 'currency' => 'IRR']);
+
+        $priceRule = PlanPriceOverride::factory()
+            ->for($plan, 'plan')
+            ->for($advertisableType, 'advertisableType')
+            ->state([
+                'override_price' => 5000,
+                'discount_type' => 'fixed',
+                'discount_value' => 500,
+                'metadata' => ['discount_codes' => ['ONCEONLY']],
+            ])
+            ->create();
+
+        $discountCode = DiscountCode::factory()
+            ->for($plan, 'plan')
+            ->for($priceRule, 'priceRule')
+            ->state([
+                'code' => 'ONCEONLY',
+                'per_user_cap' => 1,
+            ])
+            ->create();
+
+        DiscountRedemption::factory()
+            ->for($discountCode, 'discountCode')
+            ->for($priceRule, 'priceRule')
+            ->for(AdPlanPurchase::factory()->for($plan, 'plan'), 'purchase')
+            ->for($user, 'user')
+            ->create();
+
+        $response = $this->postJson(route('monetization.discount-codes.validate'), [
+            'plan_id' => $plan->id,
+            'advertisable_type_id' => $advertisableType->id,
+            'discount_code' => 'ONCEONLY',
         ]);
 
         $response->assertStatus(422);

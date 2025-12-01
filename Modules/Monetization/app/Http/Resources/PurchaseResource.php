@@ -21,6 +21,7 @@ class PurchaseResource extends JsonResource
             'payment_status' => $this->payment_status,
             'payment_gateway' => $this->payment_gateway,
             'price_rule_id' => $this->price_rule_id,
+            'discount_code_id' => $this->discount_code_id,
             'discount_code' => $this->discount_code,
             'bump_cooldown_minutes' => $this->bump_cooldown_minutes,
             'starts_at' => optional($this->starts_at)->toIso8601String(),

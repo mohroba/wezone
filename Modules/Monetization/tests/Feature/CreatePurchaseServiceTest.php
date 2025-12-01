@@ -15,6 +15,9 @@ use Modules\Monetization\Domain\Services\CreatePurchase;
 use Modules\Monetization\Domain\Services\PurchasePricingService;
 use Modules\Monetization\Domain\Entities\Plan;
 use Modules\Monetization\Domain\Entities\PlanPriceOverride;
+use Modules\Monetization\Domain\Entities\DiscountCode;
+use Modules\Monetization\Domain\Repositories\EloquentDiscountRedemptionRepository;
+use Modules\Monetization\Domain\Services\DiscountRedemptionService;
 use Tests\TestCase;
 
 class CreatePurchaseServiceTest extends TestCase
@@ -42,6 +45,17 @@ class CreatePurchaseServiceTest extends TestCase
                 'discount_type' => 'fixed',
                 'discount_value' => 500,
                 'usage_cap' => 3,
+                'metadata' => ['discount_codes' => ['PROMO500']],
+            ])
+            ->create();
+
+        $discountCode = DiscountCode::factory()
+            ->for($plan, 'plan')
+            ->for($override, 'priceRule')
+            ->state([
+                'code' => 'PROMO500',
+                'usage_cap' => 5,
+                'per_user_cap' => 2,
             ])
             ->create();
 
@@ -57,6 +71,7 @@ class CreatePurchaseServiceTest extends TestCase
             planRepository: new EloquentPlanRepository(),
             purchaseRepository: new EloquentPurchaseRepository(),
             pricingService: new PurchasePricingService(),
+            discountRedemptionService: new DiscountRedemptionService(new EloquentDiscountRedemptionRepository()),
         );
 
         $purchase = $service(new CreatePurchaseDTO(
@@ -77,11 +92,13 @@ class CreatePurchaseServiceTest extends TestCase
         $this->assertSame(4500.0, $purchase->discounted_price);
         $this->assertSame(4500.0, $purchase->amount);
         $this->assertSame($override->id, $purchase->price_rule_id);
+        $this->assertSame($discountCode->id, $purchase->discount_code_id);
         $this->assertSame('PROMO500', $purchase->discount_code);
         $this->assertSame(30, $purchase->bump_cooldown_minutes);
         $this->assertTrue($purchase->meta['pay_with_wallet']);
         $this->assertSame(4500, $purchase->meta['pricing']['discounted_price']);
         $this->assertSame(1, $override->fresh()->usage_count);
+        $this->assertSame(1, $discountCode->fresh()->usage_count);
     }
 
     public function test_purchase_uses_plan_feature_cooldown_when_no_direct_value(): void
@@ -109,6 +126,7 @@ class CreatePurchaseServiceTest extends TestCase
             planRepository: new EloquentPlanRepository(),
             purchaseRepository: new EloquentPurchaseRepository(),
             pricingService: new PurchasePricingService(),
+            discountRedemptionService: new DiscountRedemptionService(new EloquentDiscountRedemptionRepository()),
         );
 
         $purchase = $service(new CreatePurchaseDTO(

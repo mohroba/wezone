@@ -11,7 +11,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
 use Modules\Ad\Models\Ad;
+use Modules\Monetization\Domain\Entities\DiscountCode;
 use Modules\Monetization\Domain\Entities\PlanPriceOverride;
+use Modules\Monetization\Domain\Entities\DiscountRedemption;
 
 /**
  * @property int $id
@@ -28,6 +30,7 @@ use Modules\Monetization\Domain\Entities\PlanPriceOverride;
  * @property float|null $list_price
  * @property float|null $discounted_price
  * @property int|null $price_rule_id
+ * @property int|null $discount_code_id
  * @property string|null $discount_code
  * @property int|null $bump_cooldown_minutes
  * @property Carbon|null $starts_at
@@ -48,6 +51,7 @@ class AdPlanPurchase extends Model
         'starts_at',
         'ends_at',
         'price_rule_id',
+        'discount_code_id',
         'discount_code',
         'payment_status',
         'payment_gateway',
@@ -78,6 +82,11 @@ class AdPlanPurchase extends Model
         return $this->belongsTo(PlanPriceOverride::class, 'price_rule_id');
     }
 
+    public function discountCode(): BelongsTo
+    {
+        return $this->belongsTo(DiscountCode::class);
+    }
+
     public function ad(): BelongsTo
     {
         return $this->belongsTo(Ad::class);
@@ -91,6 +100,11 @@ class AdPlanPurchase extends Model
     public function payments(): HasMany
     {
         return $this->hasMany(Payment::class, 'payable_id')->where('payable_type', self::class);
+    }
+
+    public function redemptions(): HasMany
+    {
+        return $this->hasMany(DiscountRedemption::class, 'ad_plan_purchase_id');
     }
 
     protected function effectiveMeta(): Attribute

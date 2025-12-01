@@ -7,6 +7,7 @@ use Illuminate\Support\Carbon;
 use Modules\Monetization\Domain\DTO\PurchasePrice;
 use Modules\Monetization\Domain\Entities\Plan;
 use Modules\Monetization\Domain\Entities\PlanPriceOverride;
+use Modules\Monetization\Domain\Entities\DiscountCode;
 
 class PurchasePricingService
 {
@@ -19,21 +20,23 @@ class PurchasePricingService
     ): PurchasePrice
     {
         if (! $plan->relationLoaded('priceOverrides')) {
-            $plan->load('priceOverrides');
+            $plan->load('priceOverrides.discountCodes');
+        } else {
+            $plan->loadMissing('priceOverrides.discountCodes');
         }
 
         $priceRule = $this->matchPriceRule($plan, $advertisableTypeId, $adCategoryId);
         $listPrice = $priceRule?->override_price ?? $plan->price;
         $currency = $priceRule?->currency ?? $plan->currency;
 
-        [$discountedPrice, $discountApplied] = $this->applyRuleDiscount(
+        [$discountedPrice, $discountApplied, $resolvedCode] = $this->applyRuleDiscount(
             $priceRule,
             $listPrice,
             $discountCode,
             $userId,
         );
 
-        $appliedDiscountCode = $discountApplied ? $discountCode : null;
+        $appliedDiscountCode = $discountApplied ? $resolvedCode?->code : null;
 
         return new PurchasePrice(
             listPrice: $listPrice,
@@ -41,6 +44,7 @@ class PurchasePricingService
             currency: $currency,
             priceRule: $priceRule,
             discountCode: $appliedDiscountCode,
+            discountCodeEntity: $resolvedCode,
             discountApplied: $discountApplied,
         );
     }
@@ -61,29 +65,45 @@ class PurchasePricingService
     }
 
     /**
-     * @return array{0: float, 1: bool}
+     * @return array{0: float, 1: bool, 2: DiscountCode|null}
      */
     private function applyRuleDiscount(?PlanPriceOverride $rule, float $listPrice, ?string $discountCode, ?int $userId): array
     {
         if (! $rule || $rule->discount_type === 'none') {
-            return [$listPrice, false];
+            return [$listPrice, false, null];
         }
 
         if ($this->isDiscountInactive($rule)) {
-            return [$listPrice, false];
+            return [$listPrice, false, null];
         }
 
         $eligibleCodes = Arr::wrap($rule->metadata['discount_codes'] ?? []);
-        if ($eligibleCodes !== [] && ($discountCode === null || ! in_array(strtolower($discountCode), array_map('strtolower', $eligibleCodes), true))) {
-            return [$listPrice, false];
+
+        if ($eligibleCodes === [] && $rule->discountCodes->isNotEmpty()) {
+            $eligibleCodes = $rule->discountCodes->pluck('code')->all();
+        }
+        $resolvedCode = $this->findMatchingDiscountCode($rule, $discountCode, $userId);
+
+        if ($eligibleCodes !== [] && ($resolvedCode === null || $discountCode === null)) {
+            return [$listPrice, false, null];
         }
 
         if (! $this->isUserEligibleForDiscount($rule, $userId)) {
-            return [$listPrice, false];
+            return [$listPrice, false, null];
         }
 
         if ($rule->usage_cap !== null && $rule->usage_count >= $rule->usage_cap) {
-            return [$listPrice, false];
+            return [$listPrice, false, null];
+        }
+
+        $autoDiscountWithoutCodes = $eligibleCodes === [];
+
+        if ($discountCode !== null && $resolvedCode === null) {
+            return [$listPrice, false, null];
+        }
+
+        if ($resolvedCode && (! $rule->is_stackable || ! $resolvedCode->is_stackable) && $autoDiscountWithoutCodes) {
+            return [$listPrice, false, null];
         }
 
         $discountedPrice = match ($rule->discount_type) {
@@ -92,7 +112,7 @@ class PurchasePricingService
             default => $listPrice,
         };
 
-        return [max($discountedPrice, 0), $discountedPrice !== $listPrice];
+        return [max($discountedPrice, 0), $discountedPrice !== $listPrice, $resolvedCode];
     }
 
     private function isDiscountInactive(PlanPriceOverride $rule): bool
@@ -122,5 +142,45 @@ class PurchasePricingService
         }
 
         return $userId !== null && in_array($userId, $eligibleUserIds, true);
+    }
+
+    private function findMatchingDiscountCode(PlanPriceOverride $rule, ?string $discountCode, ?int $userId): ?DiscountCode
+    {
+        if ($discountCode === null) {
+            return null;
+        }
+
+        $normalized = strtolower($discountCode);
+
+        $candidate = $rule->discountCodes
+            ->first(fn (DiscountCode $code) => strtolower($code->code) === $normalized);
+
+        if (! $candidate) {
+            return null;
+        }
+
+        $now = Carbon::now();
+
+        if ($candidate->starts_at && $now->lt($candidate->starts_at)) {
+            return null;
+        }
+
+        if ($candidate->ends_at && $now->gt($candidate->ends_at)) {
+            return null;
+        }
+
+        if ($candidate->usage_cap !== null && $candidate->usage_count >= $candidate->usage_cap) {
+            return null;
+        }
+
+        if ($candidate->per_user_cap !== null && $userId !== null) {
+            $userRedemptions = $candidate->redemptions()->where('user_id', $userId)->count();
+
+            if ($userRedemptions >= $candidate->per_user_cap) {
+                return null;
+            }
+        }
+
+        return $candidate;
     }
 }
